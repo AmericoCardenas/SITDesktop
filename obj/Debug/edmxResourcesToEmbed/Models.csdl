@@ -163,6 +163,15 @@
     <EntitySet Name="Movimientos" EntityType="SITModel.Movimientos" />
     <EntitySet Name="BitacoraBitad" EntityType="SITModel.BitacoraBitad" />
     <EntitySet Name="BitacoraRol" EntityType="SITModel.BitacoraRol" />
+    <AssociationSet Name="FK_Lineas_Trabajadores" Association="SITModel.FK_Lineas_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="Lineas" EntitySet="Lineas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabajadores_Puestos" Association="SITModel.FK_Trabajadores_Puestos">
+      <End Role="Puestos" EntitySet="Puestos" />
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+    </AssociationSet>
+    <EntitySet Name="NotasMovimientos" EntityType="SITModel.NotasMovimientos" />
   </EntityContainer>
   <EntityType Name="Usuarios">
     <Key>
@@ -215,6 +224,7 @@
     </Key>
     <Property Name="IdPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Trabajadores_Puestos" FromRole="Puestos" ToRole="Trabajadores" />
   </EntityType>
   <EntityType Name="Servicios">
     <Key>
@@ -302,6 +312,7 @@
     <Property Name="IdProveedor" Type="Int32" />
     <Property Name="IdEstatus" Type="Int32" />
     <Property Name="IdEmpleado" Type="Int32" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Lineas_Trabajadores" FromRole="Lineas" ToRole="Trabajadores" />
   </EntityType>
   <EntityType Name="EquiposComputo">
     <Key>
@@ -356,6 +367,8 @@
     <Property Name="IdDepto" Type="Int32" />
     <Property Name="IdEstatus" Type="Int32" />
     <Property Name="IdSamsara" Type="Int32" />
+    <NavigationProperty Name="Lineas" Relationship="SITModel.FK_Lineas_Trabajadores" FromRole="Trabajadores" ToRole="Lineas" />
+    <NavigationProperty Name="Puestos" Relationship="SITModel.FK_Trabajadores_Puestos" FromRole="Trabajadores" ToRole="Puestos" />
   </EntityType>
   <EntityType Name="EstatusEquipos">
     <Key>
@@ -557,5 +570,47 @@
     <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Servicio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="Operador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Lineas_Trabajadores">
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="0..1" />
+    <End Type="SITModel.Lineas" Role="Lineas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Lineas">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabajadores_Puestos">
+    <End Type="SITModel.Puestos" Role="Puestos" Multiplicity="0..1" />
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puestos">
+        <PropertyRef Name="IdPuesto" />
+      </Principal>
+      <Dependent Role="Trabajadores">
+        <PropertyRef Name="IdPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="NotasMovimientos">
+    <Key>
+      <PropertyRef Name="IdNota" />
+    </Key>
+    <Property Name="IdNota" Type="Int32" Nullable="false" />
+    <Property Name="Folio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdMovimiento" Type="Int32" />
+    <Property Name="Concepto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCancelacion" Type="Int32" />
   </EntityType>
 </Schema>

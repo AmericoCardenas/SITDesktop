@@ -15,6 +15,7 @@ using SIT.Views;
 using SIT.Views.Catalogos;
 using SIT.Views.Comercial;
 using SIT.Views.Contabilidad;
+using SIT.Views.Contabilidad.CMovimientos;
 using SIT.Views.Logistica;
 using SIT.Views.Sistemas;
 
@@ -312,6 +313,12 @@ namespace SIT.Views
         private void btn_conciliador_Click(object sender, EventArgs e)
         {
             AbrirFormPanel(new VConciliador());
+
+        }
+
+        private void btn_notas_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VNotas(usuariologin));
 
         }
     }

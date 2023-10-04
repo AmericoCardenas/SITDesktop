@@ -16,11 +16,11 @@ namespace SIT
     {
         public int IdNota { get; set; }
         public string Folio { get; set; }
-        public Nullable<int> IdProveedor { get; set; }
+        public Nullable<System.DateTime> Fecha { get; set; }
         public Nullable<int> IdMovimiento { get; set; }
         public string Concepto { get; set; }
         public Nullable<double> Total { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
+        public Nullable<int> IdEstatus { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public Nullable<int> UsuarioCreo { get; set; }
         public Nullable<System.DateTime> FechaModificacion { get; set; }

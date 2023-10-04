@@ -48,10 +48,6 @@
             this.btn_eqcomp = new System.Windows.Forms.Button();
             this.btn_lineas = new System.Windows.Forms.Button();
             this.btn_sistemas = new System.Windows.Forms.Button();
-            this.panel_logistica = new System.Windows.Forms.Panel();
-            this.btn_mapa = new System.Windows.Forms.Button();
-            this.btn_rutas = new System.Windows.Forms.Button();
-            this.btn_logistica = new System.Windows.Forms.Button();
             this.pnl_contabilidad = new System.Windows.Forms.Panel();
             this.btn_movimientos = new System.Windows.Forms.Button();
             this.btn_flujos = new System.Windows.Forms.Button();
@@ -59,24 +55,29 @@
             this.pnl_comercial = new System.Windows.Forms.Panel();
             this.btn_ve = new System.Windows.Forms.Button();
             this.btn_comercial = new System.Windows.Forms.Button();
+            this.panel_logistica = new System.Windows.Forms.Panel();
+            this.btn_conciliador = new System.Windows.Forms.Button();
+            this.btn_mapa = new System.Windows.Forms.Button();
+            this.btn_rutas = new System.Windows.Forms.Button();
+            this.btn_logistica = new System.Windows.Forms.Button();
             this.tmmenu = new System.Windows.Forms.Timer(this.components);
             this.panelcontenedor = new System.Windows.Forms.Panel();
-            this.btn_conciliador = new System.Windows.Forms.Button();
+            this.btn_notas = new System.Windows.Forms.Button();
             this.flpanel.SuspendLayout();
             this.panelcatalogos.SuspendLayout();
             this.panel_sistemas.SuspendLayout();
-            this.panel_logistica.SuspendLayout();
             this.pnl_contabilidad.SuspendLayout();
             this.pnl_comercial.SuspendLayout();
+            this.panel_logistica.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpanel
             // 
             this.flpanel.Controls.Add(this.panelcatalogos);
             this.flpanel.Controls.Add(this.panel_sistemas);
-            this.flpanel.Controls.Add(this.pnl_contabilidad);
             this.flpanel.Controls.Add(this.pnl_comercial);
             this.flpanel.Controls.Add(this.panel_logistica);
+            this.flpanel.Controls.Add(this.pnl_contabilidad);
             this.flpanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.flpanel.Location = new System.Drawing.Point(0, 0);
             this.flpanel.Name = "flpanel";
@@ -312,68 +313,14 @@
             this.btn_sistemas.UseVisualStyleBackColor = true;
             this.btn_sistemas.Click += new System.EventHandler(this.btn_sistemas_Click);
             // 
-            // panel_logistica
-            // 
-            this.panel_logistica.Controls.Add(this.btn_conciliador);
-            this.panel_logistica.Controls.Add(this.btn_mapa);
-            this.panel_logistica.Controls.Add(this.btn_rutas);
-            this.panel_logistica.Controls.Add(this.btn_logistica);
-            this.panel_logistica.Location = new System.Drawing.Point(3, 202);
-            this.panel_logistica.MaximumSize = new System.Drawing.Size(214, 155);
-            this.panel_logistica.MinimumSize = new System.Drawing.Size(214, 35);
-            this.panel_logistica.Name = "panel_logistica";
-            this.panel_logistica.Size = new System.Drawing.Size(214, 39);
-            this.panel_logistica.TabIndex = 1;
-            // 
-            // btn_mapa
-            // 
-            this.btn_mapa.BackColor = System.Drawing.Color.White;
-            this.btn_mapa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_mapa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_mapa.Location = new System.Drawing.Point(0, 76);
-            this.btn_mapa.Name = "btn_mapa";
-            this.btn_mapa.Size = new System.Drawing.Size(214, 40);
-            this.btn_mapa.TabIndex = 0;
-            this.btn_mapa.Text = "Mapa";
-            this.btn_mapa.UseVisualStyleBackColor = false;
-            this.btn_mapa.Click += new System.EventHandler(this.btn_mapa_Click);
-            // 
-            // btn_rutas
-            // 
-            this.btn_rutas.BackColor = System.Drawing.Color.White;
-            this.btn_rutas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_rutas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_rutas.Location = new System.Drawing.Point(0, 37);
-            this.btn_rutas.Name = "btn_rutas";
-            this.btn_rutas.Size = new System.Drawing.Size(214, 40);
-            this.btn_rutas.TabIndex = 0;
-            this.btn_rutas.Text = "Bitacora";
-            this.btn_rutas.UseVisualStyleBackColor = false;
-            this.btn_rutas.Click += new System.EventHandler(this.btn_rutas_Click);
-            // 
-            // btn_logistica
-            // 
-            this.btn_logistica.BackColor = System.Drawing.Color.White;
-            this.btn_logistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_logistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_logistica.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
-            this.btn_logistica.Location = new System.Drawing.Point(0, 0);
-            this.btn_logistica.Name = "btn_logistica";
-            this.btn_logistica.Size = new System.Drawing.Size(214, 40);
-            this.btn_logistica.TabIndex = 2;
-            this.btn_logistica.Text = "Logistica";
-            this.btn_logistica.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_logistica.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_logistica.UseVisualStyleBackColor = false;
-            this.btn_logistica.Click += new System.EventHandler(this.btn_logistica_Click);
-            // 
             // pnl_contabilidad
             // 
+            this.pnl_contabilidad.Controls.Add(this.btn_notas);
             this.pnl_contabilidad.Controls.Add(this.btn_movimientos);
             this.pnl_contabilidad.Controls.Add(this.btn_flujos);
             this.pnl_contabilidad.Controls.Add(this.btn_contabilidad);
-            this.pnl_contabilidad.Location = new System.Drawing.Point(3, 100);
-            this.pnl_contabilidad.MaximumSize = new System.Drawing.Size(214, 125);
+            this.pnl_contabilidad.Location = new System.Drawing.Point(3, 196);
+            this.pnl_contabilidad.MaximumSize = new System.Drawing.Size(214, 165);
             this.pnl_contabilidad.MinimumSize = new System.Drawing.Size(214, 38);
             this.pnl_contabilidad.Name = "pnl_contabilidad";
             this.pnl_contabilidad.Size = new System.Drawing.Size(214, 45);
@@ -422,7 +369,7 @@
             // 
             this.pnl_comercial.Controls.Add(this.btn_ve);
             this.pnl_comercial.Controls.Add(this.btn_comercial);
-            this.pnl_comercial.Location = new System.Drawing.Point(3, 151);
+            this.pnl_comercial.Location = new System.Drawing.Point(3, 100);
             this.pnl_comercial.MaximumSize = new System.Drawing.Size(214, 116);
             this.pnl_comercial.MinimumSize = new System.Drawing.Size(214, 38);
             this.pnl_comercial.Name = "pnl_comercial";
@@ -456,6 +403,74 @@
             this.btn_comercial.UseVisualStyleBackColor = true;
             this.btn_comercial.Click += new System.EventHandler(this.btn_comercial_Click);
             // 
+            // panel_logistica
+            // 
+            this.panel_logistica.Controls.Add(this.btn_conciliador);
+            this.panel_logistica.Controls.Add(this.btn_mapa);
+            this.panel_logistica.Controls.Add(this.btn_rutas);
+            this.panel_logistica.Controls.Add(this.btn_logistica);
+            this.panel_logistica.Location = new System.Drawing.Point(3, 151);
+            this.panel_logistica.MaximumSize = new System.Drawing.Size(214, 155);
+            this.panel_logistica.MinimumSize = new System.Drawing.Size(214, 35);
+            this.panel_logistica.Name = "panel_logistica";
+            this.panel_logistica.Size = new System.Drawing.Size(214, 39);
+            this.panel_logistica.TabIndex = 1;
+            // 
+            // btn_conciliador
+            // 
+            this.btn_conciliador.BackColor = System.Drawing.Color.White;
+            this.btn_conciliador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_conciliador.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_conciliador.Location = new System.Drawing.Point(0, 115);
+            this.btn_conciliador.Name = "btn_conciliador";
+            this.btn_conciliador.Size = new System.Drawing.Size(214, 40);
+            this.btn_conciliador.TabIndex = 3;
+            this.btn_conciliador.Text = "Conciliador";
+            this.btn_conciliador.UseVisualStyleBackColor = false;
+            this.btn_conciliador.Click += new System.EventHandler(this.btn_conciliador_Click);
+            // 
+            // btn_mapa
+            // 
+            this.btn_mapa.BackColor = System.Drawing.Color.White;
+            this.btn_mapa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_mapa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_mapa.Location = new System.Drawing.Point(0, 76);
+            this.btn_mapa.Name = "btn_mapa";
+            this.btn_mapa.Size = new System.Drawing.Size(214, 40);
+            this.btn_mapa.TabIndex = 0;
+            this.btn_mapa.Text = "Mapa";
+            this.btn_mapa.UseVisualStyleBackColor = false;
+            this.btn_mapa.Click += new System.EventHandler(this.btn_mapa_Click);
+            // 
+            // btn_rutas
+            // 
+            this.btn_rutas.BackColor = System.Drawing.Color.White;
+            this.btn_rutas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_rutas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_rutas.Location = new System.Drawing.Point(0, 37);
+            this.btn_rutas.Name = "btn_rutas";
+            this.btn_rutas.Size = new System.Drawing.Size(214, 40);
+            this.btn_rutas.TabIndex = 0;
+            this.btn_rutas.Text = "Bitacora";
+            this.btn_rutas.UseVisualStyleBackColor = false;
+            this.btn_rutas.Click += new System.EventHandler(this.btn_rutas_Click);
+            // 
+            // btn_logistica
+            // 
+            this.btn_logistica.BackColor = System.Drawing.Color.White;
+            this.btn_logistica.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_logistica.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_logistica.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
+            this.btn_logistica.Location = new System.Drawing.Point(0, 0);
+            this.btn_logistica.Name = "btn_logistica";
+            this.btn_logistica.Size = new System.Drawing.Size(214, 40);
+            this.btn_logistica.TabIndex = 2;
+            this.btn_logistica.Text = "Logistica";
+            this.btn_logistica.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_logistica.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_logistica.UseVisualStyleBackColor = false;
+            this.btn_logistica.Click += new System.EventHandler(this.btn_logistica_Click);
+            // 
             // tmmenu
             // 
             this.tmmenu.Interval = 15;
@@ -470,18 +485,17 @@
             this.panelcontenedor.Size = new System.Drawing.Size(767, 503);
             this.panelcontenedor.TabIndex = 1;
             // 
-            // btn_conciliador
+            // btn_notas
             // 
-            this.btn_conciliador.BackColor = System.Drawing.Color.White;
-            this.btn_conciliador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_conciliador.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_conciliador.Location = new System.Drawing.Point(0, 115);
-            this.btn_conciliador.Name = "btn_conciliador";
-            this.btn_conciliador.Size = new System.Drawing.Size(214, 40);
-            this.btn_conciliador.TabIndex = 3;
-            this.btn_conciliador.Text = "Conciliador";
-            this.btn_conciliador.UseVisualStyleBackColor = false;
-            this.btn_conciliador.Click += new System.EventHandler(this.btn_conciliador_Click);
+            this.btn_notas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_notas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_notas.Location = new System.Drawing.Point(0, 123);
+            this.btn_notas.Name = "btn_notas";
+            this.btn_notas.Size = new System.Drawing.Size(214, 40);
+            this.btn_notas.TabIndex = 4;
+            this.btn_notas.Text = "Notas";
+            this.btn_notas.UseVisualStyleBackColor = true;
+            this.btn_notas.Click += new System.EventHandler(this.btn_notas_Click);
             // 
             // Menus
             // 
@@ -500,9 +514,9 @@
             this.flpanel.ResumeLayout(false);
             this.panelcatalogos.ResumeLayout(false);
             this.panel_sistemas.ResumeLayout(false);
-            this.panel_logistica.ResumeLayout(false);
             this.pnl_contabilidad.ResumeLayout(false);
             this.pnl_comercial.ResumeLayout(false);
+            this.panel_logistica.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -541,5 +555,6 @@
         private System.Windows.Forms.Button btn_comercial;
         private System.Windows.Forms.Button btn_movimientos;
         private System.Windows.Forms.Button btn_conciliador;
+        private System.Windows.Forms.Button btn_notas;
     }
 }

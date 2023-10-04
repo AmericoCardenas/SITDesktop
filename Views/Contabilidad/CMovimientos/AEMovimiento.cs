@@ -35,6 +35,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void AEMovimiento_Load(object sender, EventArgs e)
         {
+            this.Text = "Movimiento";
             CargarConceptos();
             CargarMetodos();
             CargarTipos();

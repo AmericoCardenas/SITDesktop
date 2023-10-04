@@ -118,22 +118,7 @@ namespace SIT.Views.Contabilidad
             if (this.dgrid_egreso.CurrentCell.RowIndex != -1)
             {
                 IdMovimiento = Convert.ToInt32(this.dgrid_egreso.CurrentRow.Cells["IdMovimiento"].Value);
-                //AEMovimiento frm = new AEMovimiento(this);
-                //frm.IdMovimiento = IdMovimiento;
-                //frm._uslog = this._uslog;
-                //this.Enabled = false;
-                //frm.Show();
 
-                //mov = db.Movimientos.Where(x => x.IdMovimiento == IdMovimiento).FirstOrDefault();
-
-                //this.dtm_fecha.Value = mov.Fecha.Value;
-                //this.cmb_tipo.SelectedValue = mov.IdTipo;
-                //this.cmb_metodo.SelectedValue = mov.IdMetodo;
-                //this.cmb_concepto.SelectedValue = mov.IdConcepto;
-                //this.txt_cliente.Text = mov.Cliente;
-                //this.txt_descripcion.Text = mov.Descripcion;
-                //this.txt_cantidad.Text = mov.Cantidad.ToString();
-                //filename = mov.Comprobante;
             }
             this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.lapiz, new Size(32, 32));
             this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
@@ -145,21 +130,7 @@ namespace SIT.Views.Contabilidad
             if (this.dgrid_ingreso.CurrentCell.RowIndex != -1)
             {
                 IdMovimiento = Convert.ToInt32(this.dgrid_ingreso.CurrentRow.Cells["IdMovimiento"].Value);
-                //AEMovimiento frm = new AEMovimiento(this);
-                //frm.IdMovimiento = IdMovimiento;
-                //frm._uslog = this._uslog;
-                //this.Enabled = false;
-                //frm.Show();
 
-
-                //this.dtm_fecha.Value = mov.Fecha.Value;
-                //this.cmb_tipo.SelectedValue = mov.IdTipo;
-                //this.cmb_metodo.SelectedValue = mov.IdMetodo;
-                //this.cmb_concepto.SelectedValue = mov.IdConcepto;
-                //this.txt_cliente.Text = mov.Cliente;
-                //this.txt_descripcion.Text = mov.Descripcion;
-                //this.txt_cantidad.Text = mov.Cantidad.ToString();
-                //filename = mov.Comprobante;
             }
             this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.lapiz, new Size(32, 32));
             this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
@@ -539,10 +510,6 @@ namespace SIT.Views.Contabilidad
             ExportarExcel();
         }
 
-        private void btn_notas_Click(object sender, EventArgs e)
-        {
-            VNotas frm = new VNotas();
-            frm.Show();
-        }
+
     }
 }

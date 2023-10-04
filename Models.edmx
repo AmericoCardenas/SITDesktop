@@ -272,13 +272,13 @@
           <Key>
             <PropertyRef Name="IdNota" />
           </Key>
-          <Property Name="IdNota" Type="int" Nullable="false" />
+          <Property Name="IdNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Folio" Type="varchar(max)" />
           <Property Name="Fecha" Type="date" />
-          <Property Name="IdProveedor" Type="int" />
           <Property Name="IdMovimiento" Type="int" />
           <Property Name="Concepto" Type="varchar(max)" />
           <Property Name="Total" Type="float" />
+          <Property Name="IdEstatus" Type="int" />
           <Property Name="FechaCreacion" Type="date" />
           <Property Name="UsuarioCreo" Type="int" />
           <Property Name="FechaModificacion" Type="date" />
@@ -775,7 +775,6 @@
           <EntitySet Name="Movimientos" EntityType="SITModel.Movimientos" />
           <EntitySet Name="BitacoraBitad" EntityType="SITModel.BitacoraBitad" />
           <EntitySet Name="BitacoraRol" EntityType="SITModel.BitacoraRol" />
-          <EntitySet Name="NotasMovimientos" EntityType="SITModel.NotasMovimientos" />
           <AssociationSet Name="FK_Lineas_Trabajadores" Association="SITModel.FK_Lineas_Trabajadores">
             <End Role="Trabajadores" EntitySet="Trabajadores" />
             <End Role="Lineas" EntitySet="Lineas" />
@@ -784,6 +783,7 @@
             <End Role="Puestos" EntitySet="Puestos" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
+          <EntitySet Name="NotasMovimientos" EntityType="SITModel.NotasMovimientos" />
         </EntityContainer>
         <EntityType Name="Usuarios">
           <Key>
@@ -1183,24 +1183,6 @@
           <Property Name="Servicio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Operador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="NotasMovimientos">
-          <Key>
-            <PropertyRef Name="IdNota" />
-          </Key>
-          <Property Name="IdNota" Type="Int32" Nullable="false" />
-          <Property Name="Folio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IdProveedor" Type="Int32" />
-          <Property Name="IdMovimiento" Type="Int32" />
-          <Property Name="Concepto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Total" Type="Double" />
-          <Property Name="Fecha" Type="DateTime" Precision="0" />
-          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
-          <Property Name="UsuarioCreo" Type="Int32" />
-          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
-          <Property Name="UsuarioModificacion" Type="Int32" />
-          <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
-          <Property Name="UsuarioCancelacion" Type="Int32" />
-        </EntityType>
         <Association Name="FK_Lineas_Trabajadores">
           <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="0..1" />
           <End Type="SITModel.Lineas" Role="Lineas" Multiplicity="*" />
@@ -1225,6 +1207,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NotasMovimientos">
+          <Key>
+            <PropertyRef Name="IdNota" />
+          </Key>
+          <Property Name="IdNota" Type="Int32" Nullable="false" />
+          <Property Name="Folio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="IdMovimiento" Type="Int32" />
+          <Property Name="Concepto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioCreo" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioModificacion" Type="Int32" />
+          <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+          <Property Name="UsuarioCancelacion" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1742,11 +1742,11 @@
                 <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
                 <ScalarProperty Name="UsuarioCreo" ColumnName="UsuarioCreo" />
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
                 <ScalarProperty Name="Concepto" ColumnName="Concepto" />
                 <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
-                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Folio" ColumnName="Folio" />
                 <ScalarProperty Name="IdNota" ColumnName="IdNota" />
               </MappingFragment>

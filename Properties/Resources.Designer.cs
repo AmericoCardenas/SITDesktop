@@ -93,6 +93,16 @@ namespace SIT.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap avance_rapido {
+            get {
+                object obj = ResourceManager.GetObject("avance-rapido", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap boton_actualizar {
             get {
                 object obj = ResourceManager.GetObject("boton-actualizar", resourceCulture);

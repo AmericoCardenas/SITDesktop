@@ -224,7 +224,7 @@
             // 
             // btn_aceptar
             // 
-            this.btn_aceptar.BackColor = System.Drawing.Color.LimeGreen;
+            this.btn_aceptar.BackColor = System.Drawing.Color.LightYellow;
             this.btn_aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_aceptar.Location = new System.Drawing.Point(122, 260);

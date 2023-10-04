@@ -503,5 +503,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="NotasMovimientos">
+      <EntityTypeMapping TypeName="SITModel.NotasMovimientos">
+        <MappingFragment StoreEntitySet="NotasMovimientos">
+          <ScalarProperty Name="UsuarioCancelacion" ColumnName="UsuarioCancelacion" />
+          <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreo" ColumnName="UsuarioCreo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+          <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Folio" ColumnName="Folio" />
+          <ScalarProperty Name="IdNota" ColumnName="IdNota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

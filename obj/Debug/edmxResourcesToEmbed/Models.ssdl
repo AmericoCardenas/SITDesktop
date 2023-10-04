@@ -263,6 +263,24 @@
     <Property Name="Nombre" Type="varchar" MaxLength="50" />
     <Property Name="IdEstado" Type="int" />
   </EntityType>
+  <EntityType Name="NotasMovimientos">
+    <Key>
+      <PropertyRef Name="IdNota" />
+    </Key>
+    <Property Name="IdNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Folio" Type="varchar(max)" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="IdMovimiento" Type="int" />
+    <Property Name="Concepto" Type="varchar(max)" />
+    <Property Name="Total" Type="float" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="UsuarioCreo" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="UsuarioModificacion" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="UsuarioCancelacion" Type="int" />
+  </EntityType>
   <EntityType Name="Paises">
     <Key>
       <PropertyRef Name="IdPais" />
@@ -486,6 +504,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Lineas_Trabajadores">
+    <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="0..1" />
+    <End Role="Lineas" Type="Self.Lineas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Lineas">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Municipios_Estados">
     <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
     <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
@@ -495,6 +525,18 @@
       </Principal>
       <Dependent Role="Municipios">
         <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabajadores_Puestos">
+    <End Role="Puestos" Type="Self.Puestos" Multiplicity="0..1" />
+    <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puestos">
+        <PropertyRef Name="IdPuesto" />
+      </Principal>
+      <Dependent Role="Trabajadores">
+        <PropertyRef Name="IdPuesto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -522,6 +564,7 @@
     <EntitySet Name="MetodosFlujos" EntityType="Self.MetodosFlujos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Movimientos" EntityType="Self.Movimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NotasMovimientos" EntityType="Self.NotasMovimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
@@ -547,9 +590,17 @@
       <End Role="Paises" EntitySet="Paises" />
       <End Role="Estados" EntitySet="Estados" />
     </AssociationSet>
+    <AssociationSet Name="FK_Lineas_Trabajadores" Association="Self.FK_Lineas_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="Lineas" EntitySet="Lineas" />
+    </AssociationSet>
     <AssociationSet Name="FK_Municipios_Estados" Association="Self.FK_Municipios_Estados">
       <End Role="Estados" EntitySet="Estados" />
       <End Role="Municipios" EntitySet="Municipios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabajadores_Puestos" Association="Self.FK_Trabajadores_Puestos">
+      <End Role="Puestos" EntitySet="Puestos" />
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
