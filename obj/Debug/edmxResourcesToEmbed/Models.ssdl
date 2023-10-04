@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BitacoraBitad">
+    <Key>
+      <PropertyRef Name="IdBitad" />
+    </Key>
+    <Property Name="IdBitad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodBitad" Type="varchar(max)" />
+    <Property Name="Fecha" Type="varchar" MaxLength="50" />
+    <Property Name="Turno" Type="varchar" MaxLength="50" />
+    <Property Name="Ruta" Type="varchar(max)" />
+    <Property Name="Unidad" Type="varchar" MaxLength="50" />
+    <Property Name="Servicio" Type="varchar" MaxLength="50" />
+    <Property Name="Operador" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="BitacoraRol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodBitad" Type="varchar(max)" />
+    <Property Name="Fecha" Type="varchar" MaxLength="50" />
+    <Property Name="Turno" Type="varchar" MaxLength="50" />
+    <Property Name="Ruta" Type="varchar(max)" />
+    <Property Name="Unidad" Type="varchar" MaxLength="50" />
+    <Property Name="Servicio" Type="varchar(max)" />
+    <Property Name="Operador" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RazonSocial" Type="varchar(max)" />
+    <Property Name="FechaAlta" Type="varchar(max)" />
+    <Property Name="Rfc" Type="varchar(max)" />
+    <Property Name="Email1" Type="varchar(max)" />
+    <Property Name="Email2" Type="varchar(max)" />
+    <Property Name="CIDCLIENTEPROV" Type="int" />
+    <Property Name="CCODIGOCLIENTE" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ConceptosFlujos">
+    <Key>
+      <PropertyRef Name="IdConcepto" />
+    </Key>
+    <Property Name="IdConcepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Concepto" Type="varchar" MaxLength="50" />
+    <Property Name="IdTipo" Type="int" />
+    <Property Name="IdRubro" Type="int" />
+  </EntityType>
+  <EntityType Name="DatosNominaEmpleados">
+    <Key>
+      <PropertyRef Name="IdNomina" />
+    </Key>
+    <Property Name="IdNomina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdBitad" Type="int" />
+    <Property Name="Banco" Type="varchar" MaxLength="50" />
+    <Property Name="Cuenta" Type="varchar" MaxLength="50" />
+    <Property Name="Tarjeta" Type="varchar" MaxLength="50" />
+    <Property Name="MetodoN1" Type="varchar" MaxLength="50" />
+    <Property Name="MetodoN2" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="IdDepto" />
+    </Key>
+    <Property Name="IdDepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Departamento" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DomicilioEmpleados">
+    <Key>
+      <PropertyRef Name="IdDomicilioEmp" />
+    </Key>
+    <Property Name="IdDomicilioEmp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdBitad" Type="int" />
+    <Property Name="Calle" Type="varchar" MaxLength="50" />
+    <Property Name="NoInt" Type="varchar" MaxLength="50" />
+    <Property Name="Colonia" Type="varchar" MaxLength="50" />
+    <Property Name="Municipio" Type="varchar" MaxLength="50" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DomiciliosClientes">
+    <Key>
+      <PropertyRef Name="IdDomicilio" />
+    </Key>
+    <Property Name="IdDomicilio" Type="int" Nullable="false" />
+    <Property Name="Calle" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroExt" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroInt" Type="varchar" MaxLength="50" />
+    <Property Name="Colonia" Type="varchar" MaxLength="50" />
+    <Property Name="IdCiudad" Type="int" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdPais" Type="int" />
+    <Property Name="IdCliente" Type="int" />
+  </EntityType>
+  <EntityType Name="EquiposComputo">
+    <Key>
+      <PropertyRef Name="IdEquipoComputo" />
+    </Key>
+    <Property Name="IdEquipoComputo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="50" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" />
+    <Property Name="Modelo" Type="varchar" MaxLength="50" />
+    <Property Name="Ram" Type="varchar" MaxLength="50" />
+    <Property Name="Procesador" Type="varchar" MaxLength="50" />
+    <Property Name="Almacenamiento" Type="varchar" MaxLength="50" />
+    <Property Name="SN" Type="varchar" MaxLength="50" />
+    <Property Name="Color" Type="varchar" MaxLength="50" />
+    <Property Name="Caracteristicas" Type="varchar(max)" />
+    <Property Name="Detalles" Type="varchar(max)" />
+    <Property Name="Accesorios" Type="varchar(max)" />
+    <Property Name="ValorComercial" Type="varchar" MaxLength="50" />
+    <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="EquiposMovil">
+    <Key>
+      <PropertyRef Name="IdEquipoMovil" />
+    </Key>
+    <Property Name="IdEquipoMovil" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" />
+    <Property Name="Modelo" Type="varchar" MaxLength="50" />
+    <Property Name="Ram" Type="varchar" MaxLength="50" />
+    <Property Name="Procesador" Type="varchar" MaxLength="50" />
+    <Property Name="IMEI" Type="varchar" MaxLength="50" />
+    <Property Name="IMEI2" Type="varchar" MaxLength="50" />
+    <Property Name="SN" Type="varchar" MaxLength="70" />
+    <Property Name="Color" Type="varchar" MaxLength="50" />
+    <Property Name="Caracteristicas" Type="varchar(max)" />
+    <Property Name="Detalles" Type="varchar(max)" />
+    <Property Name="Accesorios" Type="varchar(max)" />
+    <Property Name="ValorComercial" Type="varchar" MaxLength="50" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="int" />
+    <Property Name="IdPais" Type="int" />
+  </EntityType>
+  <EntityType Name="Estatus">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusEquipos">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusLineas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusRutas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusUsuarios">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusVE">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Flujos">
+    <Key>
+      <PropertyRef Name="IdFlujo" />
+    </Key>
+    <Property Name="IdFlujo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="IdTipo" Type="int" />
+    <Property Name="IdMetodo" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdDepto" Type="int" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="Cantidad" Type="float" />
+    <Property Name="Ruta" Type="varchar(max)" />
+    <Property Name="Comprobante" Type="varchar(max)" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaModifico" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
+  </EntityType>
+  <EntityType Name="Incidencias">
+    <Key>
+      <PropertyRef Name="IdIncidencia" />
+    </Key>
+    <Property Name="IdIncidencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="Lineas">
+    <Key>
+      <PropertyRef Name="IdLinea" />
+    </Key>
+    <Property Name="IdLinea" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Linea" Type="varchar" MaxLength="50" />
+    <Property Name="NumSim" Type="varchar" MaxLength="50" />
+    <Property Name="IdProveedor" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="MetodosFlujos">
+    <Key>
+      <PropertyRef Name="IdMetodo" />
+    </Key>
+    <Property Name="IdMetodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Metodo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Movimientos">
+    <Key>
+      <PropertyRef Name="IdMovimiento" />
+    </Key>
+    <Property Name="IdMovimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="IdTipo" Type="int" />
+    <Property Name="IdMetodo" Type="int" />
+    <Property Name="Cliente" Type="varchar(max)" />
+    <Property Name="Cantidad" Type="float" />
+    <Property Name="Descripcion" Type="varchar(max)" />
+    <Property Name="IdConcepto" Type="int" />
+    <Property Name="Ruta" Type="varchar(max)" />
+    <Property Name="Comprobante" Type="varchar(max)" />
+    <Property Name="NumCheque" Type="varchar(max)" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioModificacion" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsuarioCancelacion" Type="int" />
+  </EntityType>
+  <EntityType Name="Municipios">
+    <Key>
+      <PropertyRef Name="IdMunicipio" />
+    </Key>
+    <Property Name="IdMunicipio" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstado" Type="int" />
+  </EntityType>
+  <EntityType Name="Paises">
+    <Key>
+      <PropertyRef Name="IdPais" />
+    </Key>
+    <Property Name="IdPais" Type="int" Nullable="false" />
+    <Property Name="Pais" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CIDPRODUCTO" Type="int" />
+    <Property Name="CodigoProducto" Type="varchar(max)" />
+    <Property Name="NombreProducto" Type="varchar(max)" />
+    <Property Name="Precio1" Type="float" />
+    <Property Name="Precio2" Type="float" />
+    <Property Name="Precio3" Type="float" />
+    <Property Name="Precio4" Type="float" />
+    <Property Name="Precio5" Type="float" />
+    <Property Name="Precio6" Type="float" />
+    <Property Name="Precio7" Type="float" />
+    <Property Name="Precio8" Type="float" />
+    <Property Name="Precio9" Type="float" />
+    <Property Name="Precio10" Type="float" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="RfcCliente" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Proveedor" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Puestos">
+    <Key>
+      <PropertyRef Name="IdPuesto" />
+    </Key>
+    <Property Name="IdPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Puesto" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="RubrosFlujos">
+    <Key>
+      <PropertyRef Name="IdRubro" />
+    </Key>
+    <Property Name="IdRubro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rubro" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Rutas">
+    <Key>
+      <PropertyRef Name="IdRuta" />
+    </Key>
+    <Property Name="IdRuta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Hora" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoBitad" Type="varchar" MaxLength="50" />
+    <Property Name="IdCliente" Type="int" />
+    <Property Name="IdProducto" Type="int" />
+    <Property Name="IdTipo" Type="int" />
+    <Property Name="IdTurno" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="Unidad" Type="varchar" MaxLength="50" />
+    <Property Name="PEntrada" Type="int" />
+    <Property Name="PSalida" Type="int" />
+    <Property Name="FechaCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioCreacion" Type="int" />
+    <Property Name="FechaModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioModificacion" Type="int" />
+    <Property Name="FechaCancelacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioCancelacion" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+  </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="IdServicio" />
+    </Key>
+    <Property Name="IdServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Servicio" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TiposCostos">
+    <Key>
+      <PropertyRef Name="IdTipoCosto" />
+    </Key>
+    <Property Name="IdTipoCosto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Costo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TiposFlujos">
+    <Key>
+      <PropertyRef Name="IdTipo" />
+    </Key>
+    <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TiposRutas">
+    <Key>
+      <PropertyRef Name="IdTipo" />
+    </Key>
+    <Property Name="IdTipo" Type="int" Nullable="false" />
+    <Property Name="Tipo" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Trabajadores">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdBitad" Type="int" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Apellidop" Type="varchar" MaxLength="50" />
+    <Property Name="ApellidoM" Type="varchar" MaxLength="50" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="100" />
+    <Property Name="IdPuesto" Type="int" />
+    <Property Name="IdDepto" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdSamsara" Type="int" />
+  </EntityType>
+  <EntityType Name="Turnos">
+    <Key>
+      <PropertyRef Name="IdTurno" />
+    </Key>
+    <Property Name="IdTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Turno" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Unidades">
+    <Key>
+      <PropertyRef Name="IdUnidad" />
+    </Key>
+    <Property Name="IdUnidad" Type="int" Nullable="false" />
+    <Property Name="Unidad" Type="varchar" MaxLength="50" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" />
+    <Property Name="GPS" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Apellidop" Type="varchar" MaxLength="50" />
+    <Property Name="Apellidom" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdDepto" Type="int" />
+    <Property Name="FechaCreacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioCreacion" Type="int" />
+    <Property Name="FechaModificacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioModificacion" Type="int" />
+    <Property Name="FechaCancelacion" Type="varchar" MaxLength="50" />
+    <Property Name="UsuarioCancelacion" Type="int" />
+  </EntityType>
+  <EntityType Name="UsuariosSitios">
+    <Key>
+      <PropertyRef Name="IdUs" />
+    </Key>
+    <Property Name="IdUs" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="50" />
+    <Property Name="Sitio" Type="varchar" MaxLength="50" />
+    <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="ViajesEspeciales">
+    <Key>
+      <PropertyRef Name="IdViaje" />
+    </Key>
+    <Property Name="IdViaje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCliente" Type="int" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="FechaInicio" Type="date" />
+    <Property Name="FechaFin" Type="date" />
+    <Property Name="HoraSalida" Type="varchar" MaxLength="50" />
+    <Property Name="HoraLLegada" Type="varchar" MaxLength="50" />
+    <Property Name="Unidad" Type="varchar" MaxLength="50" />
+    <Property Name="Origen" Type="varchar(max)" />
+    <Property Name="Destino" Type="varchar(max)" />
+    <Property Name="Total" Type="float" />
+    <Property Name="Anticipo" Type="float" />
+    <Property Name="Pendiente" Type="float" />
+    <Property Name="IdMetodo" Type="int" />
+    <Property Name="Cantidad" Type="int" />
+    <Property Name="Observaciones" Type="varchar(max)" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="UsuarioCreacion" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="UsuarioModificacion" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="UsuarioCancelacion" Type="int" />
+  </EntityType>
+  <Association Name="FK_DomiciliosClientes_Clientes">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
+    <End Role="DomiciliosClientes" Type="Self.DomiciliosClientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="DomiciliosClientes">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estados_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Estados" Type="Self.Estados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="IdPais" />
+      </Principal>
+      <Dependent Role="Estados">
+        <PropertyRef Name="IdPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Municipios_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Municipios">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SITModelStoreContainer">
+    <EntitySet Name="BitacoraBitad" EntityType="Self.BitacoraBitad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BitacoraRol" EntityType="Self.BitacoraRol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConceptosFlujos" EntityType="Self.ConceptosFlujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DatosNominaEmpleados" EntityType="Self.DatosNominaEmpleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DomicilioEmpleados" EntityType="Self.DomicilioEmpleados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DomiciliosClientes" EntityType="Self.DomiciliosClientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquiposComputo" EntityType="Self.EquiposComputo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquiposMovil" EntityType="Self.EquiposMovil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusEquipos" EntityType="Self.EstatusEquipos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusLineas" EntityType="Self.EstatusLineas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusRutas" EntityType="Self.EstatusRutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusUsuarios" EntityType="Self.EstatusUsuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusVE" EntityType="Self.EstatusVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flujos" EntityType="Self.Flujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Incidencias" EntityType="Self.Incidencias" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lineas" EntityType="Self.Lineas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MetodosFlujos" EntityType="Self.MetodosFlujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Movimientos" EntityType="Self.Movimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Puestos" EntityType="Self.Puestos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RubrosFlujos" EntityType="Self.RubrosFlujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposCostos" EntityType="Self.TiposCostos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposFlujos" EntityType="Self.TiposFlujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TiposRutas" EntityType="Self.TiposRutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trabajadores" EntityType="Self.Trabajadores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Unidades" EntityType="Self.Unidades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsuariosSitios" EntityType="Self.UsuariosSitios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ViajesEspeciales" EntityType="Self.ViajesEspeciales" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DomiciliosClientes_Clientes" Association="Self.FK_DomiciliosClientes_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="DomiciliosClientes" EntitySet="DomiciliosClientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estados_Paises" Association="Self.FK_Estados_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Estados" EntitySet="Estados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Municipios_Estados" Association="Self.FK_Municipios_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Municipios" EntitySet="Municipios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
