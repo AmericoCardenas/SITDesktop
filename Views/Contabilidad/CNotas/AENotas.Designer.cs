@@ -163,6 +163,7 @@
             this.Name = "AENotas";
             this.ShowIcon = false;
             this.Text = "Notas";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AENotas_FormClosed);
             this.Load += new System.EventHandler(this.AENotas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

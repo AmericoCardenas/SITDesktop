@@ -48,10 +48,6 @@
             this.btn_eqcomp = new System.Windows.Forms.Button();
             this.btn_lineas = new System.Windows.Forms.Button();
             this.btn_sistemas = new System.Windows.Forms.Button();
-            this.pnl_contabilidad = new System.Windows.Forms.Panel();
-            this.btn_movimientos = new System.Windows.Forms.Button();
-            this.btn_flujos = new System.Windows.Forms.Button();
-            this.btn_contabilidad = new System.Windows.Forms.Button();
             this.pnl_comercial = new System.Windows.Forms.Panel();
             this.btn_ve = new System.Windows.Forms.Button();
             this.btn_comercial = new System.Windows.Forms.Button();
@@ -60,15 +56,20 @@
             this.btn_mapa = new System.Windows.Forms.Button();
             this.btn_rutas = new System.Windows.Forms.Button();
             this.btn_logistica = new System.Windows.Forms.Button();
+            this.pnl_contabilidad = new System.Windows.Forms.Panel();
+            this.btn_notas = new System.Windows.Forms.Button();
+            this.btn_movimientos = new System.Windows.Forms.Button();
+            this.btn_flujos = new System.Windows.Forms.Button();
+            this.btn_contabilidad = new System.Windows.Forms.Button();
             this.tmmenu = new System.Windows.Forms.Timer(this.components);
             this.panelcontenedor = new System.Windows.Forms.Panel();
-            this.btn_notas = new System.Windows.Forms.Button();
+            this.btn_proveedores = new System.Windows.Forms.Button();
             this.flpanel.SuspendLayout();
             this.panelcatalogos.SuspendLayout();
             this.panel_sistemas.SuspendLayout();
-            this.pnl_contabilidad.SuspendLayout();
             this.pnl_comercial.SuspendLayout();
             this.panel_logistica.SuspendLayout();
+            this.pnl_contabilidad.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpanel
@@ -86,6 +87,7 @@
             // 
             // panelcatalogos
             // 
+            this.panelcatalogos.Controls.Add(this.btn_proveedores);
             this.panelcatalogos.Controls.Add(this.btn_metodos);
             this.panelcatalogos.Controls.Add(this.btn_tipos);
             this.panelcatalogos.Controls.Add(this.btn_rubros);
@@ -97,7 +99,7 @@
             this.panelcatalogos.Controls.Add(this.btn_emp);
             this.panelcatalogos.Controls.Add(this.btncatalogos);
             this.panelcatalogos.Location = new System.Drawing.Point(3, 3);
-            this.panelcatalogos.MaximumSize = new System.Drawing.Size(214, 323);
+            this.panelcatalogos.MaximumSize = new System.Drawing.Size(214, 357);
             this.panelcatalogos.MinimumSize = new System.Drawing.Size(214, 40);
             this.panelcatalogos.Name = "panelcatalogos";
             this.panelcatalogos.Size = new System.Drawing.Size(214, 40);
@@ -313,58 +315,6 @@
             this.btn_sistemas.UseVisualStyleBackColor = true;
             this.btn_sistemas.Click += new System.EventHandler(this.btn_sistemas_Click);
             // 
-            // pnl_contabilidad
-            // 
-            this.pnl_contabilidad.Controls.Add(this.btn_notas);
-            this.pnl_contabilidad.Controls.Add(this.btn_movimientos);
-            this.pnl_contabilidad.Controls.Add(this.btn_flujos);
-            this.pnl_contabilidad.Controls.Add(this.btn_contabilidad);
-            this.pnl_contabilidad.Location = new System.Drawing.Point(3, 196);
-            this.pnl_contabilidad.MaximumSize = new System.Drawing.Size(214, 165);
-            this.pnl_contabilidad.MinimumSize = new System.Drawing.Size(214, 38);
-            this.pnl_contabilidad.Name = "pnl_contabilidad";
-            this.pnl_contabilidad.Size = new System.Drawing.Size(214, 45);
-            this.pnl_contabilidad.TabIndex = 3;
-            // 
-            // btn_movimientos
-            // 
-            this.btn_movimientos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_movimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_movimientos.Location = new System.Drawing.Point(0, 83);
-            this.btn_movimientos.Name = "btn_movimientos";
-            this.btn_movimientos.Size = new System.Drawing.Size(214, 40);
-            this.btn_movimientos.TabIndex = 3;
-            this.btn_movimientos.Text = "Movimientos";
-            this.btn_movimientos.UseVisualStyleBackColor = true;
-            this.btn_movimientos.Click += new System.EventHandler(this.btn_movimientos_Click);
-            // 
-            // btn_flujos
-            // 
-            this.btn_flujos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_flujos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_flujos.Location = new System.Drawing.Point(0, 43);
-            this.btn_flujos.Name = "btn_flujos";
-            this.btn_flujos.Size = new System.Drawing.Size(214, 40);
-            this.btn_flujos.TabIndex = 2;
-            this.btn_flujos.Text = "Flujos";
-            this.btn_flujos.UseVisualStyleBackColor = true;
-            this.btn_flujos.Click += new System.EventHandler(this.btn_flujos_Click);
-            // 
-            // btn_contabilidad
-            // 
-            this.btn_contabilidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_contabilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_contabilidad.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
-            this.btn_contabilidad.Location = new System.Drawing.Point(0, 0);
-            this.btn_contabilidad.Name = "btn_contabilidad";
-            this.btn_contabilidad.Size = new System.Drawing.Size(214, 43);
-            this.btn_contabilidad.TabIndex = 1;
-            this.btn_contabilidad.Text = "Contabilidad";
-            this.btn_contabilidad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_contabilidad.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_contabilidad.UseVisualStyleBackColor = true;
-            this.btn_contabilidad.Click += new System.EventHandler(this.btn_contabilidad_Click);
-            // 
             // pnl_comercial
             // 
             this.pnl_comercial.Controls.Add(this.btn_ve);
@@ -471,6 +421,70 @@
             this.btn_logistica.UseVisualStyleBackColor = false;
             this.btn_logistica.Click += new System.EventHandler(this.btn_logistica_Click);
             // 
+            // pnl_contabilidad
+            // 
+            this.pnl_contabilidad.Controls.Add(this.btn_notas);
+            this.pnl_contabilidad.Controls.Add(this.btn_movimientos);
+            this.pnl_contabilidad.Controls.Add(this.btn_flujos);
+            this.pnl_contabilidad.Controls.Add(this.btn_contabilidad);
+            this.pnl_contabilidad.Location = new System.Drawing.Point(3, 196);
+            this.pnl_contabilidad.MaximumSize = new System.Drawing.Size(214, 165);
+            this.pnl_contabilidad.MinimumSize = new System.Drawing.Size(214, 38);
+            this.pnl_contabilidad.Name = "pnl_contabilidad";
+            this.pnl_contabilidad.Size = new System.Drawing.Size(214, 45);
+            this.pnl_contabilidad.TabIndex = 3;
+            // 
+            // btn_notas
+            // 
+            this.btn_notas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_notas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_notas.Location = new System.Drawing.Point(0, 123);
+            this.btn_notas.Name = "btn_notas";
+            this.btn_notas.Size = new System.Drawing.Size(214, 40);
+            this.btn_notas.TabIndex = 4;
+            this.btn_notas.Text = "Notas";
+            this.btn_notas.UseVisualStyleBackColor = true;
+            this.btn_notas.Click += new System.EventHandler(this.btn_notas_Click);
+            // 
+            // btn_movimientos
+            // 
+            this.btn_movimientos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_movimientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_movimientos.Location = new System.Drawing.Point(0, 83);
+            this.btn_movimientos.Name = "btn_movimientos";
+            this.btn_movimientos.Size = new System.Drawing.Size(214, 40);
+            this.btn_movimientos.TabIndex = 3;
+            this.btn_movimientos.Text = "Movimientos";
+            this.btn_movimientos.UseVisualStyleBackColor = true;
+            this.btn_movimientos.Click += new System.EventHandler(this.btn_movimientos_Click);
+            // 
+            // btn_flujos
+            // 
+            this.btn_flujos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_flujos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_flujos.Location = new System.Drawing.Point(0, 43);
+            this.btn_flujos.Name = "btn_flujos";
+            this.btn_flujos.Size = new System.Drawing.Size(214, 40);
+            this.btn_flujos.TabIndex = 2;
+            this.btn_flujos.Text = "Flujos";
+            this.btn_flujos.UseVisualStyleBackColor = true;
+            this.btn_flujos.Click += new System.EventHandler(this.btn_flujos_Click);
+            // 
+            // btn_contabilidad
+            // 
+            this.btn_contabilidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_contabilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_contabilidad.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
+            this.btn_contabilidad.Location = new System.Drawing.Point(0, 0);
+            this.btn_contabilidad.Name = "btn_contabilidad";
+            this.btn_contabilidad.Size = new System.Drawing.Size(214, 43);
+            this.btn_contabilidad.TabIndex = 1;
+            this.btn_contabilidad.Text = "Contabilidad";
+            this.btn_contabilidad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_contabilidad.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_contabilidad.UseVisualStyleBackColor = true;
+            this.btn_contabilidad.Click += new System.EventHandler(this.btn_contabilidad_Click);
+            // 
             // tmmenu
             // 
             this.tmmenu.Interval = 15;
@@ -485,17 +499,18 @@
             this.panelcontenedor.Size = new System.Drawing.Size(767, 503);
             this.panelcontenedor.TabIndex = 1;
             // 
-            // btn_notas
+            // btn_proveedores
             // 
-            this.btn_notas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_notas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_notas.Location = new System.Drawing.Point(0, 123);
-            this.btn_notas.Name = "btn_notas";
-            this.btn_notas.Size = new System.Drawing.Size(214, 40);
-            this.btn_notas.TabIndex = 4;
-            this.btn_notas.Text = "Notas";
-            this.btn_notas.UseVisualStyleBackColor = true;
-            this.btn_notas.Click += new System.EventHandler(this.btn_notas_Click);
+            this.btn_proveedores.BackColor = System.Drawing.Color.White;
+            this.btn_proveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_proveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_proveedores.Location = new System.Drawing.Point(0, 321);
+            this.btn_proveedores.Name = "btn_proveedores";
+            this.btn_proveedores.Size = new System.Drawing.Size(214, 32);
+            this.btn_proveedores.TabIndex = 10;
+            this.btn_proveedores.Text = "Proveedores";
+            this.btn_proveedores.UseVisualStyleBackColor = false;
+            this.btn_proveedores.Click += new System.EventHandler(this.btn_proveedores_Click);
             // 
             // Menus
             // 
@@ -514,9 +529,9 @@
             this.flpanel.ResumeLayout(false);
             this.panelcatalogos.ResumeLayout(false);
             this.panel_sistemas.ResumeLayout(false);
-            this.pnl_contabilidad.ResumeLayout(false);
             this.pnl_comercial.ResumeLayout(false);
             this.panel_logistica.ResumeLayout(false);
+            this.pnl_contabilidad.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -556,5 +571,6 @@
         private System.Windows.Forms.Button btn_movimientos;
         private System.Windows.Forms.Button btn_conciliador;
         private System.Windows.Forms.Button btn_notas;
+        private System.Windows.Forms.Button btn_proveedores;
     }
 }

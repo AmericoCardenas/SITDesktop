@@ -247,14 +247,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIT.exe" size="6897224">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIT.exe" size="6905928">
       <assemblyIdentity name="SIT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>C5ufacOXzhphPvdjpKdxuz7cloYG3fN300jihmYnQ/4=</dsig:DigestValue>
+        <dsig:DigestValue>/XV4FeMC0UfMmGRSZCCEOGwSVpYGYiHrSlchLFf6pug=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

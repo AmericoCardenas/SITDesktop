@@ -70,7 +70,6 @@ namespace SIT.Views.Contabilidad.CMovimientos
             this.dgrid_notas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-
         private void CancelarNota()
         {
             not.IdEstatus = 2;
@@ -91,8 +90,6 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 MessageBox.Show("Favor de seleccionar la nota");
             }
         }
-
-
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
@@ -126,10 +123,6 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
             }
         }
-
-
-
-
 
         private void CargarxFiltro()
         {

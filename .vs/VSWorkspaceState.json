@@ -5,6 +5,6 @@
     "\\Views\\Contabilidad",
     "\\Views\\Contabilidad\\CMovimientos"
   ],
-  "SelectedNode": "\\SIT.sln",
+  "SelectedNode": "\\Views\\Contabilidad\\CMovimientos\\AEMovimiento.cs",
   "PreviewInSolutionExplorer": false
 }

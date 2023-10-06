@@ -434,6 +434,12 @@
     <Compile Include="Views\Catalogos\CEmpleados\ResumenEmpleado.Designer.cs">
       <DependentUpon>ResumenEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Catalogos\CProveedores\AEProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProveedores\AEProveedores.Designer.cs">
+      <DependentUpon>AEProveedores.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Catalogos\VConceptosFlujos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -445,6 +451,12 @@
     </Compile>
     <Compile Include="Views\Catalogos\VMetodosPago.Designer.cs">
       <DependentUpon>VMetodosPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProveedores\VProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProveedores\VProveedores.Designer.cs">
+      <DependentUpon>VProveedores.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Catalogos\VRubros.cs">
       <SubType>Form</SubType>
@@ -612,6 +624,9 @@
     <EmbeddedResource Include="Views\Catalogos\CEmpleados\ResumenEmpleado.resx">
       <DependentUpon>ResumenEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CProveedores\AEProveedores.resx">
+      <DependentUpon>AEProveedores.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\VConceptosFlujos.resx">
       <DependentUpon>VConceptosFlujos.cs</DependentUpon>
     </EmbeddedResource>
@@ -623,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\VMetodosPago.resx">
       <DependentUpon>VMetodosPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CProveedores\VProveedores.resx">
+      <DependentUpon>VProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\VRubros.resx">
       <DependentUpon>VRubros.cs</DependentUpon>

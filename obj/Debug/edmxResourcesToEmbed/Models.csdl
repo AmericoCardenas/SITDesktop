@@ -301,6 +301,13 @@
     </Key>
     <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCreacion" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCancelacion" Type="Int32" />
   </EntityType>
   <EntityType Name="Lineas">
     <Key>

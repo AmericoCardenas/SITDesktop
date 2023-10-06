@@ -315,6 +315,13 @@
     </Key>
     <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Proveedor" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="UsuarioCreacion" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="UsuarioModificacion" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="UsuarioCancelacion" Type="int" />
   </EntityType>
   <EntityType Name="Puestos">
     <Key>

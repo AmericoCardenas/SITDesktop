@@ -321,5 +321,11 @@ namespace SIT.Views
             AbrirFormPanel(new VNotas(usuariologin));
 
         }
+
+        private void btn_proveedores_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VProveedores(usuariologin));
+
+        }
     }
 }

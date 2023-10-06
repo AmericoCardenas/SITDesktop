@@ -225,6 +225,13 @@
     <EntitySetMapping Name="Proveedores">
       <EntityTypeMapping TypeName="SITModel.Proveedores">
         <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="UsuarioCancelacion" ColumnName="UsuarioCancelacion" />
+          <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+          <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="UsuarioCreacion" ColumnName="UsuarioCreacion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
           <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
           <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
         </MappingFragment>

@@ -34,6 +34,11 @@ namespace SIT.Views.Contabilidad.CNotas
             this.txt_folio.Text = string.Empty;
         }
 
+        private void CargarProveedores()
+        {
+
+        }
+
         private void AgregarNotas()
         {
             if (this.txt_folio.Text == "")
@@ -123,6 +128,11 @@ namespace SIT.Views.Contabilidad.CNotas
 
                 this.Text = "Editar";
             }
+        }
+
+        private void AENotas_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _vnotas.Enabled = true;
         }
     }
 }

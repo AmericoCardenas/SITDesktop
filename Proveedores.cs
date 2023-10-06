@@ -16,5 +16,12 @@ namespace SIT
     {
         public int IdProveedor { get; set; }
         public string Proveedor { get; set; }
+        public Nullable<int> IdEstatus { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public Nullable<int> UsuarioCreacion { get; set; }
+        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public Nullable<int> UsuarioModificacion { get; set; }
+        public Nullable<System.DateTime> FechaCancelacion { get; set; }
+        public Nullable<int> UsuarioCancelacion { get; set; }
     }
 }
