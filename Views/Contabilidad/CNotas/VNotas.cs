@@ -1,4 +1,6 @@
-﻿using DocumentFormat.OpenXml.Drawing.Wordprocessing;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using DocumentFormat.OpenXml.Drawing.Wordprocessing;
+using DocumentFormat.OpenXml.Wordprocessing;
 using GMap.NET;
 using SIT.Views.Contabilidad.CNotas;
 using System;
@@ -10,6 +12,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,13 +25,17 @@ namespace SIT.Views.Contabilidad.CMovimientos
         public VNotas(Usuarios uslog)
         {
             InitializeComponent();
-            this.IdUsuario = uslog.IdUsuario;
+            this._uslog = uslog;
+            this.dgrid_notas_creditos.CellContentClick += this.dgrid_notas_creditos_CellContentClick;
         }
 
         private int IdUsuario;
         private int IdNota;
+        Usuarios _uslog;
         SITEntities db = new SITEntities();
         NotasMovimientos not = new NotasMovimientos();
+        Movimientos mov = new Movimientos();
+        List<NotasMovimientos>lst_not = new List<NotasMovimientos>();
 
         private void VNotas_Load(object sender, EventArgs e)
         {
@@ -37,7 +45,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void CargarFiltros()
         {
-            foreach(DataGridViewColumn col in this.dgrid_notas.Columns)
+            foreach(DataGridViewColumn col in this.dgrid_notas_creditos.Columns)
             {
                 if (col.Index > 0)
                 {
@@ -49,8 +57,9 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         }
 
-        private void CargarNotas()
+        public void CargarNotas()
         {
+
             var x = from n in db.NotasMovimientos
                     join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
                     where n.IdEstatus == 1
@@ -63,13 +72,20 @@ namespace SIT.Views.Contabilidad.CMovimientos
                         n.Concepto,
                         n.Total
                     };
-            this.dgrid_notas.DataSource = x.ToList();
-            this.dgrid_notas.Columns[0].Visible= false;
+            this.dgrid_notas_creditos.DataSource = x.ToList();
+            this.dgrid_notas_creditos.Columns[0].Visible= false;
 
-            this.dgrid_notas.EnableHeadersVisualStyles = false;
-            this.dgrid_notas.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
-            this.dgrid_notas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            this.dgrid_notas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+            dgvCmb.ValueType = typeof(bool);
+            dgvCmb.FalseValue = false;
+            dgvCmb.Name = "Chk";
+            dgvCmb.HeaderText = "CheckBox";
+            this.dgrid_notas_creditos.Columns.Add(dgvCmb);
+
+            this.dgrid_notas_creditos.EnableHeadersVisualStyles = false;
+            this.dgrid_notas_creditos.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.dgrid_notas_creditos.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dgrid_notas_creditos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CancelarNota()
@@ -112,9 +128,9 @@ namespace SIT.Views.Contabilidad.CMovimientos
         {
             try
             {
-                if (this.dgrid_notas.CurrentCell.RowIndex != -1)
+                if (this.dgrid_notas_creditos.CurrentCell.RowIndex != -1)
                 {
-                    IdNota = Convert.ToInt32(this.dgrid_notas.CurrentRow.Cells["IdNota"].Value);
+                    IdNota = Convert.ToInt32(this.dgrid_notas_creditos.CurrentRow.Cells["IdNota"].Value);
                 }
 
                 this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.lapiz, new Size(32, 32));
@@ -148,7 +164,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.Concepto,
                                     n.Total
                                 };
-                        this.dgrid_notas.DataSource = x.ToList();
+                        this.dgrid_notas_creditos.DataSource = x.ToList();
                     }
                     catch (Exception ex)
                     {
@@ -170,7 +186,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.Concepto,
                                     n.Total
                                 };
-                        this.dgrid_notas.DataSource = x.ToList();
+                        this.dgrid_notas_creditos.DataSource = x.ToList();
                     }
                     catch (Exception ex)
                     {
@@ -193,7 +209,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.Concepto,
                                     n.Total
                                 };
-                        this.dgrid_notas.DataSource = x.ToList();
+                        this.dgrid_notas_creditos.DataSource = x.ToList();
                     }
                     catch (Exception ex)
                     {
@@ -204,7 +220,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 else
                 {
                     CargarNotas();
-                    this.dgrid_notas.Refresh();
+                    this.dgrid_notas_creditos.Refresh();
                 }
             }
 
@@ -222,6 +238,70 @@ namespace SIT.Views.Contabilidad.CMovimientos
             frm.IdUsuario = this.IdUsuario;
             this.Enabled = false;
             frm.Show();
+        }
+
+        private void dgrid_notas_creditos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.ColumnIndex == 0 && e.RowIndex != -1) // Check if the checkbox column is clicked
+                {
+                    DataGridViewCheckBoxCell checkBoxCell = this.dgrid_notas_creditos.Rows[e.RowIndex].Cells[0] as DataGridViewCheckBoxCell;
+                    if (checkBoxCell != null)
+                    {
+                        if(checkBoxCell.Value==null)
+                        {
+                            checkBoxCell.Value = true;
+                        }
+                        bool isChecked = (bool)checkBoxCell.Value;
+                        checkBoxCell.Value = !isChecked;
+
+                        this.dgrid_notas_creditos.CurrentRow.Selected = true;
+                    }
+                }
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void PerformActionOnSelectedRows()
+        {
+            string proveedor = string.Empty;
+            foreach (DataGridViewRow row in this.dgrid_notas_creditos.Rows)
+            {
+                DataGridViewCheckBoxCell checkBoxCell = row.Cells["Chk"] as DataGridViewCheckBoxCell;
+                if (checkBoxCell != null && (bool)checkBoxCell.Value)
+                {
+                    proveedor = row.Cells["Proveedor"].Value.ToString();
+                    lst_not.Add(new NotasMovimientos
+                    {
+                        IdNota = Convert.ToInt32(row.Cells["IdNota"].Value.ToString()),
+                        Folio = row.Cells["Folio"].Value.ToString(),
+                        Total = Convert.ToDouble(row.Cells["Total"].Value.ToString()),
+
+                    });
+                    Debug.WriteLine(row.Cells["IdNota"].Value.ToString());               
+                }
+            }
+
+            AEMovimiento frm = new AEMovimiento(this);
+            frm.IdMovimiento = 0;
+            frm._uslog = _uslog;
+            frm.notaproveedor = proveedor;
+            frm.lst_not = this.lst_not;
+            this.Enabled = false;
+            frm.Show();
+
+            //AGREGAR MOVIMIENTO
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PerformActionOnSelectedRows();
         }
     }
 }

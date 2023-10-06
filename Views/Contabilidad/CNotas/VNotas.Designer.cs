@@ -28,22 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgrid_notas = new System.Windows.Forms.DataGridView();
+            this.dgrid_notas_creditos = new System.Windows.Forms.DataGridView();
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
             this.txt_filtro = new System.Windows.Forms.TextBox();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas)).BeginInit();
+            this.tbcontrol = new System.Windows.Forms.TabControl();
+            this.tb_creditos = new System.Windows.Forms.TabPage();
+            this.tb_abonos = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_creditos)).BeginInit();
+            this.tbcontrol.SuspendLayout();
+            this.tb_creditos.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgrid_notas
+            // dgrid_notas_creditos
             // 
-            this.dgrid_notas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrid_notas.Location = new System.Drawing.Point(12, 56);
-            this.dgrid_notas.Name = "dgrid_notas";
-            this.dgrid_notas.Size = new System.Drawing.Size(984, 262);
-            this.dgrid_notas.TabIndex = 1;
-            this.dgrid_notas.Click += new System.EventHandler(this.dgrid_notas_Click);
+            this.dgrid_notas_creditos.AllowUserToAddRows = false;
+            this.dgrid_notas_creditos.AllowUserToDeleteRows = false;
+            this.dgrid_notas_creditos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrid_notas_creditos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrid_notas_creditos.Location = new System.Drawing.Point(3, 3);
+            this.dgrid_notas_creditos.Name = "dgrid_notas_creditos";
+            this.dgrid_notas_creditos.ReadOnly = true;
+            this.dgrid_notas_creditos.Size = new System.Drawing.Size(970, 269);
+            this.dgrid_notas_creditos.TabIndex = 1;
+            this.dgrid_notas_creditos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_notas_creditos_CellContentClick);
+            this.dgrid_notas_creditos.Click += new System.EventHandler(this.dgrid_notas_Click);
             // 
             // cmb_filtro
             // 
@@ -86,34 +97,82 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // tbcontrol
+            // 
+            this.tbcontrol.Controls.Add(this.tb_creditos);
+            this.tbcontrol.Controls.Add(this.tb_abonos);
+            this.tbcontrol.Location = new System.Drawing.Point(12, 56);
+            this.tbcontrol.Name = "tbcontrol";
+            this.tbcontrol.SelectedIndex = 0;
+            this.tbcontrol.Size = new System.Drawing.Size(984, 301);
+            this.tbcontrol.TabIndex = 14;
+            // 
+            // tb_creditos
+            // 
+            this.tb_creditos.Controls.Add(this.dgrid_notas_creditos);
+            this.tb_creditos.Location = new System.Drawing.Point(4, 22);
+            this.tb_creditos.Name = "tb_creditos";
+            this.tb_creditos.Padding = new System.Windows.Forms.Padding(3);
+            this.tb_creditos.Size = new System.Drawing.Size(976, 275);
+            this.tb_creditos.TabIndex = 0;
+            this.tb_creditos.Text = "Creditos";
+            this.tb_creditos.UseVisualStyleBackColor = true;
+            // 
+            // tb_abonos
+            // 
+            this.tb_abonos.Location = new System.Drawing.Point(4, 22);
+            this.tb_abonos.Name = "tb_abonos";
+            this.tb_abonos.Padding = new System.Windows.Forms.Padding(3);
+            this.tb_abonos.Size = new System.Drawing.Size(976, 275);
+            this.tb_abonos.TabIndex = 1;
+            this.tb_abonos.Text = "Abonos";
+            this.tb_abonos.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(179, 13);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // VNotas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 369);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.tbcontrol);
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.txt_filtro);
             this.Controls.Add(this.cmb_filtro);
             this.Controls.Add(this.btn_add);
-            this.Controls.Add(this.dgrid_notas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VNotas";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Notas";
             this.Load += new System.EventHandler(this.VNotas_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_creditos)).EndInit();
+            this.tbcontrol.ResumeLayout(false);
+            this.tb_creditos.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dgrid_notas;
+        private System.Windows.Forms.DataGridView dgrid_notas_creditos;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.ComboBox cmb_filtro;
         private System.Windows.Forms.TextBox txt_filtro;
         private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.TabControl tbcontrol;
+        private System.Windows.Forms.TabPage tb_creditos;
+        private System.Windows.Forms.TabPage tb_abonos;
+        private System.Windows.Forms.Button button1;
     }
 }

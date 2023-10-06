@@ -16,18 +16,21 @@ namespace SIT.Views.Contabilidad.CMovimientos
 {
     public partial class AEMovimiento : Form
     {
-        public AEMovimiento(VMovimientos form)
+        public AEMovimiento(Form form)
         {
             InitializeComponent();
             this.frm = form;
         }
 
-        VMovimientos frm;
+        Form frm;
         SITEntities db = new SITEntities();
         public Usuarios _uslog;
         DataGridView dgrid;
         Movimientos mov = new Movimientos();
+        NotasMovimientos not = new NotasMovimientos();
         OpenFileDialog op1 = new OpenFileDialog();
+        public string notaproveedor;
+        public List<NotasMovimientos> lst_not;
         public int IdMovimiento;
         string filename = string.Empty;
         string ruta = "\\\\192.168.1.213\\OneDrive - TRANSPORTES DAVILA\\Transportes Davila\\7.- Contabilidad1\\ArchivosMovimientos\\";
@@ -53,6 +56,16 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 this.txt_cantidad.Text = mov.Cantidad.ToString();
                 filename = mov.Comprobante;
                 this.Text = "Editar";
+            }
+
+            if (frm.Name == "VNotas")
+            {
+                this.txt_cliente.Text = notaproveedor;
+                this.txt_cantidad.Text = lst_not.Sum(x => x.Total).ToString();
+                this.txt_descripcion.Text = string.Join(",", lst_not.Select(x=>x.IdNota));
+                this.txt_cliente.Enabled = false;
+                this.txt_cantidad.Enabled = false;
+                this.txt_descripcion.Enabled= false;
             }
         }
 
@@ -256,8 +269,36 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void AEMovimiento_FormClosed(object sender, FormClosedEventArgs e)
         {
-            frm.Enabled = true;
-            frm.CargarMovimientos();    
+            if (frm.Name == "VMovimientos")
+            {
+                VMovimientos vmov = new VMovimientos(_uslog);
+                vmov.Enabled = true;
+                vmov.CargarMovimientos();
+            }
+            else if(frm.Name == "VNotas")
+            {
+                var idmov = db.Movimientos
+                .OrderByDescending(entity => entity.IdMovimiento)
+                .Select(entity => entity.IdMovimiento)
+                .FirstOrDefault();
+
+                foreach (NotasMovimientos notmov in lst_not)
+                {
+                    not = db.NotasMovimientos.Where(x => x.IdNota == notmov.IdNota).FirstOrDefault();
+                    not.UsuarioModificacion = _uslog.IdUsuario;
+                    not.FechaModificacion = DateTime.Now;
+                    not.IdEstatus = 3;
+                    not.IdMovimiento = idmov;
+                    db.Entry(not).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+                VNotas vnotas = new VNotas(_uslog);
+                vnotas.Enabled = true;
+                vnotas.CargarNotas();
+
+            }
+
         }
     }
 }
