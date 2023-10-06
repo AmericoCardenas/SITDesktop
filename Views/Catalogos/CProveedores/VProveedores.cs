@@ -1,4 +1,5 @@
 ﻿using SIT.Views.Catalogos.CProveedores;
+using SIT.Views.Contabilidad.CMovimientos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +27,7 @@ namespace SIT.Views.Catalogos
         Proveedores prov = new Proveedores();
         SITEntities db = new SITEntities();
 
-        private void CargarProveedores()
+        public void CargarProveedores()
         {
             var x = from n in db.Proveedores
                     where n.IdEstatus == 1
@@ -97,7 +98,6 @@ namespace SIT.Views.Catalogos
 
         }
 
-
         private void btn_add_Click(object sender, EventArgs e)
         {
             AEProveedores frm = new AEProveedores();
@@ -110,6 +110,7 @@ namespace SIT.Views.Catalogos
 
         private void CancelarProveedor()
         {
+            prov = db.Proveedores.Where(x => x.IdProveedor == IdProveedor).FirstOrDefault();
             prov.IdEstatus = 2;
             prov.FechaCancelacion = DateTime.Now;
             prov.UsuarioCancelacion = _uslog.IdUsuario;

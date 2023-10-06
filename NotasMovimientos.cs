@@ -27,5 +27,6 @@ namespace SIT
         public Nullable<int> UsuarioModificacion { get; set; }
         public Nullable<System.DateTime> FechaCancelacion { get; set; }
         public Nullable<int> UsuarioCancelacion { get; set; }
+        public Nullable<int> IdProveedor { get; set; }
     }
 }

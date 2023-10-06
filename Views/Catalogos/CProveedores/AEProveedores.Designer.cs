@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_proveedor = new System.Windows.Forms.TextBox();
             this.btn_aceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -43,12 +43,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Proveedor";
             // 
-            // textBox1
+            // txt_proveedor
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 11);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(155, 20);
-            this.textBox1.TabIndex = 1;
+            this.txt_proveedor.Location = new System.Drawing.Point(114, 11);
+            this.txt_proveedor.Name = "txt_proveedor";
+            this.txt_proveedor.Size = new System.Drawing.Size(155, 20);
+            this.txt_proveedor.TabIndex = 1;
             // 
             // btn_aceptar
             // 
@@ -61,6 +61,7 @@
             this.btn_aceptar.TabIndex = 2;
             this.btn_aceptar.Text = "Aceptar";
             this.btn_aceptar.UseVisualStyleBackColor = false;
+            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
             // AEProveedores
             // 
@@ -69,11 +70,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(306, 79);
             this.Controls.Add(this.btn_aceptar);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_proveedor);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AEProveedores";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Proveedor";
+            this.Load += new System.EventHandler(this.AEProveedores_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,7 +86,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_proveedor;
         private System.Windows.Forms.Button btn_aceptar;
     }
 }

@@ -513,6 +513,7 @@
     <EntitySetMapping Name="NotasMovimientos">
       <EntityTypeMapping TypeName="SITModel.NotasMovimientos">
         <MappingFragment StoreEntitySet="NotasMovimientos">
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
           <ScalarProperty Name="UsuarioCancelacion" ColumnName="UsuarioCancelacion" />
           <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />

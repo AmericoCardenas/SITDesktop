@@ -36,7 +36,10 @@ namespace SIT.Views.Contabilidad.CNotas
 
         private void CargarProveedores()
         {
-
+            var x = db.Proveedores.Where(z=>z.IdEstatus==1).ToList();
+            this.cmb_proveedor.DataSource = x;
+            this.cmb_proveedor.DisplayMember = "Proveedor";
+            this.cmb_proveedor.ValueMember = "IdProveedor";
         }
 
         private void AgregarNotas()
@@ -118,12 +121,15 @@ namespace SIT.Views.Contabilidad.CNotas
 
         private void AENotas_Load(object sender, EventArgs e)
         {
+            CargarProveedores();
+
             if (IdNota != 0)
             {
                 not = db.NotasMovimientos.Where(x => x.IdNota == IdNota).FirstOrDefault();
                 this.dtm_fecha.Value = not.Fecha.Value;
                 this.txt_cantidad.Text = not.Total.ToString();
                 this.txt_concepto.Text = not.Concepto;
+                this.cmb_proveedor.SelectedItem = not.IdProveedor;
                 this.txt_folio.Text = not.Folio;
 
                 this.Text = "Editar";

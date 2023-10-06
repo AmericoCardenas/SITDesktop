@@ -52,11 +52,13 @@ namespace SIT.Views.Contabilidad.CMovimientos
         private void CargarNotas()
         {
             var x = from n in db.NotasMovimientos
+                    join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
                     where n.IdEstatus == 1
                     select new
                     {
                         n.IdNota,
                         n.Folio,
+                        p.Proveedor,
                         n.Fecha,
                         n.Concepto,
                         n.Total
@@ -72,6 +74,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void CancelarNota()
         {
+            not = db.NotasMovimientos.Where(x => x.IdNota == IdNota).FirstOrDefault();
             not.IdEstatus = 2;
             not.FechaCancelacion = DateTime.Now;
             not.UsuarioCancelacion = IdUsuario;

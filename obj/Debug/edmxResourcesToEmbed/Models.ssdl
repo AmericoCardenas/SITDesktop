@@ -270,6 +270,7 @@
     <Property Name="IdNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Folio" Type="varchar(max)" />
     <Property Name="Fecha" Type="date" />
+    <Property Name="IdProveedor" Type="int" />
     <Property Name="IdMovimiento" Type="int" />
     <Property Name="Concepto" Type="varchar(max)" />
     <Property Name="Total" Type="float" />

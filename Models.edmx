@@ -275,6 +275,7 @@
           <Property Name="IdNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Folio" Type="varchar(max)" />
           <Property Name="Fecha" Type="date" />
+          <Property Name="IdProveedor" Type="int" />
           <Property Name="IdMovimiento" Type="int" />
           <Property Name="Concepto" Type="varchar(max)" />
           <Property Name="Total" Type="float" />
@@ -1238,6 +1239,7 @@
           <Property Name="UsuarioModificacion" Type="Int32" />
           <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
           <Property Name="UsuarioCancelacion" Type="Int32" />
+          <Property Name="IdProveedor" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1757,6 +1759,7 @@
           <EntitySetMapping Name="NotasMovimientos">
             <EntityTypeMapping TypeName="SITModel.NotasMovimientos">
               <MappingFragment StoreEntitySet="NotasMovimientos">
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
                 <ScalarProperty Name="UsuarioCancelacion" ColumnName="UsuarioCancelacion" />
                 <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />

@@ -619,5 +619,6 @@
     <Property Name="UsuarioModificacion" Type="Int32" />
     <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
     <Property Name="UsuarioCancelacion" Type="Int32" />
+    <Property Name="IdProveedor" Type="Int32" />
   </EntityType>
 </Schema>
