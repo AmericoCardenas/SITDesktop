@@ -47,6 +47,7 @@
             this.btn_doc = new System.Windows.Forms.Button();
             this.txt_numcheque = new System.Windows.Forms.TextBox();
             this.btn_aceptar = new System.Windows.Forms.Button();
+            this.chk_abono = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -235,12 +236,23 @@
             this.btn_aceptar.UseVisualStyleBackColor = false;
             this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
+            // chk_abono
+            // 
+            this.chk_abono.AutoSize = true;
+            this.chk_abono.Location = new System.Drawing.Point(310, 148);
+            this.chk_abono.Name = "chk_abono";
+            this.chk_abono.Size = new System.Drawing.Size(57, 17);
+            this.chk_abono.TabIndex = 19;
+            this.chk_abono.Text = "Abono";
+            this.chk_abono.UseVisualStyleBackColor = true;
+            // 
             // AEMovimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(320, 309);
+            this.ClientSize = new System.Drawing.Size(391, 309);
+            this.Controls.Add(this.chk_abono);
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.txt_numcheque);
             this.Controls.Add(this.btn_doc);
@@ -293,5 +305,6 @@
         private System.Windows.Forms.Button btn_doc;
         private System.Windows.Forms.TextBox txt_numcheque;
         private System.Windows.Forms.Button btn_aceptar;
+        private System.Windows.Forms.CheckBox chk_abono;
     }
 }

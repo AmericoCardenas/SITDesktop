@@ -20,6 +20,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
         {
             InitializeComponent();
             this.frm = form;
+            this.chk_abono.Visible = false;
         }
 
         Form frm;
@@ -66,6 +67,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 this.txt_cliente.Enabled = false;
                 this.txt_cantidad.Enabled = false;
                 this.txt_descripcion.Enabled= false;
+                this.chk_abono.Visible = true;
             }
         }
 
@@ -97,6 +99,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
         private void AgregarMovimiento()
         {
             Double r;
+
             if (this.cmb_concepto.SelectedValue == null)
             {
                 MessageBox.Show("Favor de seleccionar el concepto");
@@ -264,7 +267,38 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            AgregarMovimiento();
+            if (frm.Name == "VNotas")
+            {
+                if (this.chk_abono.Checked is true && this.lst_not.Count == 1)
+                {
+                    foreach (NotasMovimientos notmov in lst_not)
+                    {
+                        not = db.NotasMovimientos.Where(x => x.IdNota == notmov.IdNota).FirstOrDefault();
+                        var total = not.Total;
+                        var abono = Convert.ToDouble(this.txt_cantidad.Text);
+                        var new_total = (total - abono);
+                        not.Total = new_total;
+                        not.UsuarioModificacion = _uslog.IdUsuario;
+                        not.FechaModificacion = DateTime.Now;
+                        db.Entry(not).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+
+                }
+                else if(this.chk_abono.Checked is false && this.lst_not.Count >= 1)
+                {
+                    AgregarMovimiento();
+                }
+                else
+                {
+                    MessageBox.Show("Solo se puede abonar a una nota");
+                }
+
+            }
+            else if (frm.Name == "VMovimientos")
+            {
+                AgregarMovimiento();
+            }
         }
 
         private void AEMovimiento_FormClosed(object sender, FormClosedEventArgs e)
