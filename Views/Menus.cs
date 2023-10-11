@@ -23,14 +23,14 @@ namespace SIT.Views
 {
     public partial class Menus : Form
     {
-        public Menus()
+        public Menus(Login login)
         {
             InitializeComponent();
-
+            this._login = login;
         }
 
         public Usuarios usuariologin;
-
+        private Login _login;
         private bool IsCollapsed;
 
         private Button button;
@@ -326,6 +326,11 @@ namespace SIT.Views
         {
             AbrirFormPanel(new VProveedores(usuariologin));
 
+        }
+
+        private void Menus_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _login.Close();
         }
     }
 }

@@ -59,12 +59,18 @@ namespace SIT.Views.Contabilidad.CNotas
                 MessageBox.Show("Favor de introducir la cantidad");
                 this.txt_cantidad.Focus();
             }
+            else if (this.cmb_proveedor.SelectedValue == null)
+            {
+                MessageBox.Show("Favor de seleccionar el proveedor");
+                this.cmb_proveedor.Focus();
+            }
             else
             {
                 not.IdMovimiento = 0;
                 not.Folio = this.txt_folio.Text.ToUpper();
                 not.Fecha = this.dtm_fecha.Value;
                 not.Concepto = this.txt_concepto.Text.ToUpper();
+                not.IdProveedor = Convert.ToInt32(this.cmb_proveedor.SelectedValue);
                 not.Total = Convert.ToDouble(this.txt_cantidad.Text);
                 not.FechaCreacion = DateTime.Now;
                 not.UsuarioCreo = this.IdUsuario;
@@ -139,6 +145,8 @@ namespace SIT.Views.Contabilidad.CNotas
         private void AENotas_FormClosed(object sender, FormClosedEventArgs e)
         {
             _vnotas.Enabled = true;
+            _vnotas.CargarNotas();
+
         }
     }
 }

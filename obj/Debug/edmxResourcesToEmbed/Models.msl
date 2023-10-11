@@ -225,6 +225,11 @@
     <EntitySetMapping Name="Proveedores">
       <EntityTypeMapping TypeName="SITModel.Proveedores">
         <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="ConstanciaFiscal" ColumnName="ConstanciaFiscal" />
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="IdRegimenFiscal" ColumnName="IdRegimenFiscal" />
+          <ScalarProperty Name="RFC" ColumnName="RFC" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
           <ScalarProperty Name="UsuarioCancelacion" ColumnName="UsuarioCancelacion" />
           <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
           <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
@@ -527,6 +532,15 @@
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="Folio" ColumnName="Folio" />
           <ScalarProperty Name="IdNota" ColumnName="IdNota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Regimenes">
+      <EntityTypeMapping TypeName="SITModel.Regimenes">
+        <MappingFragment StoreEntitySet="Regimenes">
+          <ScalarProperty Name="Regimen" ColumnName="Regimen" />
+          <ScalarProperty Name="CodRegimen" ColumnName="CodRegimen" />
+          <ScalarProperty Name="IdRegimen" ColumnName="IdRegimen" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

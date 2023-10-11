@@ -64,6 +64,8 @@
             // 
             // cmb_emp
             // 
+            this.cmb_emp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_emp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_emp.FormattingEnabled = true;
             this.cmb_emp.Location = new System.Drawing.Point(742, 21);
             this.cmb_emp.Name = "cmb_emp";

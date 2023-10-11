@@ -23,5 +23,10 @@ namespace SIT
         public Nullable<int> UsuarioModificacion { get; set; }
         public Nullable<System.DateTime> FechaCancelacion { get; set; }
         public Nullable<int> UsuarioCancelacion { get; set; }
+        public string RazonSocial { get; set; }
+        public string RFC { get; set; }
+        public Nullable<int> IdRegimenFiscal { get; set; }
+        public string CP { get; set; }
+        public string ConstanciaFiscal { get; set; }
     }
 }

@@ -37,9 +37,12 @@
             this.tb_creditos = new System.Windows.Forms.TabPage();
             this.tb_abonos = new System.Windows.Forms.TabPage();
             this.button1 = new System.Windows.Forms.Button();
+            this.dgrid_notas_abonos = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_creditos)).BeginInit();
             this.tbcontrol.SuspendLayout();
             this.tb_creditos.SuspendLayout();
+            this.tb_abonos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_abonos)).BeginInit();
             this.SuspendLayout();
             // 
             // dgrid_notas_creditos
@@ -106,6 +109,7 @@
             this.tbcontrol.SelectedIndex = 0;
             this.tbcontrol.Size = new System.Drawing.Size(984, 301);
             this.tbcontrol.TabIndex = 14;
+            this.tbcontrol.SelectedIndexChanged += new System.EventHandler(this.tbcontrol_SelectedIndexChanged);
             // 
             // tb_creditos
             // 
@@ -120,6 +124,7 @@
             // 
             // tb_abonos
             // 
+            this.tb_abonos.Controls.Add(this.dgrid_notas_abonos);
             this.tb_abonos.Location = new System.Drawing.Point(4, 22);
             this.tb_abonos.Name = "tb_abonos";
             this.tb_abonos.Padding = new System.Windows.Forms.Padding(3);
@@ -137,6 +142,19 @@
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgrid_notas_abonos
+            // 
+            this.dgrid_notas_abonos.AllowUserToAddRows = false;
+            this.dgrid_notas_abonos.AllowUserToDeleteRows = false;
+            this.dgrid_notas_abonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrid_notas_abonos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrid_notas_abonos.Location = new System.Drawing.Point(3, 3);
+            this.dgrid_notas_abonos.Name = "dgrid_notas_abonos";
+            this.dgrid_notas_abonos.ReadOnly = true;
+            this.dgrid_notas_abonos.Size = new System.Drawing.Size(970, 269);
+            this.dgrid_notas_abonos.TabIndex = 2;
+            this.dgrid_notas_abonos.Click += new System.EventHandler(this.dgrid_notas_abonos_Click);
             // 
             // VNotas
             // 
@@ -159,6 +177,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_creditos)).EndInit();
             this.tbcontrol.ResumeLayout(false);
             this.tb_creditos.ResumeLayout(false);
+            this.tb_abonos.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_abonos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +194,6 @@
         private System.Windows.Forms.TabPage tb_creditos;
         private System.Windows.Forms.TabPage tb_abonos;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dgrid_notas_abonos;
     }
 }

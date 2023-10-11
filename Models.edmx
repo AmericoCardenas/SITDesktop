@@ -321,6 +321,11 @@
           </Key>
           <Property Name="IdProveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Proveedor" Type="varchar" MaxLength="50" />
+          <Property Name="RazonSocial" Type="varchar(max)" />
+          <Property Name="RFC" Type="varchar(max)" />
+          <Property Name="IdRegimenFiscal" Type="int" />
+          <Property Name="CP" Type="varchar" MaxLength="50" />
+          <Property Name="ConstanciaFiscal" Type="varchar(max)" />
           <Property Name="IdEstatus" Type="int" />
           <Property Name="FechaCreacion" Type="date" />
           <Property Name="UsuarioCreacion" Type="int" />
@@ -335,6 +340,14 @@
           </Key>
           <Property Name="IdPuesto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Puesto" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Regimenes">
+          <Key>
+            <PropertyRef Name="IdRegimen" />
+          </Key>
+          <Property Name="IdRegimen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodRegimen" Type="varchar" MaxLength="50" />
+          <Property Name="Regimen" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="RubrosFlujos">
           <Key>
@@ -582,6 +595,7 @@
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Puestos" EntityType="Self.Puestos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Regimenes" EntityType="Self.Regimenes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RubrosFlujos" EntityType="Self.RubrosFlujos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
@@ -792,6 +806,7 @@
             <End Role="Trabajadores" EntitySet="Trabajadores" />
           </AssociationSet>
           <EntitySet Name="NotasMovimientos" EntityType="SITModel.NotasMovimientos" />
+          <EntitySet Name="Regimenes" EntityType="SITModel.Regimenes" />
         </EntityContainer>
         <EntityType Name="Usuarios">
           <Key>
@@ -928,6 +943,11 @@
           <Property Name="UsuarioModificacion" Type="Int32" />
           <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
           <Property Name="UsuarioCancelacion" Type="Int32" />
+          <Property Name="RazonSocial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="RFC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdRegimenFiscal" Type="Int32" />
+          <Property Name="CP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConstanciaFiscal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Lineas">
           <Key>
@@ -1241,6 +1261,14 @@
           <Property Name="UsuarioCancelacion" Type="Int32" />
           <Property Name="IdProveedor" Type="Int32" />
         </EntityType>
+        <EntityType Name="Regimenes">
+          <Key>
+            <PropertyRef Name="IdRegimen" />
+          </Key>
+          <Property Name="IdRegimen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodRegimen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Regimen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1471,6 +1499,11 @@
           <EntitySetMapping Name="Proveedores">
             <EntityTypeMapping TypeName="SITModel.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
+                <ScalarProperty Name="ConstanciaFiscal" ColumnName="ConstanciaFiscal" />
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="IdRegimenFiscal" ColumnName="IdRegimenFiscal" />
+                <ScalarProperty Name="RFC" ColumnName="RFC" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
                 <ScalarProperty Name="UsuarioCancelacion" ColumnName="UsuarioCancelacion" />
                 <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
                 <ScalarProperty Name="UsuarioModificacion" ColumnName="UsuarioModificacion" />
@@ -1773,6 +1806,15 @@
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Folio" ColumnName="Folio" />
                 <ScalarProperty Name="IdNota" ColumnName="IdNota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regimenes">
+            <EntityTypeMapping TypeName="SITModel.Regimenes">
+              <MappingFragment StoreEntitySet="Regimenes">
+                <ScalarProperty Name="Regimen" ColumnName="Regimen" />
+                <ScalarProperty Name="CodRegimen" ColumnName="CodRegimen" />
+                <ScalarProperty Name="IdRegimen" ColumnName="IdRegimen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

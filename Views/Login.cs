@@ -254,7 +254,7 @@ namespace SIT
                             Properties.Settings.Default.Save();
                         }
                         
-                        Menus frm = new Menus();
+                        Menus frm = new Menus(this);
                         frm.usuariologin = usuarios;
                         frm.Show();
                     }

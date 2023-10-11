@@ -28,7 +28,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.1.213\Compartida\SIT\</UpdateUrl>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>27</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -387,6 +387,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Puestos.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Regimenes.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="RubrosFlujos.cs">

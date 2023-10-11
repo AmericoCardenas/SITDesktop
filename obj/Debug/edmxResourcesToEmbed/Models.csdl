@@ -172,6 +172,7 @@
       <End Role="Trabajadores" EntitySet="Trabajadores" />
     </AssociationSet>
     <EntitySet Name="NotasMovimientos" EntityType="SITModel.NotasMovimientos" />
+    <EntitySet Name="Regimenes" EntityType="SITModel.Regimenes" />
   </EntityContainer>
   <EntityType Name="Usuarios">
     <Key>
@@ -308,6 +309,11 @@
     <Property Name="UsuarioModificacion" Type="Int32" />
     <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
     <Property Name="UsuarioCancelacion" Type="Int32" />
+    <Property Name="RazonSocial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RFC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdRegimenFiscal" Type="Int32" />
+    <Property Name="CP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConstanciaFiscal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Lineas">
     <Key>
@@ -620,5 +626,13 @@
     <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
     <Property Name="UsuarioCancelacion" Type="Int32" />
     <Property Name="IdProveedor" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Regimenes">
+    <Key>
+      <PropertyRef Name="IdRegimen" />
+    </Key>
+    <Property Name="IdRegimen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodRegimen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Regimen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

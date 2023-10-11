@@ -100,9 +100,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 122);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 18);
+            this.label5.Size = new System.Drawing.Size(68, 18);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Cliente";
+            this.label5.Text = "Nombre";
             this.label5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label6
@@ -122,9 +122,9 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(1, 178);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 18);
+            this.label7.Size = new System.Drawing.Size(89, 18);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Descripción";
+            this.label7.Text = "Referencia";
             this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label8

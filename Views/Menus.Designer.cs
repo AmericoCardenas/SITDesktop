@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menus));
             this.flpanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panelcatalogos = new System.Windows.Forms.Panel();
+            this.btn_proveedores = new System.Windows.Forms.Button();
             this.btn_metodos = new System.Windows.Forms.Button();
             this.btn_tipos = new System.Windows.Forms.Button();
             this.btn_rubros = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@
             this.btn_contabilidad = new System.Windows.Forms.Button();
             this.tmmenu = new System.Windows.Forms.Timer(this.components);
             this.panelcontenedor = new System.Windows.Forms.Panel();
-            this.btn_proveedores = new System.Windows.Forms.Button();
             this.flpanel.SuspendLayout();
             this.panelcatalogos.SuspendLayout();
             this.panel_sistemas.SuspendLayout();
@@ -104,6 +104,19 @@
             this.panelcatalogos.Name = "panelcatalogos";
             this.panelcatalogos.Size = new System.Drawing.Size(214, 40);
             this.panelcatalogos.TabIndex = 2;
+            // 
+            // btn_proveedores
+            // 
+            this.btn_proveedores.BackColor = System.Drawing.Color.White;
+            this.btn_proveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_proveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_proveedores.Location = new System.Drawing.Point(0, 321);
+            this.btn_proveedores.Name = "btn_proveedores";
+            this.btn_proveedores.Size = new System.Drawing.Size(214, 32);
+            this.btn_proveedores.TabIndex = 10;
+            this.btn_proveedores.Text = "Proveedores";
+            this.btn_proveedores.UseVisualStyleBackColor = false;
+            this.btn_proveedores.Click += new System.EventHandler(this.btn_proveedores_Click);
             // 
             // btn_metodos
             // 
@@ -499,19 +512,6 @@
             this.panelcontenedor.Size = new System.Drawing.Size(767, 503);
             this.panelcontenedor.TabIndex = 1;
             // 
-            // btn_proveedores
-            // 
-            this.btn_proveedores.BackColor = System.Drawing.Color.White;
-            this.btn_proveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_proveedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_proveedores.Location = new System.Drawing.Point(0, 321);
-            this.btn_proveedores.Name = "btn_proveedores";
-            this.btn_proveedores.Size = new System.Drawing.Size(214, 32);
-            this.btn_proveedores.TabIndex = 10;
-            this.btn_proveedores.Text = "Proveedores";
-            this.btn_proveedores.UseVisualStyleBackColor = false;
-            this.btn_proveedores.Click += new System.EventHandler(this.btn_proveedores_Click);
-            // 
             // Menus
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -525,6 +525,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menus_FormClosed);
             this.Load += new System.EventHandler(this.Menus_Load);
             this.flpanel.ResumeLayout(false);
             this.panelcatalogos.ResumeLayout(false);

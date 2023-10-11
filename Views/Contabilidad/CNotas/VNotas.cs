@@ -59,33 +59,64 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         public void CargarNotas()
         {
+            DataGridView dgrid = new DataGridView();
 
-            var x = from n in db.NotasMovimientos
-                    join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
-                    where n.IdEstatus == 1
-                    select new
-                    {
-                        n.IdNota,
-                        n.Folio,
-                        p.Proveedor,
-                        n.Fecha,
-                        n.Concepto,
-                        n.Total
-                    };
-            this.dgrid_notas_creditos.DataSource = x.ToList();
-            this.dgrid_notas_creditos.Columns[0].Visible= false;
+            if(this.tbcontrol.SelectedIndex == 0)
+            {
+                dgrid = this.dgrid_notas_creditos;
+                dgrid.DataSource = null;
+                dgrid.Rows.Clear();
+                dgrid.Columns.Clear();
+                var x = from n in db.NotasMovimientos
+                        join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                        where n.IdEstatus == 1
+                        select new
+                        {
+                            n.IdNota,
+                            n.Folio,
+                            p.Proveedor,
+                            n.Fecha,
+                            n.Concepto,
+                            n.Total
+                        };
+                dgrid.DataSource = x.ToList();
 
-            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-            dgvCmb.ValueType = typeof(bool);
-            dgvCmb.FalseValue = false;
-            dgvCmb.Name = "Chk";
-            dgvCmb.HeaderText = "CheckBox";
-            this.dgrid_notas_creditos.Columns.Add(dgvCmb);
+                DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                dgvCmb.ValueType = typeof(bool);
+                dgvCmb.FalseValue = false;
+                dgvCmb.Name = "Chk";
+                dgvCmb.HeaderText = "CheckBox";
+                dgrid.Columns.Add(dgvCmb);
 
-            this.dgrid_notas_creditos.EnableHeadersVisualStyles = false;
-            this.dgrid_notas_creditos.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.dgrid_notas_creditos.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.dgrid_notas_creditos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            else if (this.tbcontrol.SelectedIndex == 1)
+            {
+                dgrid = this.dgrid_notas_abonos;
+                  dgrid.DataSource = null;
+                  dgrid.Rows.Clear();
+                  dgrid.Columns.Clear();
+                var x = from n in db.NotasMovimientos
+                        join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                        where n.IdEstatus == 3
+                        select new
+                        {
+                            n.IdNota,
+                            n.Folio,
+                            p.Proveedor,
+                            n.Fecha,
+                            n.Concepto,
+                            n.Total
+                        };
+                dgrid.DataSource = x.ToList();
+
+            }
+
+            dgrid.Columns[0].Visible= false;
+
+            dgrid.EnableHeadersVisualStyles = false;
+            dgrid.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            dgrid.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CancelarNota()
@@ -128,6 +159,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
         {
             try
             {
+  
                 if (this.dgrid_notas_creditos.CurrentCell.RowIndex != -1)
                 {
                     IdNota = Convert.ToInt32(this.dgrid_notas_creditos.CurrentRow.Cells["IdNota"].Value);
@@ -273,6 +305,10 @@ namespace SIT.Views.Contabilidad.CMovimientos
             foreach (DataGridViewRow row in this.dgrid_notas_creditos.Rows)
             {
                 DataGridViewCheckBoxCell checkBoxCell = row.Cells["Chk"] as DataGridViewCheckBoxCell;
+                if(checkBoxCell.Value == null)
+                {
+                    checkBoxCell.Value = false;
+                }
                 if (checkBoxCell != null && (bool)checkBoxCell.Value)
                 {
                     proveedor = row.Cells["Proveedor"].Value.ToString();
@@ -302,6 +338,31 @@ namespace SIT.Views.Contabilidad.CMovimientos
         private void button1_Click(object sender, EventArgs e)
         {
             PerformActionOnSelectedRows();
+        }
+
+        private void tbcontrol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarNotas();
+        }
+
+        private void dgrid_notas_abonos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (this.dgrid_notas_abonos.CurrentCell.RowIndex != -1)
+                {
+                    IdNota = Convert.ToInt32(this.dgrid_notas_abonos.CurrentRow.Cells["IdNota"].Value);
+                }
+
+                this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.lapiz, new Size(32, 32));
+                this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
         }
     }
 }
