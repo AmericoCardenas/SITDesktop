@@ -52,6 +52,12 @@
         <AssociationConnector Association="SITModel.FK_Trabajadores_Puestos" />
         <EntityTypeShape EntityType="SITModel.NotasMovimientos" Width="1.5" PointX="9.375" PointY="18.75" />
         <EntityTypeShape EntityType="SITModel.Regimenes" Width="1.5" PointX="18.375" PointY="15.75" />
+        <EntityTypeShape EntityType="SITModel.Herramientas" Width="1.5" PointX="18.375" PointY="18.75" />
+        <AssociationConnector Association="SITModel.FK_UsuariosSitios_Trabajadores" />
+        <EntityTypeShape EntityType="SITModel.EstatusPHerramientas" Width="1.5" PointX="11.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SITModel.PrestamoHerramientas" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SITModel.Medidas" Width="1.5" PointX="13.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SITModel.ProductosSnack" Width="1.5" PointX="15.375" PointY="19.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

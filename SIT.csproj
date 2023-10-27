@@ -28,7 +28,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.1.213\Compartida\SIT\</UpdateUrl>
-    <ApplicationRevision>27</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -330,6 +330,9 @@
     <Compile Include="EstatusLineas.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="EstatusPHerramientas.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="EstatusRutas.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -342,10 +345,16 @@
     <Compile Include="Flujos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Herramientas.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Incidencias.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Lineas.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Medidas.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="MetodosFlujos.cs">
@@ -380,7 +389,13 @@
     <Compile Include="Paises.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="PrestamoHerramientas.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Productos.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductosSnack.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Proveedores.cs">
@@ -431,11 +446,35 @@
     <Compile Include="ViajesEspeciales.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\Almacen\PHerramientas\AEPHerramienta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Almacen\PHerramientas\AEPHerramienta.Designer.cs">
+      <DependentUpon>AEPHerramienta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Almacen\PHerramientas\VPHerramientas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Almacen\PHerramientas\VPHerramientas.Designer.cs">
+      <DependentUpon>VPHerramientas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Catalogos\CEmpleados\ResumenEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Catalogos\CEmpleados\ResumenEmpleado.Designer.cs">
       <DependentUpon>ResumenEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProductosSnack\AEProductosSnack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProductosSnack\AEProductosSnack.Designer.cs">
+      <DependentUpon>AEProductosSnack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProductosSnack\VProductosSnack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProductosSnack\VProductosSnack.Designer.cs">
+      <DependentUpon>VProductosSnack.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Catalogos\CProveedores\AEProveedores.cs">
       <SubType>Form</SubType>
@@ -624,8 +663,20 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptVjEsp.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Almacen\PHerramientas\AEPHerramienta.resx">
+      <DependentUpon>AEPHerramienta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Almacen\PHerramientas\VPHerramientas.resx">
+      <DependentUpon>VPHerramientas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\CEmpleados\ResumenEmpleado.resx">
       <DependentUpon>ResumenEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CProductosSnack\AEProductosSnack.resx">
+      <DependentUpon>AEProductosSnack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CProductosSnack\VProductosSnack.resx">
+      <DependentUpon>VProductosSnack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\CProveedores\AEProveedores.resx">
       <DependentUpon>AEProveedores.cs</DependentUpon>

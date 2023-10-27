@@ -12,7 +12,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SIT.Views;
+using SIT.Views.Almacen;
 using SIT.Views.Catalogos;
+using SIT.Views.Catalogos.CProductosSnack;
 using SIT.Views.Comercial;
 using SIT.Views.Contabilidad;
 using SIT.Views.Contabilidad.CMovimientos;
@@ -83,8 +85,8 @@ namespace SIT.Views
 
         private void btncatalogos_Click(object sender, EventArgs e)
         {
-            button = this.btncatalogos;
-            panel = this.panelcatalogos;
+            button = this.btn_catalogos;
+            panel = this.pnl_catalogos;
             this.tmmenu.Start();
         }
 
@@ -96,13 +98,13 @@ namespace SIT.Views
 
             if (usuariologin.IdDepto == 3) //SISTEMAS
             {
-                this.btncatalogos.Enabled = true;
+                this.btn_catalogos.Enabled = true;
                 this.btn_sistemas.Enabled = true;
             }
             else if(usuariologin.IdDepto == 7) //RH
             {
                 #region catalogos
-                this.btncatalogos.Enabled = true;
+                this.btn_catalogos.Enabled = true;
                 this.btn_usuarios.Enabled = false;
                 this.btn_unidades.Enabled = false;
                 this.btn_clientes.Enabled = false;
@@ -111,18 +113,22 @@ namespace SIT.Views
                 this.btn_rubros.Enabled = false;
                 this.btn_tipos.Enabled = false;
                 this.btn_metodos.Enabled = false;
+                this.btn_prodsnack.Enabled = true;
                 #endregion
 
+                this.btn_snack.Enabled = true;
                 this.btn_sistemas.Enabled = false;
                 this.btn_logistica.Enabled = false;
                 this.btn_contabilidad.Enabled = false;
                 this.btn_comercial.Enabled = false;
+                this.btn_almacen.Enabled = false;
+                this.btn_comedor.Enabled = true;
 
             }
             else if (usuariologin.IdDepto == 4)
             {
                 #region catalogos
-                this.btncatalogos.Enabled = true;
+                this.btn_catalogos.Enabled = true;
                 this.btn_usuarios.Enabled = false;
                 this.btn_unidades.Enabled = false;
                 this.btn_clientes.Enabled = true;
@@ -137,19 +143,39 @@ namespace SIT.Views
                 this.btn_logistica.Enabled = false;
                 this.btn_contabilidad.Enabled = true;
                 this.btn_comercial.Enabled = false;
-
+                this.btn_almacen.Enabled = false;             
+                this.btn_comedor.Enabled = false;
 
             }
             else if (usuariologin.IdDepto == 4)
             {
                 #region catalogos
-                this.btncatalogos.Enabled = false;
+                this.btn_catalogos.Enabled = false;
                 #endregion
 
                 this.btn_sistemas.Enabled = false;
                 this.btn_logistica.Enabled = false;
                 this.btn_contabilidad.Enabled = false;
                 this.btn_comercial.Enabled = true;
+                this.btn_almacen.Enabled = false;
+                this.btn_comedor.Enabled = false;
+
+
+            }
+            else if (usuariologin.IdDepto == 5)
+            {
+                #region catalogos
+                this.btn_catalogos.Enabled = false;
+                #endregion
+
+                this.btn_sistemas.Enabled = false;
+                this.btn_logistica.Enabled = false;
+                this.btn_contabilidad.Enabled = false;
+                this.btn_comercial.Enabled = false;
+                this.btn_almacen.Enabled = true;
+                this.btn_comedor.Enabled = false;
+
+
 
             }
 
@@ -165,14 +191,14 @@ namespace SIT.Views
 
         private void AbrirFormPanel(object FormHijo)
         {
-            if (this.panelcontenedor.Controls.Count > 0)
+            if (this.pnl_contenedor.Controls.Count > 0)
             {
-                this.panelcontenedor.Controls.RemoveAt(0);
+                this.pnl_contenedor.Controls.RemoveAt(0);
                 Form fh = FormHijo as Form;
                 fh.TopLevel = false;
                 fh.Dock = DockStyle.Fill;
-                this.panelcontenedor.Controls.Add(fh);
-                this.panelcontenedor.Tag = fh;
+                this.pnl_contenedor.Controls.Add(fh);
+                this.pnl_contenedor.Tag = fh;
                 fh.Show();
             }
             else
@@ -180,8 +206,8 @@ namespace SIT.Views
                 Form fh = FormHijo as Form;
                 fh.TopLevel = false;
                 fh.Dock = DockStyle.Fill;
-                this.panelcontenedor.Controls.Add(fh);
-                this.panelcontenedor.Tag = fh;
+                this.pnl_contenedor.Controls.Add(fh);
+                this.pnl_contenedor.Tag = fh;
                 fh.Show();
             }
         }
@@ -224,14 +250,14 @@ namespace SIT.Views
         private void btn_logistica_Click(object sender, EventArgs e)
         {
             button = this.btn_logistica;
-            panel = this.panel_logistica;
+            panel = this.pnl_logistica;
             this.tmmenu.Start();
         }
 
         private void btn_sistemas_Click(object sender, EventArgs e)
         {
             button = this.btn_sistemas;
-            panel = this.panel_sistemas;
+            panel = this.pnl_sistemas;
             this.tmmenu.Start();
         }
 
@@ -331,6 +357,31 @@ namespace SIT.Views
         private void Menus_FormClosed(object sender, FormClosedEventArgs e)
         {
             _login.Close();
+        }
+
+        private void btn_almacen_Click(object sender, EventArgs e)
+        {
+            button = this.btn_almacen;
+            panel = this.pnl_almacen;
+            this.tmmenu.Start();
+        }
+
+        private void btn_pherramientas_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VPHerramientas(usuariologin));
+        }
+
+        private void btn_comedor_Click(object sender, EventArgs e)
+        {
+            button = this.btn_comedor;
+            panel = this.pnl_comedor;
+            this.tmmenu.Start();
+        }
+
+        private void btn_prodsnack_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VProductosSnack(usuariologin));
+
         }
     }
 }

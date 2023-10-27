@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menus));
-            this.flpanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelcatalogos = new System.Windows.Forms.Panel();
+            this.pnl_fl = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnl_catalogos = new System.Windows.Forms.Panel();
+            this.btn_prodsnack = new System.Windows.Forms.Button();
             this.btn_proveedores = new System.Windows.Forms.Button();
             this.btn_metodos = new System.Windows.Forms.Button();
             this.btn_tipos = new System.Windows.Forms.Button();
@@ -42,8 +43,8 @@
             this.btn_clientes = new System.Windows.Forms.Button();
             this.btn_unidades = new System.Windows.Forms.Button();
             this.btn_emp = new System.Windows.Forms.Button();
-            this.btncatalogos = new System.Windows.Forms.Button();
-            this.panel_sistemas = new System.Windows.Forms.Panel();
+            this.btn_catalogos = new System.Windows.Forms.Button();
+            this.pnl_sistemas = new System.Windows.Forms.Panel();
             this.btn_sitios = new System.Windows.Forms.Button();
             this.btn_eqmov = new System.Windows.Forms.Button();
             this.btn_eqcomp = new System.Windows.Forms.Button();
@@ -52,7 +53,7 @@
             this.pnl_comercial = new System.Windows.Forms.Panel();
             this.btn_ve = new System.Windows.Forms.Button();
             this.btn_comercial = new System.Windows.Forms.Button();
-            this.panel_logistica = new System.Windows.Forms.Panel();
+            this.pnl_logistica = new System.Windows.Forms.Panel();
             this.btn_conciliador = new System.Windows.Forms.Button();
             this.btn_mapa = new System.Windows.Forms.Button();
             this.btn_rutas = new System.Windows.Forms.Button();
@@ -62,48 +63,73 @@
             this.btn_movimientos = new System.Windows.Forms.Button();
             this.btn_flujos = new System.Windows.Forms.Button();
             this.btn_contabilidad = new System.Windows.Forms.Button();
+            this.pnl_almacen = new System.Windows.Forms.Panel();
+            this.btn_pherramientas = new System.Windows.Forms.Button();
+            this.btn_almacen = new System.Windows.Forms.Button();
+            this.pnl_comedor = new System.Windows.Forms.Panel();
+            this.btn_snack = new System.Windows.Forms.Button();
+            this.btn_comedor = new System.Windows.Forms.Button();
             this.tmmenu = new System.Windows.Forms.Timer(this.components);
-            this.panelcontenedor = new System.Windows.Forms.Panel();
-            this.flpanel.SuspendLayout();
-            this.panelcatalogos.SuspendLayout();
-            this.panel_sistemas.SuspendLayout();
+            this.pnl_contenedor = new System.Windows.Forms.Panel();
+            this.pnl_fl.SuspendLayout();
+            this.pnl_catalogos.SuspendLayout();
+            this.pnl_sistemas.SuspendLayout();
             this.pnl_comercial.SuspendLayout();
-            this.panel_logistica.SuspendLayout();
+            this.pnl_logistica.SuspendLayout();
             this.pnl_contabilidad.SuspendLayout();
+            this.pnl_almacen.SuspendLayout();
+            this.pnl_comedor.SuspendLayout();
             this.SuspendLayout();
             // 
-            // flpanel
+            // pnl_fl
             // 
-            this.flpanel.Controls.Add(this.panelcatalogos);
-            this.flpanel.Controls.Add(this.panel_sistemas);
-            this.flpanel.Controls.Add(this.pnl_comercial);
-            this.flpanel.Controls.Add(this.panel_logistica);
-            this.flpanel.Controls.Add(this.pnl_contabilidad);
-            this.flpanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flpanel.Location = new System.Drawing.Point(0, 0);
-            this.flpanel.Name = "flpanel";
-            this.flpanel.Size = new System.Drawing.Size(220, 503);
-            this.flpanel.TabIndex = 0;
+            this.pnl_fl.BackColor = System.Drawing.Color.DimGray;
+            this.pnl_fl.Controls.Add(this.pnl_catalogos);
+            this.pnl_fl.Controls.Add(this.pnl_sistemas);
+            this.pnl_fl.Controls.Add(this.pnl_comercial);
+            this.pnl_fl.Controls.Add(this.pnl_logistica);
+            this.pnl_fl.Controls.Add(this.pnl_contabilidad);
+            this.pnl_fl.Controls.Add(this.pnl_almacen);
+            this.pnl_fl.Controls.Add(this.pnl_comedor);
+            this.pnl_fl.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnl_fl.Location = new System.Drawing.Point(0, 0);
+            this.pnl_fl.Name = "pnl_fl";
+            this.pnl_fl.Size = new System.Drawing.Size(220, 503);
+            this.pnl_fl.TabIndex = 0;
             // 
-            // panelcatalogos
+            // pnl_catalogos
             // 
-            this.panelcatalogos.Controls.Add(this.btn_proveedores);
-            this.panelcatalogos.Controls.Add(this.btn_metodos);
-            this.panelcatalogos.Controls.Add(this.btn_tipos);
-            this.panelcatalogos.Controls.Add(this.btn_rubros);
-            this.panelcatalogos.Controls.Add(this.btn_conceptosf);
-            this.panelcatalogos.Controls.Add(this.btn_servicios);
-            this.panelcatalogos.Controls.Add(this.btn_usuarios);
-            this.panelcatalogos.Controls.Add(this.btn_clientes);
-            this.panelcatalogos.Controls.Add(this.btn_unidades);
-            this.panelcatalogos.Controls.Add(this.btn_emp);
-            this.panelcatalogos.Controls.Add(this.btncatalogos);
-            this.panelcatalogos.Location = new System.Drawing.Point(3, 3);
-            this.panelcatalogos.MaximumSize = new System.Drawing.Size(214, 357);
-            this.panelcatalogos.MinimumSize = new System.Drawing.Size(214, 40);
-            this.panelcatalogos.Name = "panelcatalogos";
-            this.panelcatalogos.Size = new System.Drawing.Size(214, 40);
-            this.panelcatalogos.TabIndex = 2;
+            this.pnl_catalogos.Controls.Add(this.btn_prodsnack);
+            this.pnl_catalogos.Controls.Add(this.btn_proveedores);
+            this.pnl_catalogos.Controls.Add(this.btn_metodos);
+            this.pnl_catalogos.Controls.Add(this.btn_tipos);
+            this.pnl_catalogos.Controls.Add(this.btn_rubros);
+            this.pnl_catalogos.Controls.Add(this.btn_conceptosf);
+            this.pnl_catalogos.Controls.Add(this.btn_servicios);
+            this.pnl_catalogos.Controls.Add(this.btn_usuarios);
+            this.pnl_catalogos.Controls.Add(this.btn_clientes);
+            this.pnl_catalogos.Controls.Add(this.btn_unidades);
+            this.pnl_catalogos.Controls.Add(this.btn_emp);
+            this.pnl_catalogos.Controls.Add(this.btn_catalogos);
+            this.pnl_catalogos.Location = new System.Drawing.Point(3, 3);
+            this.pnl_catalogos.MaximumSize = new System.Drawing.Size(214, 385);
+            this.pnl_catalogos.MinimumSize = new System.Drawing.Size(214, 40);
+            this.pnl_catalogos.Name = "pnl_catalogos";
+            this.pnl_catalogos.Size = new System.Drawing.Size(214, 40);
+            this.pnl_catalogos.TabIndex = 2;
+            // 
+            // btn_prodsnack
+            // 
+            this.btn_prodsnack.BackColor = System.Drawing.Color.White;
+            this.btn_prodsnack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_prodsnack.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_prodsnack.Location = new System.Drawing.Point(0, 352);
+            this.btn_prodsnack.Name = "btn_prodsnack";
+            this.btn_prodsnack.Size = new System.Drawing.Size(214, 32);
+            this.btn_prodsnack.TabIndex = 11;
+            this.btn_prodsnack.Text = "Productos Snack";
+            this.btn_prodsnack.UseVisualStyleBackColor = false;
+            this.btn_prodsnack.Click += new System.EventHandler(this.btn_prodsnack_Click);
             // 
             // btn_proveedores
             // 
@@ -234,36 +260,36 @@
             this.btn_emp.UseVisualStyleBackColor = false;
             this.btn_emp.Click += new System.EventHandler(this.btn_emp_Click);
             // 
-            // btncatalogos
+            // btn_catalogos
             // 
-            this.btncatalogos.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btncatalogos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btncatalogos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btncatalogos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncatalogos.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
-            this.btncatalogos.Location = new System.Drawing.Point(0, 0);
-            this.btncatalogos.Name = "btncatalogos";
-            this.btncatalogos.Size = new System.Drawing.Size(214, 40);
-            this.btncatalogos.TabIndex = 0;
-            this.btncatalogos.Text = "Catalogos";
-            this.btncatalogos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btncatalogos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btncatalogos.UseVisualStyleBackColor = false;
-            this.btncatalogos.Click += new System.EventHandler(this.btncatalogos_Click);
+            this.btn_catalogos.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_catalogos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_catalogos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_catalogos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_catalogos.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
+            this.btn_catalogos.Location = new System.Drawing.Point(0, 0);
+            this.btn_catalogos.Name = "btn_catalogos";
+            this.btn_catalogos.Size = new System.Drawing.Size(214, 40);
+            this.btn_catalogos.TabIndex = 0;
+            this.btn_catalogos.Text = "Catalogos";
+            this.btn_catalogos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_catalogos.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_catalogos.UseVisualStyleBackColor = false;
+            this.btn_catalogos.Click += new System.EventHandler(this.btncatalogos_Click);
             // 
-            // panel_sistemas
+            // pnl_sistemas
             // 
-            this.panel_sistemas.Controls.Add(this.btn_sitios);
-            this.panel_sistemas.Controls.Add(this.btn_eqmov);
-            this.panel_sistemas.Controls.Add(this.btn_eqcomp);
-            this.panel_sistemas.Controls.Add(this.btn_lineas);
-            this.panel_sistemas.Controls.Add(this.btn_sistemas);
-            this.panel_sistemas.Location = new System.Drawing.Point(3, 49);
-            this.panel_sistemas.MaximumSize = new System.Drawing.Size(215, 178);
-            this.panel_sistemas.MinimumSize = new System.Drawing.Size(215, 45);
-            this.panel_sistemas.Name = "panel_sistemas";
-            this.panel_sistemas.Size = new System.Drawing.Size(215, 45);
-            this.panel_sistemas.TabIndex = 0;
+            this.pnl_sistemas.Controls.Add(this.btn_sitios);
+            this.pnl_sistemas.Controls.Add(this.btn_eqmov);
+            this.pnl_sistemas.Controls.Add(this.btn_eqcomp);
+            this.pnl_sistemas.Controls.Add(this.btn_lineas);
+            this.pnl_sistemas.Controls.Add(this.btn_sistemas);
+            this.pnl_sistemas.Location = new System.Drawing.Point(3, 49);
+            this.pnl_sistemas.MaximumSize = new System.Drawing.Size(215, 178);
+            this.pnl_sistemas.MinimumSize = new System.Drawing.Size(215, 45);
+            this.pnl_sistemas.Name = "pnl_sistemas";
+            this.pnl_sistemas.Size = new System.Drawing.Size(215, 45);
+            this.pnl_sistemas.TabIndex = 0;
             // 
             // btn_sitios
             // 
@@ -315,6 +341,7 @@
             // 
             // btn_sistemas
             // 
+            this.btn_sistemas.BackColor = System.Drawing.Color.White;
             this.btn_sistemas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sistemas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_sistemas.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
@@ -325,7 +352,7 @@
             this.btn_sistemas.Text = "Sistemas";
             this.btn_sistemas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_sistemas.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_sistemas.UseVisualStyleBackColor = true;
+            this.btn_sistemas.UseVisualStyleBackColor = false;
             this.btn_sistemas.Click += new System.EventHandler(this.btn_sistemas_Click);
             // 
             // pnl_comercial
@@ -353,6 +380,7 @@
             // 
             // btn_comercial
             // 
+            this.btn_comercial.BackColor = System.Drawing.Color.White;
             this.btn_comercial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_comercial.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_comercial.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
@@ -363,21 +391,21 @@
             this.btn_comercial.Text = "Comercial";
             this.btn_comercial.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_comercial.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_comercial.UseVisualStyleBackColor = true;
+            this.btn_comercial.UseVisualStyleBackColor = false;
             this.btn_comercial.Click += new System.EventHandler(this.btn_comercial_Click);
             // 
-            // panel_logistica
+            // pnl_logistica
             // 
-            this.panel_logistica.Controls.Add(this.btn_conciliador);
-            this.panel_logistica.Controls.Add(this.btn_mapa);
-            this.panel_logistica.Controls.Add(this.btn_rutas);
-            this.panel_logistica.Controls.Add(this.btn_logistica);
-            this.panel_logistica.Location = new System.Drawing.Point(3, 151);
-            this.panel_logistica.MaximumSize = new System.Drawing.Size(214, 155);
-            this.panel_logistica.MinimumSize = new System.Drawing.Size(214, 35);
-            this.panel_logistica.Name = "panel_logistica";
-            this.panel_logistica.Size = new System.Drawing.Size(214, 39);
-            this.panel_logistica.TabIndex = 1;
+            this.pnl_logistica.Controls.Add(this.btn_conciliador);
+            this.pnl_logistica.Controls.Add(this.btn_mapa);
+            this.pnl_logistica.Controls.Add(this.btn_rutas);
+            this.pnl_logistica.Controls.Add(this.btn_logistica);
+            this.pnl_logistica.Location = new System.Drawing.Point(3, 151);
+            this.pnl_logistica.MaximumSize = new System.Drawing.Size(214, 155);
+            this.pnl_logistica.MinimumSize = new System.Drawing.Size(214, 35);
+            this.pnl_logistica.Name = "pnl_logistica";
+            this.pnl_logistica.Size = new System.Drawing.Size(214, 39);
+            this.pnl_logistica.TabIndex = 1;
             // 
             // btn_conciliador
             // 
@@ -440,6 +468,7 @@
             this.pnl_contabilidad.Controls.Add(this.btn_movimientos);
             this.pnl_contabilidad.Controls.Add(this.btn_flujos);
             this.pnl_contabilidad.Controls.Add(this.btn_contabilidad);
+            this.pnl_contabilidad.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnl_contabilidad.Location = new System.Drawing.Point(3, 196);
             this.pnl_contabilidad.MaximumSize = new System.Drawing.Size(214, 165);
             this.pnl_contabilidad.MinimumSize = new System.Drawing.Size(214, 38);
@@ -485,6 +514,7 @@
             // 
             // btn_contabilidad
             // 
+            this.btn_contabilidad.BackColor = System.Drawing.Color.White;
             this.btn_contabilidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_contabilidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_contabilidad.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
@@ -495,22 +525,99 @@
             this.btn_contabilidad.Text = "Contabilidad";
             this.btn_contabilidad.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_contabilidad.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btn_contabilidad.UseVisualStyleBackColor = true;
+            this.btn_contabilidad.UseVisualStyleBackColor = false;
             this.btn_contabilidad.Click += new System.EventHandler(this.btn_contabilidad_Click);
+            // 
+            // pnl_almacen
+            // 
+            this.pnl_almacen.Controls.Add(this.btn_pherramientas);
+            this.pnl_almacen.Controls.Add(this.btn_almacen);
+            this.pnl_almacen.Location = new System.Drawing.Point(3, 247);
+            this.pnl_almacen.MaximumSize = new System.Drawing.Size(214, 88);
+            this.pnl_almacen.MinimumSize = new System.Drawing.Size(214, 38);
+            this.pnl_almacen.Name = "pnl_almacen";
+            this.pnl_almacen.Size = new System.Drawing.Size(214, 45);
+            this.pnl_almacen.TabIndex = 5;
+            // 
+            // btn_pherramientas
+            // 
+            this.btn_pherramientas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_pherramientas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_pherramientas.Location = new System.Drawing.Point(0, 43);
+            this.btn_pherramientas.Name = "btn_pherramientas";
+            this.btn_pherramientas.Size = new System.Drawing.Size(214, 40);
+            this.btn_pherramientas.TabIndex = 2;
+            this.btn_pherramientas.Text = "P. Herramientas";
+            this.btn_pherramientas.UseVisualStyleBackColor = true;
+            this.btn_pherramientas.Click += new System.EventHandler(this.btn_pherramientas_Click);
+            // 
+            // btn_almacen
+            // 
+            this.btn_almacen.BackColor = System.Drawing.Color.White;
+            this.btn_almacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_almacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_almacen.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
+            this.btn_almacen.Location = new System.Drawing.Point(0, 0);
+            this.btn_almacen.Name = "btn_almacen";
+            this.btn_almacen.Size = new System.Drawing.Size(214, 43);
+            this.btn_almacen.TabIndex = 1;
+            this.btn_almacen.Text = "Almacen";
+            this.btn_almacen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_almacen.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_almacen.UseVisualStyleBackColor = false;
+            this.btn_almacen.Click += new System.EventHandler(this.btn_almacen_Click);
+            // 
+            // pnl_comedor
+            // 
+            this.pnl_comedor.Controls.Add(this.btn_snack);
+            this.pnl_comedor.Controls.Add(this.btn_comedor);
+            this.pnl_comedor.Location = new System.Drawing.Point(3, 298);
+            this.pnl_comedor.MaximumSize = new System.Drawing.Size(214, 88);
+            this.pnl_comedor.MinimumSize = new System.Drawing.Size(214, 38);
+            this.pnl_comedor.Name = "pnl_comedor";
+            this.pnl_comedor.Size = new System.Drawing.Size(214, 45);
+            this.pnl_comedor.TabIndex = 6;
+            // 
+            // btn_snack
+            // 
+            this.btn_snack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_snack.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_snack.Location = new System.Drawing.Point(0, 43);
+            this.btn_snack.Name = "btn_snack";
+            this.btn_snack.Size = new System.Drawing.Size(214, 40);
+            this.btn_snack.TabIndex = 2;
+            this.btn_snack.Text = "Snack";
+            this.btn_snack.UseVisualStyleBackColor = true;
+            // 
+            // btn_comedor
+            // 
+            this.btn_comedor.BackColor = System.Drawing.Color.White;
+            this.btn_comedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_comedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_comedor.Image = global::SIT.Properties.Resources.flecha_hacia_abajo;
+            this.btn_comedor.Location = new System.Drawing.Point(0, 0);
+            this.btn_comedor.Name = "btn_comedor";
+            this.btn_comedor.Size = new System.Drawing.Size(214, 43);
+            this.btn_comedor.TabIndex = 1;
+            this.btn_comedor.Text = "Comedor";
+            this.btn_comedor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_comedor.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_comedor.UseVisualStyleBackColor = false;
+            this.btn_comedor.Click += new System.EventHandler(this.btn_comedor_Click);
             // 
             // tmmenu
             // 
             this.tmmenu.Interval = 15;
             this.tmmenu.Tick += new System.EventHandler(this.tmmenu_Tick);
             // 
-            // panelcontenedor
+            // pnl_contenedor
             // 
-            this.panelcontenedor.BackColor = System.Drawing.Color.Gray;
-            this.panelcontenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelcontenedor.Location = new System.Drawing.Point(220, 0);
-            this.panelcontenedor.Name = "panelcontenedor";
-            this.panelcontenedor.Size = new System.Drawing.Size(767, 503);
-            this.panelcontenedor.TabIndex = 1;
+            this.pnl_contenedor.BackColor = System.Drawing.Color.Gray;
+            this.pnl_contenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnl_contenedor.Location = new System.Drawing.Point(220, 0);
+            this.pnl_contenedor.Name = "pnl_contenedor";
+            this.pnl_contenedor.Size = new System.Drawing.Size(767, 503);
+            this.pnl_contenedor.TabIndex = 1;
             // 
             // Menus
             // 
@@ -518,8 +625,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(987, 503);
-            this.Controls.Add(this.panelcontenedor);
-            this.Controls.Add(this.flpanel);
+            this.Controls.Add(this.pnl_contenedor);
+            this.Controls.Add(this.pnl_fl);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menus";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -527,31 +634,33 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Menus_FormClosed);
             this.Load += new System.EventHandler(this.Menus_Load);
-            this.flpanel.ResumeLayout(false);
-            this.panelcatalogos.ResumeLayout(false);
-            this.panel_sistemas.ResumeLayout(false);
+            this.pnl_fl.ResumeLayout(false);
+            this.pnl_catalogos.ResumeLayout(false);
+            this.pnl_sistemas.ResumeLayout(false);
             this.pnl_comercial.ResumeLayout(false);
-            this.panel_logistica.ResumeLayout(false);
+            this.pnl_logistica.ResumeLayout(false);
             this.pnl_contabilidad.ResumeLayout(false);
+            this.pnl_almacen.ResumeLayout(false);
+            this.pnl_comedor.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flpanel;
-        private System.Windows.Forms.Panel panel_logistica;
+        private System.Windows.Forms.FlowLayoutPanel pnl_fl;
+        private System.Windows.Forms.Panel pnl_logistica;
         private System.Windows.Forms.Button btn_rutas;
-        private System.Windows.Forms.Panel panelcatalogos;
+        private System.Windows.Forms.Panel pnl_catalogos;
         private System.Windows.Forms.Button btn_emp;
         private System.Windows.Forms.Button btn_usuarios;
         private System.Windows.Forms.Button btn_clientes;
         private System.Windows.Forms.Button btn_unidades;
         private System.Windows.Forms.Timer tmmenu;
-        private System.Windows.Forms.Panel panelcontenedor;
-        private System.Windows.Forms.Button btncatalogos;
+        private System.Windows.Forms.Panel pnl_contenedor;
+        private System.Windows.Forms.Button btn_catalogos;
         private System.Windows.Forms.Button btn_servicios;
-        private System.Windows.Forms.Panel panel_sistemas;
+        private System.Windows.Forms.Panel pnl_sistemas;
         private System.Windows.Forms.Button btn_sistemas;
         private System.Windows.Forms.Button btn_lineas;
         private System.Windows.Forms.Button btn_logistica;
@@ -573,5 +682,12 @@
         private System.Windows.Forms.Button btn_conciliador;
         private System.Windows.Forms.Button btn_notas;
         private System.Windows.Forms.Button btn_proveedores;
+        private System.Windows.Forms.Panel pnl_almacen;
+        private System.Windows.Forms.Button btn_pherramientas;
+        private System.Windows.Forms.Button btn_almacen;
+        private System.Windows.Forms.Panel pnl_comedor;
+        private System.Windows.Forms.Button btn_snack;
+        private System.Windows.Forms.Button btn_comedor;
+        private System.Windows.Forms.Button btn_prodsnack;
     }
 }

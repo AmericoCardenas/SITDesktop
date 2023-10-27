@@ -19,5 +19,7 @@ namespace SIT
         public string Contraseña { get; set; }
         public string Sitio { get; set; }
         public Nullable<int> IdEmpleado { get; set; }
+    
+        public virtual Trabajadores Trabajadores { get; set; }
     }
 }

@@ -199,3 +199,7 @@ C:\Users\SISTEMAS\Source\Repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.pdb
 C:\Users\SISTEMAS\Source\Repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Contabilidad.CNotas.AENotas.resources
 C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CProveedores.AEProveedores.resources
 C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.VProveedores.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Almacen.PHerramientas.AEPHerramienta.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Almacen.VPHerramientas.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CProductosSnack.AEProductosSnack.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CProductosSnack.VProductosSnack.resources

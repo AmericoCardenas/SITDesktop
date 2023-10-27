@@ -18,6 +18,7 @@ namespace SIT
         public Trabajadores()
         {
             this.Lineas = new HashSet<Lineas>();
+            this.UsuariosSitios = new HashSet<UsuariosSitios>();
         }
     
         public int IdEmpleado { get; set; }
@@ -34,5 +35,7 @@ namespace SIT
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lineas> Lineas { get; set; }
         public virtual Puestos Puestos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UsuariosSitios> UsuariosSitios { get; set; }
     }
 }

@@ -173,6 +173,15 @@
     </AssociationSet>
     <EntitySet Name="NotasMovimientos" EntityType="SITModel.NotasMovimientos" />
     <EntitySet Name="Regimenes" EntityType="SITModel.Regimenes" />
+    <EntitySet Name="Herramientas" EntityType="SITModel.Herramientas" />
+    <AssociationSet Name="FK_UsuariosSitios_Trabajadores" Association="SITModel.FK_UsuariosSitios_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="UsuariosSitios" EntitySet="UsuariosSitios" />
+    </AssociationSet>
+    <EntitySet Name="EstatusPHerramientas" EntityType="SITModel.EstatusPHerramientas" />
+    <EntitySet Name="PrestamoHerramientas" EntityType="SITModel.PrestamoHerramientas" />
+    <EntitySet Name="Medidas" EntityType="SITModel.Medidas" />
+    <EntitySet Name="ProductosSnack" EntityType="SITModel.ProductosSnack" />
   </EntityContainer>
   <EntityType Name="Usuarios">
     <Key>
@@ -382,6 +391,7 @@
     <Property Name="IdSamsara" Type="Int32" />
     <NavigationProperty Name="Lineas" Relationship="SITModel.FK_Lineas_Trabajadores" FromRole="Trabajadores" ToRole="Lineas" />
     <NavigationProperty Name="Puestos" Relationship="SITModel.FK_Trabajadores_Puestos" FromRole="Trabajadores" ToRole="Puestos" />
+    <NavigationProperty Name="UsuariosSitios" Relationship="SITModel.FK_UsuariosSitios_Trabajadores" FromRole="Trabajadores" ToRole="UsuariosSitios" />
   </EntityType>
   <EntityType Name="EstatusEquipos">
     <Key>
@@ -399,6 +409,7 @@
     <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Sitio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="IdEmpleado" Type="Int32" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_UsuariosSitios_Trabajadores" FromRole="UsuariosSitios" ToRole="Trabajadores" />
   </EntityType>
   <EntityType Name="Incidencias">
     <Key>
@@ -634,5 +645,77 @@
     <Property Name="IdRegimen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CodRegimen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Regimen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Herramientas">
+    <Key>
+      <PropertyRef Name="IdHerramienta" />
+    </Key>
+    <Property Name="IdHerramienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CIDPROD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Herramienta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_UsuariosSitios_Trabajadores">
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="0..1" />
+    <End Type="SITModel.UsuariosSitios" Role="UsuariosSitios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="UsuariosSitios">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EstatusPHerramientas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PrestamoHerramientas">
+    <Key>
+      <PropertyRef Name="IdPrestamo" />
+    </Key>
+    <Property Name="IdPrestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdHerramienta" Type="Int32" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Medidas">
+    <Key>
+      <PropertyRef Name="IdMedida" />
+    </Key>
+    <Property Name="IdMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Medida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ProductosSnack">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaModifico" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
   </EntityType>
 </Schema>

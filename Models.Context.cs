@@ -67,5 +67,10 @@ namespace SIT
         public virtual DbSet<BitacoraRol> BitacoraRol { get; set; }
         public virtual DbSet<NotasMovimientos> NotasMovimientos { get; set; }
         public virtual DbSet<Regimenes> Regimenes { get; set; }
+        public virtual DbSet<Herramientas> Herramientas { get; set; }
+        public virtual DbSet<EstatusPHerramientas> EstatusPHerramientas { get; set; }
+        public virtual DbSet<PrestamoHerramientas> PrestamoHerramientas { get; set; }
+        public virtual DbSet<Medidas> Medidas { get; set; }
+        public virtual DbSet<ProductosSnack> ProductosSnack { get; set; }
     }
 }

@@ -163,6 +163,13 @@
     <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Estatus" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="EstatusPHerramientas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar(max)" />
+  </EntityType>
   <EntityType Name="EstatusRutas">
     <Key>
       <PropertyRef Name="IdEstatus" />
@@ -206,6 +213,17 @@
     <Property Name="FechaCancelacion" Type="date" />
     <Property Name="IdUsuarioCancelo" Type="int" />
   </EntityType>
+  <EntityType Name="Herramientas">
+    <Key>
+      <PropertyRef Name="IdHerramienta" />
+    </Key>
+    <Property Name="IdHerramienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CIDPROD" Type="varchar(max)" />
+    <Property Name="Herramienta" Type="varchar(max)" />
+    <Property Name="Cantidad" Type="float" />
+    <Property Name="IdMedida" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+  </EntityType>
   <EntityType Name="Incidencias">
     <Key>
       <PropertyRef Name="IdIncidencia" />
@@ -224,6 +242,13 @@
     <Property Name="IdProveedor" Type="int" />
     <Property Name="IdEstatus" Type="int" />
     <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="Medidas">
+    <Key>
+      <PropertyRef Name="IdMedida" />
+    </Key>
+    <Property Name="IdMedida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Medida" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="MetodosFlujos">
     <Key>
@@ -289,6 +314,24 @@
     <Property Name="IdPais" Type="int" Nullable="false" />
     <Property Name="Pais" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="PrestamoHerramientas">
+    <Key>
+      <PropertyRef Name="IdPrestamo" />
+    </Key>
+    <Property Name="IdPrestamo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Hora" Type="varchar" MaxLength="50" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdHerramienta" Type="int" />
+    <Property Name="Cantidad" Type="float" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioCreacion" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioModificacion" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsuarioCancelacion" Type="int" />
+  </EntityType>
   <EntityType Name="Productos">
     <Key>
       <PropertyRef Name="IdProducto" />
@@ -309,6 +352,23 @@
     <Property Name="Precio10" Type="float" />
     <Property Name="IdEstatus" Type="int" />
     <Property Name="RfcCliente" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="ProductosSnack">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Producto" Type="varchar" MaxLength="50" />
+    <Property Name="Precio" Type="float" />
+    <Property Name="Cantidad" Type="float" />
+    <Property Name="IdMedida" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaModifico" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
   </EntityType>
   <EntityType Name="Proveedores">
     <Key>
@@ -561,6 +621,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_UsuariosSitios_Trabajadores">
+    <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="0..1" />
+    <End Role="UsuariosSitios" Type="Self.UsuariosSitios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="UsuariosSitios">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="SITModelStoreContainer">
     <EntitySet Name="BitacoraBitad" EntityType="Self.BitacoraBitad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BitacoraRol" EntityType="Self.BitacoraRol" Schema="dbo" store:Type="Tables" />
@@ -576,18 +648,23 @@
     <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusEquipos" EntityType="Self.EstatusEquipos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusLineas" EntityType="Self.EstatusLineas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusPHerramientas" EntityType="Self.EstatusPHerramientas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusRutas" EntityType="Self.EstatusRutas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusUsuarios" EntityType="Self.EstatusUsuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusVE" EntityType="Self.EstatusVE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Flujos" EntityType="Self.Flujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Herramientas" EntityType="Self.Herramientas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Incidencias" EntityType="Self.Incidencias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lineas" EntityType="Self.Lineas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Medidas" EntityType="Self.Medidas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MetodosFlujos" EntityType="Self.MetodosFlujos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Movimientos" EntityType="Self.Movimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NotasMovimientos" EntityType="Self.NotasMovimientos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrestamoHerramientas" EntityType="Self.PrestamoHerramientas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductosSnack" EntityType="Self.ProductosSnack" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Puestos" EntityType="Self.Puestos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Regimenes" EntityType="Self.Regimenes" Schema="dbo" store:Type="Tables" />
@@ -623,6 +700,10 @@
     <AssociationSet Name="FK_Trabajadores_Puestos" Association="Self.FK_Trabajadores_Puestos">
       <End Role="Puestos" EntitySet="Puestos" />
       <End Role="Trabajadores" EntitySet="Trabajadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuariosSitios_Trabajadores" Association="Self.FK_UsuariosSitios_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="UsuariosSitios" EntitySet="UsuariosSitios" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
