@@ -203,3 +203,13 @@ C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Al
 C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Almacen.VPHerramientas.resources
 C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CProductosSnack.AEProductosSnack.resources
 C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CProductosSnack.VProductosSnack.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.RH.VSnack.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.RH.CSnack.ReporteSnack.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Sistemas.CSitios.AESitios.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Nominas.CNomGeneral.VNomGeneral.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Nominas.CNomGeneral.VUploadArchivos.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CTipoUnidades.AETipoUnidad.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CTipoUnidades.VTipoUnidades.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Catalogos.CUnidades.AEUnidad.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Gestoria.CPolizas.AEPolizas.resources
+C:\Users\SISTEMAS\source\repos\AmericoCardenas\SITDesktop\obj\Debug\SIT.Views.Gestoria.CPolizas.VPolizas.resources

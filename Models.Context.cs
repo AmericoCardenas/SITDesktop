@@ -34,7 +34,6 @@ namespace SIT
         public virtual DbSet<Paises> Paises { get; set; }
         public virtual DbSet<TiposRutas> TiposRutas { get; set; }
         public virtual DbSet<Turnos> Turnos { get; set; }
-        public virtual DbSet<Unidades> Unidades { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<DatosNominaEmpleados> DatosNominaEmpleados { get; set; }
         public virtual DbSet<DomicilioEmpleados> DomicilioEmpleados { get; set; }
@@ -72,5 +71,20 @@ namespace SIT
         public virtual DbSet<PrestamoHerramientas> PrestamoHerramientas { get; set; }
         public virtual DbSet<Medidas> Medidas { get; set; }
         public virtual DbSet<ProductosSnack> ProductosSnack { get; set; }
+        public virtual DbSet<EstatusPSnack> EstatusPSnack { get; set; }
+        public virtual DbSet<EstatusSnack> EstatusSnack { get; set; }
+        public virtual DbSet<Snack> Snack { get; set; }
+        public virtual DbSet<TipoPagoSnack> TipoPagoSnack { get; set; }
+        public virtual DbSet<DeduccionesCheckin> DeduccionesCheckin { get; set; }
+        public virtual DbSet<NomGenCheckin> NomGenCheckin { get; set; }
+        public virtual DbSet<ServiciosCheckin> ServiciosCheckin { get; set; }
+        public virtual DbSet<TicketsCheckin> TicketsCheckin { get; set; }
+        public virtual DbSet<BonosCheckin> BonosCheckin { get; set; }
+        public virtual DbSet<TipoUnidades> TipoUnidades { get; set; }
+        public virtual DbSet<EstatusUnidades> EstatusUnidades { get; set; }
+        public virtual DbSet<MotoresUnidades> MotoresUnidades { get; set; }
+        public virtual DbSet<PolizasUnidades> PolizasUnidades { get; set; }
+        public virtual DbSet<ModelosUnidades> ModelosUnidades { get; set; }
+        public virtual DbSet<Unidades> Unidades { get; set; }
     }
 }

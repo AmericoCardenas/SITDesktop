@@ -19,6 +19,7 @@ namespace SIT
         {
             this.Lineas = new HashSet<Lineas>();
             this.UsuariosSitios = new HashSet<UsuariosSitios>();
+            this.Snack = new HashSet<Snack>();
         }
     
         public int IdEmpleado { get; set; }
@@ -31,11 +32,22 @@ namespace SIT
         public Nullable<int> IdDepto { get; set; }
         public Nullable<int> IdEstatus { get; set; }
         public Nullable<int> IdSamsara { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public Nullable<int> IdUsuarioCreo { get; set; }
+        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public Nullable<int> IdUsuarioModifico { get; set; }
+        public Nullable<System.DateTime> FechaCancelacion { get; set; }
+        public Nullable<int> IdUsuarioCancelo { get; set; }
+        public string UserEmp { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lineas> Lineas { get; set; }
         public virtual Puestos Puestos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsuariosSitios> UsuariosSitios { get; set; }
+        public virtual Departamentos Departamentos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Snack> Snack { get; set; }
     }
 }

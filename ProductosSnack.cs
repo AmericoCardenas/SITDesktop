@@ -14,6 +14,12 @@ namespace SIT
     
     public partial class ProductosSnack
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ProductosSnack()
+        {
+            this.Snack = new HashSet<Snack>();
+        }
+    
         public int IdProducto { get; set; }
         public string Producto { get; set; }
         public Nullable<double> Precio { get; set; }
@@ -26,5 +32,10 @@ namespace SIT
         public Nullable<System.DateTime> FechaModifico { get; set; }
         public Nullable<int> IdUsuarioCancelo { get; set; }
         public Nullable<System.DateTime> FechaCancelacion { get; set; }
+    
+        public virtual EstatusPSnack EstatusPSnack { get; set; }
+        public virtual Medidas Medidas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Snack> Snack { get; set; }
     }
 }

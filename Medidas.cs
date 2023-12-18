@@ -14,7 +14,16 @@ namespace SIT
     
     public partial class Medidas
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Medidas()
+        {
+            this.ProductosSnack = new HashSet<ProductosSnack>();
+        }
+    
         public int IdMedida { get; set; }
         public string Medida { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductosSnack> ProductosSnack { get; set; }
     }
 }

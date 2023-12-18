@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="46641e0898a24e0db7b988cf89398cbe" Name="Diagram1" ZoomLevel="63">
+      <Diagram DiagramId="46641e0898a24e0db7b988cf89398cbe" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="SITModel.Departamentos" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.DomiciliosClientes" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.Estados" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
@@ -14,7 +14,6 @@
         <EntityTypeShape EntityType="SITModel.Paises" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.TiposRutas" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.Turnos" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SITModel.Unidades" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="SITModel.FK_Estados_Paises" ManuallyRouted="false" />
         <AssociationConnector Association="SITModel.FK_Municipios_Estados" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SITModel.Usuarios" Width="1.5" PointX="10.375" PointY="3.75" />
@@ -58,6 +57,28 @@
         <EntityTypeShape EntityType="SITModel.PrestamoHerramientas" Width="1.5" PointX="5.375" PointY="19.75" />
         <EntityTypeShape EntityType="SITModel.Medidas" Width="1.5" PointX="13.375" PointY="19.75" />
         <EntityTypeShape EntityType="SITModel.ProductosSnack" Width="1.5" PointX="15.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SITModel.EstatusPSnack" Width="1.5" PointX="13.125" PointY="22.875" />
+        <EntityTypeShape EntityType="SITModel.EstatusSnack" Width="1.5" PointX="18.375" PointY="24.375" />
+        <EntityTypeShape EntityType="SITModel.Snack" Width="1.5" PointX="20.625" PointY="15.75" />
+        <EntityTypeShape EntityType="SITModel.TipoPagoSnack" Width="1.5" PointX="18.375" PointY="22" />
+        <AssociationConnector Association="SITModel.FK_Trabajadores_Departamentos" />
+        <AssociationConnector Association="SITModel.FK_ProductosSnack_EstatusPSnack" />
+        <AssociationConnector Association="SITModel.FK_Snack_EstatusSnack" />
+        <AssociationConnector Association="SITModel.FK_ProductosSnack_Medidas" />
+        <AssociationConnector Association="SITModel.FK_Snack_ProductosSnack" />
+        <AssociationConnector Association="SITModel.FK_Snack_TipoPagoSnack" />
+        <AssociationConnector Association="SITModel.FK_Snack_Trabajadores" />
+        <EntityTypeShape EntityType="SITModel.DeduccionesCheckin" Width="1.5" PointX="20.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SITModel.NomGenCheckin" Width="1.5" PointX="20.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SITModel.ServiciosCheckin" Width="1.5" PointX="20.375" PointY="21.75" />
+        <EntityTypeShape EntityType="SITModel.TicketsCheckin" Width="1.5" PointX="22.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SITModel.BonosCheckin" Width="1.5" PointX="0.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SITModel.TipoUnidades" Width="1.5" PointX="22.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SITModel.EstatusUnidades" Width="1.5" PointX="22.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SITModel.MotoresUnidades" Width="1.5" PointX="22.375" PointY="12.75" />
+        <EntityTypeShape EntityType="SITModel.PolizasUnidades" Width="1.5" PointX="7.375" PointY="23.75" />
+        <EntityTypeShape EntityType="SITModel.ModelosUnidades" Width="1.5" PointX="9.375" PointY="23.75" />
+        <EntityTypeShape EntityType="SITModel.Unidades" Width="1.5" PointX="22.375" PointY="21.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -15,8 +15,21 @@ namespace SIT
     public partial class Unidades
     {
         public int IdUnidad { get; set; }
-        public string Unidad { get; set; }
-        public string Marca { get; set; }
-        public string GPS { get; set; }
+        public string Economico { get; set; }
+        public string Placa { get; set; }
+        public string NSerie { get; set; }
+        public Nullable<int> IdTipo { get; set; }
+        public Nullable<int> IdMotor { get; set; }
+        public Nullable<double> RendReq { get; set; }
+        public Nullable<int> IdModelo { get; set; }
+        public string Color { get; set; }
+        public Nullable<int> Pasajeros { get; set; }
+        public Nullable<int> IdEstatus { get; set; }
+        public Nullable<System.DateTime> FechaCreacion { get; set; }
+        public Nullable<int> IdUsuarioCreo { get; set; }
+        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public Nullable<int> IdUsuarioModifico { get; set; }
+        public Nullable<System.DateTime> FechaCancelacion { get; set; }
+        public Nullable<int> IdUsuarioCancelo { get; set; }
     }
 }

@@ -28,7 +28,8 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.1.213\Compartida\SIT\</UpdateUrl>
-    <ApplicationRevision>28</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>31</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -258,6 +259,9 @@
     <Compile Include="BitacoraRol.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="BonosCheckin.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Clientes.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -303,6 +307,9 @@
     <Compile Include="DatosNominaEmpleados.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="DeduccionesCheckin.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Departamentos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -333,7 +340,16 @@
     <Compile Include="EstatusPHerramientas.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="EstatusPSnack.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="EstatusRutas.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstatusSnack.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EstatusUnidades.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="EstatusUsuarios.cs">
@@ -360,6 +376,9 @@
     <Compile Include="MetodosFlujos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelosUnidades.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -377,16 +396,25 @@
     </Compile>
     <Compile Include="Models\PosicionVehiculos.cs" />
     <Compile Include="Models\UnidadSamsara.cs" />
+    <Compile Include="MotoresUnidades.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="Movimientos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Municipios.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="NomGenCheckin.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="NotasMovimientos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Paises.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PolizasUnidades.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="PrestamoHerramientas.cs">
@@ -416,7 +444,19 @@
     <Compile Include="Servicios.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="ServiciosCheckin.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Snack.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TicketsCheckin.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoPagoSnack.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="TiposCostos.cs">
@@ -426,6 +466,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="TiposRutas.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TipoUnidades.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Trabajadores.cs">
@@ -481,6 +524,24 @@
     </Compile>
     <Compile Include="Views\Catalogos\CProveedores\AEProveedores.Designer.cs">
       <DependentUpon>AEProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CTipoUnidades\AETipoUnidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CTipoUnidades\AETipoUnidad.Designer.cs">
+      <DependentUpon>AETipoUnidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CTipoUnidades\VTipoUnidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CTipoUnidades\VTipoUnidades.Designer.cs">
+      <DependentUpon>VTipoUnidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CUnidades\AEUnidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CUnidades\AEUnidad.Designer.cs">
+      <DependentUpon>AEUnidad.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Catalogos\VConceptosFlujos.cs">
       <SubType>Form</SubType>
@@ -548,6 +609,18 @@
     <Compile Include="Views\Contabilidad\CMovimientos\VSaldoxFecha.Designer.cs">
       <DependentUpon>VSaldoxFecha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Gestoria\CPolizas\AEPolizas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gestoria\CPolizas\AEPolizas.Designer.cs">
+      <DependentUpon>AEPolizas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gestoria\CPolizas\VPolizas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Gestoria\CPolizas\VPolizas.Designer.cs">
+      <DependentUpon>VPolizas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Logistica\VConciliador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -560,10 +633,34 @@
     <Compile Include="Views\Logistica\VMapa.Designer.cs">
       <DependentUpon>VMapa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sistemas\VEquiposComputo.cs">
+    <Compile Include="Views\Nominas\CNomGeneral\VNomGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Sistemas\VEquiposComputo.Designer.cs">
+    <Compile Include="Views\Nominas\CNomGeneral\VNomGeneral.Designer.cs">
+      <DependentUpon>VNomGeneral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Nominas\CNomGeneral\VUploadArchivos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Nominas\CNomGeneral\VUploadArchivos.Designer.cs">
+      <DependentUpon>VUploadArchivos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CSnack\ReporteSnack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CSnack\ReporteSnack.Designer.cs">
+      <DependentUpon>ReporteSnack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CSnack\VSnack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CSnack\VSnack.Designer.cs">
+      <DependentUpon>VSnack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sistemas\CEqComputo\VEquiposComputo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sistemas\CEqComputo\VEquiposComputo.Designer.cs">
       <DependentUpon>VEquiposComputo.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Catalogos\VClientes.cs">
@@ -590,16 +687,16 @@
     <Compile Include="Views\Logistica\CRutas\VImportarBitacora.Designer.cs">
       <DependentUpon>VImportarBitacora.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sistemas\VEquiposMovil.cs">
+    <Compile Include="Views\Sistemas\CEqMovil\VEquiposMovil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Sistemas\VEquiposMovil.Designer.cs">
+    <Compile Include="Views\Sistemas\CEqMovil\VEquiposMovil.Designer.cs">
       <DependentUpon>VEquiposMovil.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sistemas\VLineas.cs">
+    <Compile Include="Views\Sistemas\CLineas\VLineas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Sistemas\VLineas.Designer.cs">
+    <Compile Include="Views\Sistemas\CLineas\VLineas.Designer.cs">
       <DependentUpon>VLineas.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Logistica\CRutas\VRutas.cs">
@@ -608,10 +705,10 @@
     <Compile Include="Views\Logistica\CRutas\VRutas.Designer.cs">
       <DependentUpon>VRutas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Catalogos\VUnidades.cs">
+    <Compile Include="Views\Catalogos\CUnidades\VUnidades.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Catalogos\VUnidades.Designer.cs">
+    <Compile Include="Views\Catalogos\CUnidades\VUnidades.Designer.cs">
       <DependentUpon>VUnidades.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Catalogos\VUsuarios.cs">
@@ -634,10 +731,16 @@
     <Compile Include="Views\Menus.Designer.cs">
       <DependentUpon>Menus.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Sistemas\VSitios.cs">
+    <Compile Include="Views\Sistemas\CSitios\AESitios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Sistemas\VSitios.Designer.cs">
+    <Compile Include="Views\Sistemas\CSitios\AESitios.Designer.cs">
+      <DependentUpon>AESitios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sistemas\CSitios\VSitios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sistemas\CSitios\VSitios.Designer.cs">
       <DependentUpon>VSitios.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="CrystalReport\RptPagare.rpt">
@@ -681,6 +784,15 @@
     <EmbeddedResource Include="Views\Catalogos\CProveedores\AEProveedores.resx">
       <DependentUpon>AEProveedores.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CTipoUnidades\AETipoUnidad.resx">
+      <DependentUpon>AETipoUnidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CTipoUnidades\VTipoUnidades.resx">
+      <DependentUpon>VTipoUnidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CUnidades\AEUnidad.resx">
+      <DependentUpon>AEUnidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\VConceptosFlujos.resx">
       <DependentUpon>VConceptosFlujos.cs</DependentUpon>
     </EmbeddedResource>
@@ -720,16 +832,34 @@
     <EmbeddedResource Include="Views\Contabilidad\CMovimientos\VSaldoxFecha.resx">
       <DependentUpon>VSaldoxFecha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gestoria\CPolizas\AEPolizas.resx">
+      <DependentUpon>AEPolizas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gestoria\CPolizas\VPolizas.resx">
+      <DependentUpon>VPolizas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Logistica\VConciliador.resx">
       <DependentUpon>VConciliador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Logistica\VMapa.resx">
       <DependentUpon>VMapa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sistemas\VEquiposComputo.resx">
+    <EmbeddedResource Include="Views\Nominas\CNomGeneral\VNomGeneral.resx">
+      <DependentUpon>VNomGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Nominas\CNomGeneral\VUploadArchivos.resx">
+      <DependentUpon>VUploadArchivos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CSnack\ReporteSnack.resx">
+      <DependentUpon>ReporteSnack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CSnack\VSnack.resx">
+      <DependentUpon>VSnack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sistemas\CEqComputo\VEquiposComputo.resx">
       <DependentUpon>VEquiposComputo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Catalogos\VUnidades.resx">
+    <EmbeddedResource Include="Views\Catalogos\CUnidades\VUnidades.resx">
       <DependentUpon>VUnidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\VUsuarios.resx">
@@ -757,16 +887,19 @@
     <EmbeddedResource Include="Views\Menus.resx">
       <DependentUpon>Menus.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sistemas\VEquiposMovil.resx">
+    <EmbeddedResource Include="Views\Sistemas\CEqMovil\VEquiposMovil.resx">
       <DependentUpon>VEquiposMovil.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sistemas\VLineas.resx">
+    <EmbeddedResource Include="Views\Sistemas\CLineas\VLineas.resx">
       <DependentUpon>VLineas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Logistica\CRutas\VRutas.resx">
       <DependentUpon>VRutas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Sistemas\VSitios.resx">
+    <EmbeddedResource Include="Views\Sistemas\CSitios\AESitios.resx">
+      <DependentUpon>AESitios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sistemas\CSitios\VSitios.resx">
       <DependentUpon>VSitios.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Models.edmx">
@@ -813,6 +946,7 @@
       <DependentUpon>Models.edmx</DependentUpon>
       <LastGenOutput>Models.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\carga-en-la-nube.png" />
     <None Include="Resources\avance-rapido.png" />
     <None Include="Resources\enviar.png" />
     <None Include="Resources\schedule.png" />

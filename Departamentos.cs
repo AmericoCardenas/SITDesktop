@@ -14,7 +14,16 @@ namespace SIT
     
     public partial class Departamentos
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Departamentos()
+        {
+            this.Trabajadores = new HashSet<Trabajadores>();
+        }
+    
         public int IdDepto { get; set; }
         public string Departamento { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Trabajadores> Trabajadores { get; set; }
     }
 }

@@ -15,10 +15,14 @@ using SIT.Views;
 using SIT.Views.Almacen;
 using SIT.Views.Catalogos;
 using SIT.Views.Catalogos.CProductosSnack;
+using SIT.Views.Catalogos.CTipoUnidades;
 using SIT.Views.Comercial;
 using SIT.Views.Contabilidad;
 using SIT.Views.Contabilidad.CMovimientos;
+using SIT.Views.Gestoria.CPolizas;
 using SIT.Views.Logistica;
+using SIT.Views.Nominas.CNomGeneral;
+using SIT.Views.RH;
 using SIT.Views.Sistemas;
 
 namespace SIT.Views
@@ -114,6 +118,9 @@ namespace SIT.Views
                 this.btn_tipos.Enabled = false;
                 this.btn_metodos.Enabled = false;
                 this.btn_prodsnack.Enabled = true;
+                this.btn_proveedores.Enabled = false;
+                this.btn_emp.Enabled = true;
+
                 #endregion
 
                 this.btn_snack.Enabled = true;
@@ -123,9 +130,12 @@ namespace SIT.Views
                 this.btn_comercial.Enabled = false;
                 this.btn_almacen.Enabled = false;
                 this.btn_comedor.Enabled = true;
+                this.btn_nominas.Enabled = true;
+                this.btn_gestoria.Enabled = false;
+
 
             }
-            else if (usuariologin.IdDepto == 4)
+            else if (usuariologin.IdDepto == 4) //CONTABILIDAD
             {
                 #region catalogos
                 this.btn_catalogos.Enabled = true;
@@ -137,32 +147,24 @@ namespace SIT.Views
                 this.btn_rubros.Enabled = true;
                 this.btn_tipos.Enabled = true;
                 this.btn_metodos.Enabled = true;
+                this.btn_prodsnack.Enabled = false;
+                this.btn_proveedores.Enabled = true;
+                this.btn_emp.Enabled = false;
+
                 #endregion
 
                 this.btn_sistemas.Enabled = false;
                 this.btn_logistica.Enabled = false;
                 this.btn_contabilidad.Enabled = true;
                 this.btn_comercial.Enabled = false;
-                this.btn_almacen.Enabled = false;             
-                this.btn_comedor.Enabled = false;
-
-            }
-            else if (usuariologin.IdDepto == 4)
-            {
-                #region catalogos
-                this.btn_catalogos.Enabled = false;
-                #endregion
-
-                this.btn_sistemas.Enabled = false;
-                this.btn_logistica.Enabled = false;
-                this.btn_contabilidad.Enabled = false;
-                this.btn_comercial.Enabled = true;
-                this.btn_almacen.Enabled = false;
-                this.btn_comedor.Enabled = false;
+                this.btn_almacen.Enabled = false;        
+                this.btn_comedor.Enabled = true;
+                this.btn_nominas.Enabled = false;
+                this.btn_gestoria.Enabled = false;
 
 
             }
-            else if (usuariologin.IdDepto == 5)
+            else if (usuariologin.IdDepto == 5) //ALMACEN
             {
                 #region catalogos
                 this.btn_catalogos.Enabled = false;
@@ -174,9 +176,38 @@ namespace SIT.Views
                 this.btn_comercial.Enabled = false;
                 this.btn_almacen.Enabled = true;
                 this.btn_comedor.Enabled = false;
+                this.btn_nominas.Enabled = false;
+                this.btn_gestoria.Enabled = false;
 
 
 
+            }
+            else if (usuariologin.IdDepto == 13) //GESTORIA
+            {
+                #region catalogos
+                this.btn_catalogos.Enabled = true;
+                this.btn_usuarios.Enabled = false;
+                this.btn_unidades.Enabled = true;
+                this.btn_clientes.Enabled = false;
+                this.btn_servicios.Enabled = false;
+                this.btn_conceptosf.Enabled = false;
+                this.btn_rubros.Enabled = false;
+                this.btn_tipos.Enabled = false;
+                this.btn_metodos.Enabled = false;
+                this.btn_prodsnack.Enabled = false;
+                this.btn_proveedores.Enabled = false;
+                this.btn_emp.Enabled = false;
+
+                #endregion
+
+                this.btn_sistemas.Enabled = false;
+                this.btn_logistica.Enabled = false;
+                this.btn_contabilidad.Enabled = false;
+                this.btn_comercial.Enabled = false;
+                this.btn_almacen.Enabled = false;
+                this.btn_comedor.Enabled = false;
+                this.btn_nominas.Enabled = false;  
+                this.btn_gestoria.Enabled = true;
             }
 
             //Thread workerThread = new Thread(new ThreadStart(CargarKeyLogger));
@@ -214,7 +245,7 @@ namespace SIT.Views
 
         private void btn_unidades_Click(object sender, EventArgs e)
         {
-            AbrirFormPanel(new VUnidades());
+            AbrirFormPanel(new VUnidades(usuariologin));
 
         }
 
@@ -275,7 +306,7 @@ namespace SIT.Views
 
         private void btn_sitios_Click(object sender, EventArgs e)
         {
-            AbrirFormPanel(new VSitios());
+            AbrirFormPanel(new VSitios(usuariologin));
 
         }
 
@@ -381,6 +412,44 @@ namespace SIT.Views
         private void btn_prodsnack_Click(object sender, EventArgs e)
         {
             AbrirFormPanel(new VProductosSnack(usuariologin));
+
+        }
+
+        private void btn_snack_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VSnack(usuariologin));
+
+        }
+
+        private void btn_nominas_Click(object sender, EventArgs e)
+        {
+            button = this.btn_nominas;
+            panel = this.pnl_nominas;
+            this.tmmenu.Start();
+        }
+
+        private void btn_nomgen_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VNomGeneral());
+
+        }
+
+        private void btn_tipounidades_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VTipoUnidades(usuariologin));
+
+        }
+
+        private void btn_gestoria_Click(object sender, EventArgs e)
+        {
+            button = this.btn_gestoria;
+            panel = this.pnl_gestoria;
+            this.tmmenu.Start();
+        }
+
+        private void btn_polizas_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VPolizas(usuariologin));
 
         }
     }

@@ -82,16 +82,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Unidades">
-      <EntityTypeMapping TypeName="SITModel.Unidades">
-        <MappingFragment StoreEntitySet="Unidades">
-          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-          <ScalarProperty Name="Marca" ColumnName="Marca" />
-          <ScalarProperty Name="GPS" ColumnName="GPS" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="SITModel.Usuarios">
         <MappingFragment StoreEntitySet="Usuarios">
@@ -298,6 +288,14 @@
     <EntitySetMapping Name="Trabajadores">
       <EntityTypeMapping TypeName="SITModel.Trabajadores">
         <MappingFragment StoreEntitySet="Trabajadores">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserEmp" ColumnName="UserEmp" />
+          <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+          <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
           <ScalarProperty Name="IdSamsara" ColumnName="IdSamsara" />
           <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
           <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
@@ -606,6 +604,216 @@
           <ScalarProperty Name="Precio" ColumnName="Precio" />
           <ScalarProperty Name="Producto" ColumnName="Producto" />
           <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstatusPSnack">
+      <EntityTypeMapping TypeName="SITModel.EstatusPSnack">
+        <MappingFragment StoreEntitySet="EstatusPSnack">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstatusSnack">
+      <EntityTypeMapping TypeName="SITModel.EstatusSnack">
+        <MappingFragment StoreEntitySet="EstatusSnack">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Snack">
+      <EntityTypeMapping TypeName="SITModel.Snack">
+        <MappingFragment StoreEntitySet="Snack">
+          <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+          <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+          <ScalarProperty Name="IdMetodoPago" ColumnName="IdMetodoPago" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="PrecioU" ColumnName="PrecioU" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Hora" ColumnName="Hora" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="IdSnack" ColumnName="IdSnack" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoPagoSnack">
+      <EntityTypeMapping TypeName="SITModel.TipoPagoSnack">
+        <MappingFragment StoreEntitySet="TipoPagoSnack">
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="IdTipoPago" ColumnName="IdTipoPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeduccionesCheckin">
+      <EntityTypeMapping TypeName="SITModel.DeduccionesCheckin">
+        <MappingFragment StoreEntitySet="DeduccionesCheckin">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Deduccion" ColumnName="Deduccion" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="IdDeduccionCheckin" ColumnName="IdDeduccionCheckin" />
+          <ScalarProperty Name="IdDeduccion" ColumnName="IdDeduccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NomGenCheckin">
+      <EntityTypeMapping TypeName="SITModel.NomGenCheckin">
+        <MappingFragment StoreEntitySet="NomGenCheckin">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Bonos" ColumnName="Bonos" />
+          <ScalarProperty Name="Deducciones" ColumnName="Deducciones" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="TotEsp" ColumnName="TotEsp" />
+          <ScalarProperty Name="TotTaxis" ColumnName="TotTaxis" />
+          <ScalarProperty Name="TotRedondos" ColumnName="TotRedondos" />
+          <ScalarProperty Name="TotSencillos" ColumnName="TotSencillos" />
+          <ScalarProperty Name="TotServ" ColumnName="TotServ" />
+          <ScalarProperty Name="FFinal" ColumnName="FFinal" />
+          <ScalarProperty Name="FInicial" ColumnName="FInicial" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="IdNomCheckin" ColumnName="IdNomCheckin" />
+          <ScalarProperty Name="IdNom" ColumnName="IdNom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiciosCheckin">
+      <EntityTypeMapping TypeName="SITModel.ServiciosCheckin">
+        <MappingFragment StoreEntitySet="ServiciosCheckin">
+          <ScalarProperty Name="ATarde" ColumnName="ATarde" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+          <ScalarProperty Name="Turno" ColumnName="Turno" />
+          <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="HServicio" ColumnName="HServicio" />
+          <ScalarProperty Name="FServicio" ColumnName="FServicio" />
+          <ScalarProperty Name="IdServicioCheckin" ColumnName="IdServicioCheckin" />
+          <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketsCheckin">
+      <EntityTypeMapping TypeName="SITModel.TicketsCheckin">
+        <MappingFragment StoreEntitySet="TicketsCheckin">
+          <ScalarProperty Name="RendGps" ColumnName="RendGps" />
+          <ScalarProperty Name="KmGpsRec" ColumnName="KmGpsRec" />
+          <ScalarProperty Name="KmGps" ColumnName="KmGps" />
+          <ScalarProperty Name="KmGpsAnt" ColumnName="KmGpsAnt" />
+          <ScalarProperty Name="RendReq" ColumnName="RendReq" />
+          <ScalarProperty Name="Litros" ColumnName="Litros" />
+          <ScalarProperty Name="FFinal" ColumnName="FFinal" />
+          <ScalarProperty Name="FInicial" ColumnName="FInicial" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="IdTicketCheckin" ColumnName="IdTicketCheckin" />
+          <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BonosCheckin">
+      <EntityTypeMapping TypeName="SITModel.BonosCheckin">
+        <MappingFragment StoreEntitySet="BonosCheckin">
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Bono" ColumnName="Bono" />
+          <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+          <ScalarProperty Name="IdBonoCheckin" ColumnName="IdBonoCheckin" />
+          <ScalarProperty Name="IdBono" ColumnName="IdBono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoUnidades">
+      <EntityTypeMapping TypeName="SITModel.TipoUnidades">
+        <MappingFragment StoreEntitySet="TipoUnidades">
+          <ScalarProperty Name="Rendimiento" ColumnName="Rendimiento" />
+          <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+          <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstatusUnidades">
+      <EntityTypeMapping TypeName="SITModel.EstatusUnidades">
+        <MappingFragment StoreEntitySet="EstatusUnidades">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MotoresUnidades">
+      <EntityTypeMapping TypeName="SITModel.MotoresUnidades">
+        <MappingFragment StoreEntitySet="MotoresUnidades">
+          <ScalarProperty Name="Motor" ColumnName="Motor" />
+          <ScalarProperty Name="IdMotor" ColumnName="IdMotor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PolizasUnidades">
+      <EntityTypeMapping TypeName="SITModel.PolizasUnidades">
+        <MappingFragment StoreEntitySet="PolizasUnidades">
+          <ScalarProperty Name="IdUsuarioCancelacion" ColumnName="IdUsuarioCancelacion" />
+          <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FVencimiento" ColumnName="FVencimiento" />
+          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+          <ScalarProperty Name="Inciso" ColumnName="Inciso" />
+          <ScalarProperty Name="Endoso" ColumnName="Endoso" />
+          <ScalarProperty Name="Costo" ColumnName="Costo" />
+          <ScalarProperty Name="NumPoliza" ColumnName="NumPoliza" />
+          <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+          <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModelosUnidades">
+      <EntityTypeMapping TypeName="SITModel.ModelosUnidades">
+        <MappingFragment StoreEntitySet="ModelosUnidades">
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Unidades">
+      <EntityTypeMapping TypeName="SITModel.Unidades">
+        <MappingFragment StoreEntitySet="Unidades">
+          <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+          <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+          <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+          <ScalarProperty Name="Pasajeros" ColumnName="Pasajeros" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+          <ScalarProperty Name="RendReq" ColumnName="RendReq" />
+          <ScalarProperty Name="IdMotor" ColumnName="IdMotor" />
+          <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+          <ScalarProperty Name="NSerie" ColumnName="NSerie" />
+          <ScalarProperty Name="Placa" ColumnName="Placa" />
+          <ScalarProperty Name="Economico" ColumnName="Economico" />
+          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

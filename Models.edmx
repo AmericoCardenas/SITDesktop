@@ -31,6 +31,18 @@
           <Property Name="Servicio" Type="varchar(max)" />
           <Property Name="Operador" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="BonosCheckin">
+          <Key>
+            <PropertyRef Name="IdBono" />
+          </Key>
+          <Property Name="IdBono" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdBonoCheckin" Type="varchar(max)" />
+          <Property Name="Empleado" Type="varchar(max)" />
+          <Property Name="Bono" Type="varchar(max)" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Observaciones" Type="varchar(max)" />
+          <Property Name="Fecha" Type="date" />
+        </EntityType>
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="IdCliente" />
@@ -65,6 +77,18 @@
           <Property Name="Tarjeta" Type="varchar" MaxLength="50" />
           <Property Name="MetodoN1" Type="varchar" MaxLength="50" />
           <Property Name="MetodoN2" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DeduccionesCheckin">
+          <Key>
+            <PropertyRef Name="IdDeduccion" />
+          </Key>
+          <Property Name="IdDeduccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdDeduccionCheckin" Type="varchar(max)" />
+          <Property Name="Empleado" Type="varchar(max)" />
+          <Property Name="Deduccion" Type="varchar(max)" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Observaciones" Type="varchar(max)" />
+          <Property Name="Fecha" Type="date" />
         </EntityType>
         <EntityType Name="Departamentos">
           <Key>
@@ -175,7 +199,28 @@
           <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Estatus" Type="varchar(max)" />
         </EntityType>
+        <EntityType Name="EstatusPSnack">
+          <Key>
+            <PropertyRef Name="IdEstatus" />
+          </Key>
+          <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="EstatusRutas">
+          <Key>
+            <PropertyRef Name="IdEstatus" />
+          </Key>
+          <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EstatusSnack">
+          <Key>
+            <PropertyRef Name="IdEstatus" />
+          </Key>
+          <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Estatus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EstatusUnidades">
           <Key>
             <PropertyRef Name="IdEstatus" />
           </Key>
@@ -262,6 +307,20 @@
           <Property Name="IdMetodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Metodo" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ModelosUnidades">
+          <Key>
+            <PropertyRef Name="IdModelo" />
+          </Key>
+          <Property Name="IdModelo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Modelo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="MotoresUnidades">
+          <Key>
+            <PropertyRef Name="IdMotor" />
+          </Key>
+          <Property Name="IdMotor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Motor" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Movimientos">
           <Key>
             <PropertyRef Name="IdMovimiento" />
@@ -293,6 +352,25 @@
           <Property Name="Nombre" Type="varchar" MaxLength="50" />
           <Property Name="IdEstado" Type="int" />
         </EntityType>
+        <EntityType Name="NomGenCheckin">
+          <Key>
+            <PropertyRef Name="IdNom" />
+          </Key>
+          <Property Name="IdNom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNomCheckin" Type="varchar(max)" />
+          <Property Name="Empleado" Type="varchar(max)" />
+          <Property Name="FInicial" Type="date" />
+          <Property Name="FFinal" Type="date" />
+          <Property Name="TotServ" Type="int" />
+          <Property Name="TotSencillos" Type="int" />
+          <Property Name="TotRedondos" Type="int" />
+          <Property Name="TotTaxis" Type="int" />
+          <Property Name="TotEsp" Type="int" />
+          <Property Name="Salario" Type="float" />
+          <Property Name="Deducciones" Type="float" />
+          <Property Name="Bonos" Type="float" />
+          <Property Name="Total" Type="float" />
+        </EntityType>
         <EntityType Name="NotasMovimientos">
           <Key>
             <PropertyRef Name="IdNota" />
@@ -318,6 +396,25 @@
           </Key>
           <Property Name="IdPais" Type="int" Nullable="false" />
           <Property Name="Pais" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PolizasUnidades">
+          <Key>
+            <PropertyRef Name="IdPoliza" />
+          </Key>
+          <Property Name="IdPoliza" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="NumPoliza" Type="varchar" MaxLength="50" />
+          <Property Name="Costo" Type="float" />
+          <Property Name="Endoso" Type="varchar" MaxLength="50" />
+          <Property Name="Inciso" Type="varchar" MaxLength="50" />
+          <Property Name="IdUnidad" Type="int" />
+          <Property Name="FVencimiento" Type="date" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="IdUsuarioCreo" Type="int" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="IdUsuarioModifico" Type="int" />
+          <Property Name="FechaCancelacion" Type="date" />
+          <Property Name="IdUsuarioCancelacion" Type="int" />
         </EntityType>
         <EntityType Name="PrestamoHerramientas">
           <Key>
@@ -447,6 +544,43 @@
           <Property Name="IdServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Servicio" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="ServiciosCheckin">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdServicioCheckin" Type="varchar(max)" />
+          <Property Name="FServicio" Type="date" />
+          <Property Name="HServicio" Type="varchar(max)" />
+          <Property Name="Cliente" Type="varchar(max)" />
+          <Property Name="Ruta" Type="varchar(max)" />
+          <Property Name="Turno" Type="varchar(max)" />
+          <Property Name="Tipo" Type="varchar(max)" />
+          <Property Name="Unidad" Type="varchar(max)" />
+          <Property Name="Empleado" Type="varchar(max)" />
+          <Property Name="ATarde" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Snack">
+          <Key>
+            <PropertyRef Name="IdSnack" />
+          </Key>
+          <Property Name="IdSnack" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="Hora" Type="varchar" MaxLength="50" />
+          <Property Name="IdEmpleado" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" />
+          <Property Name="PrecioU" Type="float" />
+          <Property Name="Cantidad" Type="float" />
+          <Property Name="Total" Type="float" />
+          <Property Name="IdMetodoPago" Type="int" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="IdUsuarioCreo" Type="int" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="IdUsuarioModifico" Type="int" />
+          <Property Name="FechaCancelacion" Type="date" />
+          <Property Name="IdUsuarioCancelo" Type="int" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -456,6 +590,30 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TicketsCheckin">
+          <Key>
+            <PropertyRef Name="IdTicket" />
+          </Key>
+          <Property Name="IdTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTicketCheckin" Type="varchar(max)" />
+          <Property Name="Unidad" Type="varchar(max)" />
+          <Property Name="Empleado" Type="varchar(max)" />
+          <Property Name="FInicial" Type="date" />
+          <Property Name="FFinal" Type="date" />
+          <Property Name="Litros" Type="float" />
+          <Property Name="RendReq" Type="float" />
+          <Property Name="KmGpsAnt" Type="float" />
+          <Property Name="KmGps" Type="float" />
+          <Property Name="KmGpsRec" Type="float" />
+          <Property Name="RendGps" Type="float" />
+        </EntityType>
+        <EntityType Name="TipoPagoSnack">
+          <Key>
+            <PropertyRef Name="IdTipoPago" />
+          </Key>
+          <Property Name="IdTipoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pago" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TiposCostos">
           <Key>
@@ -478,6 +636,21 @@
           <Property Name="IdTipo" Type="int" Nullable="false" />
           <Property Name="Tipo" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="TipoUnidades">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Unidad" Type="varchar(max)" />
+          <Property Name="Rendimiento" Type="float" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="IdUsuarioCreo" Type="int" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="IdUsuarioModifico" Type="int" />
+          <Property Name="FechaCancelacion" Type="date" />
+          <Property Name="IdUsuarioCancelo" Type="int" />
+        </EntityType>
         <EntityType Name="Trabajadores">
           <Key>
             <PropertyRef Name="IdEmpleado" />
@@ -492,6 +665,14 @@
           <Property Name="IdDepto" Type="int" />
           <Property Name="IdEstatus" Type="int" />
           <Property Name="IdSamsara" Type="int" />
+          <Property Name="UserEmp" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="IdUsuarioCreo" Type="int" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="IdUsuarioModifico" Type="int" />
+          <Property Name="FechaCancelacion" Type="date" />
+          <Property Name="IdUsuarioCancelo" Type="int" />
         </EntityType>
         <EntityType Name="Turnos">
           <Key>
@@ -504,10 +685,23 @@
           <Key>
             <PropertyRef Name="IdUnidad" />
           </Key>
-          <Property Name="IdUnidad" Type="int" Nullable="false" />
-          <Property Name="Unidad" Type="varchar" MaxLength="50" />
-          <Property Name="Marca" Type="varchar" MaxLength="50" />
-          <Property Name="GPS" Type="varchar" MaxLength="50" />
+          <Property Name="IdUnidad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Economico" Type="varchar" MaxLength="50" />
+          <Property Name="Placa" Type="varchar" MaxLength="50" />
+          <Property Name="NSerie" Type="varchar" MaxLength="50" />
+          <Property Name="IdTipo" Type="int" />
+          <Property Name="IdMotor" Type="int" />
+          <Property Name="RendReq" Type="float" />
+          <Property Name="IdModelo" Type="int" />
+          <Property Name="Color" Type="varchar" MaxLength="50" />
+          <Property Name="Pasajeros" Type="int" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FechaCreacion" Type="date" />
+          <Property Name="IdUsuarioCreo" Type="int" />
+          <Property Name="FechaModificacion" Type="date" />
+          <Property Name="IdUsuarioModifico" Type="int" />
+          <Property Name="FechaCancelacion" Type="date" />
+          <Property Name="IdUsuarioCancelo" Type="int" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -614,6 +808,90 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ProductosSnack_EstatusPSnack">
+          <End Role="EstatusPSnack" Type="Self.EstatusPSnack" Multiplicity="0..1" />
+          <End Role="ProductosSnack" Type="Self.ProductosSnack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstatusPSnack">
+              <PropertyRef Name="IdEstatus" />
+            </Principal>
+            <Dependent Role="ProductosSnack">
+              <PropertyRef Name="IdEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductosSnack_Medidas">
+          <End Role="Medidas" Type="Self.Medidas" Multiplicity="0..1" />
+          <End Role="ProductosSnack" Type="Self.ProductosSnack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medidas">
+              <PropertyRef Name="IdMedida" />
+            </Principal>
+            <Dependent Role="ProductosSnack">
+              <PropertyRef Name="IdMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_EstatusSnack">
+          <End Role="EstatusSnack" Type="Self.EstatusSnack" Multiplicity="0..1" />
+          <End Role="Snack" Type="Self.Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstatusSnack">
+              <PropertyRef Name="IdEstatus" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_ProductosSnack">
+          <End Role="ProductosSnack" Type="Self.ProductosSnack" Multiplicity="0..1" />
+          <End Role="Snack" Type="Self.Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductosSnack">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_TipoPagoSnack">
+          <End Role="TipoPagoSnack" Type="Self.TipoPagoSnack" Multiplicity="0..1" />
+          <End Role="Snack" Type="Self.Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPagoSnack">
+              <PropertyRef Name="IdTipoPago" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdMetodoPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_Trabajadores">
+          <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="1" />
+          <End Role="Snack" Type="Self.Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajadores">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Trabajadores_Departamentos">
+          <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
+          <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Trabajadores">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Trabajadores_Puestos">
           <End Role="Puestos" Type="Self.Puestos" Multiplicity="0..1" />
           <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
@@ -641,9 +919,11 @@
         <EntityContainer Name="SITModelStoreContainer">
           <EntitySet Name="BitacoraBitad" EntityType="Self.BitacoraBitad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BitacoraRol" EntityType="Self.BitacoraRol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BonosCheckin" EntityType="Self.BonosCheckin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConceptosFlujos" EntityType="Self.ConceptosFlujos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DatosNominaEmpleados" EntityType="Self.DatosNominaEmpleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeduccionesCheckin" EntityType="Self.DeduccionesCheckin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DomicilioEmpleados" EntityType="Self.DomicilioEmpleados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DomiciliosClientes" EntityType="Self.DomiciliosClientes" Schema="dbo" store:Type="Tables" />
@@ -654,7 +934,10 @@
           <EntitySet Name="EstatusEquipos" EntityType="Self.EstatusEquipos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstatusLineas" EntityType="Self.EstatusLineas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstatusPHerramientas" EntityType="Self.EstatusPHerramientas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstatusPSnack" EntityType="Self.EstatusPSnack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstatusRutas" EntityType="Self.EstatusRutas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstatusSnack" EntityType="Self.EstatusSnack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstatusUnidades" EntityType="Self.EstatusUnidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstatusUsuarios" EntityType="Self.EstatusUsuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EstatusVE" EntityType="Self.EstatusVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Flujos" EntityType="Self.Flujos" Schema="dbo" store:Type="Tables" />
@@ -663,10 +946,14 @@
           <EntitySet Name="Lineas" EntityType="Self.Lineas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medidas" EntityType="Self.Medidas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MetodosFlujos" EntityType="Self.MetodosFlujos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModelosUnidades" EntityType="Self.ModelosUnidades" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MotoresUnidades" EntityType="Self.MotoresUnidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Movimientos" EntityType="Self.Movimientos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NomGenCheckin" EntityType="Self.NomGenCheckin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasMovimientos" EntityType="Self.NotasMovimientos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PolizasUnidades" EntityType="Self.PolizasUnidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrestamoHerramientas" EntityType="Self.PrestamoHerramientas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosSnack" EntityType="Self.ProductosSnack" Schema="dbo" store:Type="Tables" />
@@ -676,10 +963,15 @@
           <EntitySet Name="RubrosFlujos" EntityType="Self.RubrosFlujos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiciosCheckin" EntityType="Self.ServiciosCheckin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Snack" EntityType="Self.Snack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketsCheckin" EntityType="Self.TicketsCheckin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoPagoSnack" EntityType="Self.TipoPagoSnack" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposCostos" EntityType="Self.TiposCostos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposFlujos" EntityType="Self.TiposFlujos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TiposRutas" EntityType="Self.TiposRutas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUnidades" EntityType="Self.TipoUnidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Trabajadores" EntityType="Self.Trabajadores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Unidades" EntityType="Self.Unidades" Schema="dbo" store:Type="Tables" />
@@ -702,6 +994,34 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Municipios" EntitySet="Municipios" />
           </AssociationSet>
+          <AssociationSet Name="FK_ProductosSnack_EstatusPSnack" Association="Self.FK_ProductosSnack_EstatusPSnack">
+            <End Role="EstatusPSnack" EntitySet="EstatusPSnack" />
+            <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductosSnack_Medidas" Association="Self.FK_ProductosSnack_Medidas">
+            <End Role="Medidas" EntitySet="Medidas" />
+            <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_EstatusSnack" Association="Self.FK_Snack_EstatusSnack">
+            <End Role="EstatusSnack" EntitySet="EstatusSnack" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_ProductosSnack" Association="Self.FK_Snack_ProductosSnack">
+            <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_TipoPagoSnack" Association="Self.FK_Snack_TipoPagoSnack">
+            <End Role="TipoPagoSnack" EntitySet="TipoPagoSnack" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_Trabajadores" Association="Self.FK_Snack_Trabajadores">
+            <End Role="Trabajadores" EntitySet="Trabajadores" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Trabajadores_Departamentos" Association="Self.FK_Trabajadores_Departamentos">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Trabajadores" EntitySet="Trabajadores" />
+          </AssociationSet>
           <AssociationSet Name="FK_Trabajadores_Puestos" Association="Self.FK_Trabajadores_Puestos">
             <End Role="Puestos" EntitySet="Puestos" />
             <End Role="Trabajadores" EntitySet="Trabajadores" />
@@ -721,6 +1041,7 @@
           </Key>
           <Property Name="IdDepto" Type="Int32" Nullable="false" />
           <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Trabajadores_Departamentos" FromRole="Departamentos" ToRole="Trabajadores" />
         </EntityType>
         <EntityType Name="DomiciliosClientes">
           <Key>
@@ -792,15 +1113,6 @@
           <Property Name="IdTurno" Type="Int32" Nullable="false" />
           <Property Name="Turno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Unidades">
-          <Key>
-            <PropertyRef Name="IdUnidad" />
-          </Key>
-          <Property Name="IdUnidad" Type="Int32" Nullable="false" />
-          <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="GPS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_Estados_Paises">
           <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
           <End Role="Estados" Type="Self.Estados" Multiplicity="*" />
@@ -835,7 +1147,6 @@
           <EntitySet Name="Paises" EntityType="Self.Paises" />
           <EntitySet Name="TiposRutas" EntityType="Self.TiposRutas" />
           <EntitySet Name="Turnos" EntityType="Self.Turnos" />
-          <EntitySet Name="Unidades" EntityType="Self.Unidades" />
           <AssociationSet Name="FK_Estados_Paises" Association="Self.FK_Estados_Paises">
             <End Role="Paises" EntitySet="Paises" />
             <End Role="Estados" EntitySet="Estados" />
@@ -897,6 +1208,49 @@
           <EntitySet Name="PrestamoHerramientas" EntityType="SITModel.PrestamoHerramientas" />
           <EntitySet Name="Medidas" EntityType="SITModel.Medidas" />
           <EntitySet Name="ProductosSnack" EntityType="SITModel.ProductosSnack" />
+          <EntitySet Name="EstatusPSnack" EntityType="SITModel.EstatusPSnack" />
+          <EntitySet Name="EstatusSnack" EntityType="SITModel.EstatusSnack" />
+          <EntitySet Name="Snack" EntityType="SITModel.Snack" />
+          <EntitySet Name="TipoPagoSnack" EntityType="SITModel.TipoPagoSnack" />
+          <AssociationSet Name="FK_Trabajadores_Departamentos" Association="SITModel.FK_Trabajadores_Departamentos">
+            <End Role="Departamentos" EntitySet="Departamentos" />
+            <End Role="Trabajadores" EntitySet="Trabajadores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductosSnack_EstatusPSnack" Association="SITModel.FK_ProductosSnack_EstatusPSnack">
+            <End Role="EstatusPSnack" EntitySet="EstatusPSnack" />
+            <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_EstatusSnack" Association="SITModel.FK_Snack_EstatusSnack">
+            <End Role="EstatusSnack" EntitySet="EstatusSnack" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductosSnack_Medidas" Association="SITModel.FK_ProductosSnack_Medidas">
+            <End Role="Medidas" EntitySet="Medidas" />
+            <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_ProductosSnack" Association="SITModel.FK_Snack_ProductosSnack">
+            <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_TipoPagoSnack" Association="SITModel.FK_Snack_TipoPagoSnack">
+            <End Role="TipoPagoSnack" EntitySet="TipoPagoSnack" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Snack_Trabajadores" Association="SITModel.FK_Snack_Trabajadores">
+            <End Role="Trabajadores" EntitySet="Trabajadores" />
+            <End Role="Snack" EntitySet="Snack" />
+          </AssociationSet>
+          <EntitySet Name="DeduccionesCheckin" EntityType="SITModel.DeduccionesCheckin" />
+          <EntitySet Name="NomGenCheckin" EntityType="SITModel.NomGenCheckin" />
+          <EntitySet Name="ServiciosCheckin" EntityType="SITModel.ServiciosCheckin" />
+          <EntitySet Name="TicketsCheckin" EntityType="SITModel.TicketsCheckin" />
+          <EntitySet Name="BonosCheckin" EntityType="SITModel.BonosCheckin" />
+          <EntitySet Name="TipoUnidades" EntityType="SITModel.TipoUnidades" />
+          <EntitySet Name="EstatusUnidades" EntityType="SITModel.EstatusUnidades" />
+          <EntitySet Name="MotoresUnidades" EntityType="SITModel.MotoresUnidades" />
+          <EntitySet Name="PolizasUnidades" EntityType="SITModel.PolizasUnidades" />
+          <EntitySet Name="ModelosUnidades" EntityType="SITModel.ModelosUnidades" />
+          <EntitySet Name="Unidades" EntityType="SITModel.Unidades" />
         </EntityContainer>
         <EntityType Name="Usuarios">
           <Key>
@@ -1107,6 +1461,16 @@
           <NavigationProperty Name="Lineas" Relationship="SITModel.FK_Lineas_Trabajadores" FromRole="Trabajadores" ToRole="Lineas" />
           <NavigationProperty Name="Puestos" Relationship="SITModel.FK_Trabajadores_Puestos" FromRole="Trabajadores" ToRole="Puestos" />
           <NavigationProperty Name="UsuariosSitios" Relationship="SITModel.FK_UsuariosSitios_Trabajadores" FromRole="Trabajadores" ToRole="UsuariosSitios" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCreo" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioModifico" Type="Int32" />
+          <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCancelo" Type="Int32" />
+          <NavigationProperty Name="Departamentos" Relationship="SITModel.FK_Trabajadores_Departamentos" FromRole="Trabajadores" ToRole="Departamentos" />
+          <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_Trabajadores" FromRole="Trabajadores" ToRole="Snack" />
+          <Property Name="UserEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="EstatusEquipos">
           <Key>
@@ -1415,6 +1779,7 @@
           </Key>
           <Property Name="IdMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Medida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductosSnack" Relationship="SITModel.FK_ProductosSnack_Medidas" FromRole="Medidas" ToRole="ProductosSnack" />
         </EntityType>
         <EntityType Name="ProductosSnack">
           <Key>
@@ -1432,6 +1797,295 @@
           <Property Name="FechaModifico" Type="DateTime" Precision="0" />
           <Property Name="IdUsuarioCancelo" Type="Int32" />
           <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="EstatusPSnack" Relationship="SITModel.FK_ProductosSnack_EstatusPSnack" FromRole="ProductosSnack" ToRole="EstatusPSnack" />
+          <NavigationProperty Name="Medidas" Relationship="SITModel.FK_ProductosSnack_Medidas" FromRole="ProductosSnack" ToRole="Medidas" />
+          <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_ProductosSnack" FromRole="ProductosSnack" ToRole="Snack" />
+        </EntityType>
+        <EntityType Name="EstatusPSnack">
+          <Key>
+            <PropertyRef Name="IdEstatus" />
+          </Key>
+          <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductosSnack" Relationship="SITModel.FK_ProductosSnack_EstatusPSnack" FromRole="EstatusPSnack" ToRole="ProductosSnack" />
+        </EntityType>
+        <EntityType Name="EstatusSnack">
+          <Key>
+            <PropertyRef Name="IdEstatus" />
+          </Key>
+          <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_EstatusSnack" FromRole="EstatusSnack" ToRole="Snack" />
+        </EntityType>
+        <EntityType Name="Snack">
+          <Key>
+            <PropertyRef Name="IdSnack" />
+          </Key>
+          <Property Name="IdSnack" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" />
+          <Property Name="PrecioU" Type="Double" />
+          <Property Name="Cantidad" Type="Double" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="IdMetodoPago" Type="Int32" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCreo" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioModifico" Type="Int32" />
+          <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCancelo" Type="Int32" />
+          <NavigationProperty Name="EstatusSnack" Relationship="SITModel.FK_Snack_EstatusSnack" FromRole="Snack" ToRole="EstatusSnack" />
+          <NavigationProperty Name="ProductosSnack" Relationship="SITModel.FK_Snack_ProductosSnack" FromRole="Snack" ToRole="ProductosSnack" />
+          <NavigationProperty Name="TipoPagoSnack" Relationship="SITModel.FK_Snack_TipoPagoSnack" FromRole="Snack" ToRole="TipoPagoSnack" />
+          <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Snack_Trabajadores" FromRole="Snack" ToRole="Trabajadores" />
+        </EntityType>
+        <EntityType Name="TipoPagoSnack">
+          <Key>
+            <PropertyRef Name="IdTipoPago" />
+          </Key>
+          <Property Name="IdTipoPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_TipoPagoSnack" FromRole="TipoPagoSnack" ToRole="Snack" />
+        </EntityType>
+        <Association Name="FK_Trabajadores_Departamentos">
+          <End Type="SITModel.Departamentos" Role="Departamentos" Multiplicity="0..1" />
+          <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamentos">
+              <PropertyRef Name="IdDepto" />
+            </Principal>
+            <Dependent Role="Trabajadores">
+              <PropertyRef Name="IdDepto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductosSnack_EstatusPSnack">
+          <End Type="SITModel.EstatusPSnack" Role="EstatusPSnack" Multiplicity="0..1" />
+          <End Type="SITModel.ProductosSnack" Role="ProductosSnack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstatusPSnack">
+              <PropertyRef Name="IdEstatus" />
+            </Principal>
+            <Dependent Role="ProductosSnack">
+              <PropertyRef Name="IdEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_EstatusSnack">
+          <End Type="SITModel.EstatusSnack" Role="EstatusSnack" Multiplicity="0..1" />
+          <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstatusSnack">
+              <PropertyRef Name="IdEstatus" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdEstatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductosSnack_Medidas">
+          <End Type="SITModel.Medidas" Role="Medidas" Multiplicity="0..1" />
+          <End Type="SITModel.ProductosSnack" Role="ProductosSnack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medidas">
+              <PropertyRef Name="IdMedida" />
+            </Principal>
+            <Dependent Role="ProductosSnack">
+              <PropertyRef Name="IdMedida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_ProductosSnack">
+          <End Type="SITModel.ProductosSnack" Role="ProductosSnack" Multiplicity="0..1" />
+          <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductosSnack">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_TipoPagoSnack">
+          <End Type="SITModel.TipoPagoSnack" Role="TipoPagoSnack" Multiplicity="0..1" />
+          <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoPagoSnack">
+              <PropertyRef Name="IdTipoPago" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdMetodoPago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Snack_Trabajadores">
+          <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="1" />
+          <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Trabajadores">
+              <PropertyRef Name="IdEmpleado" />
+            </Principal>
+            <Dependent Role="Snack">
+              <PropertyRef Name="IdEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DeduccionesCheckin">
+          <Key>
+            <PropertyRef Name="IdDeduccion" />
+          </Key>
+          <Property Name="IdDeduccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDeduccionCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Deduccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="NomGenCheckin">
+          <Key>
+            <PropertyRef Name="IdNom" />
+          </Key>
+          <Property Name="IdNom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNomCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FInicial" Type="DateTime" Precision="0" />
+          <Property Name="FFinal" Type="DateTime" Precision="0" />
+          <Property Name="TotServ" Type="Int32" />
+          <Property Name="TotSencillos" Type="Int32" />
+          <Property Name="TotRedondos" Type="Int32" />
+          <Property Name="TotTaxis" Type="Int32" />
+          <Property Name="TotEsp" Type="Int32" />
+          <Property Name="Salario" Type="Double" />
+          <Property Name="Deducciones" Type="Double" />
+          <Property Name="Bonos" Type="Double" />
+          <Property Name="Total" Type="Double" />
+        </EntityType>
+        <EntityType Name="ServiciosCheckin">
+          <Key>
+            <PropertyRef Name="IdServicio" />
+          </Key>
+          <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdServicioCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FServicio" Type="DateTime" Precision="0" />
+          <Property Name="HServicio" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Turno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ATarde" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TicketsCheckin">
+          <Key>
+            <PropertyRef Name="IdTicket" />
+          </Key>
+          <Property Name="IdTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTicketCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Unidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FInicial" Type="DateTime" Precision="0" />
+          <Property Name="FFinal" Type="DateTime" Precision="0" />
+          <Property Name="Litros" Type="Double" />
+          <Property Name="RendReq" Type="Double" />
+          <Property Name="KmGpsAnt" Type="Double" />
+          <Property Name="KmGps" Type="Double" />
+          <Property Name="KmGpsRec" Type="Double" />
+          <Property Name="RendGps" Type="Double" />
+        </EntityType>
+        <EntityType Name="BonosCheckin">
+          <Key>
+            <PropertyRef Name="IdBono" />
+          </Key>
+          <Property Name="IdBono" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBonoCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Bono" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TipoUnidades">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Unidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCreo" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioModifico" Type="Int32" />
+          <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCancelo" Type="Int32" />
+          <Property Name="Rendimiento" Type="Double" />
+        </EntityType>
+        <EntityType Name="EstatusUnidades">
+          <Key>
+            <PropertyRef Name="IdEstatus" />
+          </Key>
+          <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MotoresUnidades">
+          <Key>
+            <PropertyRef Name="IdMotor" />
+          </Key>
+          <Property Name="IdMotor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Motor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="PolizasUnidades">
+          <Key>
+            <PropertyRef Name="IdPoliza" />
+          </Key>
+          <Property Name="IdPoliza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="NumPoliza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Costo" Type="Double" />
+          <Property Name="Endoso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Inciso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdUnidad" Type="Int32" />
+          <Property Name="FVencimiento" Type="DateTime" Precision="0" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCreo" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioModifico" Type="Int32" />
+          <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCancelacion" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ModelosUnidades">
+          <Key>
+            <PropertyRef Name="IdModelo" />
+          </Key>
+          <Property Name="IdModelo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Unidades">
+          <Key>
+            <PropertyRef Name="IdUnidad" />
+          </Key>
+          <Property Name="IdUnidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Economico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Placa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdTipo" Type="Int32" />
+          <Property Name="IdMotor" Type="Int32" />
+          <Property Name="RendReq" Type="Double" />
+          <Property Name="IdModelo" Type="Int32" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pasajeros" Type="Int32" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCreo" Type="Int32" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioModifico" Type="Int32" />
+          <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+          <Property Name="IdUsuarioCancelo" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1517,16 +2171,6 @@
               <MappingFragment StoreEntitySet="Turnos">
                 <ScalarProperty Name="IdTurno" ColumnName="IdTurno" />
                 <ScalarProperty Name="Turno" ColumnName="Turno" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Unidades">
-            <EntityTypeMapping TypeName="SITModel.Unidades">
-              <MappingFragment StoreEntitySet="Unidades">
-                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="GPS" ColumnName="GPS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1736,6 +2380,14 @@
           <EntitySetMapping Name="Trabajadores">
             <EntityTypeMapping TypeName="SITModel.Trabajadores">
               <MappingFragment StoreEntitySet="Trabajadores">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserEmp" ColumnName="UserEmp" />
+                <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="IdSamsara" ColumnName="IdSamsara" />
                 <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
                 <ScalarProperty Name="IdDepto" ColumnName="IdDepto" />
@@ -2044,6 +2696,216 @@
                 <ScalarProperty Name="Precio" ColumnName="Precio" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
                 <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstatusPSnack">
+            <EntityTypeMapping TypeName="SITModel.EstatusPSnack">
+              <MappingFragment StoreEntitySet="EstatusPSnack">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstatusSnack">
+            <EntityTypeMapping TypeName="SITModel.EstatusSnack">
+              <MappingFragment StoreEntitySet="EstatusSnack">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Snack">
+            <EntityTypeMapping TypeName="SITModel.Snack">
+              <MappingFragment StoreEntitySet="Snack">
+                <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="IdMetodoPago" ColumnName="IdMetodoPago" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="PrecioU" ColumnName="PrecioU" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Hora" ColumnName="Hora" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdSnack" ColumnName="IdSnack" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoPagoSnack">
+            <EntityTypeMapping TypeName="SITModel.TipoPagoSnack">
+              <MappingFragment StoreEntitySet="TipoPagoSnack">
+                <ScalarProperty Name="Pago" ColumnName="Pago" />
+                <ScalarProperty Name="IdTipoPago" ColumnName="IdTipoPago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeduccionesCheckin">
+            <EntityTypeMapping TypeName="SITModel.DeduccionesCheckin">
+              <MappingFragment StoreEntitySet="DeduccionesCheckin">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Deduccion" ColumnName="Deduccion" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="IdDeduccionCheckin" ColumnName="IdDeduccionCheckin" />
+                <ScalarProperty Name="IdDeduccion" ColumnName="IdDeduccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NomGenCheckin">
+            <EntityTypeMapping TypeName="SITModel.NomGenCheckin">
+              <MappingFragment StoreEntitySet="NomGenCheckin">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Bonos" ColumnName="Bonos" />
+                <ScalarProperty Name="Deducciones" ColumnName="Deducciones" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+                <ScalarProperty Name="TotEsp" ColumnName="TotEsp" />
+                <ScalarProperty Name="TotTaxis" ColumnName="TotTaxis" />
+                <ScalarProperty Name="TotRedondos" ColumnName="TotRedondos" />
+                <ScalarProperty Name="TotSencillos" ColumnName="TotSencillos" />
+                <ScalarProperty Name="TotServ" ColumnName="TotServ" />
+                <ScalarProperty Name="FFinal" ColumnName="FFinal" />
+                <ScalarProperty Name="FInicial" ColumnName="FInicial" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="IdNomCheckin" ColumnName="IdNomCheckin" />
+                <ScalarProperty Name="IdNom" ColumnName="IdNom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiciosCheckin">
+            <EntityTypeMapping TypeName="SITModel.ServiciosCheckin">
+              <MappingFragment StoreEntitySet="ServiciosCheckin">
+                <ScalarProperty Name="ATarde" ColumnName="ATarde" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Turno" ColumnName="Turno" />
+                <ScalarProperty Name="Ruta" ColumnName="Ruta" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="HServicio" ColumnName="HServicio" />
+                <ScalarProperty Name="FServicio" ColumnName="FServicio" />
+                <ScalarProperty Name="IdServicioCheckin" ColumnName="IdServicioCheckin" />
+                <ScalarProperty Name="IdServicio" ColumnName="IdServicio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketsCheckin">
+            <EntityTypeMapping TypeName="SITModel.TicketsCheckin">
+              <MappingFragment StoreEntitySet="TicketsCheckin">
+                <ScalarProperty Name="RendGps" ColumnName="RendGps" />
+                <ScalarProperty Name="KmGpsRec" ColumnName="KmGpsRec" />
+                <ScalarProperty Name="KmGps" ColumnName="KmGps" />
+                <ScalarProperty Name="KmGpsAnt" ColumnName="KmGpsAnt" />
+                <ScalarProperty Name="RendReq" ColumnName="RendReq" />
+                <ScalarProperty Name="Litros" ColumnName="Litros" />
+                <ScalarProperty Name="FFinal" ColumnName="FFinal" />
+                <ScalarProperty Name="FInicial" ColumnName="FInicial" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="IdTicketCheckin" ColumnName="IdTicketCheckin" />
+                <ScalarProperty Name="IdTicket" ColumnName="IdTicket" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BonosCheckin">
+            <EntityTypeMapping TypeName="SITModel.BonosCheckin">
+              <MappingFragment StoreEntitySet="BonosCheckin">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Bono" ColumnName="Bono" />
+                <ScalarProperty Name="Empleado" ColumnName="Empleado" />
+                <ScalarProperty Name="IdBonoCheckin" ColumnName="IdBonoCheckin" />
+                <ScalarProperty Name="IdBono" ColumnName="IdBono" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUnidades">
+            <EntityTypeMapping TypeName="SITModel.TipoUnidades">
+              <MappingFragment StoreEntitySet="TipoUnidades">
+                <ScalarProperty Name="Rendimiento" ColumnName="Rendimiento" />
+                <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstatusUnidades">
+            <EntityTypeMapping TypeName="SITModel.EstatusUnidades">
+              <MappingFragment StoreEntitySet="EstatusUnidades">
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MotoresUnidades">
+            <EntityTypeMapping TypeName="SITModel.MotoresUnidades">
+              <MappingFragment StoreEntitySet="MotoresUnidades">
+                <ScalarProperty Name="Motor" ColumnName="Motor" />
+                <ScalarProperty Name="IdMotor" ColumnName="IdMotor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PolizasUnidades">
+            <EntityTypeMapping TypeName="SITModel.PolizasUnidades">
+              <MappingFragment StoreEntitySet="PolizasUnidades">
+                <ScalarProperty Name="IdUsuarioCancelacion" ColumnName="IdUsuarioCancelacion" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FVencimiento" ColumnName="FVencimiento" />
+                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+                <ScalarProperty Name="Inciso" ColumnName="Inciso" />
+                <ScalarProperty Name="Endoso" ColumnName="Endoso" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="NumPoliza" ColumnName="NumPoliza" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="IdPoliza" ColumnName="IdPoliza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModelosUnidades">
+            <EntityTypeMapping TypeName="SITModel.ModelosUnidades">
+              <MappingFragment StoreEntitySet="ModelosUnidades">
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Unidades">
+            <EntityTypeMapping TypeName="SITModel.Unidades">
+              <MappingFragment StoreEntitySet="Unidades">
+                <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
+                <ScalarProperty Name="FechaCancelacion" ColumnName="FechaCancelacion" />
+                <ScalarProperty Name="IdUsuarioModifico" ColumnName="IdUsuarioModifico" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="IdUsuarioCreo" ColumnName="IdUsuarioCreo" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Pasajeros" ColumnName="Pasajeros" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="IdModelo" ColumnName="IdModelo" />
+                <ScalarProperty Name="RendReq" ColumnName="RendReq" />
+                <ScalarProperty Name="IdMotor" ColumnName="IdMotor" />
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="NSerie" ColumnName="NSerie" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Economico" ColumnName="Economico" />
+                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -113,6 +113,16 @@ namespace SIT.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap carga_en_la_nube {
+            get {
+                object obj = ResourceManager.GetObject("carga-en-la-nube", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cuaderno {
             get {
                 object obj = ResourceManager.GetObject("cuaderno", resourceCulture);
