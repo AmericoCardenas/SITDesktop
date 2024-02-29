@@ -56,7 +56,7 @@ namespace SIT.Views.RH.CSnack
                      join t in db.Trabajadores on s.IdEmpleado equals t.IdEmpleado
                      join p in db.ProductosSnack on s.IdProducto equals p.IdProducto
                      where s.Fecha >= fi &&
-                      s.Fecha <= ff
+                      s.Fecha <= ff && s.IdMetodoPago==2 && s.IdEstatus!=4
                      group s by t.NombreCompleto into g
                      select new
                      {

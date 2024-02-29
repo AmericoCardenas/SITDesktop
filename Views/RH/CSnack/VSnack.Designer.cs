@@ -29,10 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_report = new System.Windows.Forms.Button();
             this.txt_filtro = new System.Windows.Forms.TextBox();
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
             this.dgrid_snack = new System.Windows.Forms.DataGridView();
+            this.btn_reporte = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_report = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_snack)).BeginInit();
             this.SuspendLayout();
@@ -40,6 +43,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_reporte);
+            this.panel1.Controls.Add(this.btn_cancel);
+            this.panel1.Controls.Add(this.btn_add);
             this.panel1.Controls.Add(this.btn_report);
             this.panel1.Controls.Add(this.txt_filtro);
             this.panel1.Controls.Add(this.cmb_filtro);
@@ -48,18 +55,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1056, 51);
             this.panel1.TabIndex = 0;
-            // 
-            // btn_report
-            // 
-            this.btn_report.BackgroundImage = global::SIT.Properties.Resources.excel;
-            this.btn_report.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_report.Location = new System.Drawing.Point(670, 4);
-            this.btn_report.Name = "btn_report";
-            this.btn_report.Size = new System.Drawing.Size(57, 41);
-            this.btn_report.TabIndex = 2;
-            this.btn_report.UseVisualStyleBackColor = true;
-            this.btn_report.Click += new System.EventHandler(this.btn_report_Click);
             // 
             // txt_filtro
             // 
@@ -89,6 +84,55 @@
             this.dgrid_snack.ReadOnly = true;
             this.dgrid_snack.Size = new System.Drawing.Size(1056, 399);
             this.dgrid_snack.TabIndex = 1;
+            this.dgrid_snack.Click += new System.EventHandler(this.dgrid_snack_Click);
+            // 
+            // btn_reporte
+            // 
+            this.btn_reporte.BackgroundImage = global::SIT.Properties.Resources.schedule;
+            this.btn_reporte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_reporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reporte.Location = new System.Drawing.Point(137, 4);
+            this.btn_reporte.Name = "btn_reporte";
+            this.btn_reporte.Size = new System.Drawing.Size(56, 41);
+            this.btn_reporte.TabIndex = 5;
+            this.btn_reporte.UseVisualStyleBackColor = true;
+            this.btn_reporte.Click += new System.EventHandler(this.btn_reporte_Click);
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
+            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancel.Location = new System.Drawing.Point(75, 4);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(56, 41);
+            this.btn_cancel.TabIndex = 4;
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_add
+            // 
+            this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
+            this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Location = new System.Drawing.Point(13, 4);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(56, 41);
+            this.btn_add.TabIndex = 3;
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // btn_report
+            // 
+            this.btn_report.BackgroundImage = global::SIT.Properties.Resources.excel;
+            this.btn_report.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_report.Location = new System.Drawing.Point(670, 4);
+            this.btn_report.Name = "btn_report";
+            this.btn_report.Size = new System.Drawing.Size(57, 41);
+            this.btn_report.TabIndex = 2;
+            this.btn_report.UseVisualStyleBackColor = true;
+            this.btn_report.Click += new System.EventHandler(this.btn_report_Click);
             // 
             // VSnack
             // 
@@ -116,5 +160,8 @@
         private System.Windows.Forms.TextBox txt_filtro;
         private System.Windows.Forms.ComboBox cmb_filtro;
         private System.Windows.Forms.Button btn_report;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button btn_reporte;
     }
 }

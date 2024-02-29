@@ -32,5 +32,7 @@ namespace SIT
         public Nullable<int> IdUsuarioCancelacion { get; set; }
         public Nullable<int> IdEstatus { get; set; }
         public string NumCheque { get; set; }
+        public Nullable<int> IdCuenta { get; set; }
+        public string REP { get; set; }
     }
 }

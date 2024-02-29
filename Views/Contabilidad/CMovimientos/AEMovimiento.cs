@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Wordprocessing;
+using SIT.Views.Almacen.COrdenesCompra;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,11 +31,12 @@ namespace SIT.Views.Contabilidad.CMovimientos
         Movimientos mov = new Movimientos();
         NotasMovimientos not = new NotasMovimientos();
         OpenFileDialog op1 = new OpenFileDialog();
-        public string notaproveedor;
+        public string notaproveedor,cantidad,referencia;
         public List<NotasMovimientos> lst_not;
         public int IdMovimiento;
         string filename = string.Empty;
         string ruta = "\\\\192.168.1.213\\OneDrive - TRANSPORTES DAVILA\\Transportes Davila\\7.- Contabilidad1\\ArchivosMovimientos\\";
+
 
 
         private void AEMovimiento_Load(object sender, EventArgs e)
@@ -43,6 +45,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
             CargarConceptos();
             CargarMetodos();
             CargarTipos();
+            CargarCuentas();
             this.txt_numcheque.Text = "0";
 
             if (IdMovimiento != 0)
@@ -52,6 +55,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 this.cmb_tipo.SelectedValue = mov.IdTipo;
                 this.cmb_metodo.SelectedValue = mov.IdMetodo;
                 this.cmb_concepto.SelectedValue = mov.IdConcepto;
+                this.cmb_cuenta.SelectedValue = mov.IdCuenta;
                 this.txt_cliente.Text = mov.Cliente;
                 this.txt_descripcion.Text = mov.Descripcion;
                 this.txt_cantidad.Text = mov.Cantidad.ToString();
@@ -61,6 +65,12 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
             if (frm.Name == "VNotas")
             {
+                if (this.lst_not.Count < 1)
+                {
+                    MessageBox.Show("Favor de seleccionar notas");
+                    this.Close();
+                }
+
                 this.txt_cliente.Text = notaproveedor;
                 this.txt_cantidad.Text = lst_not.Sum(x => x.Total).ToString();
                 this.txt_descripcion.Text = string.Join(",", lst_not.Select(x=>x.IdNota));
@@ -69,11 +79,32 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 this.txt_descripcion.Enabled= false;
                 this.chk_abono.Visible = true;
             }
+
+            if (frm.Name == "VOrdenesCompra")
+            {
+                this.cmb_tipo.SelectedValue = 1;
+                this.cmb_tipo.Enabled = false;
+                this.txt_cliente.Text = notaproveedor;
+                this.txt_cliente.Enabled=false;
+                this.txt_cantidad.Text = cantidad;
+                this.txt_cantidad.Enabled = false;
+                this.txt_descripcion.Text = "OC#"+referencia;
+                this.txt_descripcion.Enabled = false;
+            }
+        }
+
+
+        private void CargarCuentas()
+        {
+            var x = db.CuentasBancos.Where(z => z.IdEstatus == 1).ToList();
+            this.cmb_cuenta.DataSource = x;
+            this.cmb_cuenta.DisplayMember = "Cuenta";
+            this.cmb_cuenta.ValueMember = "IdCuenta";
         }
 
         private void CargarTipos()
         {
-            var x = db.TiposFlujos.ToList();
+            var x = db.TiposFlujos.OrderBy(y => y.Tipo).ToList();
             this.cmb_tipo.DataSource = x;
             this.cmb_tipo.ValueMember = "IdTipo";
             this.cmb_tipo.DisplayMember = "Tipo";
@@ -81,7 +112,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void CargarMetodos()
         {
-            var x = db.MetodosFlujos.ToList();
+            var x = db.MetodosFlujos.OrderBy(y => y.Metodo).ToList();
             this.cmb_metodo.DataSource = x;
             this.cmb_metodo.ValueMember = "IdMetodo";
             this.cmb_metodo.DisplayMember = "Metodo";
@@ -90,7 +121,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void CargarConceptos()
         {
-            var x = db.ConceptosFlujos.ToList();
+            var x = db.ConceptosFlujos.Where(y => y.IdEstatus==1).OrderBy(y=>y.Concepto).ToList();
             this.cmb_concepto.DataSource = x;
             this.cmb_concepto.ValueMember = "IdConcepto";
             this.cmb_concepto.DisplayMember = "Concepto";
@@ -115,17 +146,22 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 MessageBox.Show("Favor de seleccionar el metodo");
                 this.cmb_metodo.Focus();
             }
-            else if (this.txt_cliente.Text.Trim() == "")
+            else if (this.cmb_cuenta.SelectedValue == null)
+            {
+                MessageBox.Show("Favor de seleccionar el # de cuenta");
+                this.cmb_metodo.Focus();
+            }
+            else if (this.txt_cliente.Text==string.Empty || this.txt_cliente.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Favor de capturar el cliente");
                 this.txt_cliente.Focus();
             }
-            else if (this.txt_descripcion.Text.Trim() == "")
+            else if (this.txt_descripcion.Text==string.Empty || this.txt_descripcion.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Favor de capturar la descripcion");
                 this.txt_descripcion.Focus();
             }
-            else if (this.txt_cantidad.Text.Trim() == "")
+            else if (this.txt_cantidad.Text == string.Empty || this.txt_cantidad.Text.Trim().Length==0)
             {
                 MessageBox.Show("Favor de capturar la cantidad");
                 this.txt_cantidad.Focus();
@@ -135,6 +171,12 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 MessageBox.Show("Favor de verificar la cantidad");
                 this.txt_cantidad.Focus();
             }
+            else if(this.txt_rep.Text==string.Empty || this.txt_rep.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Favor de introducir REP");
+                this.txt_rep.Focus();
+
+            }
             else
             {
                 mov.Fecha = dtm_fecha.Value;
@@ -142,11 +184,13 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 mov.IdMetodo = Convert.ToInt32(this.cmb_metodo.SelectedValue);
                 mov.Cliente = this.txt_cliente.Text.ToUpper();
                 mov.Cantidad = Convert.ToDouble(this.txt_cantidad.Text);
+                mov.IdCuenta = Convert.ToInt32(this.cmb_cuenta.SelectedValue);
                 mov.Descripcion = this.txt_descripcion.Text.ToUpper();
                 mov.IdConcepto = Convert.ToInt32(this.cmb_concepto.SelectedValue);
                 mov.NumCheque = this.txt_numcheque.Text;
                 mov.Ruta = string.Empty;
                 mov.Comprobante = string.Empty;
+                mov.REP = this.txt_rep.Text;
                 mov.IdEstatus = 1;
                 if (filename != "")
                 {
@@ -208,6 +252,13 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 }
 
                 db.SaveChanges();
+
+                if (this.frm.Name == "VOrdenesCompra")
+                {
+                    VOrdenesCompra vordenes = (VOrdenesCompra)frm;
+                    vordenes.SaldarOCompra();
+                }
+
                 LimpiarFormulario();
                 this.Close();
 
@@ -240,6 +291,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
             this.cmb_concepto.SelectedIndex = 0;
             this.cmb_metodo.SelectedIndex = 0;
             this.cmb_tipo.SelectedIndex = 0;
+            this.cmb_cuenta.SelectedIndex = 0;  
             IdMovimiento = 0;
         }
 
@@ -263,6 +315,18 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 this.lbl_ncheque.Visible = false;
                 this.txt_numcheque.Visible = false;
             }
+        }
+
+        private void cmb_cuenta_SelectedValueChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var idcuenta = Convert.ToInt32(this.cmb_cuenta.SelectedValue);
+                var idbanco = db.CuentasBancos.Where(x => x.IdCuenta == idcuenta).Select(x=>x.IdBanco).First();
+                var banco = db.Bancos.Where(x => x.IdBanco == idbanco).First();
+                this.lbl_banco.Text=banco.Banco.ToString();
+            }
+            catch(Exception ex) { }
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -295,7 +359,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 }
 
             }
-            else if (frm.Name == "VMovimientos")
+            else if (frm.Name == "VMovimientos" || frm.Name=="VOrdenesCompra")
             {
                 AgregarMovimiento();
             }
@@ -305,7 +369,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
         {
             if (frm.Name == "VMovimientos")
             {
-                VMovimientos vmov = new VMovimientos(_uslog);
+                VMovimientos vmov = (VMovimientos)this.frm;
                 vmov.Enabled = true;
                 vmov.CargarMovimientos();
             }
@@ -327,10 +391,12 @@ namespace SIT.Views.Contabilidad.CMovimientos
                     db.SaveChanges();
                 }
 
-                VNotas vnotas = new VNotas(_uslog);
-                vnotas.Enabled = true;
-                vnotas.CargarNotas();
+                frm.Enabled = true;
 
+            }
+            else if(frm.Name == "VOrdenesCompra")
+            {
+                frm.Enabled = true;
             }
 
         }

@@ -18,5 +18,12 @@ namespace SIT
         public string Concepto { get; set; }
         public Nullable<int> IdTipo { get; set; }
         public Nullable<int> IdRubro { get; set; }
+        public Nullable<System.DateTime> FechaCreo { get; set; }
+        public Nullable<int> IdUsCreo { get; set; }
+        public Nullable<System.DateTime> FechaMod { get; set; }
+        public Nullable<int> IdUsMod { get; set; }
+        public Nullable<System.DateTime> FechaCancelo { get; set; }
+        public Nullable<int> IdUsCancelo { get; set; }
+        public Nullable<int> IdEstatus { get; set; }
     }
 }

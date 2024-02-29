@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PublishUrlHistory>Z:\SIT\|//192.168.1.213/Compartida/SIT/|ftp://192.168.1.213/Compartida/SIT/|C:\Users\SISTEMAS\Documents\AMERICO\SIT\|ftp://192.168.1.213/Compartida/</PublishUrlHistory>
+    <PublishUrlHistory>\\SERVIDOR\Compartida\SIT\|Z:\SIT\|//192.168.1.213/Compartida/SIT/|ftp://192.168.1.213/Compartida/SIT/|C:\Users\SISTEMAS\Documents\AMERICO\SIT\</PublishUrlHistory>
     <InstallUrlHistory />
     <SupportUrlHistory />
     <UpdateUrlHistory>\\192.168.1.213\Compartida\SIT\</UpdateUrlHistory>

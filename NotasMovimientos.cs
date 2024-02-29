@@ -16,7 +16,9 @@ namespace SIT
     {
         public int IdNota { get; set; }
         public string Folio { get; set; }
-        public Nullable<System.DateTime> Fecha { get; set; }
+        public Nullable<System.DateTime> FechaFactura { get; set; }
+        public Nullable<System.DateTime> FechaPago { get; set; }
+        public Nullable<int> IdProveedor { get; set; }
         public Nullable<int> IdMovimiento { get; set; }
         public string Concepto { get; set; }
         public Nullable<double> Total { get; set; }
@@ -27,6 +29,5 @@ namespace SIT
         public Nullable<int> UsuarioModificacion { get; set; }
         public Nullable<System.DateTime> FechaCancelacion { get; set; }
         public Nullable<int> UsuarioCancelacion { get; set; }
-        public Nullable<int> IdProveedor { get; set; }
     }
 }

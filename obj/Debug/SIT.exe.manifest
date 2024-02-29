@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="SIT.exe" version="1.0.0.30" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="SIT.exe" version="1.0.0.80" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <description asmv2:iconFile="Captura.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
@@ -247,14 +247,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIT.exe" size="7142472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SIT.exe" size="9109064">
       <assemblyIdentity name="SIT" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BW95c+jUDTYej8X2aL3EUEfp/VTVUShQGRQnUx4uo2w=</dsig:DigestValue>
+        <dsig:DigestValue>aJyfERDGJIgLhszZUtSWF+ZinuD2ugeo+e25X3XCqfc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -477,13 +477,13 @@
       <dsig:DigestValue>mXJTTt+Ruv88PU57S0KYH2FKA1/wcLaaEoPNPIsXkGU=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SIT.exe.config" size="3614">
+  <file name="SIT.exe.config" size="4007">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>qMlPXdg+aEOPiF0dL8YPjDRgKbXA5mXuzLg6eMom40I=</dsig:DigestValue>
+      <dsig:DigestValue>xGVcCM5wXwMNVujcbBAPnjXx2oUuLd9vqqU0hpy2mHs=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

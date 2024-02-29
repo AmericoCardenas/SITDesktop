@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using DocumentFormat.OpenXml.Wordprocessing;
 using GMap.NET;
+using SIT.CrystalReport;
 using SIT.Views.Contabilidad.CNotas;
 using System;
 using System.Collections.Generic;
@@ -69,13 +70,15 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 dgrid.Columns.Clear();
                 var x = from n in db.NotasMovimientos
                         join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+
                         where n.IdEstatus == 1
                         select new
                         {
                             n.IdNota,
                             n.Folio,
-                            p.Proveedor,
-                            n.Fecha,
+                            n.FechaFactura,
+                            p.RazonSocial,
+                            n.FechaPago,
                             n.Concepto,
                             n.Total
                         };
@@ -102,10 +105,12 @@ namespace SIT.Views.Contabilidad.CMovimientos
                         {
                             n.IdNota,
                             n.Folio,
-                            p.Proveedor,
-                            n.Fecha,
+                            n.FechaFactura,
+                            p.RazonSocial,
+                            n.FechaPago,
                             n.Concepto,
                             n.Total
+
                         };
                 dgrid.DataSource = x.ToList();
 
@@ -177,26 +182,121 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
         private void CargarxFiltro()
         {
+            DataGridView dgrid = new DataGridView();
+            int idestatus=0;
 
             if (txt_filtro.Text != "")
             {
+                if(this.tbcontrol.SelectedIndex== 0)
+                {
+                    dgrid = this.dgrid_notas_creditos;
+                    idestatus = 1;
+                }
+                else if(this.tbcontrol.SelectedIndex==1)
+                {
+                    dgrid = this.dgrid_notas_abonos;
+                    idestatus = 3;
+                }
+
                 var filtro = this.cmb_filtro.Text;
-                if (filtro == "Fecha")
+                if (filtro == "Folio")
                 {
                     try
                     {
-                        var filter = Convert.ToDateTime(this.txt_filtro.Text);
+                        dgrid.DataSource = null;
+                        dgrid.Rows.Clear();
+                        dgrid.Columns.Clear();
                         var x = from n in db.NotasMovimientos
-                                where n.Fecha == filter && n.IdEstatus == 1
+                                join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                where n.Folio.Contains(txt_filtro.Text) && n.IdEstatus == idestatus
                                 select new
                                 {
                                     n.IdNota,
                                     n.Folio,
-                                    n.Fecha,
+                                    n.FechaFactura,
+                                    p.Proveedor,
+                                    n.FechaPago,
                                     n.Concepto,
                                     n.Total
                                 };
-                        this.dgrid_notas_creditos.DataSource = x.ToList();
+                        dgrid.DataSource = x.ToList();
+
+                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                        dgvCmb.ValueType = typeof(bool);
+                        dgvCmb.FalseValue = false;
+                        dgvCmb.Name = "Chk";
+                        dgvCmb.HeaderText = "CheckBox";
+                        dgrid.Columns.Add(dgvCmb);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.ToString());
+                    }
+                }
+                else if (filtro == "RazonSocial")
+                {
+                    try
+                    {
+                        dgrid.DataSource = null;
+                        dgrid.Rows.Clear();
+                        dgrid.Columns.Clear();
+                        var x = from n in db.NotasMovimientos
+                                join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                where p.RazonSocial.Contains(txt_filtro.Text) && n.IdEstatus == idestatus
+                                select new
+                                {
+                                    n.IdNota,
+                                    n.Folio,
+                                    n.FechaFactura,
+                                    p.RazonSocial,
+                                    n.FechaPago,
+                                    n.Concepto,
+                                    n.Total
+                                };
+                        dgrid.DataSource = x.ToList();
+
+                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                        dgvCmb.ValueType = typeof(bool);
+                        dgvCmb.FalseValue = false;
+                        dgvCmb.Name = "Chk";
+                        dgvCmb.HeaderText = "CheckBox";
+                        dgrid.Columns.Add(dgvCmb);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine(ex.ToString());
+                    }
+                }
+                else if (filtro == "FechaFactura")
+                {
+                    try
+                    {
+                        var filter = Convert.ToDateTime(this.txt_filtro.Text);
+                        dgrid.DataSource = null;
+                        dgrid.Rows.Clear();
+                        dgrid.Columns.Clear();
+                        var x = from n in db.NotasMovimientos
+                                join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                where n.FechaFactura == filter && n.IdEstatus == idestatus
+                                select new
+                                {
+                                    n.IdNota,
+                                    n.Folio,
+                                    n.FechaFactura,
+                                    p.Proveedor,
+                                    n.FechaPago,
+                                    n.Concepto,
+                                    n.Total
+                                };
+                        dgrid.DataSource = x.ToList();
+
+                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                        dgvCmb.ValueType = typeof(bool);
+                        dgvCmb.FalseValue = false;
+                        dgvCmb.Name = "Chk";
+                        dgvCmb.HeaderText = "CheckBox";
+                        dgrid.Columns.Add(dgvCmb);
                     }
                     catch (Exception ex)
                     {
@@ -208,17 +308,31 @@ namespace SIT.Views.Contabilidad.CMovimientos
                     try
                     {
                         var filter = this.txt_filtro.Text;
+                        dgrid.DataSource = null;
+                        dgrid.Rows.Clear();
+                        dgrid.Columns.Clear();
                         var x = from n in db.NotasMovimientos
-                                where n.Concepto.Contains(filter) && n.IdEstatus == 1
+                                join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                where n.Concepto.Contains(filter) && n.IdEstatus == idestatus
                                 select new
                                 {
                                     n.IdNota,
                                     n.Folio,
-                                    n.Fecha,
+                                    n.FechaFactura,
+                                    p.Proveedor,
+                                    n.FechaPago,
                                     n.Concepto,
                                     n.Total
+
                                 };
-                        this.dgrid_notas_creditos.DataSource = x.ToList();
+                        dgrid.DataSource = x.ToList();
+
+                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                        dgvCmb.ValueType = typeof(bool);
+                        dgvCmb.FalseValue = false;
+                        dgvCmb.Name = "Chk";
+                        dgvCmb.HeaderText = "CheckBox";
+                        dgrid.Columns.Add(dgvCmb);
                     }
                     catch (Exception ex)
                     {
@@ -231,17 +345,30 @@ namespace SIT.Views.Contabilidad.CMovimientos
                     try
                     {
                         var filter = Convert.ToDouble(this.txt_filtro.Text);
+                        dgrid.DataSource = null;
+                        dgrid.Rows.Clear();
+                        dgrid.Columns.Clear();
                         var x = from n in db.NotasMovimientos
-                                where n.Total == filter && n.IdEstatus == 1
+                                join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                where n.Total == filter && n.IdEstatus == idestatus
                                 select new
                                 {
                                     n.IdNota,
                                     n.Folio,
-                                    n.Fecha,
+                                    n.FechaFactura,
+                                    p.Proveedor,
+                                    n.FechaPago,
                                     n.Concepto,
                                     n.Total
                                 };
-                        this.dgrid_notas_creditos.DataSource = x.ToList();
+                        dgrid.DataSource = x.ToList();
+
+                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                        dgvCmb.ValueType = typeof(bool);
+                        dgvCmb.FalseValue = false;
+                        dgvCmb.Name = "Chk";
+                        dgvCmb.HeaderText = "CheckBox";
+                        dgrid.Columns.Add(dgvCmb);
                     }
                     catch (Exception ex)
                     {
@@ -252,8 +379,12 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 else
                 {
                     CargarNotas();
-                    this.dgrid_notas_creditos.Refresh();
+                    dgrid.Refresh();
                 }
+            }
+            else
+            {
+                CargarNotas();
             }
 
         }
@@ -343,6 +474,14 @@ namespace SIT.Views.Contabilidad.CMovimientos
         private void tbcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarNotas();
+            if (this.tbcontrol.SelectedIndex == 0)
+            {
+                this.btn_movs.Visible = true;
+            }
+            else if(this.tbcontrol.SelectedIndex == 1)
+            {
+                this.btn_movs.Visible= false;
+            }
         }
 
         private void dgrid_notas_abonos_Click(object sender, EventArgs e)
@@ -363,6 +502,13 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
             }
 
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Reporte frm = new Reporte();
+            frm.frm = this;
+            frm.ShowDialog();
         }
     }
 }

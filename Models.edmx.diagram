@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="46641e0898a24e0db7b988cf89398cbe" Name="Diagram1" ZoomLevel="55">
+      <Diagram DiagramId="46641e0898a24e0db7b988cf89398cbe" Name="Diagram1" ZoomLevel="82">
         <EntityTypeShape EntityType="SITModel.Departamentos" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.DomiciliosClientes" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.Estados" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
@@ -49,7 +49,6 @@
         <EntityTypeShape EntityType="SITModel.BitacoraRol" Width="1.5" PointX="2.75" PointY="18.75" />
         <AssociationConnector Association="SITModel.FK_Lineas_Trabajadores" />
         <AssociationConnector Association="SITModel.FK_Trabajadores_Puestos" />
-        <EntityTypeShape EntityType="SITModel.NotasMovimientos" Width="1.5" PointX="9.375" PointY="18.75" />
         <EntityTypeShape EntityType="SITModel.Regimenes" Width="1.5" PointX="18.375" PointY="15.75" />
         <EntityTypeShape EntityType="SITModel.Herramientas" Width="1.5" PointX="18.375" PointY="18.75" />
         <AssociationConnector Association="SITModel.FK_UsuariosSitios_Trabajadores" />
@@ -79,6 +78,45 @@
         <EntityTypeShape EntityType="SITModel.PolizasUnidades" Width="1.5" PointX="7.375" PointY="23.75" />
         <EntityTypeShape EntityType="SITModel.ModelosUnidades" Width="1.5" PointX="9.375" PointY="23.75" />
         <EntityTypeShape EntityType="SITModel.Unidades" Width="1.5" PointX="22.375" PointY="21.75" />
+        <EntityTypeShape EntityType="SITModel.Combustibles" Width="1.5" PointX="23.375" PointY="15.75" />
+        <EntityTypeShape EntityType="SITModel.CorteDiarioBomba" Width="1.5" PointX="24.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SITModel.EstacionesCombustible" Width="1.5" PointX="3.375" PointY="24.75" />
+        <EntityTypeShape EntityType="SITModel.Bancos" Width="1.5" PointX="24.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SITModel.CuentasBancos" Width="1.5" PointX="24.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SITModel.Tickets" Width="1.5" PointX="25.625" PointY="17.5" />
+        <AssociationConnector Association="SITModel.FK_Tickets_Combustibles" />
+        <AssociationConnector Association="SITModel.FK_Tickets_EstacionesCombustible" />
+        <AssociationConnector Association="SITModel.FK_Unidades_EstatusUnidades" />
+        <AssociationConnector Association="SITModel.FK_Unidades_ModelosUnidades" />
+        <AssociationConnector Association="SITModel.FK_Unidades_MotoresUnidades" />
+        <AssociationConnector Association="SITModel.FK_Tickets_Tickets" />
+        <AssociationConnector Association="SITModel.FK_Tickets_Trabajadores" />
+        <AssociationConnector Association="SITModel.FK_Tickets_Unidades" />
+        <AssociationConnector Association="SITModel.FK_Unidades_TipoUnidades" />
+        <EntityTypeShape EntityType="SITModel.NotasMovimientos" Width="1.5" PointX="15.375" PointY="24.75" />
+        <EntityTypeShape EntityType="SITModel.Almacenes" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="SITModel.ZonasAlmacen" Width="1.5" PointX="24.375" PointY="23.75" />
+        <EntityTypeShape EntityType="SITModel.ProductosAlmacen" Width="1.5" PointX="11.375" PointY="25.75" />
+        <EntityTypeShape EntityType="SITModel.DetalleRequisiciones" Width="1.5" PointX="25.375" PointY="13.75" />
+        <EntityTypeShape EntityType="SITModel.Requisiciones" Width="1.5" PointX="26.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SITModel.CotizacionesRequisiciones" Width="1.5" PointX="0.75" PointY="26.75" />
+        <EntityTypeShape EntityType="SITModel.EstatusCotizaciones" Width="1.5" PointX="26.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SITModel.OrdenesCompra" Width="1.5" PointX="26.375" PointY="8.75" />
+        <EntityTypeShape EntityType="SITModel.DomiciliosProveedores" Width="2.125" PointX="15.625" PointY="30.25" />
+        <AssociationConnector Association="SITModel.FK_DomiciliosProveedores_Proveedores" />
+        <EntityTypeShape EntityType="SITModel.EstatusOrdenCompra" Width="1.5" PointX="17.375" PointY="26.75" />
+        <EntityTypeShape EntityType="SITModel.DetalleSalidasAlmacen" Width="1.5" PointX="19.375" PointY="26.75" />
+        <EntityTypeShape EntityType="SITModel.SalidasAlmacen" Width="1.5" PointX="26.375" PointY="23.75" />
+        <EntityTypeShape EntityType="SITModel.EstatusSalidas" Width="1.5" PointX="27.375" PointY="13.75" />
+        <EntityTypeShape EntityType="SITModel.FacturasOC" Width="1.5" PointX="21.375" PointY="27.75" />
+        <EntityTypeShape EntityType="SITModel.FallasTaller" Width="1.5" PointX="24.375" PointY="27.75" />
+        <EntityTypeShape EntityType="SITModel.GruposActTaller" Width="1.5" PointX="26.375" PointY="27.75" />
+        <EntityTypeShape EntityType="SITModel.OrdenesTrabajoTaller" Width="1.5" PointX="28.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SITModel.UbicacionesOT" Width="1.5" PointX="3.375" PointY="28.75" />
+        <EntityTypeShape EntityType="SITModel.ActividadesTaller" Width="1.5" PointX="28.375" PointY="5.75" />
+        <EntityTypeShape EntityType="SITModel.MantenimientosTaller" Width="1.5" PointX="5.375" PointY="28.75" />
+        <EntityTypeShape EntityType="SITModel.EstatusActTaller" Width="1.5" PointX="7.375" PointY="28.75" />
+        <EntityTypeShape EntityType="SITModel.ActividadesOT" Width="1.5" PointX="28.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

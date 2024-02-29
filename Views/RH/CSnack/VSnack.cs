@@ -1,8 +1,12 @@
-﻿using SIT.Views.RH.CSnack;
+﻿using GMap.NET;
+using SIT.Views.Catalogos.CBancos;
+using SIT.Views.Catalogos.CProductosSnack;
+using SIT.Views.RH.CSnack;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -17,9 +21,12 @@ namespace SIT.Views.RH
         public VSnack(Usuarios usuarios)
         {
             InitializeComponent();
+            this._uslog= usuarios;  
         }
 
-        Usuarios _usuarios;
+        int idSnack=0;
+        Usuarios _uslog;
+        Snack snack = new Snack();
         SITEntities db = new SITEntities();
 
         private void VSnack_Load(object sender, EventArgs e)
@@ -29,7 +36,7 @@ namespace SIT.Views.RH
             
         }
 
-        private void CargarSnack()
+        public void CargarSnack()
         {
             this.dgrid_snack.DataSource = null;
             this.dgrid_snack.Rows.Clear();
@@ -40,7 +47,7 @@ namespace SIT.Views.RH
                     join t in db.Trabajadores on s.IdEmpleado equals t.IdEmpleado
                     join p in db.ProductosSnack on s.IdProducto equals p.IdProducto
                     join m in db.TipoPagoSnack on s.IdMetodoPago equals m.IdTipoPago
-                    where s.IdEstatus == 1
+                    where s.IdEstatus != 4
                     orderby s.Fecha descending
                     select new
                     {
@@ -92,7 +99,7 @@ namespace SIT.Views.RH
                                 join t in db.Trabajadores on s.IdEmpleado equals t.IdEmpleado
                                 join p in db.ProductosSnack on s.IdProducto equals p.IdProducto
                                 join m in db.TipoPagoSnack on s.IdMetodoPago equals m.IdTipoPago
-                                where s.IdEstatus == 1 && s.Fecha == filter
+                                where s.IdEstatus != 4 && s.Fecha == filter
                                 orderby s.Fecha descending
                                 select new
                                 {
@@ -122,7 +129,7 @@ namespace SIT.Views.RH
                                 join t in db.Trabajadores on s.IdEmpleado equals t.IdEmpleado
                                 join p in db.ProductosSnack on s.IdProducto equals p.IdProducto
                                 join m in db.TipoPagoSnack on s.IdMetodoPago equals m.IdTipoPago
-                                where s.IdEstatus == 1 && t.NombreCompleto.Contains(filter)
+                                where s.IdEstatus != 4 && t.NombreCompleto.Contains(filter)
                                 orderby s.Fecha descending
                                 select new
                                 {
@@ -152,7 +159,7 @@ namespace SIT.Views.RH
                                 join t in db.Trabajadores on s.IdEmpleado equals t.IdEmpleado
                                 join p in db.ProductosSnack on s.IdProducto equals p.IdProducto
                                 join m in db.TipoPagoSnack on s.IdMetodoPago equals m.IdTipoPago
-                                where s.IdEstatus == 1 && p.Producto.Contains(filter)
+                                where s.IdEstatus != 4 && p.Producto.Contains(filter)
                                 orderby s.Fecha descending
                                 select new
                                 {
@@ -182,7 +189,7 @@ namespace SIT.Views.RH
                                 join t in db.Trabajadores on s.IdEmpleado equals t.IdEmpleado
                                 join p in db.ProductosSnack on s.IdProducto equals p.IdProducto
                                 join m in db.TipoPagoSnack on s.IdMetodoPago equals m.IdTipoPago
-                                where s.IdEstatus == 1 && m.Pago.Contains(filter)
+                                where s.IdEstatus != 4 && m.Pago.Contains(filter)
                                 orderby s.Fecha descending
                                 select new
                                 {
@@ -221,6 +228,74 @@ namespace SIT.Views.RH
         {
             ReporteSnack frm = new ReporteSnack();
             frm.ShowDialog();
+        }
+
+        private void btn_add_Click(object sender, EventArgs e)
+        {
+            AESnack frm = new AESnack(this);
+            frm.idUsuario = _uslog.IdUsuario;
+            frm.idSnack = idSnack;
+            this.Enabled = false;
+            frm.Show();
+        }
+
+        private void CancelarProductoSnack()
+        {
+            snack = db.Snack.Where(x => x.IdSnack == idSnack).FirstOrDefault();
+            snack.IdEstatus = 4;
+            snack.FechaCancelacion = DateTime.Now;
+            snack.IdUsuarioCancelo = _uslog.IdUsuario;
+
+            if (idSnack > 0)
+            {
+                db.Entry(snack).State = EntityState.Modified;
+                MessageBox.Show("Consumo cancelado exitosamente");
+                this.btn_add.BackgroundImage = Properties.Resources.mas;
+                this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+                db.SaveChanges();
+                CargarSnack();
+            }
+            else
+            {
+                MessageBox.Show("Favor de seleccionar el consumo a cancelar");
+            }
+        }
+
+        private void dgrid_snack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgrid_snack.CurrentCell.RowIndex != -1)
+                {
+                    idSnack = Convert.ToInt32(this.dgrid_snack.CurrentRow.Cells[0].Value);
+                }
+                this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.lapiz, new Size(32, 32));
+                this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void btn_cancel_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea cancelar el consumo seleccionado", "Cancelar", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                CancelarProductoSnack();
+
+            }
+            else
+            {
+                // Do something
+            }
+        }
+
+        private void btn_reporte_Click(object sender, EventArgs e)
+        {
+            VRptConsumoFechasEmp frm = new VRptConsumoFechasEmp();
+            frm.Show();
         }
     }
 }

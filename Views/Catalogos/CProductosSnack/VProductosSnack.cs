@@ -29,6 +29,7 @@ namespace SIT.Views.Catalogos.CProductosSnack
 
         public void CargarDatos()
         {
+
             this.dgrid_prodsnack.DataSource = null;
             this.dgrid_prodsnack.Rows.Clear();
             this.dgrid_prodsnack.Columns.Clear();

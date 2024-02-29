@@ -279,7 +279,7 @@ namespace SIT.Views.Contabilidad
                     dgrid.DataSource = x.ToList();
 
                 }
-                else if (filtro == "NombreCompleto")
+                else if (filtro == "Cliente")
                 {
                     var filter = this.txt_filtro.Text;
                     var x = from m in db.Movimientos
@@ -425,19 +425,8 @@ namespace SIT.Views.Contabilidad
 
         private void ConsultarSaldoActual()
         {
-            var tot_ingresos = db.Movimientos.Where(x => x.IdTipo == 2).Sum(y => y.Cantidad);
-            var tot_egresos = db.Movimientos.Where(x => x.IdTipo == 1).Sum(y => y.Cantidad);
-            var saldo_actual = (tot_ingresos - tot_egresos);
-
-            DialogResult dialogResult = MessageBox.Show(saldo_actual.ToString(), "Saldo Actual", MessageBoxButtons.OK);
-            if (dialogResult == DialogResult.Yes)
-            {
-                //do something
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
+            VSaldoActual frm = new VSaldoActual();
+            frm.Show();
         }
 
         private void ExportarExcel()

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,114 @@ namespace SIT.Views.Catalogos.CUnidades
             this.frm = vunidades;
         }
 
+        OpenFileDialog op = new OpenFileDialog();
         SITEntities db =  new SITEntities();
         Unidades unidades = new Unidades();
         VUnidades frm;
         public int IdUnidad;
         public int IdUsuario;
+        string ruta = "\\\\192.168.1.213\\DocumentosSIT\\UnidadesTD\\";
+        string filen_factura, filen_tcirculacion, filen_poliza, filen_arrend, filen_const, filen_refrend = string.Empty;
+        string r_factura,r_tcirculacion, r_poliza, r_arrend,r_const,r_refrend = string.Empty;
+
+        private void btn_seguro_Click(object sender, EventArgs e)
+        {
+            op.Multiselect = false;
+            op.Filter = "|*.pdf;*.jpeg;*.png;*.jpg";
+            op.ShowDialog();
+            filen_poliza = op.SafeFileName;
+            r_poliza = op.FileName;
+            this.btn_seguro.BackColor = System.Drawing.Color.Green;
+        }
+
+        private void btn_arremdamiento_Click(object sender, EventArgs e)
+        {
+            op.Multiselect = false;
+            op.Filter = "|*.pdf;*.jpeg;*.png;*.jpg";
+            op.ShowDialog();
+            filen_arrend = op.SafeFileName;
+            r_arrend = op.FileName;
+            this.btn_arremdamiento.BackColor = System.Drawing.Color.Green;
+        }
+
+        private void btn_constancia_Click(object sender, EventArgs e)
+        {
+            op.Multiselect = false;
+            op.Filter = "|*.pdf;*.jpeg;*.png;*.jpg";
+            op.ShowDialog();
+            filen_const = op.SafeFileName;
+            r_const = op.FileName;
+            this.btn_constancia.BackColor = System.Drawing.Color.Green;
+
+        }
+
+        private void btn_refrendo_Click(object sender, EventArgs e)
+        {
+            op.Multiselect = false;
+            op.Filter = "|*.pdf;*.jpeg;*.png;*.jpg";
+            op.ShowDialog();
+            filen_refrend = op.SafeFileName;
+            r_refrend = op.FileName;
+            this.btn_refrendo.BackColor = System.Drawing.Color.Green;
+
+        }
+
+        private void btn_circulacion_Click(object sender, EventArgs e)
+        {
+            op.Multiselect = false;
+            op.Filter = "|*.pdf;*.jpeg;*.png;*.jpg";
+            op.ShowDialog();
+            filen_tcirculacion = op.SafeFileName;
+            r_tcirculacion = op.FileName;
+            this.btn_circulacion.BackColor = System.Drawing.Color.Green;
+
+        }
+
+        private void btn_verfactura_Click(object sender, EventArgs e)
+        {
+            VerArchivo(filen_factura);
+        }
+
+        private void btn_vtc_Click(object sender, EventArgs e)
+        {
+            VerArchivo(filen_tcirculacion);
+
+        }
+
+        private void btn_vpos_Click(object sender, EventArgs e)
+        {
+            VerArchivo(filen_poliza);
+
+        }
+
+        private void btn_varrend_Click(object sender, EventArgs e)
+        {
+            VerArchivo(filen_arrend);
+
+        }
+
+        private void btn_vconstancia_Click(object sender, EventArgs e)
+        {
+            VerArchivo(filen_const);
+
+        }
+
+        private void btn_vrefrendo_Click(object sender, EventArgs e)
+        {
+            VerArchivo(filen_refrend);
+
+        }
+
+        private void btn_factura_Click(object sender, EventArgs e)
+        {
+            op.Multiselect = false;
+            op.Filter = "|*.pdf;*.jpeg;*.png;*.jpg";
+            op.ShowDialog();
+            filen_factura = op.SafeFileName;
+            r_factura = op.FileName;
+            this.btn_factura.BackColor = System.Drawing.Color.Green;
+
+        }
 
         private void AEUnidad_Load(object sender, EventArgs e)
         {
@@ -46,6 +150,48 @@ namespace SIT.Views.Catalogos.CUnidades
                 this.txt_color.Text = unidades.Color;
                 this.cmb_modelo.SelectedValue = unidades.IdModelo;
                 this.txt_pasajeros.Text=unidades.Pasajeros.ToString();
+
+                //FILENAMES
+                if (unidades.FileFactura != null)
+                {
+                    this.filen_factura = unidades.FileFactura;
+                    this.btn_factura.BackColor = Color.Green;
+                }
+
+                if(unidades.FileArrendamiento != null)
+                {
+                    this.filen_arrend = unidades.FileArrendamiento;
+                    this.btn_arremdamiento.BackColor = Color.Green;
+                }
+
+                if (unidades.FileConstancia != null)
+                {
+                    this.filen_const = unidades.FileConstancia;
+                    this.btn_constancia.BackColor = Color.Green;
+                }
+
+                if(unidades.FilePolizaSeguro!= null)
+                {
+                    this.filen_poliza = unidades.FilePolizaSeguro;
+                    this.btn_seguro.BackColor = Color.Green;
+                }
+
+                if (unidades.FileRefrendo != null)
+                {
+                    this.filen_refrend = unidades.FileRefrendo;
+                    this.btn_refrendo.BackColor = Color.Green;
+
+                }
+
+                if(unidades.FileTCirculacion != null)
+                {
+                    this.filen_tcirculacion = unidades.FileTCirculacion;
+                    this.btn_circulacion.BackColor = Color.Green;
+
+                }
+
+
+
                 this.Text = "Editar "+unidades.Economico.ToString();
             }
             else
@@ -107,6 +253,30 @@ namespace SIT.Views.Catalogos.CUnidades
                 MessageBox.Show("Favor de introducir la cantidad de pasajeros de la unidad");
                 this.txt_pasajeros.Focus();
             }
+            else if (filen_arrend == string.Empty)
+            {
+                MessageBox.Show("Favor de seleccionar el archivo de arrendamiento");
+            }
+            else if (filen_const == string.Empty)
+            {
+                MessageBox.Show("Favor de seleccionar el archivo de constancia");
+            }
+            else if (filen_factura == string.Empty)
+            {
+                MessageBox.Show("Favor de seleccionar el archivo de factura");
+            }
+            else if (filen_poliza == string.Empty)
+            {
+                MessageBox.Show("Favor de seleccionar el archivo de poliza");
+            }
+            else if (filen_refrend == string.Empty)
+            {
+                MessageBox.Show("Favor de seleccionar el archivo de refrendo");
+            }
+            else if (filen_tcirculacion == string.Empty)
+            {
+                MessageBox.Show("Favor de seleccionar el archivo de tarjeta de circulación");
+            }
             else
             {
                 unidades.Economico = this.txt_eco.Text.Trim().ToUpper();
@@ -119,12 +289,97 @@ namespace SIT.Views.Catalogos.CUnidades
                 unidades.IdModelo = Convert.ToInt32(this.cmb_modelo.SelectedValue);
                 unidades.Pasajeros = pasaj;
                 unidades.IdEstatus = Convert.ToInt32(this.cmb_estatus.SelectedValue);
+                unidades.Ruta = ruta;
+                unidades.FileConstancia = this.filen_const;
+                unidades.FileArrendamiento = this.filen_arrend;
+                unidades.FileRefrendo = this.filen_refrend;
+                unidades.FileFactura = this.filen_factura;
+                unidades.FilePolizaSeguro = this.filen_poliza;
+                unidades.FileTCirculacion = this.filen_tcirculacion;
                 unidades.FechaCreacion = DateTime.Now;
                 unidades.IdUsuarioCreo = IdUsuario;
 
                 if (IdUnidad > 0)
                 {
-                    
+                    if (r_arrend != string.Empty && r_arrend!=null)
+                    {
+                        var FName = r_arrend.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_arrend, ruta + FName[FName.Length - 1]);
+
+                        }
+                    }
+
+                    if (r_const != string.Empty && r_const != null)
+                    {
+                        var FName = r_const.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_const, ruta + FName[FName.Length - 1]);
+                        }
+                    }
+
+                    if (r_factura != string.Empty && r_factura != null )
+                    {
+                        var FName = r_factura.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_factura, ruta + FName[FName.Length - 1]);
+                        }
+                    }
+
+                    if (r_poliza != string.Empty && r_poliza != null)
+                    {
+                        var FName = r_poliza.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_poliza, ruta + FName[FName.Length - 1]);
+                        }
+                    }
+
+                    if (r_refrend != string.Empty && r_refrend != null)
+                    {
+                        var FName = r_refrend.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_refrend, ruta + FName[FName.Length - 1]);
+                        }
+                    }
+
+                    if (r_tcirculacion != string.Empty && r_tcirculacion != null)
+                    {
+                        var FName = r_tcirculacion.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_tcirculacion, ruta + FName[FName.Length - 1]);
+                        }
+                    }
+
                     DialogResult result = MessageBox.Show("Desea editar la unidad", "Editar", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
                     {
@@ -141,6 +396,67 @@ namespace SIT.Views.Catalogos.CUnidades
                 }
                 else
                 {
+                    var FName = r_arrend.Split('\\');
+                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    {
+
+                    }
+                    else
+                    {
+                        File.Copy(r_arrend, ruta + FName[FName.Length - 1]);
+                    }
+
+                     FName = r_const.Split('\\');
+                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    {
+
+                    }
+                    else
+                    {
+                        File.Copy(r_const, ruta + FName[FName.Length - 1]);
+                    }
+
+                    FName = r_factura.Split('\\');
+                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    {
+
+                    }
+                    else
+                    {
+                        File.Copy(r_factura, ruta + FName[FName.Length - 1]);
+                    }
+
+                    FName = r_poliza.Split('\\');
+                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    {
+
+                    }
+                    else
+                    {
+                        File.Copy(r_poliza, ruta + FName[FName.Length - 1]);
+                    }
+
+                    FName = r_refrend.Split('\\');
+                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    {
+
+                    }
+                    else
+                    {
+                        File.Copy(r_refrend, ruta + FName[FName.Length - 1]);
+                    }
+
+                    FName = r_tcirculacion.Split('\\');
+                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    {
+
+                    }
+                    else
+                    {
+                        File.Copy(r_tcirculacion, ruta + FName[FName.Length - 1]);
+                    }
+
+
                     db.Unidades.Add(unidades);
                     MessageBox.Show("Unidad agregada exitosamente");
 
@@ -193,6 +509,18 @@ namespace SIT.Views.Catalogos.CUnidades
         {
             frm.Enabled = true;
             frm.CargarUnidades();
+        }
+
+        private void VerArchivo(string filename)
+        {
+            if (filename != string.Empty && filename!=null)
+            {
+                System.Diagnostics.Process.Start(ruta + filename);
+            }
+            else
+            {
+                MessageBox.Show("No se encontro el archivo");
+            }
         }
     }
 }

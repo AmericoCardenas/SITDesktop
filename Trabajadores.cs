@@ -20,6 +20,7 @@ namespace SIT
             this.Lineas = new HashSet<Lineas>();
             this.UsuariosSitios = new HashSet<UsuariosSitios>();
             this.Snack = new HashSet<Snack>();
+            this.Tickets = new HashSet<Tickets>();
         }
     
         public int IdEmpleado { get; set; }
@@ -49,5 +50,7 @@ namespace SIT
         public virtual Departamentos Departamentos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Snack> Snack { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tickets> Tickets { get; set; }
     }
 }

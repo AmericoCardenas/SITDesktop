@@ -14,6 +14,12 @@ namespace SIT
     
     public partial class TipoUnidades
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TipoUnidades()
+        {
+            this.Unidades = new HashSet<Unidades>();
+        }
+    
         public int IdTipo { get; set; }
         public string Unidad { get; set; }
         public Nullable<int> IdEstatus { get; set; }
@@ -24,5 +30,8 @@ namespace SIT
         public Nullable<System.DateTime> FechaCancelacion { get; set; }
         public Nullable<int> IdUsuarioCancelo { get; set; }
         public Nullable<double> Rendimiento { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Unidades> Unidades { get; set; }
     }
 }

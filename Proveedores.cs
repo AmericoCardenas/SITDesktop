@@ -14,6 +14,12 @@ namespace SIT
     
     public partial class Proveedores
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Proveedores()
+        {
+            this.DomiciliosProveedores = new HashSet<DomiciliosProveedores>();
+        }
+    
         public int IdProveedor { get; set; }
         public string Proveedor { get; set; }
         public Nullable<int> IdEstatus { get; set; }
@@ -28,5 +34,8 @@ namespace SIT
         public Nullable<int> IdRegimenFiscal { get; set; }
         public string CP { get; set; }
         public string ConstanciaFiscal { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DomiciliosProveedores> DomiciliosProveedores { get; set; }
     }
 }

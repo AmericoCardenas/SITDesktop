@@ -14,7 +14,16 @@ namespace SIT
     
     public partial class EstatusUnidades
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public EstatusUnidades()
+        {
+            this.Unidades = new HashSet<Unidades>();
+        }
+    
         public int IdEstatus { get; set; }
         public string Estatus { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Unidades> Unidades { get; set; }
     }
 }

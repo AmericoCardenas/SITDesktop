@@ -29,6 +29,11 @@ namespace SIT.Views.Catalogos
 
         public void CargarProveedores()
         {
+            IdProveedor = 0;
+            this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.mas, new Size(32, 32));
+            this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+
+
             var x = from n in db.Proveedores
                     where n.IdEstatus == 1
                     select new

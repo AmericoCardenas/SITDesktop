@@ -48,6 +48,11 @@
             this.txt_numcheque = new System.Windows.Forms.TextBox();
             this.btn_aceptar = new System.Windows.Forms.Button();
             this.chk_abono = new System.Windows.Forms.CheckBox();
+            this.cmb_cuenta = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lbl_banco = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txt_rep = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -120,7 +125,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1, 178);
+            this.label7.Location = new System.Drawing.Point(1, 222);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 18);
             this.label7.TabIndex = 6;
@@ -131,7 +136,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(3, 203);
+            this.label8.Location = new System.Drawing.Point(3, 274);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 18);
             this.label8.TabIndex = 7;
@@ -142,7 +147,7 @@
             // 
             this.lbl_ncheque.AutoSize = true;
             this.lbl_ncheque.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_ncheque.Location = new System.Drawing.Point(12, 233);
+            this.lbl_ncheque.Location = new System.Drawing.Point(12, 304);
             this.lbl_ncheque.Name = "lbl_ncheque";
             this.lbl_ncheque.Size = new System.Drawing.Size(74, 18);
             this.lbl_ncheque.TabIndex = 8;
@@ -158,6 +163,8 @@
             // 
             // cmb_tipo
             // 
+            this.cmb_tipo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_tipo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_tipo.FormattingEnabled = true;
             this.cmb_tipo.Location = new System.Drawing.Point(103, 34);
             this.cmb_tipo.Name = "cmb_tipo";
@@ -166,6 +173,8 @@
             // 
             // cmb_metodo
             // 
+            this.cmb_metodo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_metodo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_metodo.FormattingEnabled = true;
             this.cmb_metodo.Location = new System.Drawing.Point(103, 61);
             this.cmb_metodo.Name = "cmb_metodo";
@@ -175,6 +184,8 @@
             // 
             // cmb_concepto
             // 
+            this.cmb_concepto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_concepto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_concepto.FormattingEnabled = true;
             this.cmb_concepto.Location = new System.Drawing.Point(103, 88);
             this.cmb_concepto.Name = "cmb_concepto";
@@ -198,7 +209,7 @@
             // 
             // txt_descripcion
             // 
-            this.txt_descripcion.Location = new System.Drawing.Point(103, 176);
+            this.txt_descripcion.Location = new System.Drawing.Point(103, 220);
             this.txt_descripcion.Name = "txt_descripcion";
             this.txt_descripcion.Size = new System.Drawing.Size(200, 20);
             this.txt_descripcion.TabIndex = 15;
@@ -206,7 +217,7 @@
             // btn_doc
             // 
             this.btn_doc.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_doc.Location = new System.Drawing.Point(103, 203);
+            this.btn_doc.Location = new System.Drawing.Point(103, 274);
             this.btn_doc.Name = "btn_doc";
             this.btn_doc.Size = new System.Drawing.Size(200, 23);
             this.btn_doc.TabIndex = 16;
@@ -217,7 +228,7 @@
             // 
             // txt_numcheque
             // 
-            this.txt_numcheque.Location = new System.Drawing.Point(103, 234);
+            this.txt_numcheque.Location = new System.Drawing.Point(103, 305);
             this.txt_numcheque.Name = "txt_numcheque";
             this.txt_numcheque.Size = new System.Drawing.Size(200, 20);
             this.txt_numcheque.TabIndex = 17;
@@ -225,14 +236,15 @@
             // 
             // btn_aceptar
             // 
-            this.btn_aceptar.BackColor = System.Drawing.Color.LightYellow;
+            this.btn_aceptar.BackColor = System.Drawing.Color.White;
+            this.btn_aceptar.BackgroundImage = global::SIT.Properties.Resources.check;
+            this.btn_aceptar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_aceptar.Location = new System.Drawing.Point(122, 260);
+            this.btn_aceptar.Location = new System.Drawing.Point(370, 122);
             this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(97, 36);
+            this.btn_aceptar.Size = new System.Drawing.Size(73, 61);
             this.btn_aceptar.TabIndex = 18;
-            this.btn_aceptar.Text = "Aceptar";
             this.btn_aceptar.UseVisualStyleBackColor = false;
             this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
             // 
@@ -246,12 +258,68 @@
             this.chk_abono.Text = "Abono";
             this.chk_abono.UseVisualStyleBackColor = true;
             // 
+            // cmb_cuenta
+            // 
+            this.cmb_cuenta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_cuenta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_cuenta.FormattingEnabled = true;
+            this.cmb_cuenta.Location = new System.Drawing.Point(103, 195);
+            this.cmb_cuenta.Name = "cmb_cuenta";
+            this.cmb_cuenta.Size = new System.Drawing.Size(200, 21);
+            this.cmb_cuenta.TabIndex = 21;
+            this.cmb_cuenta.SelectedValueChanged += new System.EventHandler(this.cmb_cuenta_SelectedValueChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(12, 199);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(61, 18);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "Cuenta";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_banco
+            // 
+            this.lbl_banco.AutoSize = true;
+            this.lbl_banco.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_banco.Location = new System.Drawing.Point(123, 171);
+            this.lbl_banco.Name = "lbl_banco";
+            this.lbl_banco.Size = new System.Drawing.Size(56, 18);
+            this.lbl_banco.TabIndex = 22;
+            this.lbl_banco.Text = "Banco";
+            this.lbl_banco.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(43, 247);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(42, 18);
+            this.label10.TabIndex = 23;
+            this.label10.Text = "REP";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txt_rep
+            // 
+            this.txt_rep.Location = new System.Drawing.Point(103, 246);
+            this.txt_rep.Name = "txt_rep";
+            this.txt_rep.Size = new System.Drawing.Size(200, 20);
+            this.txt_rep.TabIndex = 24;
+            // 
             // AEMovimiento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(391, 309);
+            this.ClientSize = new System.Drawing.Size(451, 333);
+            this.Controls.Add(this.txt_rep);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.lbl_banco);
+            this.Controls.Add(this.cmb_cuenta);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.chk_abono);
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.txt_numcheque);
@@ -306,5 +374,10 @@
         private System.Windows.Forms.TextBox txt_numcheque;
         private System.Windows.Forms.Button btn_aceptar;
         private System.Windows.Forms.CheckBox chk_abono;
+        private System.Windows.Forms.ComboBox cmb_cuenta;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbl_banco;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txt_rep;
     }
 }

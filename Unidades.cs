@@ -14,6 +14,12 @@ namespace SIT
     
     public partial class Unidades
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Unidades()
+        {
+            this.Tickets = new HashSet<Tickets>();
+        }
+    
         public int IdUnidad { get; set; }
         public string Economico { get; set; }
         public string Placa { get; set; }
@@ -31,5 +37,19 @@ namespace SIT
         public Nullable<int> IdUsuarioModifico { get; set; }
         public Nullable<System.DateTime> FechaCancelacion { get; set; }
         public Nullable<int> IdUsuarioCancelo { get; set; }
+        public string Ruta { get; set; }
+        public string FileFactura { get; set; }
+        public string FileTCirculacion { get; set; }
+        public string FilePolizaSeguro { get; set; }
+        public string FileArrendamiento { get; set; }
+        public string FileConstancia { get; set; }
+        public string FileRefrendo { get; set; }
+    
+        public virtual EstatusUnidades EstatusUnidades { get; set; }
+        public virtual ModelosUnidades ModelosUnidades { get; set; }
+        public virtual MotoresUnidades MotoresUnidades { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tickets> Tickets { get; set; }
+        public virtual TipoUnidades TipoUnidades { get; set; }
     }
 }

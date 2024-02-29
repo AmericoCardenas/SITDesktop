@@ -14,7 +14,16 @@ namespace SIT
     
     public partial class MotoresUnidades
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MotoresUnidades()
+        {
+            this.Unidades = new HashSet<Unidades>();
+        }
+    
         public int IdMotor { get; set; }
         public string Motor { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Unidades> Unidades { get; set; }
     }
 }

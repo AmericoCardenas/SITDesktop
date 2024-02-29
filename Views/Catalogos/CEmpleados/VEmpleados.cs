@@ -1,5 +1,7 @@
 ﻿using DocumentFormat.OpenXml.Vml.Office;
+using GMap.NET;
 using RestSharp;
+using SIT.Views.Catalogos.CCuentasBancos;
 using SIT.Views.Catalogos.CEmpleados;
 using SpreadsheetLight;
 using System;
@@ -26,19 +28,17 @@ namespace SIT.Views.Catalogos
         DatosNominaEmpleados datnom = new DatosNominaEmpleados();  
         DomicilioEmpleados domemp = new DomicilioEmpleados();
         
-        public VEmpleados()
+        public VEmpleados(Usuarios usuarios)
         {
             InitializeComponent();
-            this.dgrid_empleados.EnableHeadersVisualStyles = false;
-            this.dgrid_empleados.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
-            this.dgrid_empleados.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            this.dgrid_empleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            this.uslog = usuarios;
         }
 
         private string rutarchivo;
         private int idbitad;
         private DataTable dataTable;
+        Usuarios uslog;
+        int idEmpleado = 0;
 
         private void ImportarTrabajadores()
         {
@@ -173,8 +173,12 @@ namespace SIT.Views.Catalogos
             CargarEmpleados();
         }
 
-        private void CargarEmpleados()
+        public void CargarEmpleados()
         {
+            idEmpleado = 0;
+            this.btn_add.BackgroundImage = Properties.Resources.mas;
+            this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+
             var empleados = from e in db.Trabajadores
                            join p in db.Puestos on e.IdPuesto equals p.IdPuesto
                            select new
@@ -185,17 +189,38 @@ namespace SIT.Views.Catalogos
                            };
             this.dgrid_empleados.DataSource = empleados.ToList();
             this.dgrid_empleados.Columns[0].Visible = false;
+            this.dgrid_empleados.EnableHeadersVisualStyles = false;
+            this.dgrid_empleados.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.dgrid_empleados.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.dgrid_empleados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
         }
+
+        private void CargarFiltros()
+        {
+            foreach (DataGridViewColumn col in this.dgrid_empleados.Columns)
+            {
+                if (col.Index > 0 && col.Visible==true)
+                {
+                    this.cmb_filtro.Items.Add(col.Name);
+                }
+
+            }
+            this.cmb_filtro.SelectedIndex = 0;
+
+        }
+
 
         private void btn_excel_Click(object sender, EventArgs e)
         {
-            ImportarTrabajadores();
+            //ImportarTrabajadores();
         }
 
         private void VEmpleados_Load(object sender, EventArgs e)
         {
             CargarEmpleados();
-            this.button1.Visible = false;
+            CargarFiltros();
         }
 
         private void dgrid_empleados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -336,8 +361,11 @@ namespace SIT.Views.Catalogos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //DesactivarConductoresSamsara();
-            insertarop();
+            AEEmpleado frm = new AEEmpleado(this);
+            frm.uslog = this.uslog;
+            frm.IdEmpleado= this.idEmpleado;
+            this.Enabled = false;
+            frm.Show();
         }
 
         private async Task insertarop()
@@ -360,7 +388,63 @@ namespace SIT.Views.Catalogos
             }
         }
 
+        private void dgrid_empleados_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgrid_empleados.CurrentCell.RowIndex != -1)
+                {
+                    idEmpleado = Convert.ToInt32(this.dgrid_empleados.CurrentRow.Cells[0].Value);
+                }
+                else
+                {
+                    idEmpleado = 0;
+                    this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.mas, new Size(32, 32));
+                    this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
 
+                }
+                this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.lapiz, new Size(32, 32));
+                this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Desea cancelar el empleado seleccionada", "Cancelar", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                CancelarEmpleado();
+
+            }
+            else
+            {
+                // Do something
+            }
+        }
+
+        private void CancelarEmpleado()
+        {
+            var t = db.Trabajadores.Where(x => x.IdEmpleado == idEmpleado).FirstOrDefault();
+            t.IdEstatus = 2;
+            t.FechaCancelacion = DateTime.Now;
+            t.IdUsuarioCancelo = this.uslog.IdUsuario;
+
+            if (idEmpleado > 0)
+            {
+                db.Entry(t).State = EntityState.Modified;
+                MessageBox.Show("Empleado inhabilitado exitosamente");
+                db.SaveChanges();
+                CargarEmpleados();
+            }
+            else
+            {
+                MessageBox.Show("Favor de seleccionar el empleado");
+            }
+        }
 
     }
 }

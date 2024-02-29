@@ -1,5 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="SITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ActividadesOT">
+    <Key>
+      <PropertyRef Name="IdActOt" />
+    </Key>
+    <Property Name="IdActOt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdOT" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="IdActTaller" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FI" Type="date" />
+    <Property Name="TI" Type="varchar" MaxLength="50" />
+    <Property Name="FF" Type="date" />
+    <Property Name="TF" Type="varchar" MaxLength="50" />
+    <Property Name="Observaciones" Type="varchar(max)" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
+  <EntityType Name="ActividadesTaller">
+    <Key>
+      <PropertyRef Name="IdAct" />
+    </Key>
+    <Property Name="IdAct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Actividad" Type="varchar(max)" />
+    <Property Name="TiempoEstimado" Type="varchar" MaxLength="50" />
+    <Property Name="Formato" Type="varchar" MaxLength="50" />
+    <Property Name="IdGrupo" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
+  <EntityType Name="Almacenes">
+    <Key>
+      <PropertyRef Name="IdAlmacen" />
+    </Key>
+    <Property Name="IdAlmacen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodInterno" Type="varchar" MaxLength="50" />
+    <Property Name="Almacen" Type="varchar" MaxLength="150" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FechaMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsCancelo" Type="int" />
+  </EntityType>
+  <EntityType Name="Bancos">
+    <Key>
+      <PropertyRef Name="IdBanco" />
+    </Key>
+    <Property Name="IdBanco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Banco" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+  </EntityType>
   <EntityType Name="BitacoraBitad">
     <Key>
       <PropertyRef Name="IdBitad" />
@@ -51,6 +118,20 @@
     <Property Name="CIDCLIENTEPROV" Type="int" />
     <Property Name="CCODIGOCLIENTE" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="Combustibles">
+    <Key>
+      <PropertyRef Name="IdCombustible" />
+    </Key>
+    <Property Name="IdCombustible" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Combustible" Type="varchar" MaxLength="50" />
+    <Property Name="Precio" Type="float" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
+  </EntityType>
   <EntityType Name="ConceptosFlujos">
     <Key>
       <PropertyRef Name="IdConcepto" />
@@ -59,6 +140,68 @@
     <Property Name="Concepto" Type="varchar" MaxLength="50" />
     <Property Name="IdTipo" Type="int" />
     <Property Name="IdRubro" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FechaMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FechaCancelo" Type="date" />
+    <Property Name="IdUsCancelo" Type="int" />
+  </EntityType>
+  <EntityType Name="CorteDiarioBomba">
+    <Key>
+      <PropertyRef Name="IdCorte" />
+    </Key>
+    <Property Name="IdCorte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaInicio" Type="date" />
+    <Property Name="HoraInicio" Type="varchar" MaxLength="50" />
+    <Property Name="LitrosInicio" Type="float" />
+    <Property Name="FotoInicio" Type="varchar(max)" />
+    <Property Name="FechaFinal" Type="date" />
+    <Property Name="HoraFinal" Type="varchar" MaxLength="50" />
+    <Property Name="LitrosFinal" Type="float" />
+    <Property Name="FotoFinal" Type="varchar(max)" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
+  </EntityType>
+  <EntityType Name="CotizacionesRequisiciones">
+    <Key>
+      <PropertyRef Name="IdCotizacion" />
+    </Key>
+    <Property Name="IdCotizacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDetalleReq" Type="int" />
+    <Property Name="IdProveedor" Type="int" />
+    <Property Name="CostoUnitario" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdOCompra" Type="int" />
+    <Property Name="FechaAut" Type="date" />
+    <Property Name="IdUsAut" Type="int" />
+    <Property Name="FechaCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FechaMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FechaCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
+  <EntityType Name="CuentasBancos">
+    <Key>
+      <PropertyRef Name="IdCuenta" />
+    </Key>
+    <Property Name="IdCuenta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cuenta" Type="varchar" MaxLength="50" />
+    <Property Name="IdBanco" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
   </EntityType>
   <EntityType Name="DatosNominaEmpleados">
     <Key>
@@ -92,6 +235,35 @@
     <Property Name="IdDepto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Departamento" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="DetalleRequisiciones">
+    <Key>
+      <PropertyRef Name="IdDetalleReq" />
+    </Key>
+    <Property Name="IdDetalleReq" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRequisicion" Type="int" />
+    <Property Name="IdProductoAlmacen" Type="int" />
+    <Property Name="Cantidad" Type="float" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="200" />
+    <Property Name="IdCotizacionAut" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+  </EntityType>
+  <EntityType Name="DetalleSalidasAlmacen">
+    <Key>
+      <PropertyRef Name="IdDetalleSal" />
+    </Key>
+    <Property Name="IdDetalleSal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSalidaAlmacen" Type="int" />
+    <Property Name="IdProducto" Type="int" />
+    <Property Name="Cantidad" Type="float" />
+    <Property Name="IdUnidad" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
   <EntityType Name="DomicilioEmpleados">
     <Key>
       <PropertyRef Name="IdDomicilioEmp" />
@@ -118,6 +290,20 @@
     <Property Name="IdEstado" Type="int" />
     <Property Name="IdPais" Type="int" />
     <Property Name="IdCliente" Type="int" />
+  </EntityType>
+  <EntityType Name="DomiciliosProveedores">
+    <Key>
+      <PropertyRef Name="IdDomicilio" />
+    </Key>
+    <Property Name="IdDomicilio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Calle" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroExt" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroInt" Type="varchar" MaxLength="50" />
+    <Property Name="Colonia" Type="varchar" MaxLength="50" />
+    <Property Name="Ciudad" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstado" Type="int" />
+    <Property Name="IdPais" Type="int" />
+    <Property Name="IdProveedor" Type="int" />
   </EntityType>
   <EntityType Name="EquiposComputo">
     <Key>
@@ -158,15 +344,42 @@
     <Property Name="IdEmpleado" Type="int" />
     <Property Name="IdEstatus" Type="int" />
   </EntityType>
+  <EntityType Name="EstacionesCombustible">
+    <Key>
+      <PropertyRef Name="IdEstacion" />
+    </Key>
+    <Property Name="IdEstacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
+  </EntityType>
   <EntityType Name="Estados">
     <Key>
       <PropertyRef Name="IdEstado" />
     </Key>
-    <Property Name="IdEstado" Type="int" Nullable="false" />
-    <Property Name="Nombre" Type="int" />
+    <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="150" />
     <Property Name="IdPais" Type="int" />
   </EntityType>
   <EntityType Name="Estatus">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusActTaller">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusCotizaciones">
     <Key>
       <PropertyRef Name="IdEstatus" />
     </Key>
@@ -181,6 +394,13 @@
     <Property Name="Estatus" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="EstatusLineas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusOrdenCompra">
     <Key>
       <PropertyRef Name="IdEstatus" />
     </Key>
@@ -202,6 +422,13 @@
     <Property Name="Estatus" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="EstatusRutas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Estatus" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EstatusSalidas">
     <Key>
       <PropertyRef Name="IdEstatus" />
     </Key>
@@ -236,6 +463,26 @@
     <Property Name="IdEstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Estatus" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="FacturasOC">
+    <Key>
+      <PropertyRef Name="IdFactura" />
+    </Key>
+    <Property Name="IdFactura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdOCompra" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="FolioFactura" Type="varchar" MaxLength="50" />
+    <Property Name="Ruta" Type="varchar(max)" />
+    <Property Name="FileNFactura" Type="varchar(max)" />
+    <Property Name="FileNXml" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="FallasTaller">
+    <Key>
+      <PropertyRef Name="IdFalla" />
+    </Key>
+    <Property Name="IdFalla" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Falla" Type="varchar(max)" />
+    <Property Name="IdEstatus" Type="int" />
+  </EntityType>
   <EntityType Name="Flujos">
     <Key>
       <PropertyRef Name="IdFlujo" />
@@ -257,6 +504,20 @@
     <Property Name="IdUsuarioModifico" Type="int" />
     <Property Name="FechaCancelacion" Type="date" />
     <Property Name="IdUsuarioCancelo" Type="int" />
+  </EntityType>
+  <EntityType Name="GruposActTaller">
+    <Key>
+      <PropertyRef Name="IdGrupo" />
+    </Key>
+    <Property Name="IdGrupo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Grupo" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
   </EntityType>
   <EntityType Name="Herramientas">
     <Key>
@@ -287,6 +548,20 @@
     <Property Name="IdProveedor" Type="int" />
     <Property Name="IdEstatus" Type="int" />
     <Property Name="IdEmpleado" Type="int" />
+  </EntityType>
+  <EntityType Name="MantenimientosTaller">
+    <Key>
+      <PropertyRef Name="IdMantenimiento" />
+    </Key>
+    <Property Name="IdMantenimiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mantenimiento" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
   </EntityType>
   <EntityType Name="Medidas">
     <Key>
@@ -328,9 +603,11 @@
     <Property Name="Cantidad" Type="float" />
     <Property Name="Descripcion" Type="varchar(max)" />
     <Property Name="IdConcepto" Type="int" />
+    <Property Name="IdCuenta" Type="int" />
     <Property Name="Ruta" Type="varchar(max)" />
     <Property Name="Comprobante" Type="varchar(max)" />
     <Property Name="NumCheque" Type="varchar(max)" />
+    <Property Name="REP" Type="varchar" MaxLength="50" />
     <Property Name="IdEstatus" Type="int" />
     <Property Name="FechaCreacion" Type="date" />
     <Property Name="IdUsuarioCreo" Type="int" />
@@ -372,7 +649,8 @@
     </Key>
     <Property Name="IdNota" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Folio" Type="varchar(max)" />
-    <Property Name="Fecha" Type="date" />
+    <Property Name="FechaFactura" Type="date" />
+    <Property Name="FechaPago" Type="date" />
     <Property Name="IdProveedor" Type="int" />
     <Property Name="IdMovimiento" Type="int" />
     <Property Name="Concepto" Type="varchar(max)" />
@@ -385,11 +663,49 @@
     <Property Name="FechaCancelacion" Type="date" />
     <Property Name="UsuarioCancelacion" Type="int" />
   </EntityType>
+  <EntityType Name="OrdenesCompra">
+    <Key>
+      <PropertyRef Name="IdOCompra" />
+    </Key>
+    <Property Name="IdOCompra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="IdProveedor" Type="int" />
+    <Property Name="Subtotal" Type="float" />
+    <Property Name="Iva" Type="float" />
+    <Property Name="Total" Type="float" />
+    <Property Name="ImporteLetra" Type="varchar(max)" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
+  <EntityType Name="OrdenesTrabajoTaller">
+    <Key>
+      <PropertyRef Name="IdOrdenTrabajo" />
+    </Key>
+    <Property Name="IdOrdenTrabajo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Hora" Type="varchar" MaxLength="50" />
+    <Property Name="IdUnidad" Type="int" />
+    <Property Name="Km" Type="float" />
+    <Property Name="IdUbicacion" Type="int" />
+    <Property Name="Observaciones" Type="varchar(max)" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
   <EntityType Name="Paises">
     <Key>
       <PropertyRef Name="IdPais" />
     </Key>
-    <Property Name="IdPais" Type="int" Nullable="false" />
+    <Property Name="IdPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Pais" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="PolizasUnidades">
@@ -450,6 +766,28 @@
     <Property Name="IdEstatus" Type="int" />
     <Property Name="RfcCliente" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="ProductosAlmacen">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodProducto" Type="varchar(max)" />
+    <Property Name="Nombre" Type="varchar(max)" />
+    <Property Name="Stock" Type="float" />
+    <Property Name="ExMin" Type="float" />
+    <Property Name="ExMax" Type="float" />
+    <Property Name="IdMedida" Type="int" />
+    <Property Name="IdZona" Type="int" />
+    <Property Name="Pasillo" Type="int" />
+    <Property Name="Anaquel" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreo" Type="datetime" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FechaMod" Type="datetime" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FechaCan" Type="datetime" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
   <EntityType Name="ProductosSnack">
     <Key>
       <PropertyRef Name="IdProducto" />
@@ -501,6 +839,25 @@
     <Property Name="CodRegimen" Type="varchar" MaxLength="50" />
     <Property Name="Regimen" Type="varchar(max)" />
   </EntityType>
+  <EntityType Name="Requisiciones">
+    <Key>
+      <PropertyRef Name="IdRequisicion" />
+    </Key>
+    <Property Name="IdRequisicion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Hora" Type="varchar" MaxLength="50" />
+    <Property Name="Observaciones" Type="varchar(max)" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaAut" Type="date" />
+    <Property Name="IdEmpAut" Type="int" />
+    <Property Name="FechaCreo" Type="datetime" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FechaMod" Type="datetime" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FechaCan" Type="datetime" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
   <EntityType Name="RubrosFlujos">
     <Key>
       <PropertyRef Name="IdRubro" />
@@ -531,6 +888,22 @@
     <Property Name="FechaCancelacion" Type="varchar" MaxLength="50" />
     <Property Name="UsuarioCancelacion" Type="int" />
     <Property Name="IdEstatus" Type="int" />
+  </EntityType>
+  <EntityType Name="SalidasAlmacen">
+    <Key>
+      <PropertyRef Name="IdSalida" />
+    </Key>
+    <Property Name="IdSalida" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Hora" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
   </EntityType>
   <EntityType Name="Servicios">
     <Key>
@@ -585,6 +958,27 @@
     <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+    </Key>
+    <Property Name="IdTicket" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUnidad" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
+    <Property Name="Fecha" Type="date" />
+    <Property Name="Hora" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstacion" Type="int" />
+    <Property Name="IdCombustible" Type="int" />
+    <Property Name="Litros" Type="float" />
+    <Property Name="Odometro" Type="float" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsuarioCreo" Type="int" />
+    <Property Name="FechaModificacion" Type="date" />
+    <Property Name="IdUsuarioModifico" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsuarioCancelo" Type="int" />
   </EntityType>
   <EntityType Name="TicketsCheckin">
     <Key>
@@ -676,6 +1070,20 @@
     <Property Name="IdTurno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Turno" Type="varchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="UbicacionesOT">
+    <Key>
+      <PropertyRef Name="IdUbicacion" />
+    </Key>
+    <Property Name="IdUbicacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ubicacion" Type="varchar" MaxLength="50" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FCreo" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FCan" Type="date" />
+    <Property Name="IdUsCan" Type="int" />
+  </EntityType>
   <EntityType Name="Unidades">
     <Key>
       <PropertyRef Name="IdUnidad" />
@@ -690,6 +1098,13 @@
     <Property Name="IdModelo" Type="int" />
     <Property Name="Color" Type="varchar" MaxLength="50" />
     <Property Name="Pasajeros" Type="int" />
+    <Property Name="Ruta" Type="varchar(max)" />
+    <Property Name="FileFactura" Type="varchar(max)" />
+    <Property Name="FileTCirculacion" Type="varchar(max)" />
+    <Property Name="FilePolizaSeguro" Type="varchar(max)" />
+    <Property Name="FileArrendamiento" Type="varchar(max)" />
+    <Property Name="FileConstancia" Type="varchar(max)" />
+    <Property Name="FileRefrendo" Type="varchar(max)" />
     <Property Name="IdEstatus" Type="int" />
     <Property Name="FechaCreacion" Type="date" />
     <Property Name="IdUsuarioCreo" Type="int" />
@@ -710,6 +1125,7 @@
     <Property Name="Apellidom" Type="varchar" MaxLength="50" />
     <Property Name="IdEstatus" Type="int" />
     <Property Name="IdDepto" Type="int" />
+    <Property Name="IdEmpleado" Type="int" />
     <Property Name="FechaCreacion" Type="varchar" MaxLength="50" />
     <Property Name="UsuarioCreacion" Type="int" />
     <Property Name="FechaModificacion" Type="varchar" MaxLength="50" />
@@ -755,6 +1171,22 @@
     <Property Name="FechaCancelacion" Type="date" />
     <Property Name="UsuarioCancelacion" Type="int" />
   </EntityType>
+  <EntityType Name="ZonasAlmacen">
+    <Key>
+      <PropertyRef Name="IdZona" />
+    </Key>
+    <Property Name="IdZona" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Zona" Type="varchar" MaxLength="50" />
+    <Property Name="CodInterior" Type="varchar" MaxLength="50" />
+    <Property Name="IdAlmacen" Type="int" />
+    <Property Name="IdEstatus" Type="int" />
+    <Property Name="FechaCreacion" Type="date" />
+    <Property Name="IdUsCreo" Type="int" />
+    <Property Name="FechaMod" Type="date" />
+    <Property Name="IdUsMod" Type="int" />
+    <Property Name="FechaCancelacion" Type="date" />
+    <Property Name="IdUsCancelo" Type="int" />
+  </EntityType>
   <Association Name="FK_DomiciliosClientes_Clientes">
     <End Role="Clientes" Type="Self.Clientes" Multiplicity="0..1" />
     <End Role="DomiciliosClientes" Type="Self.DomiciliosClientes" Multiplicity="*" />
@@ -764,6 +1196,18 @@
       </Principal>
       <Dependent Role="DomiciliosClientes">
         <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DomiciliosProveedores_Proveedores">
+    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="0..1" />
+    <End Role="DomiciliosProveedores" Type="Self.DomiciliosProveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="DomiciliosProveedores">
+        <PropertyRef Name="IdProveedor" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -788,18 +1232,6 @@
       </Principal>
       <Dependent Role="Lineas">
         <PropertyRef Name="IdEmpleado" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Municipios_Estados">
-    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
-    <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Estados">
-        <PropertyRef Name="IdEstado" />
-      </Principal>
-      <Dependent Role="Municipios">
-        <PropertyRef Name="IdEstado" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -875,6 +1307,66 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Tickets_Combustibles">
+    <End Role="Combustibles" Type="Self.Combustibles" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Combustibles">
+        <PropertyRef Name="IdCombustible" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdCombustible" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_EstacionesCombustible">
+    <End Role="EstacionesCombustible" Type="Self.EstacionesCombustible" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstacionesCombustible">
+        <PropertyRef Name="IdEstacion" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdEstacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Tickets">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+    <End Role="Tickets1" Type="Self.Tickets" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="Tickets1">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Trabajadores">
+    <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Unidades">
+    <End Role="Unidades" Type="Self.Unidades" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidades">
+        <PropertyRef Name="IdUnidad" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Trabajadores_Departamentos">
     <End Role="Departamentos" Type="Self.Departamentos" Multiplicity="0..1" />
     <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="*" />
@@ -899,6 +1391,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Unidades_EstatusUnidades">
+    <End Role="EstatusUnidades" Type="Self.EstatusUnidades" Multiplicity="0..1" />
+    <End Role="Unidades" Type="Self.Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstatusUnidades">
+        <PropertyRef Name="IdEstatus" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdEstatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidades_ModelosUnidades">
+    <End Role="ModelosUnidades" Type="Self.ModelosUnidades" Multiplicity="0..1" />
+    <End Role="Unidades" Type="Self.Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModelosUnidades">
+        <PropertyRef Name="IdModelo" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdModelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidades_MotoresUnidades">
+    <End Role="MotoresUnidades" Type="Self.MotoresUnidades" Multiplicity="0..1" />
+    <End Role="Unidades" Type="Self.Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MotoresUnidades">
+        <PropertyRef Name="IdMotor" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdMotor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidades_TipoUnidades">
+    <End Role="TipoUnidades" Type="Self.TipoUnidades" Multiplicity="0..1" />
+    <End Role="Unidades" Type="Self.Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoUnidades">
+        <PropertyRef Name="IdTipo" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_UsuariosSitios_Trabajadores">
     <End Role="Trabajadores" Type="Self.Trabajadores" Multiplicity="0..1" />
     <End Role="UsuariosSitios" Type="Self.UsuariosSitios" Multiplicity="*" />
@@ -912,33 +1452,53 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="SITModelStoreContainer">
+    <EntitySet Name="ActividadesOT" EntityType="Self.ActividadesOT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ActividadesTaller" EntityType="Self.ActividadesTaller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BitacoraBitad" EntityType="Self.BitacoraBitad" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BitacoraRol" EntityType="Self.BitacoraRol" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BonosCheckin" EntityType="Self.BonosCheckin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Combustibles" EntityType="Self.Combustibles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ConceptosFlujos" EntityType="Self.ConceptosFlujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CorteDiarioBomba" EntityType="Self.CorteDiarioBomba" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CotizacionesRequisiciones" EntityType="Self.CotizacionesRequisiciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CuentasBancos" EntityType="Self.CuentasBancos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DatosNominaEmpleados" EntityType="Self.DatosNominaEmpleados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DeduccionesCheckin" EntityType="Self.DeduccionesCheckin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleRequisiciones" EntityType="Self.DetalleRequisiciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleSalidasAlmacen" EntityType="Self.DetalleSalidasAlmacen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DomicilioEmpleados" EntityType="Self.DomicilioEmpleados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DomiciliosClientes" EntityType="Self.DomiciliosClientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DomiciliosProveedores" EntityType="Self.DomiciliosProveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EquiposComputo" EntityType="Self.EquiposComputo" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EquiposMovil" EntityType="Self.EquiposMovil" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstacionesCombustible" EntityType="Self.EstacionesCombustible" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Estatus" EntityType="Self.Estatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusActTaller" EntityType="Self.EstatusActTaller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusCotizaciones" EntityType="Self.EstatusCotizaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusEquipos" EntityType="Self.EstatusEquipos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusLineas" EntityType="Self.EstatusLineas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusOrdenCompra" EntityType="Self.EstatusOrdenCompra" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusPHerramientas" EntityType="Self.EstatusPHerramientas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusPSnack" EntityType="Self.EstatusPSnack" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusRutas" EntityType="Self.EstatusRutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstatusSalidas" EntityType="Self.EstatusSalidas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusSnack" EntityType="Self.EstatusSnack" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusUnidades" EntityType="Self.EstatusUnidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusUsuarios" EntityType="Self.EstatusUsuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EstatusVE" EntityType="Self.EstatusVE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FacturasOC" EntityType="Self.FacturasOC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FallasTaller" EntityType="Self.FallasTaller" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Flujos" EntityType="Self.Flujos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GruposActTaller" EntityType="Self.GruposActTaller" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Herramientas" EntityType="Self.Herramientas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Incidencias" EntityType="Self.Incidencias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Lineas" EntityType="Self.Lineas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MantenimientosTaller" EntityType="Self.MantenimientosTaller" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Medidas" EntityType="Self.Medidas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MetodosFlujos" EntityType="Self.MetodosFlujos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ModelosUnidades" EntityType="Self.ModelosUnidades" Schema="dbo" store:Type="Tables" />
@@ -947,20 +1507,26 @@
     <EntitySet Name="Municipios" EntityType="Self.Municipios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NomGenCheckin" EntityType="Self.NomGenCheckin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NotasMovimientos" EntityType="Self.NotasMovimientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrdenesCompra" EntityType="Self.OrdenesCompra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrdenesTrabajoTaller" EntityType="Self.OrdenesTrabajoTaller" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PolizasUnidades" EntityType="Self.PolizasUnidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PrestamoHerramientas" EntityType="Self.PrestamoHerramientas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductosAlmacen" EntityType="Self.ProductosAlmacen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductosSnack" EntityType="Self.ProductosSnack" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Puestos" EntityType="Self.Puestos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Regimenes" EntityType="Self.Regimenes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Requisiciones" EntityType="Self.Requisiciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RubrosFlujos" EntityType="Self.RubrosFlujos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rutas" EntityType="Self.Rutas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalidasAlmacen" EntityType="Self.SalidasAlmacen" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Servicios" EntityType="Self.Servicios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ServiciosCheckin" EntityType="Self.ServiciosCheckin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Snack" EntityType="Self.Snack" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TicketsCheckin" EntityType="Self.TicketsCheckin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TipoPagoSnack" EntityType="Self.TipoPagoSnack" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TiposCostos" EntityType="Self.TiposCostos" Schema="dbo" store:Type="Tables" />
@@ -969,13 +1535,19 @@
     <EntitySet Name="TipoUnidades" EntityType="Self.TipoUnidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Trabajadores" EntityType="Self.Trabajadores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Turnos" EntityType="Self.Turnos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UbicacionesOT" EntityType="Self.UbicacionesOT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Unidades" EntityType="Self.Unidades" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsuariosSitios" EntityType="Self.UsuariosSitios" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ViajesEspeciales" EntityType="Self.ViajesEspeciales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ZonasAlmacen" EntityType="Self.ZonasAlmacen" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_DomiciliosClientes_Clientes" Association="Self.FK_DomiciliosClientes_Clientes">
       <End Role="Clientes" EntitySet="Clientes" />
       <End Role="DomiciliosClientes" EntitySet="DomiciliosClientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DomiciliosProveedores_Proveedores" Association="Self.FK_DomiciliosProveedores_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="DomiciliosProveedores" EntitySet="DomiciliosProveedores" />
     </AssociationSet>
     <AssociationSet Name="FK_Estados_Paises" Association="Self.FK_Estados_Paises">
       <End Role="Paises" EntitySet="Paises" />
@@ -984,10 +1556,6 @@
     <AssociationSet Name="FK_Lineas_Trabajadores" Association="Self.FK_Lineas_Trabajadores">
       <End Role="Trabajadores" EntitySet="Trabajadores" />
       <End Role="Lineas" EntitySet="Lineas" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Municipios_Estados" Association="Self.FK_Municipios_Estados">
-      <End Role="Estados" EntitySet="Estados" />
-      <End Role="Municipios" EntitySet="Municipios" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductosSnack_EstatusPSnack" Association="Self.FK_ProductosSnack_EstatusPSnack">
       <End Role="EstatusPSnack" EntitySet="EstatusPSnack" />
@@ -1013,6 +1581,26 @@
       <End Role="Trabajadores" EntitySet="Trabajadores" />
       <End Role="Snack" EntitySet="Snack" />
     </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Combustibles" Association="Self.FK_Tickets_Combustibles">
+      <End Role="Combustibles" EntitySet="Combustibles" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_EstacionesCombustible" Association="Self.FK_Tickets_EstacionesCombustible">
+      <End Role="EstacionesCombustible" EntitySet="EstacionesCombustible" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Tickets" Association="Self.FK_Tickets_Tickets">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="Tickets1" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Trabajadores" Association="Self.FK_Tickets_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Unidades" Association="Self.FK_Tickets_Unidades">
+      <End Role="Unidades" EntitySet="Unidades" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
     <AssociationSet Name="FK_Trabajadores_Departamentos" Association="Self.FK_Trabajadores_Departamentos">
       <End Role="Departamentos" EntitySet="Departamentos" />
       <End Role="Trabajadores" EntitySet="Trabajadores" />
@@ -1020,6 +1608,22 @@
     <AssociationSet Name="FK_Trabajadores_Puestos" Association="Self.FK_Trabajadores_Puestos">
       <End Role="Puestos" EntitySet="Puestos" />
       <End Role="Trabajadores" EntitySet="Trabajadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_EstatusUnidades" Association="Self.FK_Unidades_EstatusUnidades">
+      <End Role="EstatusUnidades" EntitySet="EstatusUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_ModelosUnidades" Association="Self.FK_Unidades_ModelosUnidades">
+      <End Role="ModelosUnidades" EntitySet="ModelosUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_MotoresUnidades" Association="Self.FK_Unidades_MotoresUnidades">
+      <End Role="MotoresUnidades" EntitySet="MotoresUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_TipoUnidades" Association="Self.FK_Unidades_TipoUnidades">
+      <End Role="TipoUnidades" EntitySet="TipoUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
     </AssociationSet>
     <AssociationSet Name="FK_UsuariosSitios_Trabajadores" Association="Self.FK_UsuariosSitios_Trabajadores">
       <End Role="Trabajadores" EntitySet="Trabajadores" />

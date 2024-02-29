@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.panelbtn = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btn_add = new System.Windows.Forms.Button();
             this.txt_filtro = new System.Windows.Forms.TextBox();
             this.btn_excel = new System.Windows.Forms.Button();
             this.paneldatagrid = new System.Windows.Forms.Panel();
             this.dgrid_empleados = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
+            this.cmb_filtro = new System.Windows.Forms.ComboBox();
             this.panelbtn.SuspendLayout();
             this.paneldatagrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_empleados)).BeginInit();
@@ -43,39 +44,33 @@
             // panelbtn
             // 
             this.panelbtn.BackColor = System.Drawing.Color.White;
-            this.panelbtn.Controls.Add(this.button1);
-            this.panelbtn.Controls.Add(this.label1);
+            this.panelbtn.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelbtn.Controls.Add(this.cmb_filtro);
+            this.panelbtn.Controls.Add(this.button2);
+            this.panelbtn.Controls.Add(this.btn_add);
             this.panelbtn.Controls.Add(this.txt_filtro);
             this.panelbtn.Controls.Add(this.btn_excel);
             this.panelbtn.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelbtn.Location = new System.Drawing.Point(0, 0);
             this.panelbtn.Name = "panelbtn";
-            this.panelbtn.Size = new System.Drawing.Size(800, 46);
+            this.panelbtn.Size = new System.Drawing.Size(800, 53);
             this.panelbtn.TabIndex = 0;
             // 
-            // button1
+            // btn_add
             // 
-            this.button1.Location = new System.Drawing.Point(159, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(483, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Nombre:";
+            this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
+            this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Location = new System.Drawing.Point(37, 5);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(53, 39);
+            this.btn_add.TabIndex = 3;
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.button1_Click);
             // 
             // txt_filtro
             // 
-            this.txt_filtro.Location = new System.Drawing.Point(566, 13);
+            this.txt_filtro.Location = new System.Drawing.Point(610, 15);
             this.txt_filtro.Name = "txt_filtro";
             this.txt_filtro.Size = new System.Drawing.Size(183, 20);
             this.txt_filtro.TabIndex = 1;
@@ -86,7 +81,7 @@
             this.btn_excel.BackgroundImage = global::SIT.Properties.Resources.excel;
             this.btn_excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_excel.Location = new System.Drawing.Point(12, 3);
+            this.btn_excel.Location = new System.Drawing.Point(155, 4);
             this.btn_excel.Name = "btn_excel";
             this.btn_excel.Size = new System.Drawing.Size(52, 40);
             this.btn_excel.TabIndex = 0;
@@ -97,9 +92,9 @@
             // 
             this.paneldatagrid.Controls.Add(this.dgrid_empleados);
             this.paneldatagrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.paneldatagrid.Location = new System.Drawing.Point(0, 46);
+            this.paneldatagrid.Location = new System.Drawing.Point(0, 53);
             this.paneldatagrid.Name = "paneldatagrid";
-            this.paneldatagrid.Size = new System.Drawing.Size(800, 404);
+            this.paneldatagrid.Size = new System.Drawing.Size(800, 397);
             this.paneldatagrid.TabIndex = 1;
             // 
             // dgrid_empleados
@@ -111,9 +106,31 @@
             this.dgrid_empleados.Location = new System.Drawing.Point(0, 0);
             this.dgrid_empleados.Name = "dgrid_empleados";
             this.dgrid_empleados.ReadOnly = true;
-            this.dgrid_empleados.Size = new System.Drawing.Size(800, 404);
+            this.dgrid_empleados.Size = new System.Drawing.Size(800, 397);
             this.dgrid_empleados.TabIndex = 0;
             this.dgrid_empleados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_empleados_CellDoubleClick);
+            this.dgrid_empleados.Click += new System.EventHandler(this.dgrid_empleados_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(96, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(53, 39);
+            this.button2.TabIndex = 4;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // cmb_filtro
+            // 
+            this.cmb_filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_filtro.FormattingEnabled = true;
+            this.cmb_filtro.Location = new System.Drawing.Point(461, 14);
+            this.cmb_filtro.Name = "cmb_filtro";
+            this.cmb_filtro.Size = new System.Drawing.Size(143, 21);
+            this.cmb_filtro.TabIndex = 5;
             // 
             // VEmpleados
             // 
@@ -147,7 +164,8 @@
         private System.Windows.Forms.DataGridView dgrid_empleados;
         private System.Windows.Forms.Button btn_excel;
         private System.Windows.Forms.TextBox txt_filtro;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cmb_filtro;
     }
 }

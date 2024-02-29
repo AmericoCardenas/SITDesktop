@@ -28,5 +28,6 @@ namespace SIT
         public Nullable<int> UsuarioModificacion { get; set; }
         public string FechaCancelacion { get; set; }
         public Nullable<int> UsuarioCancelacion { get; set; }
+        public Nullable<int> IdEmpleado { get; set; }
     }
 }

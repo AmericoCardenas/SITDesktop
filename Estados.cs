@@ -21,7 +21,7 @@ namespace SIT
         }
     
         public int IdEstado { get; set; }
-        public Nullable<int> Nombre { get; set; }
+        public string Nombre { get; set; }
         public Nullable<int> IdPais { get; set; }
     
         public virtual Paises Paises { get; set; }

@@ -64,7 +64,6 @@ namespace SIT
         public virtual DbSet<Movimientos> Movimientos { get; set; }
         public virtual DbSet<BitacoraBitad> BitacoraBitad { get; set; }
         public virtual DbSet<BitacoraRol> BitacoraRol { get; set; }
-        public virtual DbSet<NotasMovimientos> NotasMovimientos { get; set; }
         public virtual DbSet<Regimenes> Regimenes { get; set; }
         public virtual DbSet<Herramientas> Herramientas { get; set; }
         public virtual DbSet<EstatusPHerramientas> EstatusPHerramientas { get; set; }
@@ -86,5 +85,34 @@ namespace SIT
         public virtual DbSet<PolizasUnidades> PolizasUnidades { get; set; }
         public virtual DbSet<ModelosUnidades> ModelosUnidades { get; set; }
         public virtual DbSet<Unidades> Unidades { get; set; }
+        public virtual DbSet<Combustibles> Combustibles { get; set; }
+        public virtual DbSet<CorteDiarioBomba> CorteDiarioBomba { get; set; }
+        public virtual DbSet<EstacionesCombustible> EstacionesCombustible { get; set; }
+        public virtual DbSet<Bancos> Bancos { get; set; }
+        public virtual DbSet<CuentasBancos> CuentasBancos { get; set; }
+        public virtual DbSet<Tickets> Tickets { get; set; }
+        public virtual DbSet<NotasMovimientos> NotasMovimientos { get; set; }
+        public virtual DbSet<Almacenes> Almacenes { get; set; }
+        public virtual DbSet<ZonasAlmacen> ZonasAlmacen { get; set; }
+        public virtual DbSet<ProductosAlmacen> ProductosAlmacen { get; set; }
+        public virtual DbSet<DetalleRequisiciones> DetalleRequisiciones { get; set; }
+        public virtual DbSet<Requisiciones> Requisiciones { get; set; }
+        public virtual DbSet<CotizacionesRequisiciones> CotizacionesRequisiciones { get; set; }
+        public virtual DbSet<EstatusCotizaciones> EstatusCotizaciones { get; set; }
+        public virtual DbSet<OrdenesCompra> OrdenesCompra { get; set; }
+        public virtual DbSet<DomiciliosProveedores> DomiciliosProveedores { get; set; }
+        public virtual DbSet<EstatusOrdenCompra> EstatusOrdenCompra { get; set; }
+        public virtual DbSet<DetalleSalidasAlmacen> DetalleSalidasAlmacen { get; set; }
+        public virtual DbSet<SalidasAlmacen> SalidasAlmacen { get; set; }
+        public virtual DbSet<EstatusSalidas> EstatusSalidas { get; set; }
+        public virtual DbSet<FacturasOC> FacturasOC { get; set; }
+        public virtual DbSet<FallasTaller> FallasTaller { get; set; }
+        public virtual DbSet<GruposActTaller> GruposActTaller { get; set; }
+        public virtual DbSet<OrdenesTrabajoTaller> OrdenesTrabajoTaller { get; set; }
+        public virtual DbSet<UbicacionesOT> UbicacionesOT { get; set; }
+        public virtual DbSet<ActividadesTaller> ActividadesTaller { get; set; }
+        public virtual DbSet<MantenimientosTaller> MantenimientosTaller { get; set; }
+        public virtual DbSet<EstatusActTaller> EstatusActTaller { get; set; }
+        public virtual DbSet<ActividadesOT> ActividadesOT { get; set; }
     }
 }

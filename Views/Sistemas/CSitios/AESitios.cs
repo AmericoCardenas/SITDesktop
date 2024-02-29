@@ -95,7 +95,7 @@ namespace SIT.Views.Sistemas.CSitios
                 else
                 {
                     db.UsuariosSitios.Add(usit);
-                    MessageBox.Show("Linea agregada exitosamente");
+                    MessageBox.Show("Sitio agregado exitosamente");
 
                 }
                 db.SaveChanges();

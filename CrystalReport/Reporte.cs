@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using CrystalDecisions.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,12 +22,16 @@ namespace SIT.CrystalReport
         }
 
         public Form frm;
-        public int idviaje,ideqmovil,idlinea,ideqcomp;
+        public int idviaje,ideqmovil,idlinea,ideqcomp,idocompra;
         ReportDocument report = new ReportDocument();
 
 
         private void CargarReporte()
         {
+            ConnectionInfo connectionInfo = new ConnectionInfo();
+            connectionInfo.DatabaseName = "SIT";
+            connectionInfo.UserID = "sa";
+            connectionInfo.Password = "compac";
 
             if (this.frm.Name == "VViajesEspeciales")
             {
@@ -100,9 +105,40 @@ namespace SIT.CrystalReport
                 crystalReportViewer1.ParameterFieldInfo = parameterFields;
 
             }
+            else if (this.frm.Name == "VNotas")
+            {
+                report.Load("\\\\192.168.1.213\\Reportes\\RptNotaCreditos.rpt");
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "Server=SERVIDOR\\COMPAC;Database=SIT;User Id=sa;Password=compac;";
+
+            }
+            else if (this.frm.Name == "VOrdenesCompra")
+            {
+                report.Load("\\\\192.168.1.213\\Reportes\\RptOrdenCompra.rpt");
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "Server=SERVIDOR\\COMPAC;Database=SIT;User Id=sa;Password=compac;";
+                ParameterFields parameterFields = new ParameterFields();
+                ParameterField parameterField = new ParameterField();
+                ParameterDiscreteValue parameterValue = new ParameterDiscreteValue();
+
+                parameterField.ParameterFieldName = "@IDOCOMPRA"; // Replace with your parameter name
+                parameterValue.Value = idocompra; // Replace with the actual parameter value
+                parameterField.CurrentValues.Add(parameterValue);
+                parameterFields.Add(parameterField);
+                crystalReportViewer1.ParameterFieldInfo = parameterFields;
+                
+            }
 
             report.SetDatabaseLogon("sa", "compac", "SERVIDOR\\COMPAC", "SIT");
+
+            foreach (Table var in report.Database.Tables)
+            {
+                TableLogOnInfo tablainformacion = var.LogOnInfo;
+                tablainformacion.ConnectionInfo = connectionInfo;
+                var.ApplyLogOnInfo(tablainformacion);
+            }
             crystalReportViewer1.ReportSource = report;
+
         }
 
         private void Reporte_Load(object sender, EventArgs e)
