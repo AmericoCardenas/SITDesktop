@@ -1,6 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Bibliography;
 using DocumentFormat.OpenXml.Drawing.Wordprocessing;
-using DocumentFormat.OpenXml.Wordprocessing;
 using GMap.NET;
 using SIT.CrystalReport;
 using SIT.Views.Contabilidad.CNotas;
@@ -27,7 +26,10 @@ namespace SIT.Views.Contabilidad.CMovimientos
         {
             InitializeComponent();
             this._uslog = uslog;
-            this.dgrid_notas_creditos.CellContentClick += this.dgrid_notas_creditos_CellContentClick;
+            this.dgrid_notas_creditos.EnableHeadersVisualStyles = false;
+            this.dgrid_notas_creditos.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
+            this.dgrid_notas_creditos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.dgrid_notas_creditos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private int IdUsuario;
@@ -64,13 +66,8 @@ namespace SIT.Views.Contabilidad.CMovimientos
 
             if(this.tbcontrol.SelectedIndex == 0)
             {
-                dgrid = this.dgrid_notas_creditos;
-                dgrid.DataSource = null;
-                dgrid.Rows.Clear();
-                dgrid.Columns.Clear();
                 var x = from n in db.NotasMovimientos
                         join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
-
                         where n.IdEstatus == 1
                         select new
                         {
@@ -82,14 +79,22 @@ namespace SIT.Views.Contabilidad.CMovimientos
                             n.Concepto,
                             n.Total
                         };
-                dgrid.DataSource = x.ToList();
+                this.dgrid_notas_creditos.DataSource = null;
+
+                if (this.dgrid_notas_creditos.Columns.Count > 0)
+                {
+                    this.dgrid_notas_creditos.Columns.Clear();
+                }
 
                 DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
                 dgvCmb.ValueType = typeof(bool);
                 dgvCmb.FalseValue = false;
+                dgvCmb.TrueValue = true;
                 dgvCmb.Name = "Chk";
                 dgvCmb.HeaderText = "CheckBox";
-                dgrid.Columns.Add(dgvCmb);
+                this.dgrid_notas_creditos.Columns.Add(dgvCmb);
+                this.dgrid_notas_creditos.DataSource = x.ToList();
+                this.dgrid_notas_creditos.Columns["Chk"].DisplayIndex = this.dgrid_notas_creditos.Columns.Count - 1;
 
             }
             else if (this.tbcontrol.SelectedIndex == 1)
@@ -114,14 +119,10 @@ namespace SIT.Views.Contabilidad.CMovimientos
                         };
                 dgrid.DataSource = x.ToList();
 
+                    
             }
 
-            dgrid.Columns[0].Visible= false;
 
-            dgrid.EnableHeadersVisualStyles = false;
-            dgrid.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            dgrid.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void CancelarNota()
@@ -214,19 +215,32 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.IdNota,
                                     n.Folio,
                                     n.FechaFactura,
-                                    p.Proveedor,
+                                    p.RazonSocial,
                                     n.FechaPago,
                                     n.Concepto,
                                     n.Total
                                 };
-                        dgrid.DataSource = x.ToList();
 
-                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-                        dgvCmb.ValueType = typeof(bool);
-                        dgvCmb.FalseValue = false;
-                        dgvCmb.Name = "Chk";
-                        dgvCmb.HeaderText = "CheckBox";
-                        dgrid.Columns.Add(dgvCmb);
+                        if (this.tbcontrol.SelectedIndex == 0)
+                        {
+                            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                            dgvCmb.ValueType = typeof(bool);
+                            dgvCmb.FalseValue = false;
+                            dgvCmb.TrueValue = true;
+                            dgvCmb.Name = "Chk";
+                            dgvCmb.HeaderText = "CheckBox";
+                            dgrid.Columns.Add(dgvCmb);
+                            dgrid.DataSource = x.ToList();
+                            dgrid.Columns["Chk"].DisplayIndex = dgrid.Columns.Count - 1;
+
+                        }
+                        else
+                        {
+                            dgrid.DataSource = x.ToList();
+
+                        }
+
+
 
                     }
                     catch (Exception ex)
@@ -254,14 +268,27 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.Concepto,
                                     n.Total
                                 };
-                        dgrid.DataSource = x.ToList();
 
-                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-                        dgvCmb.ValueType = typeof(bool);
-                        dgvCmb.FalseValue = false;
-                        dgvCmb.Name = "Chk";
-                        dgvCmb.HeaderText = "CheckBox";
-                        dgrid.Columns.Add(dgvCmb);
+
+                        if (this.tbcontrol.SelectedIndex == 0)
+                        {
+                            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                            dgvCmb.ValueType = typeof(bool);
+                            dgvCmb.FalseValue = false;
+                            dgvCmb.TrueValue = true;
+                            dgvCmb.Name = "Chk";
+                            dgvCmb.HeaderText = "CheckBox";
+                            dgrid.Columns.Add(dgvCmb);
+                            dgrid.DataSource = x.ToList();
+                            dgrid.Columns["Chk"].DisplayIndex = dgrid.Columns.Count - 1;
+
+                        }
+                        else
+                        {
+                            dgrid.DataSource = x.ToList();
+
+                        }
+
                     }
                     catch (Exception ex)
                     {
@@ -284,19 +311,31 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.IdNota,
                                     n.Folio,
                                     n.FechaFactura,
-                                    p.Proveedor,
+                                    p.RazonSocial,
                                     n.FechaPago,
                                     n.Concepto,
                                     n.Total
                                 };
-                        dgrid.DataSource = x.ToList();
 
-                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-                        dgvCmb.ValueType = typeof(bool);
-                        dgvCmb.FalseValue = false;
-                        dgvCmb.Name = "Chk";
-                        dgvCmb.HeaderText = "CheckBox";
-                        dgrid.Columns.Add(dgvCmb);
+
+                        if (this.tbcontrol.SelectedIndex == 0)
+                        {
+                            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                            dgvCmb.ValueType = typeof(bool);
+                            dgvCmb.FalseValue = false;
+                            dgvCmb.TrueValue = true;
+                            dgvCmb.Name = "Chk";
+                            dgvCmb.HeaderText = "CheckBox";
+                            dgrid.Columns.Add(dgvCmb);
+                            dgrid.DataSource = x.ToList();
+                            dgrid.Columns["Chk"].DisplayIndex = dgrid.Columns.Count - 1;
+
+                        }
+                        else
+                        {
+                            dgrid.DataSource = x.ToList();
+
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -319,20 +358,32 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.IdNota,
                                     n.Folio,
                                     n.FechaFactura,
-                                    p.Proveedor,
+                                    p.RazonSocial,
                                     n.FechaPago,
                                     n.Concepto,
                                     n.Total
 
                                 };
-                        dgrid.DataSource = x.ToList();
 
-                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-                        dgvCmb.ValueType = typeof(bool);
-                        dgvCmb.FalseValue = false;
-                        dgvCmb.Name = "Chk";
-                        dgvCmb.HeaderText = "CheckBox";
-                        dgrid.Columns.Add(dgvCmb);
+
+                        if (this.tbcontrol.SelectedIndex == 0)
+                        {
+                            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                            dgvCmb.ValueType = typeof(bool);
+                            dgvCmb.FalseValue = false;
+                            dgvCmb.TrueValue = true;
+                            dgvCmb.Name = "Chk";
+                            dgvCmb.HeaderText = "CheckBox";
+                            dgrid.Columns.Add(dgvCmb);
+                            dgrid.DataSource = x.ToList();
+                            dgrid.Columns["Chk"].DisplayIndex = dgrid.Columns.Count - 1;
+
+                        }
+                        else
+                        {
+                            dgrid.DataSource = x.ToList();
+
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -356,19 +407,31 @@ namespace SIT.Views.Contabilidad.CMovimientos
                                     n.IdNota,
                                     n.Folio,
                                     n.FechaFactura,
-                                    p.Proveedor,
+                                    p.RazonSocial,
                                     n.FechaPago,
                                     n.Concepto,
                                     n.Total
                                 };
-                        dgrid.DataSource = x.ToList();
 
-                        DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
-                        dgvCmb.ValueType = typeof(bool);
-                        dgvCmb.FalseValue = false;
-                        dgvCmb.Name = "Chk";
-                        dgvCmb.HeaderText = "CheckBox";
-                        dgrid.Columns.Add(dgvCmb);
+
+                        if (this.tbcontrol.SelectedIndex == 0)
+                        {
+                            DataGridViewCheckBoxColumn dgvCmb = new DataGridViewCheckBoxColumn();
+                            dgvCmb.ValueType = typeof(bool);
+                            dgvCmb.FalseValue = false;
+                            dgvCmb.TrueValue = true;
+                            dgvCmb.Name = "Chk";
+                            dgvCmb.HeaderText = "CheckBox";
+                            dgrid.Columns.Add(dgvCmb);
+                            dgrid.DataSource = x.ToList();
+                            dgrid.Columns["Chk"].DisplayIndex = dgrid.Columns.Count - 1;
+
+                        }
+                        else
+                        {
+                            dgrid.DataSource = x.ToList();
+
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -412,12 +475,17 @@ namespace SIT.Views.Contabilidad.CMovimientos
                     DataGridViewCheckBoxCell checkBoxCell = this.dgrid_notas_creditos.Rows[e.RowIndex].Cells[0] as DataGridViewCheckBoxCell;
                     if (checkBoxCell != null)
                     {
-                        if(checkBoxCell.Value==null)
+
+
+                        if (checkBoxCell.Value == null)
                         {
-                            checkBoxCell.Value = true;
+                            checkBoxCell.Value = false;
                         }
+
                         bool isChecked = (bool)checkBoxCell.Value;
-                        checkBoxCell.Value = !isChecked;
+                            checkBoxCell.Value = !isChecked;
+
+                        
 
                         this.dgrid_notas_creditos.CurrentRow.Selected = true;
                     }
@@ -426,7 +494,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -442,7 +510,7 @@ namespace SIT.Views.Contabilidad.CMovimientos
                 }
                 if (checkBoxCell != null && (bool)checkBoxCell.Value)
                 {
-                    proveedor = row.Cells["Proveedor"].Value.ToString();
+                    proveedor = row.Cells["RazonSocial"].Value.ToString();
                     lst_not.Add(new NotasMovimientos
                     {
                         IdNota = Convert.ToInt32(row.Cells["IdNota"].Value.ToString()),

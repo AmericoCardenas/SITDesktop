@@ -53,6 +53,8 @@
             this.btn_save_OT = new System.Windows.Forms.Button();
             this.txt_obsot = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmb_emp = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,6 +66,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.cmb_emp);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txt_km);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.cmb_ubicacion);
@@ -79,7 +83,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 42);
+            this.panel1.Size = new System.Drawing.Size(1008, 69);
             this.panel1.TabIndex = 0;
             // 
             // txt_km
@@ -120,6 +124,8 @@
             // 
             // cmb_unidad
             // 
+            this.cmb_unidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_unidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_unidad.FormattingEnabled = true;
             this.cmb_unidad.Location = new System.Drawing.Point(543, 7);
             this.cmb_unidad.Name = "cmb_unidad";
@@ -195,7 +201,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 42);
+            this.panel2.Location = new System.Drawing.Point(0, 69);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1008, 61);
             this.panel2.TabIndex = 1;
@@ -259,7 +265,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel3.Controls.Add(this.dgrid_actsot);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 103);
+            this.panel3.Location = new System.Drawing.Point(0, 130);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1008, 195);
             this.panel3.TabIndex = 2;
@@ -284,7 +290,7 @@
             this.panel4.Controls.Add(this.txt_obsot);
             this.panel4.Controls.Add(this.label16);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 298);
+            this.panel4.Location = new System.Drawing.Point(0, 325);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1008, 100);
             this.panel4.TabIndex = 3;
@@ -317,6 +323,26 @@
             this.label16.Size = new System.Drawing.Size(127, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "Observaciones";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(10, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Operador";
+            // 
+            // cmb_emp
+            // 
+            this.cmb_emp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_emp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_emp.FormattingEnabled = true;
+            this.cmb_emp.Location = new System.Drawing.Point(100, 36);
+            this.cmb_emp.Name = "cmb_emp";
+            this.cmb_emp.Size = new System.Drawing.Size(298, 21);
+            this.cmb_emp.TabIndex = 13;
             // 
             // AEOrdenesTrabajo
             // 
@@ -374,5 +400,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox cmb_filtro;
+        private System.Windows.Forms.ComboBox cmb_emp;
+        private System.Windows.Forms.Label label6;
     }
 }

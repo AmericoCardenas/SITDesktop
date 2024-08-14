@@ -42,6 +42,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.txt_filtro);
             this.panel1.Controls.Add(this.cmb_filtro);
             this.panel1.Controls.Add(this.btn_cancel);
@@ -49,7 +50,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(937, 52);
+            this.panel1.Size = new System.Drawing.Size(937, 46);
             this.panel1.TabIndex = 0;
             // 
             // txt_filtro
@@ -74,9 +75,9 @@
             this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
             this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(86, 2);
+            this.btn_cancel.Location = new System.Drawing.Point(68, 2);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(65, 46);
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
             this.btn_cancel.TabIndex = 1;
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -86,32 +87,34 @@
             this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
             this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(12, 0);
+            this.btn_add.Location = new System.Drawing.Point(12, 2);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(60, 49);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 0;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dgrid_cuentas);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 52);
+            this.panel2.Location = new System.Drawing.Point(0, 46);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(937, 398);
+            this.panel2.Size = new System.Drawing.Size(937, 404);
             this.panel2.TabIndex = 1;
             // 
             // dgrid_cuentas
             // 
             this.dgrid_cuentas.AllowUserToAddRows = false;
             this.dgrid_cuentas.AllowUserToDeleteRows = false;
+            this.dgrid_cuentas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_cuentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_cuentas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_cuentas.Location = new System.Drawing.Point(0, 0);
             this.dgrid_cuentas.Name = "dgrid_cuentas";
             this.dgrid_cuentas.ReadOnly = true;
-            this.dgrid_cuentas.Size = new System.Drawing.Size(937, 398);
+            this.dgrid_cuentas.Size = new System.Drawing.Size(933, 400);
             this.dgrid_cuentas.TabIndex = 0;
             this.dgrid_cuentas.Click += new System.EventHandler(this.dgrid_cuentas_Click);
             // 

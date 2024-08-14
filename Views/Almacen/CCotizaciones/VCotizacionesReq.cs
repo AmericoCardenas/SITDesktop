@@ -220,24 +220,24 @@ namespace SIT.Views.Almacen.CCotizaciones
 
         private void AgregarCotizacion()
         {
-            if (cotizaciones.IdEstatus == 3)
-            {
-                MessageBox.Show("La cotizacion no se puede editar debido a que ya se encuentra autorizada");
-                this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.mas, new Size(32, 32));
-                this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
-                idCotizacion = 0;
-                cotizaciones = new CotizacionesRequisiciones();
-                this.txt_cu.Text = string.Empty;
-                this.txt_total.Text = string.Empty;
-            }
-            else
-            {
-                if (VerificarCotizaciones() == true)
-                {
-                    MessageBox.Show("No se pueden agregar cotizaciones debido a que ya existe una cotizacion autorizada");
-                }
-                else
-                {
+            //if (cotizaciones.IdEstatus == 3)
+            //{
+            //    MessageBox.Show("La cotizacion no se puede editar debido a que ya se encuentra autorizada");
+            //    this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.mas, new Size(32, 32));
+            //    this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+            //    idCotizacion = 0;
+            //    cotizaciones = new CotizacionesRequisiciones();
+            //    this.txt_cu.Text = string.Empty;
+            //    this.txt_total.Text = string.Empty;
+            //}
+            //else
+            //{
+                //if (VerificarCotizaciones() == true)
+                //{
+                //    MessageBox.Show("No se pueden agregar cotizaciones debido a que ya existe una cotizacion autorizada");
+                //}
+                //else
+                //{
                     if (this.cmb_proveedor.SelectedValue == null)
                     {
                         MessageBox.Show("Favor de seleccionar proveedor");
@@ -254,7 +254,6 @@ namespace SIT.Views.Almacen.CCotizaciones
                         cotizaciones.IdDetalleReq = deteq.IdDetalleReq;
                         cotizaciones.IdProveedor = Convert.ToInt32(this.cmb_proveedor.SelectedValue);
                         cotizaciones.CostoUnitario = Convert.ToDouble(this.txt_cu.Text);
-                        cotizaciones.IdEstatus = 1;
                         var cant = Convert.ToDouble(Cantidad);
                         var cu = Convert.ToDouble(this.txt_cu.Text);
                         var total = cant * cu;
@@ -266,12 +265,15 @@ namespace SIT.Views.Almacen.CCotizaciones
 
                         if (idCotizacion != 0)
                         {
+                            
                             db.Entry(cotizaciones).State = EntityState.Modified;
 
                         }
                         else
                         {
-                            db.CotizacionesRequisiciones.Add(cotizaciones);
+                    cotizaciones.IdEstatus = 1;
+
+                    db.CotizacionesRequisiciones.Add(cotizaciones);
 
                         }
                         db.SaveChanges();
@@ -280,8 +282,8 @@ namespace SIT.Views.Almacen.CCotizaciones
 
                     }
 
-                }
-            }
+                //}
+            //}
 
         }
 

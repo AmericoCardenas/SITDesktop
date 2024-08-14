@@ -32,6 +32,7 @@ namespace SIT.Views.Taller
 
         private void AEOrdenesTrabajo_Load(object sender, EventArgs e)
         {
+            CargarOperadores();
             CargarUnidades();
             CargarUbicaciones();
 
@@ -40,6 +41,13 @@ namespace SIT.Views.Taller
                 ot.FCreo = DateTime.Now;
                 ot.IdUsCreo = this.uslog.IdUsuario;
                 ot.IdEstatus = 1;
+                ot.IdEmpleado = 0;
+                ot.IdUnidad = 0;
+                ot.Hora = "00:00";
+                ot.Km = 0;
+                ot.IdUbicacion = 0;
+                ot.Fecha=DateTime.Now;
+                ot.Observaciones = string.Empty;
                 db.OrdenesTrabajoTaller.Add(ot);
                 db.SaveChanges();
                 idOT = ot.IdOrdenTrabajo;
@@ -50,6 +58,7 @@ namespace SIT.Views.Taller
             {
                 ot = db.OrdenesTrabajoTaller.Where(x => x.IdOrdenTrabajo == idOT).FirstOrDefault();
                 this.txt_numot.Text = ot.IdOrdenTrabajo.ToString();
+                this.cmb_emp.SelectedValue = ot.IdEmpleado;
                 this.dtm_fechaot.Value = ot.Fecha.Value;
                 this.txt_horaot.Text = ot.Hora.ToString();
                 this.cmb_unidad.SelectedValue = ot.IdUnidad;
@@ -66,6 +75,7 @@ namespace SIT.Views.Taller
                     this.txt_obsot.Enabled = false;
                     this.cmb_ubicacion.Enabled=false;
                     this.cmb_unidad.Enabled=false;
+                    this.cmb_emp.Enabled = false;
                 }
                 //this.txt_km.Text=ot.km
             }
@@ -81,6 +91,14 @@ namespace SIT.Views.Taller
             this.cmb_unidad.DataSource = x;
             this.cmb_unidad.ValueMember = "IdUnidad";
             this.cmb_unidad.DisplayMember = "Economico";
+        }
+
+        private void CargarOperadores()
+        {
+            var x = db.Trabajadores.Where(y => y.IdEstatus == 1 && y.IdPuesto==2).ToList();
+            this.cmb_emp.DataSource = x;
+            this.cmb_emp.ValueMember = "IdEmpleado";
+            this.cmb_emp.DisplayMember = "NombreCompleto";
         }
 
         private void CargarUbicaciones()
@@ -101,11 +119,13 @@ namespace SIT.Views.Taller
                     join t in db.Trabajadores on a.IdEmpleado equals t.IdEmpleado
                     join e in db.EstatusActTaller on a.IdEstatus equals e.IdEstatus
                     join at in db.ActividadesTaller on a.IdActTaller equals at.IdAct
+                    join ac in db.ActividadesMOT on a.IdActMOT equals ac.IdAct
                     where a.IdOT == idOT && a.IdEstatus!=2
                     select new
                     {
                         a.IdActOt,
                         t.NombreCompleto,
+                        Tipo=ac.Actividad,
                         at.Actividad,
                         e.Estatus,
                         a.FI,
@@ -215,13 +235,14 @@ namespace SIT.Views.Taller
             }
             else
             {
-                if (idOT != 0 && idOT != 3)
+                if (idOT != 0 && ot.IdEstatus != 3)
                 {
                     ot.Fecha = this.dtm_fechaot.Value;
                     ot.Hora = this.txt_horaot.Text;
                     ot.IdUnidad = Convert.ToInt32(this.cmb_unidad.SelectedValue);
                     ot.Km = Convert.ToDouble(this.txt_km.Text);
                     ot.IdUbicacion = Convert.ToInt32(this.cmb_ubicacion.SelectedValue);
+                    ot.IdEmpleado = Convert.ToInt32(this.cmb_emp.SelectedValue);
                     ot.Observaciones = this.txt_obsot.Text.ToUpper();
                     db.Entry(ot).State = EntityState.Modified;
                     db.SaveChanges();

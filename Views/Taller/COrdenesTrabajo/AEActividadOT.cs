@@ -54,10 +54,18 @@ namespace SIT.Views.Taller.COrdenesTrabajo
 
         private void CargarEstatus()
         {
-            var x = db.EstatusActTaller.Where(y => y.IdEstatus != 2).ToList();
+            var x = this.db.EstatusActTaller.Where(y=>y.IdEstatus!=2).ToList();
             this.cmb_estatus.DataSource = x;
             this.cmb_estatus.ValueMember = "IdEstatus";
             this.cmb_estatus.DisplayMember = "Estatus";
+        }
+
+        public void CargarActMot()
+        {
+            var x = this.db.ActividadesMOT.ToList();
+            this.cmb_actmot.DataSource = x;
+            this.cmb_actmot.ValueMember = "IdAct";
+            this.cmb_actmot.DisplayMember = "Actividad";
         }
 
         private void AgregarActividadTaller()
@@ -87,6 +95,11 @@ namespace SIT.Views.Taller.COrdenesTrabajo
                 MessageBox.Show("Favor de seleccionar el tipo de mantenimiento de la OT");
                 this.cmb_mtto.Focus();
             }
+            else if (this.cmb_actmot.SelectedValue == null)
+            {
+                MessageBox.Show("Favor de seleccionar el tipo de actividad de la OT");
+                this.cmb_actmot.Focus();
+            }
             else
             {
                 actot.IdOT = idOT;
@@ -99,6 +112,8 @@ namespace SIT.Views.Taller.COrdenesTrabajo
                 actot.IdActTaller=Convert.ToInt32(this.cmb_actividad.SelectedValue);
                 actot.Observaciones = this.txt_obs.Text.ToUpper();
                 actot.IdEstatus = Convert.ToInt32(this.cmb_estatus.SelectedValue);
+                actot.IdMtto= Convert.ToInt32(this.cmb_mtto.SelectedValue);
+                actot.IdActMOT = Convert.ToInt32(this.cmb_actmot.SelectedValue);
                 actot.FCreo = DateTime.Now;
                 actot.IdUsCreo = this._uslog.IdUsuario;
 
@@ -138,14 +153,17 @@ namespace SIT.Views.Taller.COrdenesTrabajo
             CargarActividades();
             CargarMttos();
             CargarEstatus();
+            CargarActMot();
 
-             if(idActividadOT!=0)
+             if (idActividadOT!=0)
             {
                 actot = db.ActividadesOT.Where(x => x.IdActOt == idActividadOT).FirstOrDefault();
                 this.Text = "Editar Act OT# " + actot.IdOT;
                 this.cmb_mecanico.SelectedValue = actot.IdEmpleado;
                 this.cmb_actividad.SelectedValue = actot.IdActTaller;
                 this.cmb_estatus.SelectedValue = actot.IdEstatus;
+                this.cmb_mtto.SelectedValue = actot.IdMtto;
+                this.cmb_actmot.SelectedValue = actot.IdActMOT;
                 this.txt_hi.Text = actot.TI;
                 this.dtm_fi.Value = Convert.ToDateTime(actot.FI);
                 this.txt_ht.Text = actot.TF;
@@ -168,6 +186,14 @@ namespace SIT.Views.Taller.COrdenesTrabajo
                 frm.Enabled = true;
                 frm.CargarActividadesxOT();
             }
+        }
+
+        private void btn_add_actmot_Click(object sender, EventArgs e)
+        {
+            AEActMOT frm = new AEActMOT(this);
+            frm.idAct = 0;
+            this.Enabled = false;
+            frm.Show();
         }
 
         private void btn_add_actividad_Click(object sender, EventArgs e)

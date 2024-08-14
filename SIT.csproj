@@ -29,7 +29,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.1.213\Compartida\SIT\</UpdateUrl>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>80</ApplicationRevision>
+    <ApplicationRevision>126</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -60,7 +60,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>
@@ -254,6 +254,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActividadesMOT.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
     <Compile Include="ActividadesOT.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -261,6 +264,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Almacenes.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ArticulosEmp.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Bancos.cs">
@@ -273,6 +279,15 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="BonosCheckin.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatArticulosRh.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatDocsEmp.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CatIncidencias.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Clientes.cs">
@@ -332,6 +347,12 @@
     <Compile Include="CrystalReport\Reporte.Designer.cs">
       <DependentUpon>Reporte.cs</DependentUpon>
     </Compile>
+    <Compile Include="CrystalReport\RptVacEmp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RptVacEmp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CrystalReport\RptVjEsp.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -354,6 +375,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="DetalleSalidasAlmacen.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DocsEmpleado.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="DomicilioEmpleados.cs">
@@ -434,7 +458,10 @@
     <Compile Include="Herramientas.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
-    <Compile Include="Incidencias.cs">
+    <Compile Include="HistBajasEmp.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IncidenciasOperaciones.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Lineas.cs">
@@ -467,6 +494,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Models.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Models.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\PosicionVehiculos.cs" />
     <Compile Include="Models\UnidadSamsara.cs" />
     <Compile Include="MotoresUnidades.cs">
@@ -491,6 +523,9 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="Paises.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Periodos.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="PolizasUnidades.cs">
@@ -535,6 +570,7 @@
     <Compile Include="ServiciosCheckin.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="SmtpEmail\EnviarEmail.cs" />
     <Compile Include="Snack.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -578,6 +614,12 @@
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="UsuariosSitios.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VacacionesEmp.cs">
+      <DependentUpon>Models.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VacDiasEmpPeriodo.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
     <Compile Include="ViajesEspeciales.cs">
@@ -630,6 +672,18 @@
     </Compile>
     <Compile Include="Views\Catalogos\CEmpleados\AEEmpleado.Designer.cs">
       <DependentUpon>AEEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CEmpleados\VCuestBajEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CEmpleados\VCuestBajEmp.Designer.cs">
+      <DependentUpon>VCuestBajEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProductosAlmacen\VHistorialCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Catalogos\CProductosAlmacen\VHistorialCompras.Designer.cs">
+      <DependentUpon>VHistorialCompras.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Catalogos\CUsuarios\AEUsuarios.cs">
       <SubType>Form</SubType>
@@ -793,6 +847,18 @@
     <Compile Include="Views\Contabilidad\CFlujos\AEFlujos.Designer.cs">
       <DependentUpon>AEFlujos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Contabilidad\CFlujos\VSaldosCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Contabilidad\CFlujos\VSaldosCaja.Designer.cs">
+      <DependentUpon>VSaldosCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Contabilidad\CFlujos\VSaldosCajaxFecha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Contabilidad\CFlujos\VSaldosCajaxFecha.Designer.cs">
+      <DependentUpon>VSaldosCajaxFecha.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Contabilidad\CMovimientos\AEMovimiento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -871,6 +937,30 @@
     <Compile Include="Views\Gestoria\CPolizas\VPolizas.Designer.cs">
       <DependentUpon>VPolizas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\AEIncidencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\AEIncidencia.Designer.cs">
+      <DependentUpon>AEIncidencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\VCatIncidencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\VCatIncidencia.Designer.cs">
+      <DependentUpon>VCatIncidencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\AECatIncidencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\AECatIncidencias.Designer.cs">
+      <DependentUpon>AECatIncidencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\VIncidencias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Logistica\CIncidencias\VIncidencias.Designer.cs">
+      <DependentUpon>VIncidencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Logistica\VConciliador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -895,11 +985,35 @@
     <Compile Include="Views\Nominas\CNomGeneral\VUploadArchivos.Designer.cs">
       <DependentUpon>VUploadArchivos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\RH\CArticulos\AEArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CArticulos\AEArticulo.Designer.cs">
+      <DependentUpon>AEArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CArticulos\VArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CArticulos\VArticulos.Designer.cs">
+      <DependentUpon>VArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CAsistencia\VAsistencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CAsistencia\VAsistencia.Designer.cs">
+      <DependentUpon>VAsistencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\RH\CSnack\AESnack.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\RH\CSnack\AESnack.Designer.cs">
       <DependentUpon>AESnack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CSnack\AESnackV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CSnack\AESnackV2.Designer.cs">
+      <DependentUpon>AESnackV2.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\RH\CSnack\ReporteSnack.cs">
       <SubType>Form</SubType>
@@ -918,6 +1032,42 @@
     </Compile>
     <Compile Include="Views\RH\CSnack\VSnack.Designer.cs">
       <DependentUpon>VSnack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CArtEmp\AEArtEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CArtEmp\AEArtEmp.Designer.cs">
+      <DependentUpon>AEArtEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\AEDiasVacEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\AEDiasVacEmp.Designer.cs">
+      <DependentUpon>AEDiasVacEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\AEVacaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\AEVacaciones.Designer.cs">
+      <DependentUpon>AEVacaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\VDiasVacacionesEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\VDiasVacacionesEmp.Designer.cs">
+      <DependentUpon>VDiasVacacionesEmp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\VVacaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\RH\CVacaciones\VVacaciones.Designer.cs">
+      <DependentUpon>VVacaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sistemas\CEqComputo\AEEqComputo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sistemas\CEqComputo\AEEqComputo.Designer.cs">
+      <DependentUpon>AEEqComputo.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sistemas\CEqComputo\VEquiposComputo.cs">
       <SubType>Form</SubType>
@@ -949,11 +1099,23 @@
     <Compile Include="Views\Logistica\CRutas\VImportarBitacora.Designer.cs">
       <DependentUpon>VImportarBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Sistemas\CEqMovil\AEEqMovil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sistemas\CEqMovil\AEEqMovil.Designer.cs">
+      <DependentUpon>AEEqMovil.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Sistemas\CEqMovil\VEquiposMovil.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Sistemas\CEqMovil\VEquiposMovil.Designer.cs">
       <DependentUpon>VEquiposMovil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Sistemas\CLineas\AELinea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Sistemas\CLineas\AELinea.Designer.cs">
+      <DependentUpon>AELinea.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Sistemas\CLineas\VLineas.cs">
       <SubType>Form</SubType>
@@ -1041,6 +1203,12 @@
     <Compile Include="Views\Taller\COrdenesTrabajo\AEActividadOT.Designer.cs">
       <DependentUpon>AEActividadOT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Taller\COrdenesTrabajo\AEActMOT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Taller\COrdenesTrabajo\AEActMOT.Designer.cs">
+      <DependentUpon>AEActMOT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Taller\COrdenesTrabajo\AEOrdenesTrabajo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1083,6 +1251,10 @@
     <EmbeddedResource Include="CrystalReport\Reporte.resx">
       <DependentUpon>Reporte.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport\RptVacEmp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptVacEmp.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="CrystalReport\RptVjEsp.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptVjEsp.cs</LastGenOutput>
@@ -1110,6 +1282,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\CEmpleados\AEEmpleado.resx">
       <DependentUpon>AEEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CEmpleados\VCuestBajEmp.resx">
+      <DependentUpon>VCuestBajEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Catalogos\CProductosAlmacen\VHistorialCompras.resx">
+      <DependentUpon>VHistorialCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Catalogos\CUsuarios\AEUsuarios.resx">
       <DependentUpon>AEUsuarios.cs</DependentUpon>
@@ -1198,6 +1376,12 @@
     <EmbeddedResource Include="Views\Contabilidad\CFlujos\AEFlujos.resx">
       <DependentUpon>AEFlujos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Contabilidad\CFlujos\VSaldosCaja.resx">
+      <DependentUpon>VSaldosCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Contabilidad\CFlujos\VSaldosCajaxFecha.resx">
+      <DependentUpon>VSaldosCajaxFecha.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Contabilidad\CMovimientos\AEMovimiento.resx">
       <DependentUpon>AEMovimiento.cs</DependentUpon>
     </EmbeddedResource>
@@ -1237,6 +1421,18 @@
     <EmbeddedResource Include="Views\Gestoria\CPolizas\VPolizas.resx">
       <DependentUpon>VPolizas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Logistica\CIncidencias\AECatIncidencias.resx">
+      <DependentUpon>AECatIncidencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Logistica\CIncidencias\AEIncidencia.resx">
+      <DependentUpon>AEIncidencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Logistica\CIncidencias\VCatIncidencia.resx">
+      <DependentUpon>VCatIncidencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Logistica\CIncidencias\VIncidencias.resx">
+      <DependentUpon>VIncidencias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Logistica\VConciliador.resx">
       <DependentUpon>VConciliador.cs</DependentUpon>
     </EmbeddedResource>
@@ -1249,8 +1445,20 @@
     <EmbeddedResource Include="Views\Nominas\CNomGeneral\VUploadArchivos.resx">
       <DependentUpon>VUploadArchivos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CArticulos\AEArticulo.resx">
+      <DependentUpon>AEArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CArticulos\VArticulos.resx">
+      <DependentUpon>VArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CAsistencia\VAsistencia.resx">
+      <DependentUpon>VAsistencia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\RH\CSnack\AESnack.resx">
       <DependentUpon>AESnack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CSnack\AESnackV2.resx">
+      <DependentUpon>AESnackV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RH\CSnack\ReporteSnack.resx">
       <DependentUpon>ReporteSnack.cs</DependentUpon>
@@ -1260,6 +1468,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RH\CSnack\VSnack.resx">
       <DependentUpon>VSnack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CArtEmp\AEArtEmp.resx">
+      <DependentUpon>AEArtEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CVacaciones\AEDiasVacEmp.resx">
+      <DependentUpon>AEDiasVacEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CVacaciones\AEVacaciones.resx">
+      <DependentUpon>AEVacaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CVacaciones\VDiasVacacionesEmp.resx">
+      <DependentUpon>VDiasVacacionesEmp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\RH\CVacaciones\VVacaciones.resx">
+      <DependentUpon>VVacaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sistemas\CEqComputo\AEEqComputo.resx">
+      <DependentUpon>AEEqComputo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sistemas\CEqComputo\VEquiposComputo.resx">
       <DependentUpon>VEquiposComputo.cs</DependentUpon>
@@ -1292,8 +1518,14 @@
     <EmbeddedResource Include="Views\Menus\Menus.resx">
       <DependentUpon>Menus.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sistemas\CEqMovil\AEEqMovil.resx">
+      <DependentUpon>AEEqMovil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Sistemas\CEqMovil\VEquiposMovil.resx">
       <DependentUpon>VEquiposMovil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Sistemas\CLineas\AELinea.resx">
+      <DependentUpon>AELinea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Sistemas\CLineas\VLineas.resx">
       <DependentUpon>VLineas.cs</DependentUpon>
@@ -1319,6 +1551,9 @@
     <EmbeddedResource Include="Views\Taller\COrdenesTrabajo\AEActividadOT.resx">
       <DependentUpon>AEActividadOT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Taller\COrdenesTrabajo\AEActMOT.resx">
+      <DependentUpon>AEActMOT.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Taller\COrdenesTrabajo\AEOrdenesTrabajo.resx">
       <DependentUpon>AEOrdenesTrabajo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1327,7 +1562,7 @@
     </EmbeddedResource>
     <EntityDeploy Include="Models.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Models.Designer.cs</LastGenOutput>
+      <LastGenOutput>Models1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Models.edmx.diagram">
       <DependentUpon>Models.edmx</DependentUpon>
@@ -1369,6 +1604,51 @@
       <DependentUpon>Models.edmx</DependentUpon>
       <LastGenOutput>Models.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\alarma-3d.png" />
+    <None Include="Resources\gestion-del-tiempo.png" />
+    <None Include="Resources\caja.png" />
+    <None Include="Resources\uniforme.png" />
+    <None Include="Resources\proteger.png" />
+    <None Include="Resources\marca-de-verificacion.png" />
+    <None Include="Resources\mapa.png" />
+    <None Include="Resources\bloc.png" />
+    <None Include="Resources\advertencia.png" />
+    <None Include="Resources\pancho.png" />
+    <None Include="Resources\factura %281%29.png" />
+    <None Include="Resources\dinero.png" />
+    <None Include="Resources\contabilidad.png" />
+    <None Include="Resources\dominio.png" />
+    <None Include="Resources\telefono-inteligente.png" />
+    <None Include="Resources\ordenador-portatil.png" />
+    <None Include="Resources\llamada-telefonica.png" />
+    <None Include="Resources\edit-tools.png" />
+    <None Include="Resources\cerrar-sesion.png" />
+    <None Include="Resources\nota.png" />
+    <None Include="Resources\archivo.png" />
+    <None Include="Resources\limpieza.png" />
+    <None Include="Resources\deposito.png" />
+    <None Include="Resources\banco.png" />
+    <None Include="Resources\chinese-food %282%29.png" />
+    <None Include="Resources\chinese-food %281%29.png" />
+    <None Include="Resources\chinese-food.png" />
+    <None Include="Resources\repartidor.png" />
+    <None Include="Resources\base-de-datos %281%29.png" />
+    <None Include="Resources\shopping-store %281%29.png" />
+    <None Include="Resources\empleados %281%29.png" />
+    <None Include="Resources\tarjeta-de-credito %281%29.png" />
+    <None Include="Resources\tarjeta-de-credito.png" />
+    <None Include="Resources\base-de-datos.png" />
+    <None Include="Resources\shopping-store.png" />
+    <None Include="Resources\usuario.png" />
+    <None Include="Resources\cliente.png" />
+    <None Include="Resources\autobus %282%29.png" />
+    <None Include="Resources\autobus %281%29.png" />
+    <None Include="Resources\empleados.png" />
+    <None Include="Resources\user2.png" />
+    <None Include="Resources\paraguas %281%29.png" />
+    <None Include="Resources\paraguas.png" />
+    <None Include="Resources\nomina.png" />
+    <None Include="Resources\megafono.png" />
     <None Include="Resources\mecanico.png" />
     <None Include="Resources\refresh.png" />
     <None Include="Resources\factura.png" />

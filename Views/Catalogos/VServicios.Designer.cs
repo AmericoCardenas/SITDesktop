@@ -54,6 +54,7 @@
             // 
             // dgrid_servicios
             // 
+            this.dgrid_servicios.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_servicios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_servicios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_servicios.Location = new System.Drawing.Point(0, 0);

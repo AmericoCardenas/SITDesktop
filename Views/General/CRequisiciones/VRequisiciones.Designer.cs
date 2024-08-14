@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.txt_filtro = new System.Windows.Forms.TextBox();
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
             this.btn_add = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.dgrid_reqpendientes = new System.Windows.Forms.DataGridView();
             this.tb_autorizadas = new System.Windows.Forms.TabPage();
             this.dgrid_reqautorizadas = new System.Windows.Forms.DataGridView();
-            this.btn_cancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tbcontrol.SuspendLayout();
@@ -60,6 +60,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(845, 44);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
+            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancel.Location = new System.Drawing.Point(65, 0);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
+            this.btn_cancel.TabIndex = 3;
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // txt_filtro
             // 
@@ -85,13 +97,14 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Location = new System.Drawing.Point(6, 0);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(53, 39);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 0;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.tbcontrol);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 44);
@@ -107,7 +120,7 @@
             this.tbcontrol.Location = new System.Drawing.Point(0, 0);
             this.tbcontrol.Name = "tbcontrol";
             this.tbcontrol.SelectedIndex = 0;
-            this.tbcontrol.Size = new System.Drawing.Size(845, 406);
+            this.tbcontrol.Size = new System.Drawing.Size(841, 402);
             this.tbcontrol.TabIndex = 1;
             this.tbcontrol.SelectedIndexChanged += new System.EventHandler(this.tbcontrol_SelectedIndexChanged);
             // 
@@ -117,7 +130,7 @@
             this.tb_pendientes.Location = new System.Drawing.Point(4, 22);
             this.tb_pendientes.Name = "tb_pendientes";
             this.tb_pendientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_pendientes.Size = new System.Drawing.Size(837, 380);
+            this.tb_pendientes.Size = new System.Drawing.Size(833, 376);
             this.tb_pendientes.TabIndex = 0;
             this.tb_pendientes.Text = "Pendientes";
             this.tb_pendientes.UseVisualStyleBackColor = true;
@@ -126,12 +139,13 @@
             // 
             this.dgrid_reqpendientes.AllowUserToAddRows = false;
             this.dgrid_reqpendientes.AllowUserToDeleteRows = false;
+            this.dgrid_reqpendientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_reqpendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_reqpendientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_reqpendientes.Location = new System.Drawing.Point(3, 3);
             this.dgrid_reqpendientes.Name = "dgrid_reqpendientes";
             this.dgrid_reqpendientes.ReadOnly = true;
-            this.dgrid_reqpendientes.Size = new System.Drawing.Size(831, 374);
+            this.dgrid_reqpendientes.Size = new System.Drawing.Size(827, 370);
             this.dgrid_reqpendientes.TabIndex = 0;
             this.dgrid_reqpendientes.Click += new System.EventHandler(this.dgrid_reqpendientes_Click);
             // 
@@ -141,7 +155,7 @@
             this.tb_autorizadas.Location = new System.Drawing.Point(4, 22);
             this.tb_autorizadas.Name = "tb_autorizadas";
             this.tb_autorizadas.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_autorizadas.Size = new System.Drawing.Size(837, 380);
+            this.tb_autorizadas.Size = new System.Drawing.Size(833, 376);
             this.tb_autorizadas.TabIndex = 1;
             this.tb_autorizadas.Text = "Autorizadas";
             this.tb_autorizadas.UseVisualStyleBackColor = true;
@@ -150,25 +164,15 @@
             // 
             this.dgrid_reqautorizadas.AllowUserToAddRows = false;
             this.dgrid_reqautorizadas.AllowUserToDeleteRows = false;
+            this.dgrid_reqautorizadas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_reqautorizadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_reqautorizadas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_reqautorizadas.Location = new System.Drawing.Point(3, 3);
             this.dgrid_reqautorizadas.Name = "dgrid_reqautorizadas";
             this.dgrid_reqautorizadas.ReadOnly = true;
-            this.dgrid_reqautorizadas.Size = new System.Drawing.Size(831, 374);
+            this.dgrid_reqautorizadas.Size = new System.Drawing.Size(827, 370);
             this.dgrid_reqautorizadas.TabIndex = 0;
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
-            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(65, 0);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(53, 39);
-            this.btn_cancel.TabIndex = 3;
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            this.dgrid_reqautorizadas.Click += new System.EventHandler(this.dgrid_reqautorizadas_Click);
             // 
             // VRequisiciones
             // 

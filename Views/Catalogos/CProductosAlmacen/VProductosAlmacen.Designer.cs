@@ -31,16 +31,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_filtro = new System.Windows.Forms.TextBox();
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
+            this.dgrid_prods = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.btn_historial = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.dgrid_prods = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_prods)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_historial);
             this.panel1.Controls.Add(this.txt_filtro);
             this.panel1.Controls.Add(this.cmb_filtro);
             this.panel1.Controls.Add(this.btn_cancel);
@@ -68,14 +72,50 @@
             this.cmb_filtro.Size = new System.Drawing.Size(146, 21);
             this.cmb_filtro.TabIndex = 2;
             // 
+            // dgrid_prods
+            // 
+            this.dgrid_prods.AllowUserToAddRows = false;
+            this.dgrid_prods.AllowUserToDeleteRows = false;
+            this.dgrid_prods.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgrid_prods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrid_prods.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgrid_prods.Location = new System.Drawing.Point(0, 0);
+            this.dgrid_prods.Name = "dgrid_prods";
+            this.dgrid_prods.ReadOnly = true;
+            this.dgrid_prods.Size = new System.Drawing.Size(912, 397);
+            this.dgrid_prods.TabIndex = 1;
+            this.dgrid_prods.Click += new System.EventHandler(this.dgrid_prods_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.dgrid_prods);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(916, 401);
+            this.panel2.TabIndex = 2;
+            // 
+            // btn_historial
+            // 
+            this.btn_historial.BackgroundImage = global::SIT.Properties.Resources.gestion_del_tiempo;
+            this.btn_historial.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_historial.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_historial.Location = new System.Drawing.Point(432, 3);
+            this.btn_historial.Name = "btn_historial";
+            this.btn_historial.Size = new System.Drawing.Size(48, 39);
+            this.btn_historial.TabIndex = 4;
+            this.btn_historial.UseVisualStyleBackColor = true;
+            this.btn_historial.Click += new System.EventHandler(this.btn_historial_Click);
+            // 
             // btn_cancel
             // 
             this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef5841;
             this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(70, 3);
+            this.btn_cancel.Location = new System.Drawing.Point(62, 3);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(57, 40);
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
             this.btn_cancel.TabIndex = 1;
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -85,25 +125,12 @@
             this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
             this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(7, 4);
+            this.btn_add.Location = new System.Drawing.Point(7, 3);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(57, 40);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 0;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // dgrid_prods
-            // 
-            this.dgrid_prods.AllowUserToAddRows = false;
-            this.dgrid_prods.AllowUserToDeleteRows = false;
-            this.dgrid_prods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrid_prods.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgrid_prods.Location = new System.Drawing.Point(0, 49);
-            this.dgrid_prods.Name = "dgrid_prods";
-            this.dgrid_prods.ReadOnly = true;
-            this.dgrid_prods.Size = new System.Drawing.Size(916, 401);
-            this.dgrid_prods.TabIndex = 1;
-            this.dgrid_prods.Click += new System.EventHandler(this.dgrid_prods_Click);
             // 
             // VProductosAlmacen
             // 
@@ -111,7 +138,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(916, 450);
-            this.Controls.Add(this.dgrid_prods);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VProductosAlmacen";
@@ -120,6 +147,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_prods)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -132,5 +160,7 @@
         private System.Windows.Forms.DataGridView dgrid_prods;
         private System.Windows.Forms.TextBox txt_filtro;
         private System.Windows.Forms.ComboBox cmb_filtro;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn_historial;
     }
 }

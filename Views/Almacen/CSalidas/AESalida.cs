@@ -23,6 +23,7 @@ namespace SIT.Views.Almacen.CSalidas
         SITEntities db = new SITEntities(); 
         DetalleSalidasAlmacen detalleSalidas = new DetalleSalidasAlmacen();
         SalidasAlmacen salidas =new SalidasAlmacen();
+        ProductosAlmacen prod = new ProductosAlmacen();
         VSalidas _vsalidas;
         int idDetalleSalida = 0;
         public Usuarios us;
@@ -172,9 +173,16 @@ namespace SIT.Views.Almacen.CSalidas
                 }
                 else
                 {
+                    var idprod = Convert.ToInt32(this.cmb_producto.SelectedValue);
+                    prod = this.db.ProductosAlmacen.Where(x=>x.IdProducto==idprod).First();
+
                     if (VerificarExistenciaDeProducto(this.cmb_producto.Text) == true && idDetalleSalida == 0)
                     {
                         MessageBox.Show("El producto ya existe en el vale de salida");
+                    }
+                    else if (prod.Stock==0 || prod.Stock==null)
+                    {
+                        MessageBox.Show("No se puede realizar la salida para este producto, debido a que cuenta con 0 existencias");
                     }
                     else
                     {

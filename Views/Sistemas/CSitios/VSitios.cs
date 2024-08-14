@@ -32,6 +32,10 @@ namespace SIT.Views.Sistemas
         {
             CargarSitios();
             CargarFiltros();
+            this.dgrid_sitios.EnableHeadersVisualStyles = false;
+            this.dgrid_sitios.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
+            this.dgrid_sitios.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
         }
 
         private void CargarFiltros()

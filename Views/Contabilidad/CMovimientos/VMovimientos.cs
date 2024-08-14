@@ -48,6 +48,8 @@ namespace SIT.Views.Contabilidad
                         join tf in db.TiposFlujos on m.IdTipo equals tf.IdTipo
                         join mt in db.MetodosFlujos on m.IdMetodo equals mt.IdMetodo
                         join co in db.ConceptosFlujos on m.IdConcepto equals co.IdConcepto
+                        join cu in db.CuentasBancos on m.IdCuenta equals cu.IdCuenta
+                        join b in db.Bancos on cu.IdBanco equals b.IdBanco
                         where m.IdTipo == 1 && m.IdEstatus == 1
                         orderby m.IdMovimiento descending
                         select new
@@ -59,7 +61,9 @@ namespace SIT.Views.Contabilidad
                             m.Descripcion,
                             m.Cantidad,
                             m.Comprobante,
-                            tf.Tipo
+                            tf.Tipo,
+                            cu.Cuenta,
+                            b.Banco
 
                         };
                 dgrid = this.dgrid_egreso;
@@ -71,6 +75,8 @@ namespace SIT.Views.Contabilidad
                         join tf in db.TiposFlujos on m.IdTipo equals tf.IdTipo
                         join mt in db.MetodosFlujos on m.IdMetodo equals mt.IdMetodo
                         join co in db.ConceptosFlujos on m.IdConcepto equals co.IdConcepto
+                        join cu in db.CuentasBancos on m.IdCuenta equals cu.IdCuenta
+                        join b in db.Bancos on cu.IdBanco equals b.IdBanco
                         where m.IdTipo == 2 && m.IdEstatus == 1
                         orderby m.IdMovimiento descending
                         select new
@@ -82,7 +88,9 @@ namespace SIT.Views.Contabilidad
                             m.Descripcion,
                             m.Cantidad,
                             m.Comprobante,
-                            tf.Tipo
+                            tf.Tipo,
+                            cu.Cuenta,
+                            b.Banco
 
                         };
 
@@ -92,6 +100,8 @@ namespace SIT.Views.Contabilidad
 
             dgrid.Columns[0].Visible = false;
             dgrid.Columns[7].Visible = false;
+            dgrid.Columns[8].Visible = false;
+            dgrid.Columns[9].Visible = false;
 
             dgrid.Columns["Comprobante"].Visible = false;
 
@@ -235,6 +245,8 @@ namespace SIT.Views.Contabilidad
                                 join tf in db.TiposFlujos on m.IdTipo equals tf.IdTipo
                                 join mt in db.MetodosFlujos on m.IdMetodo equals mt.IdMetodo
                                 join co in db.ConceptosFlujos on m.IdConcepto equals co.IdConcepto
+                                join cu in db.CuentasBancos on m.IdCuenta equals cu.IdCuenta
+                                join b in db.Bancos on cu.IdBanco equals b.IdBanco
                                 where m.Fecha == filter && m.IdTipo == tipo && m.IdEstatus == 1
                                 orderby m.IdMovimiento descending
                                 select new
@@ -246,7 +258,10 @@ namespace SIT.Views.Contabilidad
                                     m.Descripcion,
                                     m.Cantidad,
                                     m.Comprobante,
-                                    tf.Tipo
+                                    tf.Tipo,
+                                    cu.Cuenta,
+                                    b.Banco
+
                                 };
                         dgrid.DataSource = x.ToList();
                     }
@@ -263,6 +278,8 @@ namespace SIT.Views.Contabilidad
                             join tf in db.TiposFlujos on m.IdTipo equals tf.IdTipo
                             join mt in db.MetodosFlujos on m.IdMetodo equals mt.IdMetodo
                             join co in db.ConceptosFlujos on m.IdConcepto equals co.IdConcepto
+                            join cu in db.CuentasBancos on m.IdCuenta equals cu.IdCuenta
+                            join b in db.Bancos on cu.IdBanco equals b.IdBanco
                             where mt.Metodo.Contains(filter) && m.IdTipo == tipo && m.IdEstatus == 1
                             orderby m.IdMovimiento descending
                             select new
@@ -274,7 +291,9 @@ namespace SIT.Views.Contabilidad
                                 m.Descripcion,
                                 m.Cantidad,
                                 m.Comprobante,
-                                tf.Tipo
+                                tf.Tipo,
+                                cu.Cuenta,
+                                b.Banco
                             };
                     dgrid.DataSource = x.ToList();
 
@@ -286,6 +305,8 @@ namespace SIT.Views.Contabilidad
                             join tf in db.TiposFlujos on m.IdTipo equals tf.IdTipo
                             join mt in db.MetodosFlujos on m.IdMetodo equals mt.IdMetodo
                             join co in db.ConceptosFlujos on m.IdConcepto equals co.IdConcepto
+                            join cu in db.CuentasBancos on m.IdCuenta equals cu.IdCuenta
+                            join b in db.Bancos on cu.IdBanco equals b.IdBanco
                             where m.Cliente.Contains(filter) && m.IdTipo == tipo && m.IdEstatus == 1
                             orderby m.IdMovimiento descending
                             select new
@@ -297,7 +318,9 @@ namespace SIT.Views.Contabilidad
                                 m.Descripcion,
                                 m.Cantidad,
                                 m.Comprobante,
-                                tf.Tipo
+                                tf.Tipo,
+                                cu.Cuenta,
+                                b.Banco
                             };
                     dgrid.DataSource = x.ToList();
 
@@ -309,6 +332,8 @@ namespace SIT.Views.Contabilidad
                             join tf in db.TiposFlujos on m.IdTipo equals tf.IdTipo
                             join mt in db.MetodosFlujos on m.IdMetodo equals mt.IdMetodo
                             join co in db.ConceptosFlujos on m.IdConcepto equals co.IdConcepto
+                            join cu in db.CuentasBancos on m.IdCuenta equals cu.IdCuenta
+                            join b in db.Bancos on cu.IdBanco equals b.IdBanco
                             where m.Descripcion.Contains(filter) && m.IdTipo == tipo && m.IdEstatus == 1
                             orderby m.IdMovimiento descending
                             select new
@@ -320,7 +345,9 @@ namespace SIT.Views.Contabilidad
                                 m.Descripcion,
                                 m.Cantidad,
                                 m.Comprobante,
-                                tf.Tipo
+                                tf.Tipo,
+                                cu.Cuenta,
+                                b.Banco
 
                             };
                     dgrid.DataSource = x.ToList();
@@ -336,6 +363,8 @@ namespace SIT.Views.Contabilidad
                                 join tf in db.TiposFlujos on m.IdTipo equals tf.IdTipo
                                 join mt in db.MetodosFlujos on m.IdMetodo equals mt.IdMetodo
                                 join co in db.ConceptosFlujos on m.IdConcepto equals co.IdConcepto
+                                join cu in db.CuentasBancos on m.IdCuenta equals cu.IdCuenta
+                                join b in db.Bancos on cu.IdBanco equals b.IdBanco
                                 where m.Cantidad == filter && m.IdTipo == tipo && m.IdEstatus == 1
                                 orderby m.IdMovimiento descending
                                 select new
@@ -347,7 +376,9 @@ namespace SIT.Views.Contabilidad
                                     m.Descripcion,
                                     m.Cantidad,
                                     m.Comprobante,
-                                    tf.Tipo
+                                    tf.Tipo,
+                                    cu.Cuenta,
+                                    b.Banco
                                 };
 
                         dgrid.DataSource = x.ToList();
@@ -363,6 +394,8 @@ namespace SIT.Views.Contabilidad
             }
             dgrid.Columns[0].Visible = false;
             dgrid.Columns[7].Visible = false;
+            dgrid.Columns[8].Visible = false;
+            dgrid.Columns[9].Visible = false;
             dgrid.Columns["Comprobante"].Visible = false;
             dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }

@@ -29,15 +29,16 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_act_mecanicos = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.btn_add = new System.Windows.Forms.Button();
             this.tbcontrol = new System.Windows.Forms.TabControl();
             this.tb_pendientes = new System.Windows.Forms.TabPage();
             this.dgrid_otpend = new System.Windows.Forms.DataGridView();
             this.tb_terminadas = new System.Windows.Forms.TabPage();
             this.dgrid_otfin = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_act_mecanicos = new System.Windows.Forms.Button();
-            this.btn_cancel = new System.Windows.Forms.Button();
-            this.btn_add = new System.Windows.Forms.Button();
+            this.btn_excel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tbcontrol.SuspendLayout();
             this.tb_pendientes.SuspendLayout();
@@ -49,6 +50,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.btn_excel);
             this.panel1.Controls.Add(this.btn_act_mecanicos);
             this.panel1.Controls.Add(this.btn_cancel);
             this.panel1.Controls.Add(this.btn_add);
@@ -57,6 +59,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 49);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_act_mecanicos
+            // 
+            this.btn_act_mecanicos.BackgroundImage = global::SIT.Properties.Resources.mecanico;
+            this.btn_act_mecanicos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_act_mecanicos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_act_mecanicos.Location = new System.Drawing.Point(129, 3);
+            this.btn_act_mecanicos.Name = "btn_act_mecanicos";
+            this.btn_act_mecanicos.Size = new System.Drawing.Size(53, 39);
+            this.btn_act_mecanicos.TabIndex = 3;
+            this.btn_act_mecanicos.UseVisualStyleBackColor = true;
+            this.btn_act_mecanicos.Click += new System.EventHandler(this.btn_act_mecanicos_Click);
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
+            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancel.Location = new System.Drawing.Point(62, 3);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(53, 39);
+            this.btn_cancel.TabIndex = 2;
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // btn_add
+            // 
+            this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
+            this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Location = new System.Drawing.Point(3, 3);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(53, 39);
+            this.btn_add.TabIndex = 1;
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // tbcontrol
             // 
@@ -127,41 +165,17 @@
             this.panel2.Size = new System.Drawing.Size(800, 401);
             this.panel2.TabIndex = 2;
             // 
-            // btn_act_mecanicos
+            // btn_excel
             // 
-            this.btn_act_mecanicos.BackgroundImage = global::SIT.Properties.Resources.mecanico;
-            this.btn_act_mecanicos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_act_mecanicos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_act_mecanicos.Location = new System.Drawing.Point(129, 3);
-            this.btn_act_mecanicos.Name = "btn_act_mecanicos";
-            this.btn_act_mecanicos.Size = new System.Drawing.Size(53, 39);
-            this.btn_act_mecanicos.TabIndex = 3;
-            this.btn_act_mecanicos.UseVisualStyleBackColor = true;
-            this.btn_act_mecanicos.Click += new System.EventHandler(this.btn_act_mecanicos_Click);
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
-            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(62, 3);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(53, 39);
-            this.btn_cancel.TabIndex = 2;
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
-            // 
-            // btn_add
-            // 
-            this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
-            this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(3, 3);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(53, 39);
-            this.btn_add.TabIndex = 1;
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            this.btn_excel.BackgroundImage = global::SIT.Properties.Resources.excel;
+            this.btn_excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_excel.Location = new System.Drawing.Point(188, 3);
+            this.btn_excel.Name = "btn_excel";
+            this.btn_excel.Size = new System.Drawing.Size(53, 39);
+            this.btn_excel.TabIndex = 4;
+            this.btn_excel.UseVisualStyleBackColor = true;
+            this.btn_excel.Click += new System.EventHandler(this.btn_excel_Click);
             // 
             // VOrdenesTrabajo
             // 
@@ -198,5 +212,6 @@
         private System.Windows.Forms.DataGridView dgrid_otpend;
         private System.Windows.Forms.DataGridView dgrid_otfin;
         private System.Windows.Forms.Button btn_act_mecanicos;
+        private System.Windows.Forms.Button btn_excel;
     }
 }

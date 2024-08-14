@@ -1,0 +1,1850 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SITModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Departamentos">
+    <Key>
+      <PropertyRef Name="IdDepto" />
+    </Key>
+    <Property Name="IdDepto" Type="Int32" Nullable="false" />
+    <Property Name="Departamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Trabajadores_Departamentos" FromRole="Departamentos" ToRole="Trabajadores" />
+  </EntityType>
+  <EntityType Name="DomiciliosClientes">
+    <Key>
+      <PropertyRef Name="IdDomicilio" />
+    </Key>
+    <Property Name="IdDomicilio" Type="Int32" Nullable="false" />
+    <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroExt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroInt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdCiudad" Type="Int32" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdPais" Type="Int32" />
+    <Property Name="IdCliente" Type="Int32" />
+    <NavigationProperty Name="Clientes" Relationship="SITModel.FK_DomiciliosClientes_Clientes" FromRole="DomiciliosClientes" ToRole="Clientes" />
+  </EntityType>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="IdPais" Type="Int32" />
+    <NavigationProperty Name="Paises" Relationship="Self.FK_Estados_Paises" FromRole="Estados" ToRole="Paises" />
+    <NavigationProperty Name="Municipios" Relationship="Self.FK_Municipios_Estados" FromRole="Estados" ToRole="Municipios" />
+  </EntityType>
+  <EntityType Name="EstatusRutas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="EstatusUsuarios">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Municipios">
+    <Key>
+      <PropertyRef Name="IdMunicipio" />
+    </Key>
+    <Property Name="IdMunicipio" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstado" Type="Int32" />
+    <NavigationProperty Name="Estados" Relationship="Self.FK_Municipios_Estados" FromRole="Municipios" ToRole="Estados" />
+  </EntityType>
+  <EntityType Name="Paises">
+    <Key>
+      <PropertyRef Name="IdPais" />
+    </Key>
+    <Property Name="IdPais" Type="Int32" Nullable="false" />
+    <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Estados" Relationship="Self.FK_Estados_Paises" FromRole="Paises" ToRole="Estados" />
+  </EntityType>
+  <EntityType Name="TiposRutas">
+    <Key>
+      <PropertyRef Name="IdTipo" />
+    </Key>
+    <Property Name="IdTipo" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Turnos">
+    <Key>
+      <PropertyRef Name="IdTurno" />
+    </Key>
+    <Property Name="IdTurno" Type="Int32" Nullable="false" />
+    <Property Name="Turno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Estados_Paises">
+    <End Role="Paises" Type="Self.Paises" Multiplicity="0..1" />
+    <End Role="Estados" Type="Self.Estados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paises">
+        <PropertyRef Name="IdPais" />
+      </Principal>
+      <Dependent Role="Estados">
+        <PropertyRef Name="IdPais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Municipios_Estados">
+    <End Role="Estados" Type="Self.Estados" Multiplicity="0..1" />
+    <End Role="Municipios" Type="Self.Municipios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="Municipios">
+        <PropertyRef Name="IdEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SITEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Departamentos" EntityType="Self.Departamentos" />
+    <EntitySet Name="DomiciliosClientes" EntityType="Self.DomiciliosClientes" />
+    <EntitySet Name="Estados" EntityType="Self.Estados" />
+    <EntitySet Name="EstatusRutas" EntityType="Self.EstatusRutas" />
+    <EntitySet Name="EstatusUsuarios" EntityType="Self.EstatusUsuarios" />
+    <EntitySet Name="Municipios" EntityType="Self.Municipios" />
+    <EntitySet Name="Paises" EntityType="Self.Paises" />
+    <EntitySet Name="TiposRutas" EntityType="Self.TiposRutas" />
+    <EntitySet Name="Turnos" EntityType="Self.Turnos" />
+    <AssociationSet Name="FK_Estados_Paises" Association="Self.FK_Estados_Paises">
+      <End Role="Paises" EntitySet="Paises" />
+      <End Role="Estados" EntitySet="Estados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Municipios_Estados" Association="Self.FK_Municipios_Estados">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Municipios" EntitySet="Municipios" />
+    </AssociationSet>
+    <EntitySet Name="Usuarios" EntityType="SITModel.Usuarios" />
+    <EntitySet Name="DatosNominaEmpleados" EntityType="SITModel.DatosNominaEmpleados" />
+    <EntitySet Name="DomicilioEmpleados" EntityType="SITModel.DomicilioEmpleados" />
+    <EntitySet Name="Puestos" EntityType="SITModel.Puestos" />
+    <EntitySet Name="Servicios" EntityType="SITModel.Servicios" />
+    <EntitySet Name="sysdiagrams" EntityType="SITModel.sysdiagrams" />
+    <EntitySet Name="Productos" EntityType="SITModel.Productos" />
+    <EntitySet Name="Rutas" EntityType="SITModel.Rutas" />
+    <EntitySet Name="EstatusLineas" EntityType="SITModel.EstatusLineas" />
+    <EntitySet Name="Proveedores" EntityType="SITModel.Proveedores" />
+    <EntitySet Name="Lineas" EntityType="SITModel.Lineas" />
+    <EntitySet Name="EquiposComputo" EntityType="SITModel.EquiposComputo" />
+    <EntitySet Name="EquiposMovil" EntityType="SITModel.EquiposMovil" />
+    <EntitySet Name="Trabajadores" EntityType="SITModel.Trabajadores" />
+    <EntitySet Name="EstatusEquipos" EntityType="SITModel.EstatusEquipos" />
+    <EntitySet Name="UsuariosSitios" EntityType="SITModel.UsuariosSitios" />
+    <EntitySet Name="ConceptosFlujos" EntityType="SITModel.ConceptosFlujos" />
+    <EntitySet Name="Flujos" EntityType="SITModel.Flujos" />
+    <EntitySet Name="MetodosFlujos" EntityType="SITModel.MetodosFlujos" />
+    <EntitySet Name="RubrosFlujos" EntityType="SITModel.RubrosFlujos" />
+    <EntitySet Name="TiposFlujos" EntityType="SITModel.TiposFlujos" />
+    <EntitySet Name="TiposCostos" EntityType="SITModel.TiposCostos" />
+    <EntitySet Name="Estatus" EntityType="SITModel.Estatus" />
+    <EntitySet Name="EstatusVE" EntityType="SITModel.EstatusVE" />
+    <EntitySet Name="ViajesEspeciales" EntityType="SITModel.ViajesEspeciales" />
+    <EntitySet Name="Clientes" EntityType="SITModel.Clientes" />
+    <AssociationSet Name="FK_DomiciliosClientes_Clientes" Association="SITModel.FK_DomiciliosClientes_Clientes">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="DomiciliosClientes" EntitySet="DomiciliosClientes" />
+    </AssociationSet>
+    <EntitySet Name="Movimientos" EntityType="SITModel.Movimientos" />
+    <EntitySet Name="BitacoraBitad" EntityType="SITModel.BitacoraBitad" />
+    <EntitySet Name="BitacoraRol" EntityType="SITModel.BitacoraRol" />
+    <AssociationSet Name="FK_Lineas_Trabajadores" Association="SITModel.FK_Lineas_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="Lineas" EntitySet="Lineas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Trabajadores_Puestos" Association="SITModel.FK_Trabajadores_Puestos">
+      <End Role="Puestos" EntitySet="Puestos" />
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+    </AssociationSet>
+    <EntitySet Name="Regimenes" EntityType="SITModel.Regimenes" />
+    <EntitySet Name="Herramientas" EntityType="SITModel.Herramientas" />
+    <AssociationSet Name="FK_UsuariosSitios_Trabajadores" Association="SITModel.FK_UsuariosSitios_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="UsuariosSitios" EntitySet="UsuariosSitios" />
+    </AssociationSet>
+    <EntitySet Name="EstatusPHerramientas" EntityType="SITModel.EstatusPHerramientas" />
+    <EntitySet Name="PrestamoHerramientas" EntityType="SITModel.PrestamoHerramientas" />
+    <EntitySet Name="Medidas" EntityType="SITModel.Medidas" />
+    <EntitySet Name="ProductosSnack" EntityType="SITModel.ProductosSnack" />
+    <EntitySet Name="EstatusPSnack" EntityType="SITModel.EstatusPSnack" />
+    <EntitySet Name="EstatusSnack" EntityType="SITModel.EstatusSnack" />
+    <EntitySet Name="Snack" EntityType="SITModel.Snack" />
+    <EntitySet Name="TipoPagoSnack" EntityType="SITModel.TipoPagoSnack" />
+    <AssociationSet Name="FK_Trabajadores_Departamentos" Association="SITModel.FK_Trabajadores_Departamentos">
+      <End Role="Departamentos" EntitySet="Departamentos" />
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductosSnack_EstatusPSnack" Association="SITModel.FK_ProductosSnack_EstatusPSnack">
+      <End Role="EstatusPSnack" EntitySet="EstatusPSnack" />
+      <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Snack_EstatusSnack" Association="SITModel.FK_Snack_EstatusSnack">
+      <End Role="EstatusSnack" EntitySet="EstatusSnack" />
+      <End Role="Snack" EntitySet="Snack" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductosSnack_Medidas" Association="SITModel.FK_ProductosSnack_Medidas">
+      <End Role="Medidas" EntitySet="Medidas" />
+      <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Snack_ProductosSnack" Association="SITModel.FK_Snack_ProductosSnack">
+      <End Role="ProductosSnack" EntitySet="ProductosSnack" />
+      <End Role="Snack" EntitySet="Snack" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Snack_TipoPagoSnack" Association="SITModel.FK_Snack_TipoPagoSnack">
+      <End Role="TipoPagoSnack" EntitySet="TipoPagoSnack" />
+      <End Role="Snack" EntitySet="Snack" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Snack_Trabajadores" Association="SITModel.FK_Snack_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="Snack" EntitySet="Snack" />
+    </AssociationSet>
+    <EntitySet Name="DeduccionesCheckin" EntityType="SITModel.DeduccionesCheckin" />
+    <EntitySet Name="NomGenCheckin" EntityType="SITModel.NomGenCheckin" />
+    <EntitySet Name="ServiciosCheckin" EntityType="SITModel.ServiciosCheckin" />
+    <EntitySet Name="TicketsCheckin" EntityType="SITModel.TicketsCheckin" />
+    <EntitySet Name="BonosCheckin" EntityType="SITModel.BonosCheckin" />
+    <EntitySet Name="TipoUnidades" EntityType="SITModel.TipoUnidades" />
+    <EntitySet Name="EstatusUnidades" EntityType="SITModel.EstatusUnidades" />
+    <EntitySet Name="MotoresUnidades" EntityType="SITModel.MotoresUnidades" />
+    <EntitySet Name="PolizasUnidades" EntityType="SITModel.PolizasUnidades" />
+    <EntitySet Name="ModelosUnidades" EntityType="SITModel.ModelosUnidades" />
+    <EntitySet Name="Unidades" EntityType="SITModel.Unidades" />
+    <EntitySet Name="Combustibles" EntityType="SITModel.Combustibles" />
+    <EntitySet Name="CorteDiarioBomba" EntityType="SITModel.CorteDiarioBomba" />
+    <EntitySet Name="EstacionesCombustible" EntityType="SITModel.EstacionesCombustible" />
+    <EntitySet Name="Bancos" EntityType="SITModel.Bancos" />
+    <EntitySet Name="CuentasBancos" EntityType="SITModel.CuentasBancos" />
+    <EntitySet Name="Tickets" EntityType="SITModel.Tickets" />
+    <AssociationSet Name="FK_Tickets_Combustibles" Association="SITModel.FK_Tickets_Combustibles">
+      <End Role="Combustibles" EntitySet="Combustibles" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_EstacionesCombustible" Association="SITModel.FK_Tickets_EstacionesCombustible">
+      <End Role="EstacionesCombustible" EntitySet="EstacionesCombustible" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_EstatusUnidades" Association="SITModel.FK_Unidades_EstatusUnidades">
+      <End Role="EstatusUnidades" EntitySet="EstatusUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_ModelosUnidades" Association="SITModel.FK_Unidades_ModelosUnidades">
+      <End Role="ModelosUnidades" EntitySet="ModelosUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_MotoresUnidades" Association="SITModel.FK_Unidades_MotoresUnidades">
+      <End Role="MotoresUnidades" EntitySet="MotoresUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Tickets" Association="SITModel.FK_Tickets_Tickets">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="Tickets1" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Trabajadores" Association="SITModel.FK_Tickets_Trabajadores">
+      <End Role="Trabajadores" EntitySet="Trabajadores" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Unidades" Association="SITModel.FK_Tickets_Unidades">
+      <End Role="Unidades" EntitySet="Unidades" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unidades_TipoUnidades" Association="SITModel.FK_Unidades_TipoUnidades">
+      <End Role="TipoUnidades" EntitySet="TipoUnidades" />
+      <End Role="Unidades" EntitySet="Unidades" />
+    </AssociationSet>
+    <EntitySet Name="NotasMovimientos" EntityType="SITModel.NotasMovimientos" />
+    <EntitySet Name="Almacenes" EntityType="SITModel.Almacenes" />
+    <EntitySet Name="ZonasAlmacen" EntityType="SITModel.ZonasAlmacen" />
+    <EntitySet Name="ProductosAlmacen" EntityType="SITModel.ProductosAlmacen" />
+    <EntitySet Name="DetalleRequisiciones" EntityType="SITModel.DetalleRequisiciones" />
+    <EntitySet Name="Requisiciones" EntityType="SITModel.Requisiciones" />
+    <EntitySet Name="CotizacionesRequisiciones" EntityType="SITModel.CotizacionesRequisiciones" />
+    <EntitySet Name="EstatusCotizaciones" EntityType="SITModel.EstatusCotizaciones" />
+    <EntitySet Name="OrdenesCompra" EntityType="SITModel.OrdenesCompra" />
+    <EntitySet Name="DomiciliosProveedores" EntityType="SITModel.DomiciliosProveedores" />
+    <AssociationSet Name="FK_DomiciliosProveedores_Proveedores" Association="SITModel.FK_DomiciliosProveedores_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="DomiciliosProveedores" EntitySet="DomiciliosProveedores" />
+    </AssociationSet>
+    <EntitySet Name="EstatusOrdenCompra" EntityType="SITModel.EstatusOrdenCompra" />
+    <EntitySet Name="DetalleSalidasAlmacen" EntityType="SITModel.DetalleSalidasAlmacen" />
+    <EntitySet Name="SalidasAlmacen" EntityType="SITModel.SalidasAlmacen" />
+    <EntitySet Name="EstatusSalidas" EntityType="SITModel.EstatusSalidas" />
+    <EntitySet Name="FacturasOC" EntityType="SITModel.FacturasOC" />
+    <EntitySet Name="FallasTaller" EntityType="SITModel.FallasTaller" />
+    <EntitySet Name="GruposActTaller" EntityType="SITModel.GruposActTaller" />
+    <EntitySet Name="OrdenesTrabajoTaller" EntityType="SITModel.OrdenesTrabajoTaller" />
+    <EntitySet Name="UbicacionesOT" EntityType="SITModel.UbicacionesOT" />
+    <EntitySet Name="ActividadesTaller" EntityType="SITModel.ActividadesTaller" />
+    <EntitySet Name="MantenimientosTaller" EntityType="SITModel.MantenimientosTaller" />
+    <EntitySet Name="EstatusActTaller" EntityType="SITModel.EstatusActTaller" />
+    <EntitySet Name="ActividadesOT" EntityType="SITModel.ActividadesOT" />
+    <EntitySet Name="CatIncidencias" EntityType="SITModel.CatIncidencias" />
+    <EntitySet Name="IncidenciasOperaciones" EntityType="SITModel.IncidenciasOperaciones" />
+    <EntitySet Name="VacacionesEmp" EntityType="SITModel.VacacionesEmp" />
+    <EntitySet Name="Periodos" EntityType="SITModel.Periodos" />
+    <EntitySet Name="VacDiasEmpPeriodo" EntityType="SITModel.VacDiasEmpPeriodo" />
+    <EntitySet Name="ActividadesMOT" EntityType="SITModel.ActividadesMOT" />
+    <EntitySet Name="CatDocsEmp" EntityType="SITModel.CatDocsEmp" />
+    <EntitySet Name="DocsEmpleado" EntityType="SITModel.DocsEmpleado" />
+    <EntitySet Name="CatArticulosRh" EntityType="SITModel.CatArticulosRh" />
+    <EntitySet Name="ArticulosEmp" EntityType="SITModel.ArticulosEmp" />
+  </EntityContainer>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidop" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="IdDepto" Type="Int32" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioCreacion" Type="Int32" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioCancelacion" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DatosNominaEmpleados">
+    <Key>
+      <PropertyRef Name="IdNomina" />
+    </Key>
+    <Property Name="IdNomina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdBitad" Type="Int32" />
+    <Property Name="Banco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Tarjeta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MetodoN1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MetodoN2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DomicilioEmpleados">
+    <Key>
+      <PropertyRef Name="IdDomicilioEmp" />
+    </Key>
+    <Property Name="IdDomicilioEmp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdBitad" Type="Int32" />
+    <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoInt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Municipio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Puestos">
+    <Key>
+      <PropertyRef Name="IdPuesto" />
+    </Key>
+    <Property Name="IdPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Puesto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Trabajadores_Puestos" FromRole="Puestos" ToRole="Trabajadores" />
+  </EntityType>
+  <EntityType Name="Servicios">
+    <Key>
+      <PropertyRef Name="IdServicio" />
+    </Key>
+    <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Servicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Productos">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CIDPRODUCTO" Type="Int32" />
+    <Property Name="CodigoProducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="NombreProducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Precio1" Type="Double" />
+    <Property Name="Precio2" Type="Double" />
+    <Property Name="Precio3" Type="Double" />
+    <Property Name="Precio4" Type="Double" />
+    <Property Name="Precio5" Type="Double" />
+    <Property Name="Precio6" Type="Double" />
+    <Property Name="Precio7" Type="Double" />
+    <Property Name="Precio8" Type="Double" />
+    <Property Name="Precio9" Type="Double" />
+    <Property Name="Precio10" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="RfcCliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Rutas">
+    <Key>
+      <PropertyRef Name="IdRuta" />
+    </Key>
+    <Property Name="IdRuta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="IdTipo" Type="Int32" />
+    <Property Name="IdTurno" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioCreacion" Type="Int32" />
+    <Property Name="FechaModificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UsuarioCancelacion" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="CodigoBitad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PEntrada" Type="Int32" />
+    <Property Name="PSalida" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EstatusLineas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="IdProveedor" />
+    </Key>
+    <Property Name="IdProveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Proveedor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCreacion" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCancelacion" Type="Int32" />
+    <Property Name="RazonSocial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RFC" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdRegimenFiscal" Type="Int32" />
+    <Property Name="CP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ConstanciaFiscal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DomiciliosProveedores" Relationship="SITModel.FK_DomiciliosProveedores_Proveedores" FromRole="Proveedores" ToRole="DomiciliosProveedores" />
+  </EntityType>
+  <EntityType Name="Lineas">
+    <Key>
+      <PropertyRef Name="IdLinea" />
+    </Key>
+    <Property Name="IdLinea" Type="Int32" Nullable="false" />
+    <Property Name="Linea" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumSim" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Lineas_Trabajadores" FromRole="Lineas" ToRole="Trabajadores" />
+  </EntityType>
+  <EntityType Name="EquiposComputo">
+    <Key>
+      <PropertyRef Name="IdEquipoComputo" />
+    </Key>
+    <Property Name="IdEquipoComputo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Procesador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Almacenamiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Caracteristicas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Detalles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Accesorios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ValorComercial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpleado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EquiposMovil">
+    <Key>
+      <PropertyRef Name="IdEquipoMovil" />
+    </Key>
+    <Property Name="IdEquipoMovil" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ram" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Procesador" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IMEI2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SN" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Caracteristicas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Detalles" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Accesorios" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ValorComercial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Trabajadores">
+    <Key>
+      <PropertyRef Name="IdEmpleado" />
+    </Key>
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdBitad" Type="Int32" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidop" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApellidoM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdPuesto" Type="Int32" />
+    <Property Name="IdDepto" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="IdSamsara" Type="Int32" />
+    <NavigationProperty Name="Lineas" Relationship="SITModel.FK_Lineas_Trabajadores" FromRole="Trabajadores" ToRole="Lineas" />
+    <NavigationProperty Name="Puestos" Relationship="SITModel.FK_Trabajadores_Puestos" FromRole="Trabajadores" ToRole="Puestos" />
+    <NavigationProperty Name="UsuariosSitios" Relationship="SITModel.FK_UsuariosSitios_Trabajadores" FromRole="Trabajadores" ToRole="UsuariosSitios" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <NavigationProperty Name="Departamentos" Relationship="SITModel.FK_Trabajadores_Departamentos" FromRole="Trabajadores" ToRole="Departamentos" />
+    <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_Trabajadores" FromRole="Trabajadores" ToRole="Snack" />
+    <Property Name="UserEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Tickets" Relationship="SITModel.FK_Tickets_Trabajadores" FromRole="Trabajadores" ToRole="Tickets" />
+    <Property Name="DiasVacaciones" Type="Int32" />
+    <Property Name="FIngreso" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="EstatusEquipos">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UsuariosSitios">
+    <Key>
+      <PropertyRef Name="IdUs" />
+    </Key>
+    <Property Name="IdUs" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contraseña" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sitio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_UsuariosSitios_Trabajadores" FromRole="UsuariosSitios" ToRole="Trabajadores" />
+  </EntityType>
+  <EntityType Name="ConceptosFlujos">
+    <Key>
+      <PropertyRef Name="IdConcepto" />
+    </Key>
+    <Property Name="IdConcepto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Concepto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdTipo" Type="Int32" />
+    <Property Name="IdRubro" Type="Int32" />
+    <Property Name="FechaCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FechaMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FechaCancelo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCancelo" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Flujos">
+    <Key>
+      <PropertyRef Name="IdFlujo" />
+    </Key>
+    <Property Name="IdFlujo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdTipo" Type="Int32" />
+    <Property Name="IdMetodo" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdDepto" Type="Int32" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="Comprobante" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModifico" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MetodosFlujos">
+    <Key>
+      <PropertyRef Name="IdMetodo" />
+    </Key>
+    <Property Name="IdMetodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Metodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="RubrosFlujos">
+    <Key>
+      <PropertyRef Name="IdRubro" />
+    </Key>
+    <Property Name="IdRubro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rubro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TiposFlujos">
+    <Key>
+      <PropertyRef Name="IdTipo" />
+    </Key>
+    <Property Name="IdTipo" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TiposCostos">
+    <Key>
+      <PropertyRef Name="IdTipoCosto" />
+    </Key>
+    <Property Name="IdTipoCosto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Costo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Estatus">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="EstatusVE">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ViajesEspeciales">
+    <Key>
+      <PropertyRef Name="IdViaje" />
+    </Key>
+    <Property Name="IdViaje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="Anticipo" Type="Double" />
+    <Property Name="Pendiente" Type="Double" />
+    <Property Name="IdMetodo" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaFin" Type="DateTime" Precision="0" />
+    <Property Name="Origen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Destino" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCreacion" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCancelacion" Type="Int32" />
+    <Property Name="HoraSalida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HoraLLegada" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RazonSocial" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaAlta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Rfc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Email2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CIDCLIENTEPROV" Type="Int32" />
+    <Property Name="CCODIGOCLIENTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DomiciliosClientes" Relationship="SITModel.FK_DomiciliosClientes_Clientes" FromRole="Clientes" ToRole="DomiciliosClientes" />
+  </EntityType>
+  <Association Name="FK_DomiciliosClientes_Clientes">
+    <End Type="SITModel.Clientes" Role="Clientes" Multiplicity="0..1" />
+    <End Type="SITModel.DomiciliosClientes" Role="DomiciliosClientes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="DomiciliosClientes">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Movimientos">
+    <Key>
+      <PropertyRef Name="IdMovimiento" />
+    </Key>
+    <Property Name="IdMovimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdTipo" Type="Int32" />
+    <Property Name="IdMetodo" Type="Int32" />
+    <Property Name="Cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdConcepto" Type="Int32" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Comprobante" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelacion" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="NumCheque" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdCuenta" Type="Int32" />
+    <Property Name="REP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BitacoraBitad">
+    <Key>
+      <PropertyRef Name="IdBitad" />
+    </Key>
+    <Property Name="IdBitad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodBitad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Turno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Servicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Operador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="BitacoraRol">
+    <Key>
+      <PropertyRef Name="IdRol" />
+    </Key>
+    <Property Name="IdRol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodBitad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Turno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Unidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Servicio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Operador" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_Lineas_Trabajadores">
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="0..1" />
+    <End Type="SITModel.Lineas" Role="Lineas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Lineas">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Trabajadores_Puestos">
+    <End Type="SITModel.Puestos" Role="Puestos" Multiplicity="0..1" />
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puestos">
+        <PropertyRef Name="IdPuesto" />
+      </Principal>
+      <Dependent Role="Trabajadores">
+        <PropertyRef Name="IdPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Regimenes">
+    <Key>
+      <PropertyRef Name="IdRegimen" />
+    </Key>
+    <Property Name="IdRegimen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodRegimen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Regimen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Herramientas">
+    <Key>
+      <PropertyRef Name="IdHerramienta" />
+    </Key>
+    <Property Name="IdHerramienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CIDPROD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Herramienta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_UsuariosSitios_Trabajadores">
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="0..1" />
+    <End Type="SITModel.UsuariosSitios" Role="UsuariosSitios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="UsuariosSitios">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EstatusPHerramientas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PrestamoHerramientas">
+    <Key>
+      <PropertyRef Name="IdPrestamo" />
+    </Key>
+    <Property Name="IdPrestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdHerramienta" Type="Int32" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreacion" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Medidas">
+    <Key>
+      <PropertyRef Name="IdMedida" />
+    </Key>
+    <Property Name="IdMedida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Medida" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProductosSnack" Relationship="SITModel.FK_ProductosSnack_Medidas" FromRole="Medidas" ToRole="ProductosSnack" />
+  </EntityType>
+  <EntityType Name="ProductosSnack">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Producto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaModifico" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="EstatusPSnack" Relationship="SITModel.FK_ProductosSnack_EstatusPSnack" FromRole="ProductosSnack" ToRole="EstatusPSnack" />
+    <NavigationProperty Name="Medidas" Relationship="SITModel.FK_ProductosSnack_Medidas" FromRole="ProductosSnack" ToRole="Medidas" />
+    <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_ProductosSnack" FromRole="ProductosSnack" ToRole="Snack" />
+  </EntityType>
+  <EntityType Name="EstatusPSnack">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProductosSnack" Relationship="SITModel.FK_ProductosSnack_EstatusPSnack" FromRole="EstatusPSnack" ToRole="ProductosSnack" />
+  </EntityType>
+  <EntityType Name="EstatusSnack">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_EstatusSnack" FromRole="EstatusSnack" ToRole="Snack" />
+  </EntityType>
+  <EntityType Name="Snack">
+    <Key>
+      <PropertyRef Name="IdSnack" />
+    </Key>
+    <Property Name="IdSnack" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="PrecioU" Type="Double" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="IdMetodoPago" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <NavigationProperty Name="EstatusSnack" Relationship="SITModel.FK_Snack_EstatusSnack" FromRole="Snack" ToRole="EstatusSnack" />
+    <NavigationProperty Name="ProductosSnack" Relationship="SITModel.FK_Snack_ProductosSnack" FromRole="Snack" ToRole="ProductosSnack" />
+    <NavigationProperty Name="TipoPagoSnack" Relationship="SITModel.FK_Snack_TipoPagoSnack" FromRole="Snack" ToRole="TipoPagoSnack" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Snack_Trabajadores" FromRole="Snack" ToRole="Trabajadores" />
+  </EntityType>
+  <EntityType Name="TipoPagoSnack">
+    <Key>
+      <PropertyRef Name="IdTipoPago" />
+    </Key>
+    <Property Name="IdTipoPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Snack" Relationship="SITModel.FK_Snack_TipoPagoSnack" FromRole="TipoPagoSnack" ToRole="Snack" />
+  </EntityType>
+  <Association Name="FK_Trabajadores_Departamentos">
+    <End Type="SITModel.Departamentos" Role="Departamentos" Multiplicity="0..1" />
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departamentos">
+        <PropertyRef Name="IdDepto" />
+      </Principal>
+      <Dependent Role="Trabajadores">
+        <PropertyRef Name="IdDepto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductosSnack_EstatusPSnack">
+    <End Type="SITModel.EstatusPSnack" Role="EstatusPSnack" Multiplicity="0..1" />
+    <End Type="SITModel.ProductosSnack" Role="ProductosSnack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstatusPSnack">
+        <PropertyRef Name="IdEstatus" />
+      </Principal>
+      <Dependent Role="ProductosSnack">
+        <PropertyRef Name="IdEstatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Snack_EstatusSnack">
+    <End Type="SITModel.EstatusSnack" Role="EstatusSnack" Multiplicity="0..1" />
+    <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstatusSnack">
+        <PropertyRef Name="IdEstatus" />
+      </Principal>
+      <Dependent Role="Snack">
+        <PropertyRef Name="IdEstatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductosSnack_Medidas">
+    <End Type="SITModel.Medidas" Role="Medidas" Multiplicity="0..1" />
+    <End Type="SITModel.ProductosSnack" Role="ProductosSnack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medidas">
+        <PropertyRef Name="IdMedida" />
+      </Principal>
+      <Dependent Role="ProductosSnack">
+        <PropertyRef Name="IdMedida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Snack_ProductosSnack">
+    <End Type="SITModel.ProductosSnack" Role="ProductosSnack" Multiplicity="0..1" />
+    <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductosSnack">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="Snack">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Snack_TipoPagoSnack">
+    <End Type="SITModel.TipoPagoSnack" Role="TipoPagoSnack" Multiplicity="0..1" />
+    <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPagoSnack">
+        <PropertyRef Name="IdTipoPago" />
+      </Principal>
+      <Dependent Role="Snack">
+        <PropertyRef Name="IdMetodoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Snack_Trabajadores">
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="1" />
+    <End Type="SITModel.Snack" Role="Snack" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Snack">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DeduccionesCheckin">
+    <Key>
+      <PropertyRef Name="IdDeduccion" />
+    </Key>
+    <Property Name="IdDeduccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDeduccionCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Deduccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="NomGenCheckin">
+    <Key>
+      <PropertyRef Name="IdNom" />
+    </Key>
+    <Property Name="IdNom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdNomCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FInicial" Type="DateTime" Precision="0" />
+    <Property Name="FFinal" Type="DateTime" Precision="0" />
+    <Property Name="TotServ" Type="Int32" />
+    <Property Name="TotSencillos" Type="Int32" />
+    <Property Name="TotRedondos" Type="Int32" />
+    <Property Name="TotTaxis" Type="Int32" />
+    <Property Name="TotEsp" Type="Int32" />
+    <Property Name="Salario" Type="Double" />
+    <Property Name="Deducciones" Type="Double" />
+    <Property Name="Bonos" Type="Double" />
+    <Property Name="Total" Type="Double" />
+  </EntityType>
+  <EntityType Name="ServiciosCheckin">
+    <Key>
+      <PropertyRef Name="IdServicio" />
+    </Key>
+    <Property Name="IdServicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdServicioCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FServicio" Type="DateTime" Precision="0" />
+    <Property Name="HServicio" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="Cliente" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Turno" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Tipo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Unidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ATarde" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TicketsCheckin">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdTicketCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Unidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FInicial" Type="DateTime" Precision="0" />
+    <Property Name="FFinal" Type="DateTime" Precision="0" />
+    <Property Name="Litros" Type="Double" />
+    <Property Name="RendReq" Type="Double" />
+    <Property Name="KmGpsAnt" Type="Double" />
+    <Property Name="KmGps" Type="Double" />
+    <Property Name="KmGpsRec" Type="Double" />
+    <Property Name="RendGps" Type="Double" />
+  </EntityType>
+  <EntityType Name="BonosCheckin">
+    <Key>
+      <PropertyRef Name="IdBono" />
+    </Key>
+    <Property Name="IdBono" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdBonoCheckin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Empleado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Bono" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="TipoUnidades">
+    <Key>
+      <PropertyRef Name="IdTipo" />
+    </Key>
+    <Property Name="IdTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Unidad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <Property Name="Rendimiento" Type="Double" />
+    <NavigationProperty Name="Unidades" Relationship="SITModel.FK_Unidades_TipoUnidades" FromRole="TipoUnidades" ToRole="Unidades" />
+  </EntityType>
+  <EntityType Name="EstatusUnidades">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Unidades" Relationship="SITModel.FK_Unidades_EstatusUnidades" FromRole="EstatusUnidades" ToRole="Unidades" />
+  </EntityType>
+  <EntityType Name="MotoresUnidades">
+    <Key>
+      <PropertyRef Name="IdMotor" />
+    </Key>
+    <Property Name="IdMotor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Motor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Unidades" Relationship="SITModel.FK_Unidades_MotoresUnidades" FromRole="MotoresUnidades" ToRole="Unidades" />
+  </EntityType>
+  <EntityType Name="PolizasUnidades">
+    <Key>
+      <PropertyRef Name="IdPoliza" />
+    </Key>
+    <Property Name="IdPoliza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <Property Name="NumPoliza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Costo" Type="Double" />
+    <Property Name="Endoso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Inciso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdUnidad" Type="Int32" />
+    <Property Name="FVencimiento" Type="DateTime" Precision="0" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ModelosUnidades">
+    <Key>
+      <PropertyRef Name="IdModelo" />
+    </Key>
+    <Property Name="IdModelo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Unidades" Relationship="SITModel.FK_Unidades_ModelosUnidades" FromRole="ModelosUnidades" ToRole="Unidades" />
+  </EntityType>
+  <EntityType Name="Unidades">
+    <Key>
+      <PropertyRef Name="IdUnidad" />
+    </Key>
+    <Property Name="IdUnidad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Economico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Placa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdTipo" Type="Int32" />
+    <Property Name="IdMotor" Type="Int32" />
+    <Property Name="RendReq" Type="Double" />
+    <Property Name="IdModelo" Type="Int32" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pasajeros" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <NavigationProperty Name="EstatusUnidades" Relationship="SITModel.FK_Unidades_EstatusUnidades" FromRole="Unidades" ToRole="EstatusUnidades" />
+    <NavigationProperty Name="ModelosUnidades" Relationship="SITModel.FK_Unidades_ModelosUnidades" FromRole="Unidades" ToRole="ModelosUnidades" />
+    <NavigationProperty Name="MotoresUnidades" Relationship="SITModel.FK_Unidades_MotoresUnidades" FromRole="Unidades" ToRole="MotoresUnidades" />
+    <NavigationProperty Name="Tickets" Relationship="SITModel.FK_Tickets_Unidades" FromRole="Unidades" ToRole="Tickets" />
+    <NavigationProperty Name="TipoUnidades" Relationship="SITModel.FK_Unidades_TipoUnidades" FromRole="Unidades" ToRole="TipoUnidades" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileFactura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileTCirculacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FilePolizaSeguro" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileArrendamiento" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileConstancia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileRefrendo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Combustibles">
+    <Key>
+      <PropertyRef Name="IdCombustible" />
+    </Key>
+    <Property Name="IdCombustible" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Combustible" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <NavigationProperty Name="Tickets" Relationship="SITModel.FK_Tickets_Combustibles" FromRole="Combustibles" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="CorteDiarioBomba">
+    <Key>
+      <PropertyRef Name="IdCorte" />
+    </Key>
+    <Property Name="IdCorte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="HoraInicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LitrosInicio" Type="Double" />
+    <Property Name="FotoInicio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="0" />
+    <Property Name="HoraFinal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LitrosFinal" Type="Double" />
+    <Property Name="FotoFinal" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EstacionesCombustible">
+    <Key>
+      <PropertyRef Name="IdEstacion" />
+    </Key>
+    <Property Name="IdEstacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <NavigationProperty Name="Tickets" Relationship="SITModel.FK_Tickets_EstacionesCombustible" FromRole="EstacionesCombustible" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="Bancos">
+    <Key>
+      <PropertyRef Name="IdBanco" />
+    </Key>
+    <Property Name="IdBanco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Banco" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="CuentasBancos">
+    <Key>
+      <PropertyRef Name="IdCuenta" />
+    </Key>
+    <Property Name="IdCuenta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdBanco" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="IdTicket" />
+    </Key>
+    <Property Name="IdTicket" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUnidad" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstacion" Type="Int32" />
+    <Property Name="IdCombustible" Type="Int32" />
+    <Property Name="Litros" Type="Double" />
+    <Property Name="Odometro" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioModifico" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsuarioCancelo" Type="Int32" />
+    <NavigationProperty Name="Combustibles" Relationship="SITModel.FK_Tickets_Combustibles" FromRole="Tickets" ToRole="Combustibles" />
+    <NavigationProperty Name="EstacionesCombustible" Relationship="SITModel.FK_Tickets_EstacionesCombustible" FromRole="Tickets" ToRole="EstacionesCombustible" />
+    <NavigationProperty Name="Tickets1" Relationship="SITModel.FK_Tickets_Tickets" FromRole="Tickets" ToRole="Tickets1" />
+    <NavigationProperty Name="Tickets2" Relationship="SITModel.FK_Tickets_Tickets" FromRole="Tickets1" ToRole="Tickets" />
+    <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_Tickets_Trabajadores" FromRole="Tickets" ToRole="Trabajadores" />
+    <NavigationProperty Name="Unidades" Relationship="SITModel.FK_Tickets_Unidades" FromRole="Tickets" ToRole="Unidades" />
+  </EntityType>
+  <Association Name="FK_Tickets_Combustibles">
+    <End Type="SITModel.Combustibles" Role="Combustibles" Multiplicity="0..1" />
+    <End Type="SITModel.Tickets" Role="Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Combustibles">
+        <PropertyRef Name="IdCombustible" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdCombustible" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_EstacionesCombustible">
+    <End Type="SITModel.EstacionesCombustible" Role="EstacionesCombustible" Multiplicity="0..1" />
+    <End Type="SITModel.Tickets" Role="Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstacionesCombustible">
+        <PropertyRef Name="IdEstacion" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdEstacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidades_EstatusUnidades">
+    <End Type="SITModel.EstatusUnidades" Role="EstatusUnidades" Multiplicity="0..1" />
+    <End Type="SITModel.Unidades" Role="Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstatusUnidades">
+        <PropertyRef Name="IdEstatus" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdEstatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidades_ModelosUnidades">
+    <End Type="SITModel.ModelosUnidades" Role="ModelosUnidades" Multiplicity="0..1" />
+    <End Type="SITModel.Unidades" Role="Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ModelosUnidades">
+        <PropertyRef Name="IdModelo" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdModelo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidades_MotoresUnidades">
+    <End Type="SITModel.MotoresUnidades" Role="MotoresUnidades" Multiplicity="0..1" />
+    <End Type="SITModel.Unidades" Role="Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MotoresUnidades">
+        <PropertyRef Name="IdMotor" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdMotor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Tickets">
+    <End Type="SITModel.Tickets" Role="Tickets" Multiplicity="1" />
+    <End Type="SITModel.Tickets" Role="Tickets1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="IdTicket" />
+      </Principal>
+      <Dependent Role="Tickets1">
+        <PropertyRef Name="IdTicket" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Trabajadores">
+    <End Type="SITModel.Trabajadores" Role="Trabajadores" Multiplicity="0..1" />
+    <End Type="SITModel.Tickets" Role="Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Trabajadores">
+        <PropertyRef Name="IdEmpleado" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Unidades">
+    <End Type="SITModel.Unidades" Role="Unidades" Multiplicity="0..1" />
+    <End Type="SITModel.Tickets" Role="Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unidades">
+        <PropertyRef Name="IdUnidad" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="IdUnidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unidades_TipoUnidades">
+    <End Type="SITModel.TipoUnidades" Role="TipoUnidades" Multiplicity="0..1" />
+    <End Type="SITModel.Unidades" Role="Unidades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoUnidades">
+        <PropertyRef Name="IdTipo" />
+      </Principal>
+      <Dependent Role="Unidades">
+        <PropertyRef Name="IdTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="NotasMovimientos">
+    <Key>
+      <PropertyRef Name="IdNota" />
+    </Key>
+    <Property Name="IdNota" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Folio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FechaFactura" Type="DateTime" Precision="0" />
+    <Property Name="FechaPago" Type="DateTime" Precision="0" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <Property Name="IdMovimiento" Type="Int32" />
+    <Property Name="Concepto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCreo" Type="Int32" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioModificacion" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="UsuarioCancelacion" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Almacenes">
+    <Key>
+      <PropertyRef Name="IdAlmacen" />
+    </Key>
+    <Property Name="IdAlmacen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodInterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Almacen" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FechaMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCancelo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ZonasAlmacen">
+    <Key>
+      <PropertyRef Name="IdZona" />
+    </Key>
+    <Property Name="IdZona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Zona" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodInterior" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdAlmacen" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FechaMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FechaCancelacion" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCancelo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProductosAlmacen">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodProducto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Stock" Type="Double" />
+    <Property Name="ExMin" Type="Double" />
+    <Property Name="ExMax" Type="Double" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="IdZona" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaCreo" Type="DateTime" Precision="3" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FechaCan" Type="DateTime" Precision="3" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="Pasillo" Type="Int32" />
+    <Property Name="Anaquel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DetalleRequisiciones">
+    <Key>
+      <PropertyRef Name="IdDetalleReq" />
+    </Key>
+    <Property Name="IdDetalleReq" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdRequisicion" Type="Int32" />
+    <Property Name="IdProductoAlmacen" Type="Int32" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="Observaciones" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdCotizacionAut" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Requisiciones">
+    <Key>
+      <PropertyRef Name="IdRequisicion" />
+    </Key>
+    <Property Name="IdRequisicion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaAut" Type="DateTime" Precision="0" />
+    <Property Name="IdEmpAut" Type="Int32" />
+    <Property Name="FechaCreo" Type="DateTime" Precision="3" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FechaMod" Type="DateTime" Precision="3" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FechaCan" Type="DateTime" Precision="3" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CotizacionesRequisiciones">
+    <Key>
+      <PropertyRef Name="IdCotizacion" />
+    </Key>
+    <Property Name="IdCotizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDetalleReq" Type="Int32" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <Property Name="CostoUnitario" Type="Double" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FechaAut" Type="DateTime" Precision="0" />
+    <Property Name="IdUsAut" Type="Int32" />
+    <Property Name="FechaCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FechaMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FechaCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="IdOCompra" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EstatusCotizaciones">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="OrdenesCompra">
+    <Key>
+      <PropertyRef Name="IdOCompra" />
+    </Key>
+    <Property Name="IdOCompra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="Subtotal" Type="Double" />
+    <Property Name="Iva" Type="Double" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="ImporteLetra" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DomiciliosProveedores">
+    <Key>
+      <PropertyRef Name="IdDomicilio" />
+    </Key>
+    <Property Name="IdDomicilio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Calle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroExt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroInt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Colonia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstado" Type="Int32" />
+    <Property Name="IdPais" Type="Int32" />
+    <Property Name="IdProveedor" Type="Int32" />
+    <NavigationProperty Name="Proveedores" Relationship="SITModel.FK_DomiciliosProveedores_Proveedores" FromRole="DomiciliosProveedores" ToRole="Proveedores" />
+    <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_DomiciliosProveedores_Proveedores">
+    <End Type="SITModel.Proveedores" Role="Proveedores" Multiplicity="0..1" />
+    <End Type="SITModel.DomiciliosProveedores" Role="DomiciliosProveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Principal>
+      <Dependent Role="DomiciliosProveedores">
+        <PropertyRef Name="IdProveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EstatusOrdenCompra">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="DetalleSalidasAlmacen">
+    <Key>
+      <PropertyRef Name="IdDetalleSal" />
+    </Key>
+    <Property Name="IdDetalleSal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdSalidaAlmacen" Type="Int32" />
+    <Property Name="IdProducto" Type="Int32" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdUnidad" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SalidasAlmacen">
+    <Key>
+      <PropertyRef Name="IdSalida" />
+    </Key>
+    <Property Name="IdSalida" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EstatusSalidas">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FacturasOC">
+    <Key>
+      <PropertyRef Name="IdFactura" />
+    </Key>
+    <Property Name="IdFactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOCompra" Type="Int32" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="FolioFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ruta" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileNFactura" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileNXml" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="FallasTaller">
+    <Key>
+      <PropertyRef Name="IdFalla" />
+    </Key>
+    <Property Name="IdFalla" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Falla" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+  </EntityType>
+  <EntityType Name="GruposActTaller">
+    <Key>
+      <PropertyRef Name="IdGrupo" />
+    </Key>
+    <Property Name="IdGrupo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grupo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="OrdenesTrabajoTaller">
+    <Key>
+      <PropertyRef Name="IdOrdenTrabajo" />
+    </Key>
+    <Property Name="IdOrdenTrabajo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Hora" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdUnidad" Type="Int32" />
+    <Property Name="IdUbicacion" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="Km" Type="Double" />
+    <Property Name="IdEmpleado" Type="Int32" />
+  </EntityType>
+  <EntityType Name="UbicacionesOT">
+    <Key>
+      <PropertyRef Name="IdUbicacion" />
+    </Key>
+    <Property Name="IdUbicacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ActividadesTaller">
+    <Key>
+      <PropertyRef Name="IdAct" />
+    </Key>
+    <Property Name="IdAct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Actividad" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TiempoEstimado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Formato" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdGrupo" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MantenimientosTaller">
+    <Key>
+      <PropertyRef Name="IdMantenimiento" />
+    </Key>
+    <Property Name="IdMantenimiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mantenimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="EstatusActTaller">
+    <Key>
+      <PropertyRef Name="IdEstatus" />
+    </Key>
+    <Property Name="IdEstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Estatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="ActividadesOT">
+    <Key>
+      <PropertyRef Name="IdActOt" />
+    </Key>
+    <Property Name="IdActOt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdOT" Type="Int32" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FI" Type="DateTime" Precision="0" />
+    <Property Name="TI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FF" Type="DateTime" Precision="0" />
+    <Property Name="TF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="IdActTaller" Type="Int32" />
+    <Property Name="IdMtto" Type="Int32" />
+    <Property Name="IdActMOT" Type="Int32" />
+  </EntityType>
+  <EntityType Name="CatIncidencias">
+    <Key>
+      <PropertyRef Name="IdIncidencia" />
+    </Key>
+    <Property Name="IdIncidencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Monto" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="IncidenciasOperaciones">
+    <Key>
+      <PropertyRef Name="IdIncidencia" />
+    </Key>
+    <Property Name="IdIncidencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdCatIncidencia" Type="Int32" />
+    <Property Name="Monto" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="FNom" Type="DateTime" Precision="0" />
+    <Property Name="IdUsAplico" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VacacionesEmp">
+    <Key>
+      <PropertyRef Name="IdVacacion" />
+    </Key>
+    <Property Name="IdVacacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdPeriodo" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Periodos">
+    <Key>
+      <PropertyRef Name="IdPeriodo" />
+    </Key>
+    <Property Name="IdPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInicial" Type="DateTime" Precision="0" />
+    <Property Name="FechaFinal" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="VacDiasEmpPeriodo">
+    <Key>
+      <PropertyRef Name="IdDV" />
+    </Key>
+    <Property Name="IdDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="Dias" Type="Int32" />
+    <Property Name="idPeriodo" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ActividadesMOT">
+    <Key>
+      <PropertyRef Name="IdAct" />
+    </Key>
+    <Property Name="IdAct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CatDocsEmp">
+    <Key>
+      <PropertyRef Name="IdDoc" />
+    </Key>
+    <Property Name="IdDoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DocsEmpleado">
+    <Key>
+      <PropertyRef Name="IdDocEmp" />
+    </Key>
+    <Property Name="IdDocEmp" Type="Int32" Nullable="false" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdDoc" Type="Int32" />
+    <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+    <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CatArticulosRh">
+    <Key>
+      <PropertyRef Name="IdArticulo" />
+    </Key>
+    <Property Name="IdArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Articulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Max" Type="Double" />
+    <Property Name="Min" Type="Double" />
+    <Property Name="Stock" Type="Double" />
+    <Property Name="IdMedida" Type="Int32" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ArticulosEmp">
+    <Key>
+      <PropertyRef Name="IdArtEmp" />
+    </Key>
+    <Property Name="IdArtEmp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="IdEmpleado" Type="Int32" />
+    <Property Name="IdArticulo" Type="Int32" />
+    <Property Name="Cantidad" Type="Double" />
+    <Property Name="IdEstatus" Type="Int32" />
+    <Property Name="FCreo" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCreo" Type="Int32" />
+    <Property Name="FMod" Type="DateTime" Precision="0" />
+    <Property Name="IdUsMod" Type="Int32" />
+    <Property Name="FCan" Type="DateTime" Precision="0" />
+    <Property Name="IdUsCan" Type="Int32" />
+  </EntityType>
+</Schema>

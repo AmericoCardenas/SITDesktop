@@ -1,6 +1,7 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using CrystalDecisions.Windows.Forms;
+using SIT.Views.Catalogos.CEmpleados;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,9 +23,12 @@ namespace SIT.CrystalReport
         }
 
         public Form frm;
-        public int idviaje,ideqmovil,idlinea,ideqcomp,idocompra;
+        SITEntities db = new SITEntities();
+        public int idviaje,ideqmovil,idlinea,ideqcomp,idocompra,idempleado;
         ReportDocument report = new ReportDocument();
 
+        //ReporteVacaciones//
+        public string periodo,dias_correspondientes, dias_disfrutar, dias_disfrutados, dias_restantes,fechas_vacaciones,obs_vac;
 
         private void CargarReporte()
         {
@@ -127,6 +131,31 @@ namespace SIT.CrystalReport
                 parameterFields.Add(parameterField);
                 crystalReportViewer1.ParameterFieldInfo = parameterFields;
                 
+            }
+            else if (this.frm.Name == "AEVacaciones")
+            {
+                report.Load("\\\\192.168.1.213\\Reportes\\RptVacEmp.rpt");
+
+                var emp = this.db.Trabajadores.Where(x=>x.IdEmpleado==idempleado).FirstOrDefault();
+                var depto =this.db.Departamentos.Where(x=>x.IdDepto==emp.IdDepto).FirstOrDefault();
+                var puesto =this.db.Puestos.Where(x=>x.IdPuesto==emp.IdPuesto).FirstOrDefault();
+                var antiguedad = Convert.ToInt32(DateTime.Now.Year) - Convert.ToInt32(emp.FIngreso.Value.Year);
+
+                report.SetParameterValue("IdEmpleado", idempleado.ToString());
+                report.SetParameterValue("NombreEmpleado", emp.NombreCompleto.ToString());
+                report.SetParameterValue("FechaIngresoEmpleado", emp.FIngreso.ToString());
+                report.SetParameterValue("PuestoEmpleado", puesto.Puesto + "-" + depto.Departamento);
+                report.SetParameterValue("Antiguedad", antiguedad.ToString());
+                report.SetParameterValue("Periodo", periodo);
+                report.SetParameterValue("FechasVacaciones", fechas_vacaciones);
+                report.SetParameterValue("DiasCorrespondientes", dias_correspondientes);
+                report.SetParameterValue("DiasDisfrutados", dias_disfrutados);
+                report.SetParameterValue("DiasDisfrutar", dias_disfrutar);
+                report.SetParameterValue("DiasRestantes", dias_restantes);
+                report.SetParameterValue("Observaciones", obs_vac);
+
+
+
             }
 
             report.SetDatabaseLogon("sa", "compac", "SERVIDOR\\COMPAC", "SIT");

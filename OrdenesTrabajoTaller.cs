@@ -28,5 +28,6 @@ namespace SIT
         public Nullable<System.DateTime> FCan { get; set; }
         public Nullable<int> IdUsCan { get; set; }
         public Nullable<double> Km { get; set; }
+        public Nullable<int> IdEmpleado { get; set; }
     }
 }

@@ -56,7 +56,10 @@ namespace SIT.Views.General.CRequisiciones
             {
                 dgrid = this.dgrid_reqautorizadas;
                 idestatus = 3;
-                this.btn_add.Enabled = false;
+                this.btn_add.Enabled = true;
+                this.btn_add.BackgroundImage = Properties.Resources.buscar;
+                this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+
             }
 
 
@@ -66,6 +69,27 @@ namespace SIT.Views.General.CRequisiciones
                 var x = from n in db.Requisiciones
                         join t in db.Trabajadores on n.IdEmpleado equals t.IdEmpleado
                         where n.IdEstatus == idestatus
+                        select new
+                        {
+                            n.IdRequisicion,
+                            t.NombreCompleto,
+                            n.Fecha,
+                            n.Hora,
+                            n.Observaciones
+                        };
+
+                dgrid.DataSource = null;
+                dgrid.DataSource = x.ToList();
+                dgrid.EnableHeadersVisualStyles = false;
+                dgrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
+                dgrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            else if (this._uslog.IdDepto == 9)
+            {
+                var x = from n in db.Requisiciones
+                        join t in db.Trabajadores on n.IdEmpleado equals t.IdEmpleado
+                        where n.IdEstatus == idestatus && t.IdDepto==9
                         select new
                         {
                             n.IdRequisicion,
@@ -314,6 +338,23 @@ namespace SIT.Views.General.CRequisiciones
             {
                 // Do something
             }
+        }
+
+        private void dgrid_reqautorizadas_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.dgrid_reqautorizadas.CurrentCell.RowIndex != -1)
+                {
+                    IdRequisicion = Convert.ToInt32(this.dgrid_reqautorizadas.CurrentRow.Cells[0].Value);
+                    requisiciones = db.Requisiciones.Where(x => x.IdRequisicion == IdRequisicion).FirstOrDefault();
+                }
+                this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.buscar, new Size(32, 32));
+                this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
+
+
+            }
+            catch (Exception ex) { }
         }
     }
 }

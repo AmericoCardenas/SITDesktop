@@ -50,7 +50,6 @@ namespace SIT
         public virtual DbSet<Trabajadores> Trabajadores { get; set; }
         public virtual DbSet<EstatusEquipos> EstatusEquipos { get; set; }
         public virtual DbSet<UsuariosSitios> UsuariosSitios { get; set; }
-        public virtual DbSet<Incidencias> Incidencias { get; set; }
         public virtual DbSet<ConceptosFlujos> ConceptosFlujos { get; set; }
         public virtual DbSet<Flujos> Flujos { get; set; }
         public virtual DbSet<MetodosFlujos> MetodosFlujos { get; set; }
@@ -114,5 +113,16 @@ namespace SIT
         public virtual DbSet<MantenimientosTaller> MantenimientosTaller { get; set; }
         public virtual DbSet<EstatusActTaller> EstatusActTaller { get; set; }
         public virtual DbSet<ActividadesOT> ActividadesOT { get; set; }
+        public virtual DbSet<CatIncidencias> CatIncidencias { get; set; }
+        public virtual DbSet<IncidenciasOperaciones> IncidenciasOperaciones { get; set; }
+        public virtual DbSet<VacacionesEmp> VacacionesEmp { get; set; }
+        public virtual DbSet<Periodos> Periodos { get; set; }
+        public virtual DbSet<VacDiasEmpPeriodo> VacDiasEmpPeriodo { get; set; }
+        public virtual DbSet<ActividadesMOT> ActividadesMOT { get; set; }
+        public virtual DbSet<CatDocsEmp> CatDocsEmp { get; set; }
+        public virtual DbSet<DocsEmpleado> DocsEmpleado { get; set; }
+        public virtual DbSet<CatArticulosRh> CatArticulosRh { get; set; }
+        public virtual DbSet<ArticulosEmp> ArticulosEmp { get; set; }
+        public virtual DbSet<HistBajasEmp> HistBajasEmp { get; set; }
     }
 }

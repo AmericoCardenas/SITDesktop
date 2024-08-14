@@ -201,7 +201,6 @@ namespace SIT.Views.Almacen.CProductosAlmacen
 
         private void CancelarProducto()
         {
-            productos = db.ProductosAlmacen.Where(x => x.IdProducto == IdProducto).FirstOrDefault();
             productos.IdEstatus = 2;
             productos.FechaCan = DateTime.Now;
             productos.IdUsCan = _uslog.IdUsuario;
@@ -242,6 +241,8 @@ namespace SIT.Views.Almacen.CProductosAlmacen
                 if (this.dgrid_prods.CurrentCell.RowIndex != -1)
                 {
                     IdProducto = Convert.ToInt32(this.dgrid_prods.CurrentRow.Cells[0].Value);
+                    productos = db.ProductosAlmacen.Where(x => x.IdProducto == IdProducto).FirstOrDefault();
+
                 }
                 this.btn_add.BackgroundImage = new Bitmap(Properties.Resources.lapiz, new Size(32, 32));
                 this.btn_add.BackgroundImageLayout = ImageLayout.Stretch;
@@ -250,6 +251,16 @@ namespace SIT.Views.Almacen.CProductosAlmacen
             {
 
             }
+        }
+
+        private void btn_historial_Click(object sender, EventArgs e)
+        {
+            VHistorialCompras frm = new VHistorialCompras();
+            frm.idProducto = IdProducto;
+            frm.producto = productos.Nombre;
+            //this.Enabled = false;
+            frm.Show();
+
         }
     }
 }

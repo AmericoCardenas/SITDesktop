@@ -2,6 +2,7 @@
 using SIT.Views.Catalogos;
 using SIT.Views.Contabilidad.CFlujos;
 using SIT.Views.Contabilidad.CMovimientos;
+using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -419,9 +420,115 @@ namespace SIT.Views.Contabilidad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Reporte frm = new Reporte();
-            frm.frm = this;
-            frm.ShowDialog();
+            ExportarExcel();
+        }
+
+        private void ExportarExcel()
+        {
+
+            int x, z = 0;
+            SLDocument sl = new SLDocument();
+            SLWorksheetStatistics stats = sl.GetWorksheetStatistics();
+            SLStyle style = sl.CreateStyle();
+
+
+            string downloadPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            downloadPath = System.IO.Path.Combine(downloadPath, "Documents");
+
+
+            var tb = from f in db.Flujos
+                     join tp in db.TiposFlujos on f.IdTipo equals tp.IdTipo
+                     join m in db.MetodosFlujos on f.IdMetodo equals m.IdMetodo
+                     join t in db.Trabajadores on f.IdEmpleado equals t.IdEmpleado
+                     join d in db.Departamentos on f.IdDepto equals d.IdDepto
+                     where f.IdEstatus==1
+                     select new
+                     {
+                         f.IdFlujo,
+                         f.Fecha,
+                         tp.Tipo,
+                         m.Metodo,
+                         t.NombreCompleto,
+                         d.Departamento,
+                         f.Descripcion,
+                         f.Cantidad
+
+
+
+                     };
+
+            DataGridView dgrid = new DataGridView();
+            dgrid.Columns.Add("Id", "Id");
+            dgrid.Columns.Add("Fecha", "Fecha");
+            dgrid.Columns.Add("Tipo", "Tipo");
+            dgrid.Columns.Add("Metodo", "Metodo");
+            dgrid.Columns.Add("NombreCompleto", "Empleado");
+            dgrid.Columns.Add("Departamento", "Departamento");
+            dgrid.Columns.Add("Descripcion", "Descripcion");
+            dgrid.Columns.Add("Cantidad", "Cantidad");
+
+
+
+
+
+
+            foreach (var item in tb)
+            {
+                dgrid.Rows.Add(item.IdFlujo, item.Fecha,
+                    item.Tipo,item.Metodo,item.NombreCompleto,item.Departamento,item.Descripcion,item.Cantidad);
+            }
+
+            try
+            {
+
+                for (int i = 0; i < dgrid.Columns.Count; i++)
+                {
+                    sl.SetCellValue(1, i + 1, dgrid.Columns[i].HeaderText);
+                }
+
+
+                for (x = 0; x < dgrid.Rows.Count; x++)
+                {
+                    for (z = 0; z < dgrid.Columns.Count; z++)
+                    {
+                        DataGridViewCell cell = dgrid.Rows[x].Cells[z];
+                        if (cell.Value != null)
+                        {
+                            sl.SetCellValue(x + 2, z + 1, cell.Value.ToString());
+
+
+                        }
+                        else
+                        {
+
+                        }
+                    }
+                }
+                sl.AutoFitColumn(1, stats.EndColumnIndex);
+
+                // Save the Excel file
+                sl.SaveAs(downloadPath + "\\Flujos" + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
+                MessageBox.Show("Archivo exportado en " + downloadPath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+
+        private void btn_saldoactual_Click(object sender, EventArgs e)
+        {
+            VSaldosCaja frm = new VSaldosCaja(this);
+            this.Enabled = false;
+            frm.Show();
+        }
+
+        private void btn_saldoxfecha_Click(object sender, EventArgs e)
+        {
+            VSaldosCajaxFecha frm = new VSaldosCajaxFecha();
+            frm.Show();
         }
     }
 }

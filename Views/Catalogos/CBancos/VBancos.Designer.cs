@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_cancel = new System.Windows.Forms.Button();
             this.txt_filtro = new System.Windows.Forms.TextBox();
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
             this.btn_add = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgrid_bancos = new System.Windows.Forms.DataGridView();
-            this.btn_cancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_bancos)).BeginInit();
@@ -42,6 +42,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btn_cancel);
             this.panel1.Controls.Add(this.txt_filtro);
             this.panel1.Controls.Add(this.cmb_filtro);
@@ -49,8 +50,20 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 55);
+            this.panel1.Size = new System.Drawing.Size(1008, 51);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
+            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_cancel.Location = new System.Drawing.Point(72, 4);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
+            this.btn_cancel.TabIndex = 3;
+            this.btn_cancel.UseVisualStyleBackColor = true;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // txt_filtro
             // 
@@ -76,44 +89,34 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Location = new System.Drawing.Point(13, 4);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(59, 45);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 0;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.dgrid_bancos);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 55);
+            this.panel2.Location = new System.Drawing.Point(0, 51);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1008, 395);
+            this.panel2.Size = new System.Drawing.Size(1008, 399);
             this.panel2.TabIndex = 1;
             // 
             // dgrid_bancos
             // 
             this.dgrid_bancos.AllowUserToAddRows = false;
             this.dgrid_bancos.AllowUserToDeleteRows = false;
+            this.dgrid_bancos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_bancos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_bancos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_bancos.Location = new System.Drawing.Point(0, 0);
             this.dgrid_bancos.Name = "dgrid_bancos";
             this.dgrid_bancos.ReadOnly = true;
-            this.dgrid_bancos.Size = new System.Drawing.Size(1008, 395);
+            this.dgrid_bancos.Size = new System.Drawing.Size(1004, 395);
             this.dgrid_bancos.TabIndex = 0;
             this.dgrid_bancos.Click += new System.EventHandler(this.dgrid_bancos_Click);
-            // 
-            // btn_cancel
-            // 
-            this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
-            this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(79, 4);
-            this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(61, 45);
-            this.btn_cancel.TabIndex = 3;
-            this.btn_cancel.UseVisualStyleBackColor = true;
-            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // VBancos
             // 

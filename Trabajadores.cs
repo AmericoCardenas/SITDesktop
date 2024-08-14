@@ -41,6 +41,8 @@ namespace SIT
         public Nullable<int> IdUsuarioCancelo { get; set; }
         public string UserEmp { get; set; }
         public string Password { get; set; }
+        public Nullable<int> DiasVacaciones { get; set; }
+        public Nullable<System.DateTime> FIngreso { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Lineas> Lineas { get; set; }

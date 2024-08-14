@@ -1,4 +1,5 @@
 ﻿using GMap.NET;
+using SIT.SmtpEmail;
 using SIT.Views.Almacen.CCotizaciones;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace SIT.Views.General.CRequisiciones
         int idDetalleReq=0;
         Requisiciones requisiciones = new Requisiciones();
         DetalleRequisiciones detalleRequisiciones = new DetalleRequisiciones();
+        EnviarEmail email = new EnviarEmail();
 
         private void VAERequisicion_Load(object sender, EventArgs e)
         {
@@ -100,6 +102,7 @@ namespace SIT.Views.General.CRequisiciones
                 this.txt_numreq.Text = requisiciones.IdRequisicion.ToString();
                 this.txt_hora.Text = requisiciones.Hora.ToString();
                 this.dtm_fecha.Value = Convert.ToDateTime(requisiciones.Fecha);
+                this.txt_obsreq.Text = requisiciones.Observaciones;
 
 
             }
@@ -111,6 +114,8 @@ namespace SIT.Views.General.CRequisiciones
                 this.txt_numreq.Text = requisiciones.IdRequisicion.ToString();
                 this.txt_hora.Text = requisiciones.Hora.ToString();
                 this.dtm_fecha.Value = Convert.ToDateTime(requisiciones.Fecha);
+                this.txt_obsreq.Text = requisiciones.Observaciones;
+
             }
 
 
@@ -261,6 +266,8 @@ namespace SIT.Views.General.CRequisiciones
             }
         }
 
+
+
         private bool VerificarExistenciaDeProducto(string nombreproducto)
         {
             foreach (DataGridViewRow row in this.dgrid_detalleproductos.Rows)
@@ -334,6 +341,18 @@ namespace SIT.Views.General.CRequisiciones
                 requisiciones.FechaMod = DateTime.Now;
                 db.Entry(requisiciones).State = EntityState.Modified;
                 db.SaveChanges();
+
+                if (usuario.IdDepto != 5)
+                {
+                    //ENVIAR EMAIL 
+                    email.recipients.Add("compras@transportesdavila.com.mx");
+                    email.recipients.Add("sistemas@transportesdavila.com.mx");
+                    email.subject = "Requisicion #" + this.txt_numreq.Text.ToString() + " " + this.cmb_empleado.Text + " " + DateTime.Now.ToString();
+                    var body = "Requisicion #"+this.txt_numreq.Text+"\n "+this.cmb_empleado.Text+"\n"+email.DataGridViewToHtml(this.dgrid_detalleproductos);
+                    email.body = body;
+                    email.SendEmail();
+                }
+
 
                 MessageBox.Show("Se ha generado la requisición " + IdRequisicion.ToString() + " exitosamente");
                 this.Close();

@@ -31,18 +31,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txt_filtro = new System.Windows.Forms.TextBox();
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
+            this.btn_add = new System.Windows.Forms.Button();
             this.dgrid_salidas = new System.Windows.Forms.DataGridView();
             this.tbcontrol = new System.Windows.Forms.TabControl();
             this.tb_vpendientes = new System.Windows.Forms.TabPage();
             this.tb_vaplicados = new System.Windows.Forms.TabPage();
             this.dgrid_vaplicados = new System.Windows.Forms.DataGridView();
-            this.btn_add = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_salidas)).BeginInit();
             this.tbcontrol.SuspendLayout();
             this.tb_vpendientes.SuspendLayout();
             this.tb_vaplicados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_vaplicados)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -55,7 +57,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 60);
+            this.panel1.Size = new System.Drawing.Size(800, 48);
             this.panel1.TabIndex = 0;
             // 
             // txt_filtro
@@ -74,6 +76,18 @@
             this.cmb_filtro.Size = new System.Drawing.Size(121, 21);
             this.cmb_filtro.TabIndex = 1;
             // 
+            // btn_add
+            // 
+            this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
+            this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_add.Location = new System.Drawing.Point(10, 3);
+            this.btn_add.Name = "btn_add";
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
+            this.btn_add.TabIndex = 0;
+            this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
             // dgrid_salidas
             // 
             this.dgrid_salidas.AllowUserToAddRows = false;
@@ -84,7 +98,7 @@
             this.dgrid_salidas.Location = new System.Drawing.Point(3, 3);
             this.dgrid_salidas.Name = "dgrid_salidas";
             this.dgrid_salidas.ReadOnly = true;
-            this.dgrid_salidas.Size = new System.Drawing.Size(786, 358);
+            this.dgrid_salidas.Size = new System.Drawing.Size(782, 366);
             this.dgrid_salidas.TabIndex = 1;
             this.dgrid_salidas.Click += new System.EventHandler(this.dgrid_salidas_Click);
             // 
@@ -93,10 +107,10 @@
             this.tbcontrol.Controls.Add(this.tb_vpendientes);
             this.tbcontrol.Controls.Add(this.tb_vaplicados);
             this.tbcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbcontrol.Location = new System.Drawing.Point(0, 60);
+            this.tbcontrol.Location = new System.Drawing.Point(0, 0);
             this.tbcontrol.Name = "tbcontrol";
             this.tbcontrol.SelectedIndex = 0;
-            this.tbcontrol.Size = new System.Drawing.Size(800, 390);
+            this.tbcontrol.Size = new System.Drawing.Size(796, 398);
             this.tbcontrol.TabIndex = 2;
             this.tbcontrol.SelectedIndexChanged += new System.EventHandler(this.tbcontrol_SelectedIndexChanged);
             // 
@@ -106,7 +120,7 @@
             this.tb_vpendientes.Location = new System.Drawing.Point(4, 22);
             this.tb_vpendientes.Name = "tb_vpendientes";
             this.tb_vpendientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_vpendientes.Size = new System.Drawing.Size(792, 364);
+            this.tb_vpendientes.Size = new System.Drawing.Size(788, 372);
             this.tb_vpendientes.TabIndex = 0;
             this.tb_vpendientes.Text = "ValesPendientes";
             this.tb_vpendientes.UseVisualStyleBackColor = true;
@@ -117,7 +131,7 @@
             this.tb_vaplicados.Location = new System.Drawing.Point(4, 22);
             this.tb_vaplicados.Name = "tb_vaplicados";
             this.tb_vaplicados.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_vaplicados.Size = new System.Drawing.Size(792, 364);
+            this.tb_vaplicados.Size = new System.Drawing.Size(788, 372);
             this.tb_vaplicados.TabIndex = 1;
             this.tb_vaplicados.Text = "ValesAplicados";
             this.tb_vaplicados.UseVisualStyleBackColor = true;
@@ -126,33 +140,32 @@
             // 
             this.dgrid_vaplicados.AllowUserToAddRows = false;
             this.dgrid_vaplicados.AllowUserToDeleteRows = false;
+            this.dgrid_vaplicados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_vaplicados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_vaplicados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_vaplicados.Location = new System.Drawing.Point(3, 3);
             this.dgrid_vaplicados.Name = "dgrid_vaplicados";
             this.dgrid_vaplicados.ReadOnly = true;
-            this.dgrid_vaplicados.Size = new System.Drawing.Size(786, 358);
+            this.dgrid_vaplicados.Size = new System.Drawing.Size(782, 366);
             this.dgrid_vaplicados.TabIndex = 0;
             this.dgrid_vaplicados.Click += new System.EventHandler(this.dgrid_vaplicados_Click);
             // 
-            // btn_add
+            // panel2
             // 
-            this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
-            this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(10, 3);
-            this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(49, 47);
-            this.btn_add.TabIndex = 0;
-            this.btn_add.UseVisualStyleBackColor = true;
-            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.tbcontrol);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 48);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 402);
+            this.panel2.TabIndex = 3;
             // 
             // VSalidas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.tbcontrol);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VSalidas";
@@ -166,6 +179,7 @@
             this.tb_vpendientes.ResumeLayout(false);
             this.tb_vaplicados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_vaplicados)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -181,5 +195,6 @@
         private System.Windows.Forms.TabPage tb_vpendientes;
         private System.Windows.Forms.TabPage tb_vaplicados;
         private System.Windows.Forms.DataGridView dgrid_vaplicados;
+        private System.Windows.Forms.Panel panel2;
     }
 }

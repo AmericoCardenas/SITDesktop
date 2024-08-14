@@ -53,6 +53,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btn_excel);
             this.panel1.Controls.Add(this.btn_saldoxfecha);
             this.panel1.Controls.Add(this.btn_saldoactual);
@@ -71,9 +72,9 @@
             this.btn_excel.BackgroundImage = global::SIT.Properties.Resources.excel;
             this.btn_excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_excel.Location = new System.Drawing.Point(231, 3);
+            this.btn_excel.Location = new System.Drawing.Point(223, 3);
             this.btn_excel.Name = "btn_excel";
-            this.btn_excel.Size = new System.Drawing.Size(47, 39);
+            this.btn_excel.Size = new System.Drawing.Size(48, 39);
             this.btn_excel.TabIndex = 24;
             this.btn_excel.UseVisualStyleBackColor = true;
             this.btn_excel.Click += new System.EventHandler(this.btn_excel_Click);
@@ -83,9 +84,9 @@
             this.btn_saldoxfecha.BackgroundImage = global::SIT.Properties.Resources.schedule;
             this.btn_saldoxfecha.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_saldoxfecha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_saldoxfecha.Location = new System.Drawing.Point(175, 3);
+            this.btn_saldoxfecha.Location = new System.Drawing.Point(168, 3);
             this.btn_saldoxfecha.Name = "btn_saldoxfecha";
-            this.btn_saldoxfecha.Size = new System.Drawing.Size(50, 39);
+            this.btn_saldoxfecha.Size = new System.Drawing.Size(48, 39);
             this.btn_saldoxfecha.TabIndex = 23;
             this.btn_saldoxfecha.UseVisualStyleBackColor = true;
             this.btn_saldoxfecha.Click += new System.EventHandler(this.btn_saldoxfecha_Click);
@@ -97,7 +98,7 @@
             this.btn_saldoactual.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_saldoactual.Location = new System.Drawing.Point(112, 3);
             this.btn_saldoactual.Name = "btn_saldoactual";
-            this.btn_saldoactual.Size = new System.Drawing.Size(56, 39);
+            this.btn_saldoactual.Size = new System.Drawing.Size(48, 39);
             this.btn_saldoactual.TabIndex = 22;
             this.btn_saldoactual.UseVisualStyleBackColor = true;
             this.btn_saldoactual.Click += new System.EventHandler(this.btn_saldoactual_Click);
@@ -126,7 +127,7 @@
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Location = new System.Drawing.Point(59, 2);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(47, 40);
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
             this.btn_cancel.TabIndex = 17;
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -138,13 +139,14 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Location = new System.Drawing.Point(7, 3);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(47, 39);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 16;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.tbcontrol);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 52);
@@ -160,7 +162,7 @@
             this.tbcontrol.Location = new System.Drawing.Point(0, 0);
             this.tbcontrol.Name = "tbcontrol";
             this.tbcontrol.SelectedIndex = 0;
-            this.tbcontrol.Size = new System.Drawing.Size(1020, 398);
+            this.tbcontrol.Size = new System.Drawing.Size(1016, 394);
             this.tbcontrol.TabIndex = 0;
             this.tbcontrol.SelectedIndexChanged += new System.EventHandler(this.tbcontrol_SelectedIndexChanged);
             // 
@@ -170,7 +172,7 @@
             this.tb_egreso.Location = new System.Drawing.Point(4, 22);
             this.tb_egreso.Name = "tb_egreso";
             this.tb_egreso.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_egreso.Size = new System.Drawing.Size(1012, 372);
+            this.tb_egreso.Size = new System.Drawing.Size(1008, 368);
             this.tb_egreso.TabIndex = 0;
             this.tb_egreso.Text = "Egreso";
             this.tb_egreso.UseVisualStyleBackColor = true;
@@ -179,12 +181,13 @@
             // 
             this.dgrid_egreso.AllowUserToAddRows = false;
             this.dgrid_egreso.AllowUserToDeleteRows = false;
+            this.dgrid_egreso.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_egreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_egreso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_egreso.Location = new System.Drawing.Point(3, 3);
             this.dgrid_egreso.Name = "dgrid_egreso";
             this.dgrid_egreso.ReadOnly = true;
-            this.dgrid_egreso.Size = new System.Drawing.Size(1006, 366);
+            this.dgrid_egreso.Size = new System.Drawing.Size(1002, 362);
             this.dgrid_egreso.TabIndex = 0;
             this.dgrid_egreso.Click += new System.EventHandler(this.dgrid_ingreso_Click);
             this.dgrid_egreso.DoubleClick += new System.EventHandler(this.dgrid_egreso_DoubleClick);
@@ -195,7 +198,7 @@
             this.tb_ingreso.Location = new System.Drawing.Point(4, 22);
             this.tb_ingreso.Name = "tb_ingreso";
             this.tb_ingreso.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_ingreso.Size = new System.Drawing.Size(1012, 372);
+            this.tb_ingreso.Size = new System.Drawing.Size(1008, 368);
             this.tb_ingreso.TabIndex = 1;
             this.tb_ingreso.Text = "Ingreso";
             this.tb_ingreso.UseVisualStyleBackColor = true;
@@ -204,12 +207,13 @@
             // 
             this.dgrid_ingreso.AllowUserToAddRows = false;
             this.dgrid_ingreso.AllowUserToDeleteRows = false;
+            this.dgrid_ingreso.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_ingreso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_ingreso.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_ingreso.Location = new System.Drawing.Point(3, 3);
             this.dgrid_ingreso.Name = "dgrid_ingreso";
             this.dgrid_ingreso.ReadOnly = true;
-            this.dgrid_ingreso.Size = new System.Drawing.Size(1006, 366);
+            this.dgrid_ingreso.Size = new System.Drawing.Size(1002, 362);
             this.dgrid_ingreso.TabIndex = 0;
             this.dgrid_ingreso.Click += new System.EventHandler(this.dgrid_egreso_Click);
             this.dgrid_ingreso.DoubleClick += new System.EventHandler(this.dgrid_ingreso_DoubleClick);

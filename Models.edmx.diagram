@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="46641e0898a24e0db7b988cf89398cbe" Name="Diagram1" ZoomLevel="82">
+      <Diagram DiagramId="46641e0898a24e0db7b988cf89398cbe" Name="Diagram1" ZoomLevel="52">
         <EntityTypeShape EntityType="SITModel.Departamentos" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.DomiciliosClientes" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="SITModel.Estados" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
@@ -32,7 +32,6 @@
         <EntityTypeShape EntityType="SITModel.Trabajadores" Width="1.5" PointX="14.375" PointY="12.75" />
         <EntityTypeShape EntityType="SITModel.EstatusEquipos" Width="1.5" PointX="14.375" PointY="3.75" />
         <EntityTypeShape EntityType="SITModel.UsuariosSitios" Width="1.5" PointX="15.375" PointY="0.75" />
-        <EntityTypeShape EntityType="SITModel.Incidencias" Width="1.5" PointX="0.75" PointY="15.75" />
         <EntityTypeShape EntityType="SITModel.ConceptosFlujos" Width="1.5" PointX="15.375" PointY="6.75" />
         <EntityTypeShape EntityType="SITModel.Flujos" Width="1.5" PointX="16.375" PointY="9.75" />
         <EntityTypeShape EntityType="SITModel.MetodosFlujos" Width="1.5" PointX="16.375" PointY="3.75" />
@@ -117,6 +116,17 @@
         <EntityTypeShape EntityType="SITModel.MantenimientosTaller" Width="1.5" PointX="5.375" PointY="28.75" />
         <EntityTypeShape EntityType="SITModel.EstatusActTaller" Width="1.5" PointX="7.375" PointY="28.75" />
         <EntityTypeShape EntityType="SITModel.ActividadesOT" Width="1.5" PointX="28.375" PointY="16.75" />
+        <EntityTypeShape EntityType="SITModel.CatIncidencias" Width="1.5" PointX="28.375" PointY="21.75" />
+        <EntityTypeShape EntityType="SITModel.IncidenciasOperaciones" Width="1.5" PointX="28.375" PointY="25.75" />
+        <EntityTypeShape EntityType="SITModel.VacacionesEmp" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="SITModel.Periodos" Width="1.5" PointX="28.375" PointY="10.75" />
+        <EntityTypeShape EntityType="SITModel.VacDiasEmpPeriodo" Width="1.5" PointX="29.375" PointY="13.75" />
+        <EntityTypeShape EntityType="SITModel.ActividadesMOT" Width="1.5" PointX="30.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SITModel.CatDocsEmp" Width="1.5" PointX="30.375" PointY="3.75" />
+        <EntityTypeShape EntityType="SITModel.DocsEmpleado" Width="1.5" PointX="30.375" PointY="7.75" />
+        <EntityTypeShape EntityType="SITModel.CatArticulosRh" Width="1.5" PointX="30.375" PointY="17.75" />
+        <EntityTypeShape EntityType="SITModel.ArticulosEmp" Width="1.5" PointX="30.375" PointY="22.75" />
+        <EntityTypeShape EntityType="SITModel.HistBajasEmp" Width="1.5" PointX="23.375" PointY="30.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

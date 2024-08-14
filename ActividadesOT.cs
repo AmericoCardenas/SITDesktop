@@ -30,5 +30,7 @@ namespace SIT
         public Nullable<System.DateTime> FCan { get; set; }
         public Nullable<int> IdUsCan { get; set; }
         public Nullable<int> IdActTaller { get; set; }
+        public Nullable<int> IdMtto { get; set; }
+        public Nullable<int> IdActMOT { get; set; }
     }
 }

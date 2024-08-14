@@ -53,6 +53,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_total = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tbcontrol.SuspendLayout();
             this.tb_rpendientes.SuspendLayout();
@@ -66,6 +67,7 @@
             this.tb_ocsurt.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_ocsurtidas)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,15 +88,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 50);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btn_autcot
             // 
             this.btn_autcot.BackgroundImage = global::SIT.Properties.Resources.check;
             this.btn_autcot.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_autcot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_autcot.Location = new System.Drawing.Point(365, 4);
+            this.btn_autcot.Location = new System.Drawing.Point(342, 3);
             this.btn_autcot.Name = "btn_autcot";
-            this.btn_autcot.Size = new System.Drawing.Size(53, 39);
+            this.btn_autcot.Size = new System.Drawing.Size(48, 39);
             this.btn_autcot.TabIndex = 9;
             this.btn_autcot.UseVisualStyleBackColor = true;
             this.btn_autcot.Click += new System.EventHandler(this.btn_autcot_Click);
@@ -104,9 +107,9 @@
             this.btn_canoc.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef5841;
             this.btn_canoc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_canoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_canoc.Location = new System.Drawing.Point(303, 3);
+            this.btn_canoc.Location = new System.Drawing.Point(286, 3);
             this.btn_canoc.Name = "btn_canoc";
-            this.btn_canoc.Size = new System.Drawing.Size(53, 39);
+            this.btn_canoc.Size = new System.Drawing.Size(48, 39);
             this.btn_canoc.TabIndex = 8;
             this.btn_canoc.UseVisualStyleBackColor = true;
             this.btn_canoc.Visible = false;
@@ -117,9 +120,9 @@
             this.btn_factxml.BackgroundImage = global::SIT.Properties.Resources.factura;
             this.btn_factxml.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_factxml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_factxml.Location = new System.Drawing.Point(244, 3);
+            this.btn_factxml.Location = new System.Drawing.Point(231, 3);
             this.btn_factxml.Name = "btn_factxml";
-            this.btn_factxml.Size = new System.Drawing.Size(53, 39);
+            this.btn_factxml.Size = new System.Drawing.Size(48, 39);
             this.btn_factxml.TabIndex = 7;
             this.btn_factxml.UseVisualStyleBackColor = true;
             this.btn_factxml.Click += new System.EventHandler(this.btn_factxml_Click);
@@ -131,7 +134,7 @@
             this.btn_cotizacionglobal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cotizacionglobal.Location = new System.Drawing.Point(15, 3);
             this.btn_cotizacionglobal.Name = "btn_cotizacionglobal";
-            this.btn_cotizacionglobal.Size = new System.Drawing.Size(53, 39);
+            this.btn_cotizacionglobal.Size = new System.Drawing.Size(48, 39);
             this.btn_cotizacionglobal.TabIndex = 6;
             this.btn_cotizacionglobal.UseVisualStyleBackColor = true;
             this.btn_cotizacionglobal.Click += new System.EventHandler(this.btn_cotizacionglobal_Click);
@@ -141,9 +144,9 @@
             this.btn_entrada.BackgroundImage = global::SIT.Properties.Resources.bandeja_de_entrada;
             this.btn_entrada.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_entrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_entrada.Location = new System.Drawing.Point(185, 3);
+            this.btn_entrada.Location = new System.Drawing.Point(176, 3);
             this.btn_entrada.Name = "btn_entrada";
-            this.btn_entrada.Size = new System.Drawing.Size(53, 39);
+            this.btn_entrada.Size = new System.Drawing.Size(48, 39);
             this.btn_entrada.TabIndex = 5;
             this.btn_entrada.UseVisualStyleBackColor = true;
             this.btn_entrada.Click += new System.EventHandler(this.btn_entrada_Click);
@@ -153,9 +156,9 @@
             this.btn_pagaroc.BackgroundImage = global::SIT.Properties.Resources.money;
             this.btn_pagaroc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_pagaroc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_pagaroc.Location = new System.Drawing.Point(126, 3);
+            this.btn_pagaroc.Location = new System.Drawing.Point(121, 3);
             this.btn_pagaroc.Name = "btn_pagaroc";
-            this.btn_pagaroc.Size = new System.Drawing.Size(53, 39);
+            this.btn_pagaroc.Size = new System.Drawing.Size(48, 39);
             this.btn_pagaroc.TabIndex = 4;
             this.btn_pagaroc.UseVisualStyleBackColor = true;
             this.btn_pagaroc.Click += new System.EventHandler(this.btn_pagaroc_Click);
@@ -167,7 +170,7 @@
             this.btn_pdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_pdf.Location = new System.Drawing.Point(67, 3);
             this.btn_pdf.Name = "btn_pdf";
-            this.btn_pdf.Size = new System.Drawing.Size(53, 39);
+            this.btn_pdf.Size = new System.Drawing.Size(48, 39);
             this.btn_pdf.TabIndex = 3;
             this.btn_pdf.UseVisualStyleBackColor = true;
             this.btn_pdf.Click += new System.EventHandler(this.btn_pdf_Click);
@@ -178,6 +181,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(141, 20);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // cmb_filtro
             // 
@@ -187,6 +191,7 @@
             this.cmb_filtro.Name = "cmb_filtro";
             this.cmb_filtro.Size = new System.Drawing.Size(121, 21);
             this.cmb_filtro.TabIndex = 1;
+            this.cmb_filtro.SelectedIndexChanged += new System.EventHandler(this.cmb_filtro_SelectedIndexChanged);
             // 
             // btn_oc
             // 
@@ -195,7 +200,7 @@
             this.btn_oc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_oc.Location = new System.Drawing.Point(7, 2);
             this.btn_oc.Name = "btn_oc";
-            this.btn_oc.Size = new System.Drawing.Size(53, 39);
+            this.btn_oc.Size = new System.Drawing.Size(48, 39);
             this.btn_oc.TabIndex = 0;
             this.btn_oc.UseVisualStyleBackColor = true;
             this.btn_oc.Click += new System.EventHandler(this.btn_oc_Click);
@@ -208,10 +213,10 @@
             this.tbcontrol.Controls.Add(this.tb_ocpag);
             this.tbcontrol.Controls.Add(this.tb_ocsurt);
             this.tbcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbcontrol.Location = new System.Drawing.Point(0, 50);
+            this.tbcontrol.Location = new System.Drawing.Point(0, 0);
             this.tbcontrol.Name = "tbcontrol";
             this.tbcontrol.SelectedIndex = 0;
-            this.tbcontrol.Size = new System.Drawing.Size(800, 376);
+            this.tbcontrol.Size = new System.Drawing.Size(796, 372);
             this.tbcontrol.TabIndex = 1;
             this.tbcontrol.SelectedIndexChanged += new System.EventHandler(this.tbcontrol_SelectedIndexChanged);
             // 
@@ -225,11 +230,13 @@
             this.tb_rpendientes.TabIndex = 2;
             this.tb_rpendientes.Text = "C.Pendientes";
             this.tb_rpendientes.UseVisualStyleBackColor = true;
+            this.tb_rpendientes.Click += new System.EventHandler(this.tb_rpendientes_Click);
             // 
             // dgrid_reqpendientes
             // 
             this.dgrid_reqpendientes.AllowUserToAddRows = false;
             this.dgrid_reqpendientes.AllowUserToDeleteRows = false;
+            this.dgrid_reqpendientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_reqpendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_reqpendientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_reqpendientes.Location = new System.Drawing.Point(3, 3);
@@ -250,11 +257,13 @@
             this.tb_reqaut.TabIndex = 0;
             this.tb_reqaut.Text = "C.Autorizadas";
             this.tb_reqaut.UseVisualStyleBackColor = true;
+            this.tb_reqaut.Click += new System.EventHandler(this.tb_reqaut_Click);
             // 
             // dgrid_reqautorizadas
             // 
             this.dgrid_reqautorizadas.AllowUserToAddRows = false;
             this.dgrid_reqautorizadas.AllowUserToDeleteRows = false;
+            this.dgrid_reqautorizadas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_reqautorizadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_reqautorizadas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_reqautorizadas.Location = new System.Drawing.Point(3, 3);
@@ -274,11 +283,13 @@
             this.tb_ocpe.TabIndex = 1;
             this.tb_ocpe.Text = "OC.Pendientes";
             this.tb_ocpe.UseVisualStyleBackColor = true;
+            this.tb_ocpe.Click += new System.EventHandler(this.tb_ocpe_Click);
             // 
             // dgrid_oc
             // 
             this.dgrid_oc.AllowUserToAddRows = false;
             this.dgrid_oc.AllowUserToDeleteRows = false;
+            this.dgrid_oc.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_oc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_oc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_oc.Location = new System.Drawing.Point(3, 3);
@@ -286,6 +297,7 @@
             this.dgrid_oc.ReadOnly = true;
             this.dgrid_oc.Size = new System.Drawing.Size(786, 344);
             this.dgrid_oc.TabIndex = 0;
+            this.dgrid_oc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_oc_CellContentClick);
             this.dgrid_oc.Click += new System.EventHandler(this.dgrid_oc_Click);
             // 
             // tb_ocpag
@@ -298,11 +310,13 @@
             this.tb_ocpag.TabIndex = 3;
             this.tb_ocpag.Text = "OC.Pagadas";
             this.tb_ocpag.UseVisualStyleBackColor = true;
+            this.tb_ocpag.Click += new System.EventHandler(this.tb_ocpag_Click);
             // 
             // dgrid_ocpagadas
             // 
             this.dgrid_ocpagadas.AllowUserToAddRows = false;
             this.dgrid_ocpagadas.AllowUserToDeleteRows = false;
+            this.dgrid_ocpagadas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_ocpagadas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_ocpagadas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_ocpagadas.Location = new System.Drawing.Point(3, 3);
@@ -310,6 +324,7 @@
             this.dgrid_ocpagadas.ReadOnly = true;
             this.dgrid_ocpagadas.Size = new System.Drawing.Size(786, 344);
             this.dgrid_ocpagadas.TabIndex = 0;
+            this.dgrid_ocpagadas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_ocpagadas_CellContentClick);
             this.dgrid_ocpagadas.Click += new System.EventHandler(this.dgrid_ocpagadas_Click);
             // 
             // tb_ocsurt
@@ -318,22 +333,25 @@
             this.tb_ocsurt.Location = new System.Drawing.Point(4, 22);
             this.tb_ocsurt.Name = "tb_ocsurt";
             this.tb_ocsurt.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_ocsurt.Size = new System.Drawing.Size(792, 350);
+            this.tb_ocsurt.Size = new System.Drawing.Size(788, 346);
             this.tb_ocsurt.TabIndex = 4;
             this.tb_ocsurt.Text = "OC.Surtidas";
             this.tb_ocsurt.UseVisualStyleBackColor = true;
+            this.tb_ocsurt.Click += new System.EventHandler(this.tb_ocsurt_Click);
             // 
             // dgrid_ocsurtidas
             // 
             this.dgrid_ocsurtidas.AllowUserToAddRows = false;
             this.dgrid_ocsurtidas.AllowUserToDeleteRows = false;
+            this.dgrid_ocsurtidas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_ocsurtidas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_ocsurtidas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_ocsurtidas.Location = new System.Drawing.Point(3, 3);
             this.dgrid_ocsurtidas.Name = "dgrid_ocsurtidas";
             this.dgrid_ocsurtidas.ReadOnly = true;
-            this.dgrid_ocsurtidas.Size = new System.Drawing.Size(786, 344);
+            this.dgrid_ocsurtidas.Size = new System.Drawing.Size(782, 340);
             this.dgrid_ocsurtidas.TabIndex = 0;
+            this.dgrid_ocsurtidas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_ocsurtidas_CellContentClick);
             this.dgrid_ocsurtidas.Click += new System.EventHandler(this.dgrid_ocsurtidas_Click);
             // 
             // panel2
@@ -346,6 +364,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 35);
             this.panel2.TabIndex = 2;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // label1
             // 
@@ -356,6 +375,7 @@
             this.label1.Size = new System.Drawing.Size(56, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Total";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lbl_total
             // 
@@ -367,6 +387,17 @@
             this.lbl_total.Size = new System.Drawing.Size(60, 24);
             this.lbl_total.TabIndex = 0;
             this.lbl_total.Text = "$0.00";
+            this.lbl_total.Click += new System.EventHandler(this.lbl_total_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel3.Controls.Add(this.tbcontrol);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 50);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(800, 376);
+            this.panel3.TabIndex = 3;
             // 
             // VOrdenesCompra
             // 
@@ -374,7 +405,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 461);
-            this.Controls.Add(this.tbcontrol);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -396,6 +427,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_ocsurtidas)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -427,5 +459,6 @@
         private System.Windows.Forms.DataGridView dgrid_ocsurtidas;
         private System.Windows.Forms.Button btn_canoc;
         private System.Windows.Forms.Button btn_autcot;
+        private System.Windows.Forms.Panel panel3;
     }
 }

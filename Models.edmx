@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SITModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActividadesMOT">
+          <Key>
+            <PropertyRef Name="IdAct" />
+          </Key>
+          <Property Name="IdAct" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Actividad" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="ActividadesOT">
           <Key>
             <PropertyRef Name="IdActOt" />
@@ -12,6 +19,8 @@
           <Property Name="IdActOt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdOT" Type="int" />
           <Property Name="IdEmpleado" Type="int" />
+          <Property Name="IdMtto" Type="int" />
+          <Property Name="IdActMOT" Type="int" />
           <Property Name="IdActTaller" Type="int" />
           <Property Name="IdEstatus" Type="int" />
           <Property Name="FI" Type="date" />
@@ -57,6 +66,23 @@
           <Property Name="IdUsMod" Type="int" />
           <Property Name="FechaCancelacion" Type="date" />
           <Property Name="IdUsCancelo" Type="int" />
+        </EntityType>
+        <EntityType Name="ArticulosEmp">
+          <Key>
+            <PropertyRef Name="IdArtEmp" />
+          </Key>
+          <Property Name="IdArtEmp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="IdArticulo" Type="int" />
+          <Property Name="Cantidad" Type="float" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
         </EntityType>
         <EntityType Name="Bancos">
           <Key>
@@ -109,6 +135,53 @@
           <Property Name="Total" Type="float" />
           <Property Name="Observaciones" Type="varchar(max)" />
           <Property Name="Fecha" Type="date" />
+        </EntityType>
+        <EntityType Name="CatArticulosRh">
+          <Key>
+            <PropertyRef Name="IdArticulo" />
+          </Key>
+          <Property Name="IdArticulo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Articulo" Type="varchar(max)" />
+          <Property Name="Max" Type="float" />
+          <Property Name="Min" Type="float" />
+          <Property Name="Stock" Type="float" />
+          <Property Name="IdMedida" Type="int" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
+        </EntityType>
+        <EntityType Name="CatDocsEmp">
+          <Key>
+            <PropertyRef Name="IdDoc" />
+          </Key>
+          <Property Name="IdDoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Documento" Type="varchar" MaxLength="50" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
+        </EntityType>
+        <EntityType Name="CatIncidencias">
+          <Key>
+            <PropertyRef Name="IdIncidencia" />
+          </Key>
+          <Property Name="IdIncidencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Monto" Type="float" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
         </EntityType>
         <EntityType Name="Clientes">
           <Key>
@@ -261,6 +334,23 @@
           <Property Name="IdProducto" Type="int" />
           <Property Name="Cantidad" Type="float" />
           <Property Name="IdUnidad" Type="int" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
+        </EntityType>
+        <EntityType Name="DocsEmpleado">
+          <Key>
+            <PropertyRef Name="IdDocEmp" />
+          </Key>
+          <Property Name="IdDocEmp" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="IdDoc" Type="int" />
+          <Property Name="Direccion" Type="varchar(max)" />
+          <Property Name="FileName" Type="varchar(max)" />
           <Property Name="IdEstatus" Type="int" />
           <Property Name="FCreo" Type="date" />
           <Property Name="IdUsCreo" Type="int" />
@@ -535,13 +625,41 @@
           <Property Name="IdMedida" Type="int" />
           <Property Name="IdEstatus" Type="int" />
         </EntityType>
-        <EntityType Name="Incidencias">
+        <EntityType Name="HistBajasEmp">
+          <Key>
+            <PropertyRef Name="IdBaja" />
+          </Key>
+          <Property Name="IdBaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="Motivo" Type="varchar(max)" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
+          <Property Name="FCan" Type="date" />
+        </EntityType>
+        <EntityType Name="IncidenciasOperaciones">
           <Key>
             <PropertyRef Name="IdIncidencia" />
           </Key>
           <Property Name="IdIncidencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="Fecha" Type="date" />
           <Property Name="IdEmpleado" Type="int" />
+          <Property Name="IdCatIncidencia" Type="int" />
+          <Property Name="Monto" Type="float" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="Observaciones" Type="varchar(max)" />
+          <Property Name="FNom" Type="date" />
+          <Property Name="IdUsAplico" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
         </EntityType>
         <EntityType Name="Lineas">
           <Key>
@@ -695,6 +813,7 @@
           <Property Name="Fecha" Type="date" />
           <Property Name="Hora" Type="varchar" MaxLength="50" />
           <Property Name="IdUnidad" Type="int" />
+          <Property Name="IdEmpleado" Type="int" />
           <Property Name="Km" Type="float" />
           <Property Name="IdUbicacion" Type="int" />
           <Property Name="Observaciones" Type="varchar(max)" />
@@ -712,6 +831,15 @@
           </Key>
           <Property Name="IdPais" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Pais" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Periodos">
+          <Key>
+            <PropertyRef Name="IdPeriodo" />
+          </Key>
+          <Property Name="IdPeriodo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Periodo" Type="varchar" MaxLength="50" />
+          <Property Name="FechaInicial" Type="date" />
+          <Property Name="FechaFinal" Type="date" />
         </EntityType>
         <EntityType Name="PolizasUnidades">
           <Key>
@@ -1055,8 +1183,10 @@
           <Property Name="Apellidop" Type="varchar" MaxLength="50" />
           <Property Name="ApellidoM" Type="varchar" MaxLength="50" />
           <Property Name="NombreCompleto" Type="varchar" MaxLength="100" />
+          <Property Name="FIngreso" Type="date" />
           <Property Name="IdPuesto" Type="int" />
           <Property Name="IdDepto" Type="int" />
+          <Property Name="DiasVacaciones" Type="int" />
           <Property Name="IdEstatus" Type="int" />
           <Property Name="IdSamsara" Type="int" />
           <Property Name="UserEmp" Type="varchar" MaxLength="50" />
@@ -1147,6 +1277,38 @@
           <Property Name="Contraseña" Type="varchar" MaxLength="50" />
           <Property Name="Sitio" Type="varchar" MaxLength="50" />
           <Property Name="IdEmpleado" Type="int" />
+        </EntityType>
+        <EntityType Name="VacacionesEmp">
+          <Key>
+            <PropertyRef Name="IdVacacion" />
+          </Key>
+          <Property Name="IdVacacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="date" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="IdPeriodo" Type="int" />
+          <Property Name="Observaciones" Type="varchar(max)" />
+          <Property Name="IdEstatus" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
+        </EntityType>
+        <EntityType Name="VacDiasEmpPeriodo">
+          <Key>
+            <PropertyRef Name="IdDV" />
+          </Key>
+          <Property Name="IdDV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEmpleado" Type="int" />
+          <Property Name="Dias" Type="int" />
+          <Property Name="idPeriodo" Type="int" />
+          <Property Name="FCreo" Type="date" />
+          <Property Name="IdUsCreo" Type="int" />
+          <Property Name="FMod" Type="date" />
+          <Property Name="IdUsMod" Type="int" />
+          <Property Name="FCan" Type="date" />
+          <Property Name="IdUsCan" Type="int" />
         </EntityType>
         <EntityType Name="ViajesEspeciales">
           <Key>
@@ -1457,13 +1619,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SITModelStoreContainer">
+          <EntitySet Name="ActividadesMOT" EntityType="Self.ActividadesMOT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ActividadesOT" EntityType="Self.ActividadesOT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ActividadesTaller" EntityType="Self.ActividadesTaller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Almacenes" EntityType="Self.Almacenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticulosEmp" EntityType="Self.ArticulosEmp" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bancos" EntityType="Self.Bancos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BitacoraBitad" EntityType="Self.BitacoraBitad" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BitacoraRol" EntityType="Self.BitacoraRol" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BonosCheckin" EntityType="Self.BonosCheckin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatArticulosRh" EntityType="Self.CatArticulosRh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatDocsEmp" EntityType="Self.CatDocsEmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CatIncidencias" EntityType="Self.CatIncidencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Combustibles" EntityType="Self.Combustibles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConceptosFlujos" EntityType="Self.ConceptosFlujos" Schema="dbo" store:Type="Tables" />
@@ -1475,6 +1642,7 @@
           <EntitySet Name="Departamentos" EntityType="Self.Departamentos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleRequisiciones" EntityType="Self.DetalleRequisiciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleSalidasAlmacen" EntityType="Self.DetalleSalidasAlmacen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocsEmpleado" EntityType="Self.DocsEmpleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DomicilioEmpleados" EntityType="Self.DomicilioEmpleados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DomiciliosClientes" EntityType="Self.DomiciliosClientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DomiciliosProveedores" EntityType="Self.DomiciliosProveedores" Schema="dbo" store:Type="Tables" />
@@ -1501,7 +1669,8 @@
           <EntitySet Name="Flujos" EntityType="Self.Flujos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GruposActTaller" EntityType="Self.GruposActTaller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Herramientas" EntityType="Self.Herramientas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Incidencias" EntityType="Self.Incidencias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistBajasEmp" EntityType="Self.HistBajasEmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IncidenciasOperaciones" EntityType="Self.IncidenciasOperaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lineas" EntityType="Self.Lineas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MantenimientosTaller" EntityType="Self.MantenimientosTaller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medidas" EntityType="Self.Medidas" Schema="dbo" store:Type="Tables" />
@@ -1515,6 +1684,7 @@
           <EntitySet Name="OrdenesCompra" EntityType="Self.OrdenesCompra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrdenesTrabajoTaller" EntityType="Self.OrdenesTrabajoTaller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Paises" EntityType="Self.Paises" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Periodos" EntityType="Self.Periodos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PolizasUnidades" EntityType="Self.PolizasUnidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PrestamoHerramientas" EntityType="Self.PrestamoHerramientas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
@@ -1544,6 +1714,8 @@
           <EntitySet Name="Unidades" EntityType="Self.Unidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsuariosSitios" EntityType="Self.UsuariosSitios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacacionesEmp" EntityType="Self.VacacionesEmp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VacDiasEmpPeriodo" EntityType="Self.VacDiasEmpPeriodo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ViajesEspeciales" EntityType="Self.ViajesEspeciales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ZonasAlmacen" EntityType="Self.ZonasAlmacen" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_DomiciliosClientes_Clientes" Association="Self.FK_DomiciliosClientes_Clientes">
@@ -1775,7 +1947,6 @@
           <EntitySet Name="Trabajadores" EntityType="SITModel.Trabajadores" />
           <EntitySet Name="EstatusEquipos" EntityType="SITModel.EstatusEquipos" />
           <EntitySet Name="UsuariosSitios" EntityType="SITModel.UsuariosSitios" />
-          <EntitySet Name="Incidencias" EntityType="SITModel.Incidencias" />
           <EntitySet Name="ConceptosFlujos" EntityType="SITModel.ConceptosFlujos" />
           <EntitySet Name="Flujos" EntityType="SITModel.Flujos" />
           <EntitySet Name="MetodosFlujos" EntityType="SITModel.MetodosFlujos" />
@@ -1923,6 +2094,17 @@
           <EntitySet Name="MantenimientosTaller" EntityType="SITModel.MantenimientosTaller" />
           <EntitySet Name="EstatusActTaller" EntityType="SITModel.EstatusActTaller" />
           <EntitySet Name="ActividadesOT" EntityType="SITModel.ActividadesOT" />
+          <EntitySet Name="CatIncidencias" EntityType="SITModel.CatIncidencias" />
+          <EntitySet Name="IncidenciasOperaciones" EntityType="SITModel.IncidenciasOperaciones" />
+          <EntitySet Name="VacacionesEmp" EntityType="SITModel.VacacionesEmp" />
+          <EntitySet Name="Periodos" EntityType="SITModel.Periodos" />
+          <EntitySet Name="VacDiasEmpPeriodo" EntityType="SITModel.VacDiasEmpPeriodo" />
+          <EntitySet Name="ActividadesMOT" EntityType="SITModel.ActividadesMOT" />
+          <EntitySet Name="CatDocsEmp" EntityType="SITModel.CatDocsEmp" />
+          <EntitySet Name="DocsEmpleado" EntityType="SITModel.DocsEmpleado" />
+          <EntitySet Name="CatArticulosRh" EntityType="SITModel.CatArticulosRh" />
+          <EntitySet Name="ArticulosEmp" EntityType="SITModel.ArticulosEmp" />
+          <EntitySet Name="HistBajasEmp" EntityType="SITModel.HistBajasEmp" />
         </EntityContainer>
         <EntityType Name="Usuarios">
           <Key>
@@ -2146,6 +2328,8 @@
           <Property Name="UserEmp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Tickets" Relationship="SITModel.FK_Tickets_Trabajadores" FromRole="Trabajadores" ToRole="Tickets" />
+          <Property Name="DiasVacaciones" Type="Int32" />
+          <Property Name="FIngreso" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="EstatusEquipos">
           <Key>
@@ -2164,14 +2348,6 @@
           <Property Name="Sitio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IdEmpleado" Type="Int32" />
           <NavigationProperty Name="Trabajadores" Relationship="SITModel.FK_UsuariosSitios_Trabajadores" FromRole="UsuariosSitios" ToRole="Trabajadores" />
-        </EntityType>
-        <EntityType Name="Incidencias">
-          <Key>
-            <PropertyRef Name="IdIncidencia" />
-          </Key>
-          <Property Name="IdIncidencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="IdEmpleado" Type="Int32" />
         </EntityType>
         <EntityType Name="ConceptosFlujos">
           <Key>
@@ -3257,6 +3433,7 @@
           <Property Name="FCan" Type="DateTime" Precision="0" />
           <Property Name="IdUsCan" Type="Int32" />
           <Property Name="Km" Type="Double" />
+          <Property Name="IdEmpleado" Type="Int32" />
         </EntityType>
         <EntityType Name="UbicacionesOT">
           <Key>
@@ -3330,6 +3507,173 @@
           <Property Name="FCan" Type="DateTime" Precision="0" />
           <Property Name="IdUsCan" Type="Int32" />
           <Property Name="IdActTaller" Type="Int32" />
+          <Property Name="IdMtto" Type="Int32" />
+          <Property Name="IdActMOT" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CatIncidencias">
+          <Key>
+            <PropertyRef Name="IdIncidencia" />
+          </Key>
+          <Property Name="IdIncidencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Monto" Type="Double" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="IncidenciasOperaciones">
+          <Key>
+            <PropertyRef Name="IdIncidencia" />
+          </Key>
+          <Property Name="IdIncidencia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="IdCatIncidencia" Type="Int32" />
+          <Property Name="Monto" Type="Double" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+          <Property Name="FNom" Type="DateTime" Precision="0" />
+          <Property Name="IdUsAplico" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VacacionesEmp">
+          <Key>
+            <PropertyRef Name="IdVacacion" />
+          </Key>
+          <Property Name="IdVacacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdPeriodo" Type="Int32" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Periodos">
+          <Key>
+            <PropertyRef Name="IdPeriodo" />
+          </Key>
+          <Property Name="IdPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Periodo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaInicial" Type="DateTime" Precision="0" />
+          <Property Name="FechaFinal" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="VacDiasEmpPeriodo">
+          <Key>
+            <PropertyRef Name="IdDV" />
+          </Key>
+          <Property Name="IdDV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="Dias" Type="Int32" />
+          <Property Name="idPeriodo" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ActividadesMOT">
+          <Key>
+            <PropertyRef Name="IdAct" />
+          </Key>
+          <Property Name="IdAct" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Actividad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CatDocsEmp">
+          <Key>
+            <PropertyRef Name="IdDoc" />
+          </Key>
+          <Property Name="IdDoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Documento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DocsEmpleado">
+          <Key>
+            <PropertyRef Name="IdDocEmp" />
+          </Key>
+          <Property Name="IdDocEmp" Type="Int32" Nullable="false" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="IdDoc" Type="Int32" />
+          <Property Name="Direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+          <Property Name="FileName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CatArticulosRh">
+          <Key>
+            <PropertyRef Name="IdArticulo" />
+          </Key>
+          <Property Name="IdArticulo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Articulo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Max" Type="Double" />
+          <Property Name="Min" Type="Double" />
+          <Property Name="Stock" Type="Double" />
+          <Property Name="IdMedida" Type="Int32" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ArticulosEmp">
+          <Key>
+            <PropertyRef Name="IdArtEmp" />
+          </Key>
+          <Property Name="IdArtEmp" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <Property Name="Cantidad" Type="Double" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+        </EntityType>
+        <EntityType Name="HistBajasEmp">
+          <Key>
+            <PropertyRef Name="IdBaja" />
+          </Key>
+          <Property Name="IdBaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="0" />
+          <Property Name="IdEmpleado" Type="Int32" />
+          <Property Name="Motivo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IdEstatus" Type="Int32" />
+          <Property Name="IdUsCreo" Type="Int32" />
+          <Property Name="FCreo" Type="DateTime" Precision="0" />
+          <Property Name="IdUsMod" Type="Int32" />
+          <Property Name="FMod" Type="DateTime" Precision="0" />
+          <Property Name="IdUsCan" Type="Int32" />
+          <Property Name="FCan" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3625,6 +3969,8 @@
           <EntitySetMapping Name="Trabajadores">
             <EntityTypeMapping TypeName="SITModel.Trabajadores">
               <MappingFragment StoreEntitySet="Trabajadores">
+                <ScalarProperty Name="FIngreso" ColumnName="FIngreso" />
+                <ScalarProperty Name="DiasVacaciones" ColumnName="DiasVacaciones" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserEmp" ColumnName="UserEmp" />
                 <ScalarProperty Name="IdUsuarioCancelo" ColumnName="IdUsuarioCancelo" />
@@ -3662,15 +4008,6 @@
                 <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="IdUs" ColumnName="IdUs" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Incidencias">
-            <EntityTypeMapping TypeName="SITModel.Incidencias">
-              <MappingFragment StoreEntitySet="Incidencias">
-                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="IdIncidencia" ColumnName="IdIncidencia" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -4518,6 +4855,7 @@
           <EntitySetMapping Name="OrdenesTrabajoTaller">
             <EntityTypeMapping TypeName="SITModel.OrdenesTrabajoTaller">
               <MappingFragment StoreEntitySet="OrdenesTrabajoTaller">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="Km" ColumnName="Km" />
                 <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
                 <ScalarProperty Name="FCan" ColumnName="FCan" />
@@ -4594,6 +4932,8 @@
           <EntitySetMapping Name="ActividadesOT">
             <EntityTypeMapping TypeName="SITModel.ActividadesOT">
               <MappingFragment StoreEntitySet="ActividadesOT">
+                <ScalarProperty Name="IdActMOT" ColumnName="IdActMOT" />
+                <ScalarProperty Name="IdMtto" ColumnName="IdMtto" />
                 <ScalarProperty Name="IdActTaller" ColumnName="IdActTaller" />
                 <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
                 <ScalarProperty Name="FCan" ColumnName="FCan" />
@@ -4610,6 +4950,182 @@
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
                 <ScalarProperty Name="IdOT" ColumnName="IdOT" />
                 <ScalarProperty Name="IdActOt" ColumnName="IdActOt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatIncidencias">
+            <EntityTypeMapping TypeName="SITModel.CatIncidencias">
+              <MappingFragment StoreEntitySet="CatIncidencias">
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdIncidencia" ColumnName="IdIncidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IncidenciasOperaciones">
+            <EntityTypeMapping TypeName="SITModel.IncidenciasOperaciones">
+              <MappingFragment StoreEntitySet="IncidenciasOperaciones">
+                <ScalarProperty Name="IdUsAplico" ColumnName="IdUsAplico" />
+                <ScalarProperty Name="FNom" ColumnName="FNom" />
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="IdCatIncidencia" ColumnName="IdCatIncidencia" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdIncidencia" ColumnName="IdIncidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VacacionesEmp">
+            <EntityTypeMapping TypeName="SITModel.VacacionesEmp">
+              <MappingFragment StoreEntitySet="VacacionesEmp">
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdVacacion" ColumnName="IdVacacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periodos">
+            <EntityTypeMapping TypeName="SITModel.Periodos">
+              <MappingFragment StoreEntitySet="Periodos">
+                <ScalarProperty Name="FechaFinal" ColumnName="FechaFinal" />
+                <ScalarProperty Name="FechaInicial" ColumnName="FechaInicial" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VacDiasEmpPeriodo">
+            <EntityTypeMapping TypeName="SITModel.VacDiasEmpPeriodo">
+              <MappingFragment StoreEntitySet="VacDiasEmpPeriodo">
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+                <ScalarProperty Name="Dias" ColumnName="Dias" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdDV" ColumnName="IdDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ActividadesMOT">
+            <EntityTypeMapping TypeName="SITModel.ActividadesMOT">
+              <MappingFragment StoreEntitySet="ActividadesMOT">
+                <ScalarProperty Name="Actividad" ColumnName="Actividad" />
+                <ScalarProperty Name="IdAct" ColumnName="IdAct" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatDocsEmp">
+            <EntityTypeMapping TypeName="SITModel.CatDocsEmp">
+              <MappingFragment StoreEntitySet="CatDocsEmp">
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+                <ScalarProperty Name="IdDoc" ColumnName="IdDoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocsEmpleado">
+            <EntityTypeMapping TypeName="SITModel.DocsEmpleado">
+              <MappingFragment StoreEntitySet="DocsEmpleado">
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="IdDoc" ColumnName="IdDoc" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="IdDocEmp" ColumnName="IdDocEmp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CatArticulosRh">
+            <EntityTypeMapping TypeName="SITModel.CatArticulosRh">
+              <MappingFragment StoreEntitySet="CatArticulosRh">
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="IdMedida" ColumnName="IdMedida" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Min" ColumnName="Min" />
+                <ScalarProperty Name="Max" ColumnName="Max" />
+                <ScalarProperty Name="Articulo" ColumnName="Articulo" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticulosEmp">
+            <EntityTypeMapping TypeName="SITModel.ArticulosEmp">
+              <MappingFragment StoreEntitySet="ArticulosEmp">
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdArtEmp" ColumnName="IdArtEmp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistBajasEmp">
+            <EntityTypeMapping TypeName="SITModel.HistBajasEmp">
+              <MappingFragment StoreEntitySet="HistBajasEmp">
+                <ScalarProperty Name="FCan" ColumnName="FCan" />
+                <ScalarProperty Name="IdUsCan" ColumnName="IdUsCan" />
+                <ScalarProperty Name="FMod" ColumnName="FMod" />
+                <ScalarProperty Name="IdUsMod" ColumnName="IdUsMod" />
+                <ScalarProperty Name="FCreo" ColumnName="FCreo" />
+                <ScalarProperty Name="IdUsCreo" ColumnName="IdUsCreo" />
+                <ScalarProperty Name="IdEstatus" ColumnName="IdEstatus" />
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="IdBaja" ColumnName="IdBaja" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -34,8 +34,10 @@
             this.btn_add = new System.Windows.Forms.Button();
             this.dgrid_proveedores = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_proveedores)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_cancel
@@ -45,7 +47,7 @@
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Location = new System.Drawing.Point(64, 5);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(54, 47);
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
             this.btn_cancel.TabIndex = 17;
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -74,7 +76,7 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Location = new System.Drawing.Point(9, 5);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(49, 47);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 14;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
@@ -86,10 +88,10 @@
             this.dgrid_proveedores.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_proveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_proveedores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgrid_proveedores.Location = new System.Drawing.Point(0, 59);
+            this.dgrid_proveedores.Location = new System.Drawing.Point(0, 0);
             this.dgrid_proveedores.Name = "dgrid_proveedores";
             this.dgrid_proveedores.ReadOnly = true;
-            this.dgrid_proveedores.Size = new System.Drawing.Size(992, 391);
+            this.dgrid_proveedores.Size = new System.Drawing.Size(988, 393);
             this.dgrid_proveedores.TabIndex = 18;
             this.dgrid_proveedores.Click += new System.EventHandler(this.dgrid_proveedores_Click);
             // 
@@ -103,8 +105,18 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(992, 59);
+            this.panel1.Size = new System.Drawing.Size(992, 53);
             this.panel1.TabIndex = 19;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.dgrid_proveedores);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 53);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(992, 397);
+            this.panel2.TabIndex = 20;
             // 
             // VProveedores
             // 
@@ -112,7 +124,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(992, 450);
-            this.Controls.Add(this.dgrid_proveedores);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VProveedores";
@@ -122,6 +134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_proveedores)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,5 +147,6 @@
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.DataGridView dgrid_proveedores;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

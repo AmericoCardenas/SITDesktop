@@ -606,7 +606,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                 this.btn_entrada.Visible = false;
                 this.btn_cotizacionglobal.Visible = false;
                 this.btn_factxml.Visible = false;
-                this.btn_canoc.Visible = false;
+                this.btn_canoc.Visible = true;
                 this.btn_autcot.Visible = false;
 
 
@@ -798,7 +798,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                             if (detreq != null)
                             {
                                 detreq.IdEstatus = 1;
-                                detreq.IdCotizacionAut = null;
+                                //detreq.IdCotizacionAut = null;
                                 db.Entry(detreq).State = EntityState.Modified;
                                 db.SaveChanges();
 
@@ -827,12 +827,83 @@ namespace SIT.Views.Almacen.COrdenesCompra
 
                             }
 
+                            var mov = db.Movimientos.Where(x=>x.Descripcion.Equals("OC#"+idOCompra.ToString())).First();
+                            if(mov != null)
+                            {
+                                mov.IdEstatus = 2;
+                                mov.FechaCancelacion = DateTime.Now;
+                                mov.IdUsuarioCancelacion = 0;
+                                db.Entry(mov).State = EntityState.Modified;
+                                db.SaveChanges();
+
+                            }
+
+                            var not = db.NotasMovimientos.Where(x => x.Folio.Equals("OC#" + idOCompra.ToString())).First();
+                            if (not != null)
+                            {
+                                not.IdEstatus = 2;
+                                not.FechaCancelacion = DateTime.Now;
+                                not.UsuarioCancelacion = 0;
+                                db.Entry(not).State = EntityState.Modified;
+                                db.SaveChanges();
+
+                            }
+
                         }
+                        CargarOrdenesCompraSurtidas();
 
                     }
+                    else if(oc.IdEstatus==1)
+                    {
+
+                        oc.IdEstatus = 2;
+                        oc.FCan = DateTime.Now;
+                        oc.IdUsCan = this._uslog.IdUsuario;
+                        db.Entry(oc).State = EntityState.Modified;
+                        db.SaveChanges();
+
+                        var lstcot = db.CotizacionesRequisiciones.Where(x => x.IdOCompra == idOCompra).ToList();
+                        lstcot.ForEach(x => x.IdEstatus = 3);
+                        lstcot.ForEach(x => x.IdOCompra = null);
+                        lstcot.ForEach(x => x.FechaMod = DateTime.Now);
+                        lstcot.ForEach(x => x.IdUsMod = this._uslog.IdUsuario);
+
+                        foreach (var cot in lstcot)
+                        {
+                            var cotizacion = db.CotizacionesRequisiciones.Where(x => x.IdCotizacion == cot.IdCotizacion).First();
+                            if (cotizacion != null)
+                            {
+                                db.Entry(cotizacion).State = EntityState.Modified;
+                                db.SaveChanges();
+
+                            }
+
+                            var detreq = db.DetalleRequisiciones.Where(x => x.IdCotizacionAut == cot.IdCotizacion).First();
+                            if (detreq != null)
+                            {
+                                detreq.IdEstatus = 1;
+                                //detreq.IdCotizacionAut = null;
+                                db.Entry(detreq).State = EntityState.Modified;
+                                db.SaveChanges();
+
+                            }
+
+                            var req = db.Requisiciones.Where(x => x.IdRequisicion == detreq.IdRequisicion).First();
+                            if (req != null)
+                            {
+                                req.IdEstatus = 1;
+                                req.FechaMod = DateTime.Now;
+                                req.IdUsMod = 0;
+                                db.Entry(req).State = EntityState.Modified;
+                                db.SaveChanges();
+
+                            }
+                        }
+
+                        CargarOrdenesCompraPend();
+                     }
 
                     MessageBox.Show("La OC#" + idOCompra + " ha sido cancelada");
-                    CargarOrdenesCompraSurtidas();
                 }
             }
             else
@@ -1138,6 +1209,76 @@ namespace SIT.Views.Almacen.COrdenesCompra
 
             MessageBox.Show("Cotizacion #" +idCotizacion + " autorizada exitosamente");
             CargarReqPendientes();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_filtro_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_rpendientes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_reqaut_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tb_ocpe_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgrid_oc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tb_ocpag_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgrid_ocpagadas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void tb_ocsurt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgrid_ocsurtidas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_total_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void dgrid_reqpendientes_Click(object sender, EventArgs e)

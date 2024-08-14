@@ -21,9 +21,10 @@ namespace SIT.Views.RH.CSnack
         }
 
         VSnack _vsnack;
-        public int idUsuario,idSnack;
+        public int idUsuario,idSnack,idlastidemp;
         SITEntities db = new SITEntities();
         Snack snack = new Snack();
+        DateTime lastdate = new DateTime();
         Double precioU;
 
         private void AESnack_Load(object sender, EventArgs e)
@@ -146,11 +147,15 @@ namespace SIT.Views.RH.CSnack
         {
             _vsnack.Enabled = true;
             _vsnack.CargarSnack();
+
         }
 
         private void btn_add_Click(object sender, EventArgs e)
         {
             AgregarSnack();
+            LimpiarCampos();
+            CargarDatosUltimoTicket();
+
         }
 
         private void AgregarSnack()
@@ -225,8 +230,31 @@ namespace SIT.Views.RH.CSnack
                 }
 
                 db.SaveChanges();
-                this.Close();
+                this.idlastidemp = Convert.ToInt32(this.cmb_emp.SelectedValue);
+                this.lastdate = this.dtm_fecha.Value;
+               
+                //this.Close();
             }
+        }
+
+        private void LimpiarCampos()
+        {
+            this.txt_hora.Text= string.Empty;
+            this.txt_cantidad.Text= string.Empty;
+            this.txt_preciou.Text= string.Empty;
+            this.txt_total.Text= string.Empty;
+            this.cmb_emp.SelectedIndex = 0;
+            this.cmb_estatus.SelectedIndex = 0;
+            this.cmb_metodop.SelectedIndex = 0;
+            this.cmb_producto.SelectedIndex = 0;
+            this.txt_hora.Text = "00:00";
+           
+        }
+
+        private void CargarDatosUltimoTicket()
+        {
+            this.cmb_emp.SelectedValue = this.idlastidemp;
+            this.dtm_fecha.Value = this.lastdate;
         }
     }
 }

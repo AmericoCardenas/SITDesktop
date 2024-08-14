@@ -3,6 +3,9 @@ using GMap.NET;
 using RestSharp;
 using SIT.Views.Catalogos.CCuentasBancos;
 using SIT.Views.Catalogos.CEmpleados;
+using SIT.Views.Catalogos.CProductosAlmacen;
+using SIT.Views.RH.CArticulos;
+using SIT.Views.RH.CAsistencia;
 using SpreadsheetLight;
 using System;
 using System.Collections.Generic;
@@ -27,6 +30,7 @@ namespace SIT.Views.Catalogos
         Trabajadores trabajadores = new Trabajadores();
         DatosNominaEmpleados datnom = new DatosNominaEmpleados();  
         DomicilioEmpleados domemp = new DomicilioEmpleados();
+       
         
         public VEmpleados(Usuarios usuarios)
         {
@@ -35,6 +39,8 @@ namespace SIT.Views.Catalogos
         }
 
         private string rutarchivo;
+        public string motivobaja;
+        public DateTime fbaja;
         private int idbitad;
         private DataTable dataTable;
         Usuarios uslog;
@@ -170,10 +176,10 @@ namespace SIT.Views.Catalogos
             }
 
             MessageBox.Show("Empleados importados exitosamente");
-            CargarEmpleados();
+            CargarEmpleados(1);
         }
 
-        public void CargarEmpleados()
+        public void CargarEmpleados(int idestatus)
         {
             idEmpleado = 0;
             this.btn_add.BackgroundImage = Properties.Resources.mas;
@@ -181,6 +187,7 @@ namespace SIT.Views.Catalogos
 
             var empleados = from e in db.Trabajadores
                            join p in db.Puestos on e.IdPuesto equals p.IdPuesto
+                           where e.IdEstatus==idestatus
                            select new
                            {
                                IdEmpleado = e.IdEmpleado,
@@ -219,7 +226,7 @@ namespace SIT.Views.Catalogos
 
         private void VEmpleados_Load(object sender, EventArgs e)
         {
-            CargarEmpleados();
+            CargarEmpleados(1);
             CargarFiltros();
         }
 
@@ -228,12 +235,12 @@ namespace SIT.Views.Catalogos
             if (this.dgrid_empleados.CurrentCell != null && e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 this.dgrid_empleados.CurrentRow.Selected = true;
-                ResumenEmpleado frm = new ResumenEmpleado();
+                ResumenEmpleado frm = new ResumenEmpleado(this);
                 frm.idempleado = Convert.ToInt32(this.dgrid_empleados.CurrentRow.Cells["IdEmpleado"].Value);
                 frm.nombre_empleado = this.dgrid_empleados.CurrentRow.Cells["Nombre"].Value.ToString();
                 frm.puesto = this.dgrid_empleados.CurrentRow.Cells["Puesto"].Value.ToString();
-                frm.form = this;
                 this.Enabled = false;
+                frm.uslog = this.uslog;
                 frm.Show();
             }
         }
@@ -249,6 +256,7 @@ namespace SIT.Views.Catalogos
                                      join p in db.Puestos on t.IdPuesto equals p.IdPuesto
                                      where t.NombreCompleto.Contains(txt_filter)
                                      orderby t.IdBitad ascending
+                                    where t.IdEstatus==1
                                      select new
                                      {
                                          IdEmpleado = t.IdEmpleado,
@@ -261,7 +269,7 @@ namespace SIT.Views.Catalogos
                 }
                 else
                 {
-                    CargarEmpleados();
+                    CargarEmpleados(1);
                 }
 
             }
@@ -428,23 +436,43 @@ namespace SIT.Views.Catalogos
 
         private void CancelarEmpleado()
         {
-            var t = db.Trabajadores.Where(x => x.IdEmpleado == idEmpleado).FirstOrDefault();
-            t.IdEstatus = 2;
-            t.FechaCancelacion = DateTime.Now;
-            t.IdUsuarioCancelo = this.uslog.IdUsuario;
 
-            if (idEmpleado > 0)
+            VCuestBajEmp frm = new VCuestBajEmp(this);
+            frm.idemp = idEmpleado;
+            frm.uslog = this.uslog;
+            this.Enabled = false;
+            frm.Show();
+
+
+        }
+
+        private void btn_art_Click(object sender, EventArgs e)
+        {
+            VArticulos frm = new VArticulos(this);
+            this.Enabled = false;
+            frm.uslog = this.uslog;
+            frm.Show();
+
+        }
+
+        private void btn_asistencia_Click(object sender, EventArgs e)
+        {
+            VAsistencia frm = new VAsistencia();
+            //this.Enabled = false;
+            frm.Show();
+        }
+
+        private void chk_inactivo_emp_CheckedChanged(object sender, EventArgs e)
+        {
+            if(this.chk_inactivo_emp.Checked)
             {
-                db.Entry(t).State = EntityState.Modified;
-                MessageBox.Show("Empleado inhabilitado exitosamente");
-                db.SaveChanges();
-                CargarEmpleados();
+                CargarEmpleados(2);
+
             }
             else
             {
-                MessageBox.Show("Favor de seleccionar el empleado");
+                CargarEmpleados(1);
             }
         }
-
     }
 }

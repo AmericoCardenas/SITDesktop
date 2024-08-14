@@ -34,13 +34,15 @@
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
             this.btn_add = new System.Windows.Forms.Button();
             this.dgrid_zonasalmacen = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_zonasalmacen)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btn_cancel);
             this.panel1.Controls.Add(this.txt_filtro);
@@ -49,7 +51,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 55);
+            this.panel1.Size = new System.Drawing.Size(800, 49);
             this.panel1.TabIndex = 0;
             // 
             // btn_cancel
@@ -58,9 +60,9 @@
             this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
             this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(86, 3);
+            this.btn_cancel.Location = new System.Drawing.Point(66, 3);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(69, 44);
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
             this.btn_cancel.TabIndex = 3;
             this.btn_cancel.UseVisualStyleBackColor = false;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -75,10 +77,11 @@
             // 
             // cmb_filtro
             // 
+            this.cmb_filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_filtro.FormattingEnabled = true;
             this.cmb_filtro.Location = new System.Drawing.Point(496, 10);
             this.cmb_filtro.Name = "cmb_filtro";
-            this.cmb_filtro.Size = new System.Drawing.Size(121, 21);
+            this.cmb_filtro.Size = new System.Drawing.Size(134, 21);
             this.cmb_filtro.TabIndex = 1;
             // 
             // btn_add
@@ -89,7 +92,7 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Location = new System.Drawing.Point(11, 3);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(65, 44);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 0;
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
@@ -98,21 +101,32 @@
             // 
             this.dgrid_zonasalmacen.AllowUserToAddRows = false;
             this.dgrid_zonasalmacen.AllowUserToDeleteRows = false;
+            this.dgrid_zonasalmacen.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_zonasalmacen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_zonasalmacen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgrid_zonasalmacen.Location = new System.Drawing.Point(0, 55);
+            this.dgrid_zonasalmacen.Location = new System.Drawing.Point(0, 0);
             this.dgrid_zonasalmacen.Name = "dgrid_zonasalmacen";
             this.dgrid_zonasalmacen.ReadOnly = true;
-            this.dgrid_zonasalmacen.Size = new System.Drawing.Size(800, 395);
+            this.dgrid_zonasalmacen.Size = new System.Drawing.Size(796, 397);
             this.dgrid_zonasalmacen.TabIndex = 1;
             this.dgrid_zonasalmacen.Click += new System.EventHandler(this.dgrid_zonasalmacen_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.dgrid_zonasalmacen);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 49);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 401);
+            this.panel2.TabIndex = 2;
             // 
             // VZonasAlmacen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dgrid_zonasalmacen);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "VZonasAlmacen";
             this.ShowIcon = false;
@@ -123,6 +137,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_zonasalmacen)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -135,5 +150,6 @@
         private System.Windows.Forms.TextBox txt_filtro;
         private System.Windows.Forms.ComboBox cmb_filtro;
         private System.Windows.Forms.Button btn_add;
+        private System.Windows.Forms.Panel panel2;
     }
 }

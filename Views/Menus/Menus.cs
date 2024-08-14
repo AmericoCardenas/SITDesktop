@@ -31,8 +31,10 @@ using SIT.Views.General.CRequisiciones;
 using SIT.Views.Gerencia.CCotxAutorizar;
 using SIT.Views.Gestoria.CPolizas;
 using SIT.Views.Logistica;
+using SIT.Views.Logistica.CIncidencias;
 using SIT.Views.Nominas.CNomGeneral;
 using SIT.Views.RH;
+using SIT.Views.RH.CVacaciones;
 using SIT.Views.Sistemas;
 using SIT.Views.Taller;
 
@@ -153,7 +155,22 @@ namespace SIT.Views
                 this.btn_productosalm.Enabled = true;
                 this.btn_taller.Enabled = true;
 
+                this.pnl_almacen.Visible = true;
+                this.pnl_catalogos.Visible = true;
+                this.pnl_comedor.Visible = true;
+                this.pnl_comercial.Visible = true;
+                this.pnl_contabilidad.Visible = true;
+                this.pnl_diesel.Visible = true;
+                this.pnl_general.Visible = true;
+                this.pnl_gerencia.Visible = true;
+                this.pnl_gestoria.Visible = true;
+                this.pnl_logistica.Visible = true;
+                this.pnl_nominas.Visible = true;
+                this.pnl_sistemas.Visible = true;
+                this.pnl_taller.Visible = true;
 
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_catalogos, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_sistemas, 1);
 
 
 
@@ -167,13 +184,24 @@ namespace SIT.Views
 
                 #endregion
 
+                this.pnl_catalogos.Visible= true;
+                this.pnl_nominas.Visible = true;
+                this.pnl_comedor.Visible = true;
+                this.pnl_general.Visible = true;
+                this.pnl_rh.Visible = true;
+
+
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_catalogos, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_rh, 1);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_nominas, 2);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_comedor, 3);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_general, 4);
+
+
                 this.btn_snack.Enabled = true;
                 this.btn_comedor.Enabled = true;
                 this.btn_nominas.Enabled = true;
                 this.btn_general.Enabled = true;
-
-
-
 
             }
             else if (usuariologin.IdDepto == 4) //CONTABILIDAD
@@ -199,7 +227,16 @@ namespace SIT.Views
                 this.btn_almacen.Enabled = true;
                 this.btn_oc.Enabled = true;
 
+                this.pnl_catalogos.Visible = true;
+                this.pnl_contabilidad.Visible = true;
+                this.pnl_almacen.Visible = true;
+                this.pnl_general.Visible = true;
 
+
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_catalogos, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_contabilidad, 1);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_almacen, 2);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_general, 3);
 
             }
             else if (usuariologin.IdDepto == 5) //ALMACEN
@@ -210,6 +247,7 @@ namespace SIT.Views
                 this.btn_proveedores.Enabled = true;
                 #endregion
 
+                this.pnl_almacen.Enabled = true;
                 this.btn_almacen.Enabled = true;
                 this.btn_almacenes.Enabled = true;
                 this.btn_requisiciones.Enabled = true;
@@ -218,7 +256,11 @@ namespace SIT.Views
                 this.btn_salidas.Enabled = true;
                 this.btn_general.Enabled = true;
 
+                this.pnl_catalogos.Visible = true;
+                this.pnl_almacen.Visible = true;
 
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_catalogos, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_almacen, 1);
 
 
             }
@@ -233,6 +275,14 @@ namespace SIT.Views
                 this.btn_gestoria.Enabled = true;
                 this.btn_general.Enabled = true;
 
+                this.pnl_catalogos.Visible = true;
+                this.pnl_gestoria.Visible = true;
+                this.pnl_general.Visible = true;
+
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_catalogos, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_gestoria, 1);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_general, 2);
+
 
             }
             else if (usuariologin.IdDepto == 12) //DIESEL
@@ -243,15 +293,44 @@ namespace SIT.Views
                 this.btn_diesel.Enabled = true;
                 this.btn_general.Enabled = true;
 
+                this.pnl_catalogos.Visible = true;
+                this.pnl_diesel.Visible = true;
+                this.pnl_general.Visible = true;
+
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_catalogos, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_diesel, 1);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_general, 2);
+
+
             }
             else if(usuariologin.IdDepto==9)
             {
                 this.btn_taller.Enabled = true;
                 this.btn_general.Enabled = true;
+
+                this.pnl_catalogos.Visible = true;
+                this.pnl_taller.Visible = true;
+                this.pnl_general.Visible = true;
+
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_catalogos, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_taller, 1);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_general, 2);
+
+            }
+            else if (usuariologin.IdDepto == 2)//LOGISTICA
+            {
+                this.btn_logistica.Enabled = true;
+                this.btn_general.Enabled = true;
+
+                this.pnl_logistica.Visible = true;
+                this.pnl_general.Visible = true;
+
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_logistica, 0);
+                this.pnl_fl.Controls.SetChildIndex(this.pnl_general, 1);
+
             }
             else
             {
-                this.btn_general.Enabled = true;
 
             }
 
@@ -590,6 +669,46 @@ namespace SIT.Views
         private void btn_ot_Click(object sender, EventArgs e)
         {
             AbrirFormPanel(new VOrdenesTrabajo(usuariologin));
+
+        }
+
+        private void btn_incidencias_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VIncidencias(usuariologin));
+
+        }
+
+        private void btn_incop_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VIncidencias(usuariologin));
+
+        }
+
+        private void btn_vacaciones_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VVacaciones(usuariologin));
+
+        }
+
+        private void btn_artrh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_rh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_inc_diesel_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VIncidencias(usuariologin));
+
+        }
+
+        private void btn_inc_gest_Click(object sender, EventArgs e)
+        {
+            AbrirFormPanel(new VIncidencias(usuariologin));
 
         }
     }

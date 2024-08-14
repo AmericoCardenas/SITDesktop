@@ -40,24 +40,27 @@
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_movs = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_creditos)).BeginInit();
             this.tbcontrol.SuspendLayout();
             this.tb_creditos.SuspendLayout();
             this.tb_abonos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_abonos)).BeginInit();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgrid_notas_creditos
             // 
             this.dgrid_notas_creditos.AllowUserToAddRows = false;
             this.dgrid_notas_creditos.AllowUserToDeleteRows = false;
+            this.dgrid_notas_creditos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_notas_creditos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_notas_creditos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_notas_creditos.Location = new System.Drawing.Point(3, 3);
             this.dgrid_notas_creditos.Name = "dgrid_notas_creditos";
             this.dgrid_notas_creditos.ReadOnly = true;
-            this.dgrid_notas_creditos.Size = new System.Drawing.Size(994, 266);
+            this.dgrid_notas_creditos.Size = new System.Drawing.Size(990, 280);
             this.dgrid_notas_creditos.TabIndex = 1;
             this.dgrid_notas_creditos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_notas_creditos_CellContentClick);
             this.dgrid_notas_creditos.Click += new System.EventHandler(this.dgrid_notas_Click);
@@ -84,10 +87,10 @@
             this.tbcontrol.Controls.Add(this.tb_creditos);
             this.tbcontrol.Controls.Add(this.tb_abonos);
             this.tbcontrol.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbcontrol.Location = new System.Drawing.Point(0, 71);
+            this.tbcontrol.Location = new System.Drawing.Point(0, 0);
             this.tbcontrol.Name = "tbcontrol";
             this.tbcontrol.SelectedIndex = 0;
-            this.tbcontrol.Size = new System.Drawing.Size(1008, 298);
+            this.tbcontrol.Size = new System.Drawing.Size(1004, 312);
             this.tbcontrol.TabIndex = 14;
             this.tbcontrol.SelectedIndexChanged += new System.EventHandler(this.tbcontrol_SelectedIndexChanged);
             // 
@@ -97,7 +100,7 @@
             this.tb_creditos.Location = new System.Drawing.Point(4, 22);
             this.tb_creditos.Name = "tb_creditos";
             this.tb_creditos.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_creditos.Size = new System.Drawing.Size(1000, 272);
+            this.tb_creditos.Size = new System.Drawing.Size(996, 286);
             this.tb_creditos.TabIndex = 0;
             this.tb_creditos.Text = "Creditos";
             this.tb_creditos.UseVisualStyleBackColor = true;
@@ -108,7 +111,7 @@
             this.tb_abonos.Location = new System.Drawing.Point(4, 22);
             this.tb_abonos.Name = "tb_abonos";
             this.tb_abonos.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_abonos.Size = new System.Drawing.Size(1000, 272);
+            this.tb_abonos.Size = new System.Drawing.Size(996, 286);
             this.tb_abonos.TabIndex = 1;
             this.tb_abonos.Text = "Abonos";
             this.tb_abonos.UseVisualStyleBackColor = true;
@@ -117,17 +120,19 @@
             // 
             this.dgrid_notas_abonos.AllowUserToAddRows = false;
             this.dgrid_notas_abonos.AllowUserToDeleteRows = false;
+            this.dgrid_notas_abonos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_notas_abonos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_notas_abonos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_notas_abonos.Location = new System.Drawing.Point(3, 3);
             this.dgrid_notas_abonos.Name = "dgrid_notas_abonos";
             this.dgrid_notas_abonos.ReadOnly = true;
-            this.dgrid_notas_abonos.Size = new System.Drawing.Size(994, 266);
+            this.dgrid_notas_abonos.Size = new System.Drawing.Size(990, 280);
             this.dgrid_notas_abonos.TabIndex = 2;
             this.dgrid_notas_abonos.Click += new System.EventHandler(this.dgrid_notas_abonos_Click);
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.btn_cancel);
             this.panel1.Controls.Add(this.btn_movs);
@@ -137,7 +142,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1008, 71);
+            this.panel1.Size = new System.Drawing.Size(1008, 53);
             this.panel1.TabIndex = 16;
             // 
             // button1
@@ -145,9 +150,9 @@
             this.button1.BackgroundImage = global::SIT.Properties.Resources.google_docs;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(178, 6);
+            this.button1.Location = new System.Drawing.Point(171, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(52, 47);
+            this.button1.Size = new System.Drawing.Size(48, 39);
             this.button1.TabIndex = 16;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
@@ -157,9 +162,9 @@
             this.btn_cancel.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
             this.btn_cancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancel.Location = new System.Drawing.Point(61, 7);
+            this.btn_cancel.Location = new System.Drawing.Point(61, 6);
             this.btn_cancel.Name = "btn_cancel";
-            this.btn_cancel.Size = new System.Drawing.Size(54, 47);
+            this.btn_cancel.Size = new System.Drawing.Size(48, 39);
             this.btn_cancel.TabIndex = 13;
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -169,9 +174,9 @@
             this.btn_movs.BackgroundImage = global::SIT.Properties.Resources.movimiento;
             this.btn_movs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_movs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_movs.Location = new System.Drawing.Point(121, 7);
+            this.btn_movs.Location = new System.Drawing.Point(116, 6);
             this.btn_movs.Name = "btn_movs";
-            this.btn_movs.Size = new System.Drawing.Size(51, 47);
+            this.btn_movs.Size = new System.Drawing.Size(48, 39);
             this.btn_movs.TabIndex = 15;
             this.btn_movs.UseVisualStyleBackColor = true;
             this.btn_movs.Click += new System.EventHandler(this.button1_Click);
@@ -181,12 +186,22 @@
             this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
             this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(6, 7);
+            this.btn_add.Location = new System.Drawing.Point(6, 6);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(49, 47);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 2;
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.tbcontrol);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 53);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1008, 316);
+            this.panel2.TabIndex = 17;
             // 
             // VNotas
             // 
@@ -194,7 +209,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1008, 369);
-            this.Controls.Add(this.tbcontrol);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VNotas";
@@ -209,6 +224,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_notas_abonos)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -226,5 +242,6 @@
         private System.Windows.Forms.DataGridView dgrid_notas_abonos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

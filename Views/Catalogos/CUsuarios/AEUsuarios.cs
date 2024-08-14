@@ -76,16 +76,18 @@ namespace SIT.Views.Catalogos
             }
             else
             {
+                usuarios.Usuario = this.txt_usuario.Text.Trim();
+                usuarios.Password = this.txt_contraseña.Text.Trim();
+                usuarios.Nombre = this.txt_nombre.Text.Trim();
+                usuarios.Apellidop = this.txt_app.Text.Trim();
+                usuarios.Apellidom = this.txt_apm.Text.Trim();
+                usuarios.IdEstatus = 1;
+                usuarios.IdEmpleado = Convert.ToInt32(this.cmb_empleado.SelectedValue);
+                usuarios.IdDepto = Convert.ToInt32(this.cmb_depto.SelectedValue);
+
                 if (usuarios.IdUsuario == 0 || usuarios == null)
                 {
-                    usuarios.Usuario = this.txt_usuario.Text.Trim();
-                    usuarios.Password = this.txt_contraseña.Text.Trim();
-                    usuarios.Nombre = this.txt_nombre.Text.Trim();
-                    usuarios.Apellidop = this.txt_app.Text.Trim();
-                    usuarios.Apellidom = this.txt_apm.Text.Trim();
-                    usuarios.IdEstatus = 1;
-                    usuarios.IdEmpleado = Convert.ToInt32(this.cmb_empleado.SelectedValue);
-                    usuarios.IdDepto = Convert.ToInt32(this.cmb_depto.SelectedValue);
+
                     usuarios.FechaCreacion = DateTime.Now.ToString("dd-MM-yyyy");
                     usuarios.UsuarioCreacion = Convert.ToInt32(idUsuario);
                     db.Usuarios.Add(usuarios);

@@ -50,6 +50,7 @@
             // 
             // panel1
             // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.btn_cancelar);
             this.panel1.Controls.Add(this.txt_filtro);
             this.panel1.Controls.Add(this.cmb_filtro);
@@ -57,7 +58,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(985, 54);
+            this.panel1.Size = new System.Drawing.Size(985, 48);
             this.panel1.TabIndex = 0;
             // 
             // btn_cancelar
@@ -66,9 +67,9 @@
             this.btn_cancelar.BackgroundImage = global::SIT.Properties.Resources._4854a15a23db464f53599f35ab4ef584;
             this.btn_cancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cancelar.Location = new System.Drawing.Point(67, 3);
+            this.btn_cancelar.Location = new System.Drawing.Point(57, 3);
             this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(58, 42);
+            this.btn_cancelar.Size = new System.Drawing.Size(48, 39);
             this.btn_cancelar.TabIndex = 3;
             this.btn_cancelar.UseVisualStyleBackColor = false;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
@@ -95,20 +96,21 @@
             this.btn_add.BackgroundImage = global::SIT.Properties.Resources.mas;
             this.btn_add.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_add.Location = new System.Drawing.Point(3, 4);
+            this.btn_add.Location = new System.Drawing.Point(3, 3);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(58, 41);
+            this.btn_add.Size = new System.Drawing.Size(48, 39);
             this.btn_add.TabIndex = 0;
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.tbcontrol);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 54);
+            this.panel2.Location = new System.Drawing.Point(0, 48);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(985, 396);
+            this.panel2.Size = new System.Drawing.Size(985, 402);
             this.panel2.TabIndex = 1;
             // 
             // tbcontrol
@@ -119,7 +121,7 @@
             this.tbcontrol.Location = new System.Drawing.Point(0, 0);
             this.tbcontrol.Name = "tbcontrol";
             this.tbcontrol.SelectedIndex = 0;
-            this.tbcontrol.Size = new System.Drawing.Size(985, 396);
+            this.tbcontrol.Size = new System.Drawing.Size(981, 398);
             this.tbcontrol.TabIndex = 1;
             this.tbcontrol.SelectedIndexChanged += new System.EventHandler(this.tbcontrol_SelectedIndexChanged);
             // 
@@ -129,7 +131,7 @@
             this.tb_pendientes.Location = new System.Drawing.Point(4, 22);
             this.tb_pendientes.Name = "tb_pendientes";
             this.tb_pendientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_pendientes.Size = new System.Drawing.Size(977, 370);
+            this.tb_pendientes.Size = new System.Drawing.Size(973, 372);
             this.tb_pendientes.TabIndex = 0;
             this.tb_pendientes.Text = "Pendientes";
             this.tb_pendientes.UseVisualStyleBackColor = true;
@@ -138,12 +140,13 @@
             // 
             this.dgrid_herramientas_pendientes.AllowUserToAddRows = false;
             this.dgrid_herramientas_pendientes.AllowUserToDeleteRows = false;
+            this.dgrid_herramientas_pendientes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_herramientas_pendientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_herramientas_pendientes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_herramientas_pendientes.Location = new System.Drawing.Point(3, 3);
             this.dgrid_herramientas_pendientes.Name = "dgrid_herramientas_pendientes";
             this.dgrid_herramientas_pendientes.ReadOnly = true;
-            this.dgrid_herramientas_pendientes.Size = new System.Drawing.Size(971, 364);
+            this.dgrid_herramientas_pendientes.Size = new System.Drawing.Size(967, 366);
             this.dgrid_herramientas_pendientes.TabIndex = 0;
             this.dgrid_herramientas_pendientes.Click += new System.EventHandler(this.dgrid_herramientas_pendientes_Click);
             // 
@@ -153,7 +156,7 @@
             this.tb_entregados.Location = new System.Drawing.Point(4, 22);
             this.tb_entregados.Name = "tb_entregados";
             this.tb_entregados.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_entregados.Size = new System.Drawing.Size(977, 370);
+            this.tb_entregados.Size = new System.Drawing.Size(973, 372);
             this.tb_entregados.TabIndex = 1;
             this.tb_entregados.Text = "Entregados";
             this.tb_entregados.UseVisualStyleBackColor = true;
@@ -162,12 +165,13 @@
             // 
             this.dgrid_herramientas_entregados.AllowUserToAddRows = false;
             this.dgrid_herramientas_entregados.AllowUserToDeleteRows = false;
+            this.dgrid_herramientas_entregados.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgrid_herramientas_entregados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrid_herramientas_entregados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgrid_herramientas_entregados.Location = new System.Drawing.Point(3, 3);
             this.dgrid_herramientas_entregados.Name = "dgrid_herramientas_entregados";
             this.dgrid_herramientas_entregados.ReadOnly = true;
-            this.dgrid_herramientas_entregados.Size = new System.Drawing.Size(971, 364);
+            this.dgrid_herramientas_entregados.Size = new System.Drawing.Size(967, 366);
             this.dgrid_herramientas_entregados.TabIndex = 0;
             this.dgrid_herramientas_entregados.Click += new System.EventHandler(this.dgrid_herramientas_entregados_Click);
             // 
