@@ -253,30 +253,30 @@ namespace SIT.Views.Catalogos.CUnidades
                 MessageBox.Show("Favor de introducir la cantidad de pasajeros de la unidad");
                 this.txt_pasajeros.Focus();
             }
-            else if (filen_arrend == string.Empty)
-            {
-                MessageBox.Show("Favor de seleccionar el archivo de arrendamiento");
-            }
-            else if (filen_const == string.Empty)
-            {
-                MessageBox.Show("Favor de seleccionar el archivo de constancia");
-            }
-            else if (filen_factura == string.Empty)
-            {
-                MessageBox.Show("Favor de seleccionar el archivo de factura");
-            }
-            else if (filen_poliza == string.Empty)
-            {
-                MessageBox.Show("Favor de seleccionar el archivo de poliza");
-            }
-            else if (filen_refrend == string.Empty)
-            {
-                MessageBox.Show("Favor de seleccionar el archivo de refrendo");
-            }
-            else if (filen_tcirculacion == string.Empty)
-            {
-                MessageBox.Show("Favor de seleccionar el archivo de tarjeta de circulación");
-            }
+            //else if (filen_arrend == string.Empty)
+            //{
+            //    MessageBox.Show("Favor de seleccionar el archivo de arrendamiento");
+            //}
+            //else if (filen_const == string.Empty)
+            //{
+            //    MessageBox.Show("Favor de seleccionar el archivo de constancia");
+            //}
+            //else if (filen_factura == string.Empty)
+            //{
+            //    MessageBox.Show("Favor de seleccionar el archivo de factura");
+            //}
+            //else if (filen_poliza == string.Empty)
+            //{
+            //    MessageBox.Show("Favor de seleccionar el archivo de poliza");
+            //}
+            //else if (filen_refrend == string.Empty)
+            //{
+            //    MessageBox.Show("Favor de seleccionar el archivo de refrendo");
+            //}
+            //else if (filen_tcirculacion == string.Empty)
+            //{
+            //    MessageBox.Show("Favor de seleccionar el archivo de tarjeta de circulación");
+            //}
             else
             {
                 unidades.Economico = this.txt_eco.Text.Trim().ToUpper();
@@ -290,18 +290,18 @@ namespace SIT.Views.Catalogos.CUnidades
                 unidades.Pasajeros = pasaj;
                 unidades.IdEstatus = Convert.ToInt32(this.cmb_estatus.SelectedValue);
                 unidades.Ruta = ruta;
-                unidades.FileConstancia = this.filen_const;
-                unidades.FileArrendamiento = this.filen_arrend;
-                unidades.FileRefrendo = this.filen_refrend;
-                unidades.FileFactura = this.filen_factura;
-                unidades.FilePolizaSeguro = this.filen_poliza;
-                unidades.FileTCirculacion = this.filen_tcirculacion;
+                unidades.FileConstancia = "";
+                unidades.FileArrendamiento = "";
+                unidades.FileRefrendo = "";
+                unidades.FileFactura = "";
+                unidades.FilePolizaSeguro = "";
+                unidades.FileTCirculacion = "";
                 unidades.FechaCreacion = DateTime.Now;
                 unidades.IdUsuarioCreo = IdUsuario;
 
                 if (IdUnidad > 0)
                 {
-                    if (r_arrend != string.Empty && r_arrend!=null)
+                    if (r_arrend != string.Empty && r_arrend != null)
                     {
                         var FName = r_arrend.Split('\\');
                         if (File.Exists(ruta + FName[FName.Length - 1]))
@@ -328,7 +328,7 @@ namespace SIT.Views.Catalogos.CUnidades
                         }
                     }
 
-                    if (r_factura != string.Empty && r_factura != null )
+                    if (r_factura != string.Empty && r_factura != null)
                     {
                         var FName = r_factura.Split('\\');
                         if (File.Exists(ruta + FName[FName.Length - 1]))
@@ -396,37 +396,49 @@ namespace SIT.Views.Catalogos.CUnidades
                 }
                 else
                 {
-                    var FName = r_arrend.Split('\\');
-                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    if (r_arrend != string.Empty && r_arrend != null)
                     {
+                        var FName = r_arrend.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
 
-                    }
-                    else
-                    {
-                        File.Copy(r_arrend, ruta + FName[FName.Length - 1]);
-                    }
+                        }
 
-                     FName = r_const.Split('\\');
-                    if (File.Exists(ruta + FName[FName.Length - 1]))
-                    {
-
-                    }
-                    else
-                    {
-                        File.Copy(r_const, ruta + FName[FName.Length - 1]);
+                        else
+                        {
+                            File.Copy(r_arrend, ruta + FName[FName.Length - 1]);
+                        }
                     }
 
-                    FName = r_factura.Split('\\');
-                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    if (r_const != string.Empty && r_const != null)
                     {
+                        var FName = r_const.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
 
+                        }
+                        else
+                        {
+                            File.Copy(r_const, ruta + FName[FName.Length - 1]);
+                        }
                     }
-                    else
+
+                    if (r_factura != string.Empty && r_factura != null)
                     {
-                        File.Copy(r_factura, ruta + FName[FName.Length - 1]);
+                        var FName = r_factura.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_factura, ruta + FName[FName.Length - 1]);
+                        }
                     }
 
-                    FName = r_poliza.Split('\\');
+                    if (r_poliza != string.Empty && r_poliza != null)
+                    { 
+                        var FName = r_poliza.Split('\\');
                     if (File.Exists(ruta + FName[FName.Length - 1]))
                     {
 
@@ -435,27 +447,35 @@ namespace SIT.Views.Catalogos.CUnidades
                     {
                         File.Copy(r_poliza, ruta + FName[FName.Length - 1]);
                     }
-
-                    FName = r_refrend.Split('\\');
-                    if (File.Exists(ruta + FName[FName.Length - 1]))
-                    {
-
-                    }
-                    else
-                    {
-                        File.Copy(r_refrend, ruta + FName[FName.Length - 1]);
                     }
 
-                    FName = r_tcirculacion.Split('\\');
-                    if (File.Exists(ruta + FName[FName.Length - 1]))
+                    if (r_refrend != string.Empty && r_refrend != null)
                     {
+                        var FName = r_refrend.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_refrend, ruta + FName[FName.Length - 1]);
+                        }
 
                     }
-                    else
-                    {
-                        File.Copy(r_tcirculacion, ruta + FName[FName.Length - 1]);
-                    }
 
+                    if (r_tcirculacion != string.Empty && r_tcirculacion != null)
+                    {
+
+                        var FName = r_tcirculacion.Split('\\');
+                        if (File.Exists(ruta + FName[FName.Length - 1]))
+                        {
+
+                        }
+                        else
+                        {
+                            File.Copy(r_tcirculacion, ruta + FName[FName.Length - 1]);
+                        }
+                    }
 
                     db.Unidades.Add(unidades);
                     MessageBox.Show("Unidad agregada exitosamente");

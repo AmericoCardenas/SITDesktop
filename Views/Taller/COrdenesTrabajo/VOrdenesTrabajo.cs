@@ -1,4 +1,5 @@
-﻿using SIT.Views.General.CRequisiciones;
+﻿using SIT.ExportarExcel;
+using SIT.Views.General.CRequisiciones;
 using SIT.Views.Taller.CActMecanicos;
 using SpreadsheetLight;
 using System;
@@ -9,6 +10,7 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -25,6 +27,7 @@ namespace SIT.Views.Taller
 
         Usuarios _uslog;
         SITEntities db = new SITEntities();
+        ExpExcel expexcel = new ExpExcel(); 
 
         OrdenesTrabajoTaller ot = new OrdenesTrabajoTaller();
         int idOT = 0;
@@ -54,6 +57,7 @@ namespace SIT.Views.Taller
                 var x = from n in db.OrdenesTrabajoTaller
                         join u in db.Unidades on n.IdUnidad equals u.IdUnidad
                         where n.IdEstatus == idestatus  
+                        orderby n.IdOrdenTrabajo descending
                         select new
                         {
                             n.IdOrdenTrabajo,
@@ -98,9 +102,24 @@ namespace SIT.Views.Taller
             catch (Exception ex) { }
         }
 
+        private void CargarFiltros()
+        {
+            foreach (DataGridViewColumn col in this.dgrid_otpend.Columns)
+            {
+               if(col.Name!="Hora" && col.Name != "Observaciones")
+                {
+                    this.cmb_filtro.Items.Add(col.Name);
+                }
+            }
+
+            this.cmb_filtro.SelectedIndex = 0;
+        }
+
+
         private void VOrdenesTrabajo_Load(object sender, EventArgs e)
         {
             CargarOTS();
+            CargarFiltros();
         }
 
         private void tbcontrol_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,6 +134,113 @@ namespace SIT.Views.Taller
             {
                 this.btn_cancel.Visible = false;
             }
+        }
+
+        private void CargarxFiltro()
+        {
+            try
+            {
+                int idestatus = 0;
+                DataGridView dgrid = new DataGridView();
+
+                if (this.tbcontrol.SelectedIndex == 0)
+                {
+                    idestatus = 1;
+                    dgrid = this.dgrid_otpend;
+                }
+                else if (this.tbcontrol.SelectedIndex == 1)
+                {
+                    idestatus = 3;
+                    dgrid = this.dgrid_otfin;
+                }
+
+                var filtro = this.cmb_filtro.Text.ToString();
+
+                if (this.txt_filtro.Text == string.Empty)
+                {
+                    CargarOTS();
+                }
+
+
+                switch (filtro)
+                {
+                    case "IdOrdenTrabajo":
+                        var id = Convert.ToInt32(this.txt_filtro.Text);
+                        var x = from n in db.OrdenesTrabajoTaller
+                                join u in db.Unidades on n.IdUnidad equals u.IdUnidad
+                                where n.IdEstatus == idestatus && n.IdOrdenTrabajo == id
+                                orderby n.IdOrdenTrabajo descending
+                                select new
+                                {
+                                    n.IdOrdenTrabajo,
+                                    n.Fecha,
+                                    n.Hora,
+                                    u.Economico,
+                                    n.Observaciones
+                                };
+
+                        dgrid.DataSource = null;
+                        dgrid.DataSource = x.ToList();
+                        dgrid.EnableHeadersVisualStyles = false;
+                        dgrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
+                        dgrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                        dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        break;
+
+                    case "Fecha":
+                        var date = Convert.ToDateTime(this.txt_filtro.Text);
+                        var x1 = from n in db.OrdenesTrabajoTaller
+                                 join u in db.Unidades on n.IdUnidad equals u.IdUnidad
+                                 where n.IdEstatus == idestatus && n.Fecha == date
+                                 orderby n.IdOrdenTrabajo descending
+                                 select new
+                                 {
+                                     n.IdOrdenTrabajo,
+                                     n.Fecha,
+                                     n.Hora,
+                                     u.Economico,
+                                     n.Observaciones
+                                 };
+
+                        dgrid.DataSource = null;
+                        dgrid.DataSource = x1.ToList();
+                        dgrid.EnableHeadersVisualStyles = false;
+                        dgrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
+                        dgrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                        dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        break;
+
+                    case "Economico":
+                        var x2 = from n in db.OrdenesTrabajoTaller
+                                 join u in db.Unidades on n.IdUnidad equals u.IdUnidad
+                                 where n.IdEstatus == idestatus && u.Economico.Contains(this.txt_filtro.Text)
+                                 orderby n.IdOrdenTrabajo descending
+                                 select new
+                                 {
+                                     n.IdOrdenTrabajo,
+                                     n.Fecha,
+                                     n.Hora,
+                                     u.Economico,
+                                     n.Observaciones
+                                 };
+
+                        dgrid.DataSource = null;
+                        dgrid.DataSource = x2.ToList();
+                        dgrid.EnableHeadersVisualStyles = false;
+                        dgrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
+                        dgrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                        dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                        break;
+                }
+
+
+
+            }catch(Exception ex)
+            {
+                CargarOTS();
+
+            }
+
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
@@ -189,104 +315,15 @@ namespace SIT.Views.Taller
 
         private void ExportarExcel()
         {
-        
-            DataGridView dgexcel = new DataGridView();
-
-            SLDocument sl = new SLDocument();
-            SLWorksheetStatistics stats = sl.GetWorksheetStatistics();
-            string downloadPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            downloadPath = System.IO.Path.Combine(downloadPath, "Documents");
 
 
-            var tb = from n in db.OrdenesTrabajoTaller
-                    join a in db.ActividadesOT on n.IdOrdenTrabajo equals a.IdOT
-                    join u in db.Unidades on n.IdUnidad equals u.IdUnidad
-                    join t in db.Trabajadores on n.IdEmpleado equals t.IdEmpleado
-                    join tec in db.Trabajadores on a.IdEmpleado equals tec.IdEmpleado
-                    join act in db.ActividadesTaller on a.IdActTaller equals act.IdAct
-                    join mto in db.MantenimientosTaller on a.IdMtto equals mto.IdMantenimiento
-                    join ub in db.UbicacionesOT on n.IdUbicacion equals ub.IdUbicacion
-                    join g in db.GruposActTaller on act.IdGrupo equals g.IdGrupo
-                    where n.IdEstatus !=2 && a.IdEstatus!=2
-                    select new
-                    {
-                        Folio = n.IdOrdenTrabajo,
-                        FechaOt=n.Fecha,
-                        HoraOt=n.Hora,
-                        Unidad=u.Economico,
-                        Operador = t.NombreCompleto,
-                        ObsOp=n.Observaciones,
-                        FI=a.FI,
-                        HI=a.TI,
-                        FF = a.FF,
-                        HF=a.TF,
-                        Tecnico = tec.NombreCompleto,
-                        Mantenimiento= mto.Mantenimiento,
-                        Actividad= act.Actividad,
-                        g.Grupo,
-                        ObsTec=a.Observaciones,
-                        Ubicacion=ub.Ubicacion,
-                        n.Km,
-                    };
+            expexcel.ExportarExcel(this.Name.ToString());
 
-            dgexcel.Columns.Add("Folio","Folio");
-            dgexcel.Columns.Add("Fecha", "Fecha");
-            dgexcel.Columns.Add("Hora", "Hora");
-            dgexcel.Columns.Add("Unidad", "Unidad");
-            dgexcel.Columns.Add("Operador", "Operador");
-            dgexcel.Columns.Add("ObsOp", "ObsOp");
-            dgexcel.Columns.Add("FI", "FI");
-            dgexcel.Columns.Add("HI", "HI");
-            dgexcel.Columns.Add("FF", "FF");
-            dgexcel.Columns.Add("HF", "HF");
-            dgexcel.Columns.Add("Tecnico", "Tecnico");
-            dgexcel.Columns.Add("Mantenimiento", "Mantenimiento");
-            dgexcel.Columns.Add("Actividad", "Actividad");
-            dgexcel.Columns.Add("Grupo", "Grupo");
-            dgexcel.Columns.Add("ObsTec", "ObsTec");
-            dgexcel.Columns.Add("Ubicacion", "Ubicacion");
-            dgexcel.Columns.Add("KM", "KM");
-
-
-            foreach (var item in tb)
-            {
-                dgexcel.Rows.Add(item.Folio, item.FechaOt,item.HoraOt,item.Unidad,item.Operador,item.ObsOp,
-                    item.FI,item.HI,item.FF,item.HF,item.Tecnico,item.Mantenimiento,item.Actividad,
-                    item.Grupo,item.ObsTec,item.Ubicacion,item.Km);
-            }
-
-            try
-            {
-                for (int i = 0; i < dgexcel.Columns.Count; i++)
-                {
-                    sl.SetCellValue(1, i + 1, dgexcel.Columns[i].Name);
-                }
-
-                for (int i = 0; i < dgexcel.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dgexcel.Columns.Count; j++)
-                    {
-                        DataGridViewCell cell = dgexcel.Rows[i].Cells[j];
-                        if (cell.Value != null)
-                        {
-                            sl.SetCellValue(i + 2, j + 1, dgexcel.Rows[i].Cells[j].Value.ToString());
-                        }
-                    }
-                }
-
-
-
-                sl.AutoFitColumn(1, stats.EndColumnIndex);
-
-                // Save the Excel file
-                sl.SaveAs(downloadPath + "\\RptOts" + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
-                MessageBox.Show("Archivo exportado en " + downloadPath);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
         }
 
+        private void txt_filtro_TextChanged(object sender, EventArgs e)
+        {
+            CargarxFiltro();
+        }
     }
 }

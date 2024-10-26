@@ -23,10 +23,11 @@ namespace SIT.Views.Taller.CActMecanicos
                     join t in db.Trabajadores on n.IdEmpleado equals t.IdEmpleado
                     join a in db.ActividadesTaller on n.IdActTaller equals a.IdAct
                     where n.IdEstatus == 1
+                    orderby n.FI descending
                     select new
                     {
                         n.IdOT,
-                        t.NombreCompleto,
+                        Empleado=t.NombreCompleto,
                         a.Actividad,
                         n.FI,
                         n.TI,

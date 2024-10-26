@@ -29,7 +29,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>\\192.168.1.213\Compartida\SIT\</UpdateUrl>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>126</ApplicationRevision>
+    <ApplicationRevision>137</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -443,6 +443,7 @@
     <Compile Include="EstatusVE.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Include="ExportarExcel\ExpExcel.cs" />
     <Compile Include="FacturasOC.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>

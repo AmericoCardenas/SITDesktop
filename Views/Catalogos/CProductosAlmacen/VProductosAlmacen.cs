@@ -1,4 +1,5 @@
-﻿using SIT.Views.Catalogos.CBancos;
+﻿using SIT.ExportarExcel;
+using SIT.Views.Catalogos.CBancos;
 using SIT.Views.Catalogos.CProductosAlmacen;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace SIT.Views.Almacen.CProductosAlmacen
 
         SITEntities db = new SITEntities();
         ProductosAlmacen productos = new ProductosAlmacen();
+        ExpExcel expex = new ExpExcel();
         Usuarios _uslog;
         int IdProducto;
 
@@ -261,6 +263,12 @@ namespace SIT.Views.Almacen.CProductosAlmacen
             //this.Enabled = false;
             frm.Show();
 
+        }
+
+        private void btn_excel_Click(object sender, EventArgs e)
+        {
+            
+            expex.ExportarExcel(this.Name.ToString());
         }
     }
 }

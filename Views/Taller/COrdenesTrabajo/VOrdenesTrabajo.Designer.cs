@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_excel = new System.Windows.Forms.Button();
             this.btn_act_mecanicos = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
@@ -38,7 +39,8 @@
             this.tb_terminadas = new System.Windows.Forms.TabPage();
             this.dgrid_otfin = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btn_excel = new System.Windows.Forms.Button();
+            this.cmb_filtro = new System.Windows.Forms.ComboBox();
+            this.txt_filtro = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tbcontrol.SuspendLayout();
             this.tb_pendientes.SuspendLayout();
@@ -50,6 +52,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.txt_filtro);
+            this.panel1.Controls.Add(this.cmb_filtro);
             this.panel1.Controls.Add(this.btn_excel);
             this.panel1.Controls.Add(this.btn_act_mecanicos);
             this.panel1.Controls.Add(this.btn_cancel);
@@ -59,6 +63,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 49);
             this.panel1.TabIndex = 0;
+            // 
+            // btn_excel
+            // 
+            this.btn_excel.BackgroundImage = global::SIT.Properties.Resources.excel;
+            this.btn_excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_excel.Location = new System.Drawing.Point(188, 3);
+            this.btn_excel.Name = "btn_excel";
+            this.btn_excel.Size = new System.Drawing.Size(53, 39);
+            this.btn_excel.TabIndex = 4;
+            this.btn_excel.UseVisualStyleBackColor = true;
+            this.btn_excel.Click += new System.EventHandler(this.btn_excel_Click);
             // 
             // btn_act_mecanicos
             // 
@@ -165,17 +181,22 @@
             this.panel2.Size = new System.Drawing.Size(800, 401);
             this.panel2.TabIndex = 2;
             // 
-            // btn_excel
+            // cmb_filtro
             // 
-            this.btn_excel.BackgroundImage = global::SIT.Properties.Resources.excel;
-            this.btn_excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_excel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_excel.Location = new System.Drawing.Point(188, 3);
-            this.btn_excel.Name = "btn_excel";
-            this.btn_excel.Size = new System.Drawing.Size(53, 39);
-            this.btn_excel.TabIndex = 4;
-            this.btn_excel.UseVisualStyleBackColor = true;
-            this.btn_excel.Click += new System.EventHandler(this.btn_excel_Click);
+            this.cmb_filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_filtro.FormattingEnabled = true;
+            this.cmb_filtro.Location = new System.Drawing.Point(519, 10);
+            this.cmb_filtro.Name = "cmb_filtro";
+            this.cmb_filtro.Size = new System.Drawing.Size(121, 21);
+            this.cmb_filtro.TabIndex = 5;
+            // 
+            // txt_filtro
+            // 
+            this.txt_filtro.Location = new System.Drawing.Point(647, 11);
+            this.txt_filtro.Name = "txt_filtro";
+            this.txt_filtro.Size = new System.Drawing.Size(139, 20);
+            this.txt_filtro.TabIndex = 6;
+            this.txt_filtro.TextChanged += new System.EventHandler(this.txt_filtro_TextChanged);
             // 
             // VOrdenesTrabajo
             // 
@@ -191,6 +212,7 @@
             this.Text = "VOrdenesTrabajo";
             this.Load += new System.EventHandler(this.VOrdenesTrabajo_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tbcontrol.ResumeLayout(false);
             this.tb_pendientes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrid_otpend)).EndInit();
@@ -213,5 +235,7 @@
         private System.Windows.Forms.DataGridView dgrid_otfin;
         private System.Windows.Forms.Button btn_act_mecanicos;
         private System.Windows.Forms.Button btn_excel;
+        private System.Windows.Forms.TextBox txt_filtro;
+        private System.Windows.Forms.ComboBox cmb_filtro;
     }
 }

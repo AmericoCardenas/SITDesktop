@@ -30,10 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.cmb_filtro = new System.Windows.Forms.ComboBox();
-            this.txt_filtro = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.txt_filtro = new System.Windows.Forms.TextBox();
+            this.cmb_filtro = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgrid_actividades = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.txt_filtro);
@@ -53,15 +53,21 @@
             this.panel1.Size = new System.Drawing.Size(800, 48);
             this.panel1.TabIndex = 0;
             // 
-            // panel2
+            // button1
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.dgrid_actividades);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 48);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 402);
-            this.panel2.TabIndex = 1;
+            this.button1.Location = new System.Drawing.Point(470, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txt_filtro
+            // 
+            this.txt_filtro.Location = new System.Drawing.Point(148, 11);
+            this.txt_filtro.Name = "txt_filtro";
+            this.txt_filtro.Size = new System.Drawing.Size(283, 20);
+            this.txt_filtro.TabIndex = 1;
             // 
             // cmb_filtro
             // 
@@ -71,21 +77,15 @@
             this.cmb_filtro.Size = new System.Drawing.Size(121, 21);
             this.cmb_filtro.TabIndex = 0;
             // 
-            // txt_filtro
+            // panel2
             // 
-            this.txt_filtro.Location = new System.Drawing.Point(148, 11);
-            this.txt_filtro.Name = "txt_filtro";
-            this.txt_filtro.Size = new System.Drawing.Size(283, 20);
-            this.txt_filtro.TabIndex = 1;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(470, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.dgrid_actividades);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 48);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 402);
+            this.panel2.TabIndex = 1;
             // 
             // dgrid_actividades
             // 

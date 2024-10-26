@@ -233,6 +233,22 @@ namespace SIT.Views.Taller
             {
                 MessageBox.Show("Favor de capturar el km de la unidad");
             }
+            else if (this.cmb_unidad.SelectedValue == null || this.cmb_unidad.SelectedIndex==0)
+            {
+                MessageBox.Show("Favor de seleccionar la Unidad");
+            }
+            else if(this.cmb_emp.SelectedValue==null || this.cmb_emp.SelectedIndex == 0)
+            {
+                MessageBox.Show("Favor de seleccionar el Operador");
+            }
+            else if (this.cmb_ubicacion.SelectedValue == null || this.cmb_ubicacion.SelectedIndex == 0)
+            {
+                MessageBox.Show("Favor de seleccionar la ubicación");
+            }
+            else if (this.dgrid_actsot.Rows.Count == 0)
+            {
+                MessageBox.Show("Esta OT no cuenta con actividades designadas");
+            }
             else
             {
                 if (idOT != 0 && ot.IdEstatus != 3)

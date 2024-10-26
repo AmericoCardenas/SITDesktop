@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmb_emp = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txt_km = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.cmb_ubicacion = new System.Windows.Forms.ComboBox();
@@ -53,8 +55,6 @@
             this.btn_save_OT = new System.Windows.Forms.Button();
             this.txt_obsot = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cmb_emp = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -85,6 +85,26 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1008, 69);
             this.panel1.TabIndex = 0;
+            // 
+            // cmb_emp
+            // 
+            this.cmb_emp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_emp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmb_emp.FormattingEnabled = true;
+            this.cmb_emp.Location = new System.Drawing.Point(100, 36);
+            this.cmb_emp.Name = "cmb_emp";
+            this.cmb_emp.Size = new System.Drawing.Size(298, 21);
+            this.cmb_emp.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(10, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(84, 20);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Operador";
             // 
             // txt_km
             // 
@@ -124,7 +144,7 @@
             // 
             // cmb_unidad
             // 
-            this.cmb_unidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmb_unidad.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmb_unidad.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmb_unidad.FormattingEnabled = true;
             this.cmb_unidad.Location = new System.Drawing.Point(543, 7);
@@ -323,26 +343,6 @@
             this.label16.Size = new System.Drawing.Size(127, 20);
             this.label16.TabIndex = 0;
             this.label16.Text = "Observaciones";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(10, 36);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 20);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Operador";
-            // 
-            // cmb_emp
-            // 
-            this.cmb_emp.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cmb_emp.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmb_emp.FormattingEnabled = true;
-            this.cmb_emp.Location = new System.Drawing.Point(100, 36);
-            this.cmb_emp.Name = "cmb_emp";
-            this.cmb_emp.Size = new System.Drawing.Size(298, 21);
-            this.cmb_emp.TabIndex = 13;
             // 
             // AEOrdenesTrabajo
             // 

@@ -80,10 +80,21 @@ namespace SIT.Views.Logistica.CIncidencias
 
         private void CargarEmpleados()
         {
-            var x = this.db.Trabajadores.Where(z => z.IdEstatus == 1 && z.IdPuesto == 2).ToList();
-            this.cmb_empleado.DataSource = x;
-            this.cmb_empleado.DisplayMember = "NombreCompleto";
-            this.cmb_empleado.ValueMember = "IdEmpleado";
+            if(this._uslog.IdDepto==4 || this._uslog.IdDepto == 13)
+            {
+                var x = this.db.Trabajadores.Where(z => z.IdEstatus == 1 && z.IdPuesto == 2).ToList();
+                this.cmb_empleado.DataSource = x;
+                this.cmb_empleado.DisplayMember = "NombreCompleto";
+                this.cmb_empleado.ValueMember = "IdEmpleado";
+
+            }
+            else
+            {
+                var x = this.db.Trabajadores.Where(z => z.IdEstatus == 1).ToList();
+                this.cmb_empleado.DataSource = x;
+                this.cmb_empleado.DisplayMember = "NombreCompleto";
+                this.cmb_empleado.ValueMember = "IdEmpleado";
+            }
         }
 
         private void CargarIncidencias()
@@ -166,14 +177,26 @@ namespace SIT.Views.Logistica.CIncidencias
         private void EnviarEmailIncidencia()
         {
             List<string> lst_emto = new List<string>();
-            lst_emto.Add("facturacion@transportesdavila.com.mx");
-            lst_emto.Add("rh2@transportesdavila.com.mx");
-            lst_emto.Add("logistica@transportesdavila.com.mx");
-            lst_emto.Add("logistica4.transportesdavila@gmail.com");
-            lst_emto.Add("comercial@transportesdavila.com.mx");
-            lst_emto.Add("sistemas@transportesdavila.com.mx");
-            lst_emto.Add("diesel@transportesdavila.com.mx");
-            lst_emto.Add("suplogistica@transportesdavila.com.mx");
+            if(this._uslog.IdDepto==2 || this._uslog.IdDepto == 8 || this._uslog.IdDepto == 13)
+            {
+                lst_emto.Add("facturacion@transportesdavila.com.mx");
+                lst_emto.Add("rh2@transportesdavila.com.mx");
+                lst_emto.Add("logistica@transportesdavila.com.mx");
+                lst_emto.Add("logistica4.transportesdavila@gmail.com");
+                lst_emto.Add("comercial@transportesdavila.com.mx");
+                lst_emto.Add("sistemas@transportesdavila.com.mx");
+                lst_emto.Add("diesel@transportesdavila.com.mx");
+                lst_emto.Add("suplogistica@transportesdavila.com.mx");
+
+            }
+            else
+            {
+                lst_emto.Add("facturacion@transportesdavila.com.mx");
+                lst_emto.Add("rh2@transportesdavila.com.mx");
+                lst_emto.Add("nominas@transportesdavila.com.mx");
+                lst_emto.Add("rh@transportesdavila.com.mx");
+                lst_emto.Add("sistemas@transportesdavila.com.mx");
+            }
 
             evm.recipients = lst_emto;  
 

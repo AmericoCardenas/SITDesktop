@@ -36,7 +36,7 @@
             this.btn_entrada = new System.Windows.Forms.Button();
             this.btn_pagaroc = new System.Windows.Forms.Button();
             this.btn_pdf = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_filtro = new System.Windows.Forms.TextBox();
             this.cmb_filtro = new System.Windows.Forms.ComboBox();
             this.btn_oc = new System.Windows.Forms.Button();
             this.tbcontrol = new System.Windows.Forms.TabControl();
@@ -80,7 +80,7 @@
             this.panel1.Controls.Add(this.btn_entrada);
             this.panel1.Controls.Add(this.btn_pagaroc);
             this.panel1.Controls.Add(this.btn_pdf);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txt_filtro);
             this.panel1.Controls.Add(this.cmb_filtro);
             this.panel1.Controls.Add(this.btn_oc);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -175,13 +175,13 @@
             this.btn_pdf.UseVisualStyleBackColor = true;
             this.btn_pdf.Click += new System.EventHandler(this.btn_pdf_Click);
             // 
-            // textBox1
+            // txt_filtro
             // 
-            this.textBox1.Location = new System.Drawing.Point(650, 13);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txt_filtro.Location = new System.Drawing.Point(650, 13);
+            this.txt_filtro.Name = "txt_filtro";
+            this.txt_filtro.Size = new System.Drawing.Size(141, 20);
+            this.txt_filtro.TabIndex = 2;
+            this.txt_filtro.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // cmb_filtro
             // 
@@ -226,7 +226,7 @@
             this.tb_rpendientes.Location = new System.Drawing.Point(4, 22);
             this.tb_rpendientes.Name = "tb_rpendientes";
             this.tb_rpendientes.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_rpendientes.Size = new System.Drawing.Size(792, 350);
+            this.tb_rpendientes.Size = new System.Drawing.Size(788, 346);
             this.tb_rpendientes.TabIndex = 2;
             this.tb_rpendientes.Text = "C.Pendientes";
             this.tb_rpendientes.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@
             this.dgrid_reqpendientes.Location = new System.Drawing.Point(3, 3);
             this.dgrid_reqpendientes.Name = "dgrid_reqpendientes";
             this.dgrid_reqpendientes.ReadOnly = true;
-            this.dgrid_reqpendientes.Size = new System.Drawing.Size(786, 344);
+            this.dgrid_reqpendientes.Size = new System.Drawing.Size(782, 340);
             this.dgrid_reqpendientes.TabIndex = 0;
             this.dgrid_reqpendientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_reqpendientes_CellContentClick);
             this.dgrid_reqpendientes.Click += new System.EventHandler(this.dgrid_reqpendientes_Click);
@@ -253,7 +253,7 @@
             this.tb_reqaut.Location = new System.Drawing.Point(4, 22);
             this.tb_reqaut.Name = "tb_reqaut";
             this.tb_reqaut.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_reqaut.Size = new System.Drawing.Size(792, 350);
+            this.tb_reqaut.Size = new System.Drawing.Size(788, 346);
             this.tb_reqaut.TabIndex = 0;
             this.tb_reqaut.Text = "C.Autorizadas";
             this.tb_reqaut.UseVisualStyleBackColor = true;
@@ -269,7 +269,7 @@
             this.dgrid_reqautorizadas.Location = new System.Drawing.Point(3, 3);
             this.dgrid_reqautorizadas.Name = "dgrid_reqautorizadas";
             this.dgrid_reqautorizadas.ReadOnly = true;
-            this.dgrid_reqautorizadas.Size = new System.Drawing.Size(786, 344);
+            this.dgrid_reqautorizadas.Size = new System.Drawing.Size(782, 340);
             this.dgrid_reqautorizadas.TabIndex = 0;
             this.dgrid_reqautorizadas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_reqautorizadas_CellContentClick);
             // 
@@ -279,7 +279,7 @@
             this.tb_ocpe.Location = new System.Drawing.Point(4, 22);
             this.tb_ocpe.Name = "tb_ocpe";
             this.tb_ocpe.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_ocpe.Size = new System.Drawing.Size(792, 350);
+            this.tb_ocpe.Size = new System.Drawing.Size(788, 346);
             this.tb_ocpe.TabIndex = 1;
             this.tb_ocpe.Text = "OC.Pendientes";
             this.tb_ocpe.UseVisualStyleBackColor = true;
@@ -295,7 +295,7 @@
             this.dgrid_oc.Location = new System.Drawing.Point(3, 3);
             this.dgrid_oc.Name = "dgrid_oc";
             this.dgrid_oc.ReadOnly = true;
-            this.dgrid_oc.Size = new System.Drawing.Size(786, 344);
+            this.dgrid_oc.Size = new System.Drawing.Size(782, 340);
             this.dgrid_oc.TabIndex = 0;
             this.dgrid_oc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_oc_CellContentClick);
             this.dgrid_oc.Click += new System.EventHandler(this.dgrid_oc_Click);
@@ -306,7 +306,7 @@
             this.tb_ocpag.Location = new System.Drawing.Point(4, 22);
             this.tb_ocpag.Name = "tb_ocpag";
             this.tb_ocpag.Padding = new System.Windows.Forms.Padding(3);
-            this.tb_ocpag.Size = new System.Drawing.Size(792, 350);
+            this.tb_ocpag.Size = new System.Drawing.Size(788, 346);
             this.tb_ocpag.TabIndex = 3;
             this.tb_ocpag.Text = "OC.Pagadas";
             this.tb_ocpag.UseVisualStyleBackColor = true;
@@ -322,7 +322,7 @@
             this.dgrid_ocpagadas.Location = new System.Drawing.Point(3, 3);
             this.dgrid_ocpagadas.Name = "dgrid_ocpagadas";
             this.dgrid_ocpagadas.ReadOnly = true;
-            this.dgrid_ocpagadas.Size = new System.Drawing.Size(786, 344);
+            this.dgrid_ocpagadas.Size = new System.Drawing.Size(782, 340);
             this.dgrid_ocpagadas.TabIndex = 0;
             this.dgrid_ocpagadas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrid_ocpagadas_CellContentClick);
             this.dgrid_ocpagadas.Click += new System.EventHandler(this.dgrid_ocpagadas_Click);
@@ -445,7 +445,7 @@
         private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.DataGridView dgrid_oc;
         private System.Windows.Forms.Button btn_pdf;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_filtro;
         private System.Windows.Forms.ComboBox cmb_filtro;
         private System.Windows.Forms.Button btn_pagaroc;
         private System.Windows.Forms.Button btn_entrada;

@@ -55,7 +55,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
         List<CotizacionesRequisiciones> lst_cotizaciones = new List<CotizacionesRequisiciones>();
         List<CotPendientes> lst_cotpend = new List<CotPendientes>();
 
-
+        
 
         public void CargarReqPendientes()
         {
@@ -65,7 +65,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
                     join pr in db.ProductosAlmacen on d.IdProductoAlmacen equals pr.IdProducto
                     where n.IdEstatus == 1 && n.IdOCompra == null
-                    orderby n.IdProveedor ascending
+                    orderby n.IdCotizacion descending
                     select new
                     {
                         n.IdCotizacion,
@@ -109,7 +109,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
                     join pr in db.ProductosAlmacen on d.IdProductoAlmacen equals pr.IdProducto
                     where n.IdEstatus == 3 && n.IdOCompra==null
-                    orderby n.IdProveedor ascending
+                    orderby n.IdCotizacion descending
                     select new
                     {
                         n.IdCotizacion,
@@ -153,7 +153,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
                     join e in db.EstatusOrdenCompra on n.IdEstatus equals e.IdEstatus
                     where n.IdEstatus ==1
-                    orderby n.IdProveedor ascending
+                    orderby n.IdOCompra descending
                     select new
                     {
                         n.IdOCompra,
@@ -168,6 +168,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     };
 
             this.dgrid_oc.DataSource = x.ToList();
+            this.dgrid_oc.Columns[6].Visible = false;
             this.dgrid_oc.Columns[7].Visible = false;
             this.dgrid_oc.EnableHeadersVisualStyles = false;
             this.dgrid_oc.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
@@ -183,7 +184,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
                     join e in db.EstatusOrdenCompra on n.IdEstatus equals e.IdEstatus
                     where n.IdEstatus == 3
-                    orderby n.IdProveedor ascending
+                    orderby n.IdOCompra descending
                     select new
                     {
                         n.IdOCompra,
@@ -198,6 +199,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     };
 
             this.dgrid_ocpagadas.DataSource = x.ToList();
+            this.dgrid_ocpagadas.Columns[6].Visible = false;
             this.dgrid_ocpagadas.Columns[7].Visible = false;
             this.dgrid_ocpagadas.EnableHeadersVisualStyles = false;
             this.dgrid_ocpagadas.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
@@ -213,7 +215,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
                     join e in db.EstatusOrdenCompra on n.IdEstatus equals e.IdEstatus
                     where n.IdEstatus == 4
-                    orderby n.IdProveedor ascending
+                    orderby n.IdOCompra descending
                     select new
                     {
                         n.IdOCompra,
@@ -228,6 +230,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     };
 
             this.dgrid_ocsurtidas.DataSource = x.ToList();
+            this.dgrid_ocsurtidas.Columns[6].Visible = false;
             this.dgrid_ocsurtidas.Columns[7].Visible = false;
             this.dgrid_ocsurtidas.EnableHeadersVisualStyles = false;
             this.dgrid_ocsurtidas.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
@@ -309,7 +312,9 @@ namespace SIT.Views.Almacen.COrdenesCompra
             }
 
             MessageBox.Show("Se ha generado la orden de compra: " + ordenes.IdOCompra.ToString());
-            this.tbcontrol.SelectedIndex = 1;
+            this.tbcontrol.SelectedIndex = 2;
+            this.lst_cotizaciones.Clear();
+
         }
 
         private void dgrid_reqautorizadas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -496,7 +501,6 @@ namespace SIT.Views.Almacen.COrdenesCompra
 
         }
 
-
         private void btn_oc_Click(object sender, EventArgs e)
         {
             if (this.dgrid_reqautorizadas.Rows.Count==0)
@@ -521,12 +525,32 @@ namespace SIT.Views.Almacen.COrdenesCompra
 
         private void CargarFiltros()
         {
+            DataGridView dgrid = new DataGridView();
             this.cmb_filtro.DataSource = null;
             this.cmb_filtro.Items.Clear();
 
+            switch (this.tbcontrol.SelectedIndex)
+            {
+                case 0:
+                    dgrid = this.dgrid_reqpendientes;
+                    break;
+                    case 1:
+                    dgrid = this.dgrid_reqautorizadas;
+                    break;
+                    case 2:
+                    dgrid = this.dgrid_oc;
+                    break;
+                case 3:
+                    dgrid = this.dgrid_ocpagadas;
+                    break;
+                case 4:
+                    dgrid = this.dgrid_ocsurtidas;
+                    break;
+            }
+
             if (tbcontrol.SelectedIndex == 0)
             {
-                foreach(DataGridViewColumn c in this.dgrid_reqpendientes.Columns)
+                foreach(DataGridViewColumn c in dgrid.Columns)
                 {
                     if (c.Index > 0 && c.Visible == true)
                     {
@@ -537,7 +561,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
             }
             else if (tbcontrol.SelectedIndex == 1)
             {
-                foreach (DataGridViewColumn c in this.dgrid_reqautorizadas.Columns)
+                foreach (DataGridViewColumn c in dgrid.Columns)
                 {
                     if(c.Index > 0 && c.Visible==true)
                     {
@@ -547,11 +571,11 @@ namespace SIT.Views.Almacen.COrdenesCompra
                 this.cmb_filtro.SelectedIndex = 0;
 
             }
-            else if (tbcontrol.SelectedIndex == 2)
+            else if (tbcontrol.SelectedIndex == 2 || tbcontrol.SelectedIndex == 3 || tbcontrol.SelectedIndex == 4)
             {
-                foreach (DataGridViewColumn c in this.dgrid_oc.Columns)
+                foreach (DataGridViewColumn c in dgrid.Columns)
                 {
-                    if (c.Visible == true)
+                    if (c.Visible == true && c.Index<3)
                     {
                         this.cmb_filtro.Items.Add(c.Name);
 
@@ -560,7 +584,162 @@ namespace SIT.Views.Almacen.COrdenesCompra
                 this.cmb_filtro.SelectedIndex = 0;
 
             }
+
+     
         }
+
+        private void CargarxFiltro()
+        {
+            try
+            {
+                int idestatus = 0;
+                DataGridView dgrid = new DataGridView();
+
+                switch (this.tbcontrol.SelectedIndex)
+                {
+                        case 2:
+                        idestatus = 1;
+                        dgrid = this.dgrid_oc;
+                        break;
+
+                        case 3:
+                        idestatus = 3;
+                        dgrid = this.dgrid_ocpagadas;
+                        break;
+
+                        case 4:
+                        idestatus = 4;
+                        dgrid = this.dgrid_ocsurtidas;
+                        break;
+
+                    
+                }
+
+                var filtro = this.cmb_filtro.Text.ToString();
+
+                if (this.txt_filtro.Text == string.Empty)
+                {
+                    switch (this.tbcontrol.SelectedIndex)
+                    {
+                        case 2:
+                            CargarOrdenesCompraPend();
+                            break;
+
+                        case 3:
+                            CargarOrdenesCompraPagadas();
+                            break;
+
+                        case 4:
+                            CargarOrdenesCompraSurtidas();
+                            break;
+                    }
+
+                }
+
+
+                switch (filtro)
+                {
+                    case "IdOCompra":
+                        var id = Convert.ToInt32(this.txt_filtro.Text);
+                        var x = from n in db.OrdenesCompra
+                                join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                join e in db.EstatusOrdenCompra on n.IdEstatus equals e.IdEstatus
+                                where n.IdEstatus == idestatus && n.IdOCompra==id
+                                orderby n.IdOCompra descending
+                                select new
+                                {
+                                    n.IdOCompra,
+                                    n.Fecha,
+                                    p.RazonSocial,
+                                    n.Subtotal,
+                                    n.Iva,
+                                    n.Total,
+                                    e.Estatus,
+                                    n.IdProveedor
+
+                                };
+
+                        dgrid.DataSource = x.ToList();
+
+                    
+                        break;
+
+                    case "Fecha":
+                        var date = Convert.ToDateTime(this.txt_filtro.Text);
+                        var x1 = from n in db.OrdenesCompra
+                                join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                join e in db.EstatusOrdenCompra on n.IdEstatus equals e.IdEstatus
+                                where n.IdEstatus == idestatus && n.Fecha == date
+                                orderby n.IdOCompra descending
+                                select new
+                                {
+                                    n.IdOCompra,
+                                    n.Fecha,
+                                    p.RazonSocial,
+                                    n.Subtotal,
+                                    n.Iva,
+                                    n.Total,
+                                    e.Estatus,
+                                    n.IdProveedor
+
+                                };
+
+                        dgrid.DataSource = x1.ToList();
+                        break;
+
+                    case "RazonSocial":
+                        var x2 = from n in db.OrdenesCompra
+                                 join p in db.Proveedores on n.IdProveedor equals p.IdProveedor
+                                 join e in db.EstatusOrdenCompra on n.IdEstatus equals e.IdEstatus
+                                 where n.IdEstatus == idestatus && p.RazonSocial.Contains(this.txt_filtro.Text)
+                                 orderby n.IdOCompra descending
+                                 select new
+                                 {
+                                     n.IdOCompra,
+                                     n.Fecha,
+                                     p.RazonSocial,
+                                     n.Subtotal,
+                                     n.Iva,
+                                     n.Total,
+                                     e.Estatus,
+                                     n.IdProveedor
+
+                                 };
+
+                        dgrid.DataSource = x2.ToList();
+                        break;
+                }
+
+               dgrid.Columns[6].Visible = false;
+               dgrid.Columns[7].Visible = false;
+               dgrid.EnableHeadersVisualStyles = false;
+               dgrid.ColumnHeadersDefaultCellStyle.BackColor = Color.DodgerBlue;
+               dgrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+               dgrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+
+            }
+            catch (Exception ex)
+            {
+                switch (this.tbcontrol.SelectedIndex)
+                {
+                    case 2:
+                        CargarOrdenesCompraPend();
+                        break;
+
+                    case 3:
+                        CargarOrdenesCompraPagadas();
+                        break;
+
+                    case 4:
+                        CargarOrdenesCompraSurtidas();
+                            break;
+                }
+
+            }
+
+        }
+
         private void tbcontrol_SelectedIndexChanged(object sender, EventArgs e)
         {
             idOCompra = 0;
@@ -934,6 +1113,8 @@ namespace SIT.Views.Almacen.COrdenesCompra
             VerOrdenCompra();
         }
 
+
+
         private void GenerarEntradaAlmacen()
         {
             if (idOCompra != 0 && this.dgrid_ocpagadas.CurrentRow.Cells["Estatus"].Value.ToString()=="PAGADA")
@@ -944,6 +1125,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                     oc.IdEstatus = 4;
                     oc.IdUsMod = this._uslog.IdUsuario;
                     oc.FMod = DateTime.Now;
+                    db = new SITEntities();
                     db.Entry(oc).State = EntityState.Modified;
                     db.SaveChanges();
 
@@ -967,6 +1149,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
                         p.Stock = st;
                         p.FechaMod = DateTime.Now;
                         p.IdUsMod = this._uslog.IdUsuario;
+                        db = new SITEntities();
                         db.Entry(p).State = EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -1218,7 +1401,7 @@ namespace SIT.Views.Almacen.COrdenesCompra
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            CargarxFiltro();
         }
 
         private void cmb_filtro_SelectedIndexChanged(object sender, EventArgs e)

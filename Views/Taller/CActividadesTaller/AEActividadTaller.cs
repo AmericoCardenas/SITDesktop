@@ -107,6 +107,7 @@ namespace SIT.Views.Taller.CActividadesTaller
         private void AEActividadTaller_Load(object sender, EventArgs e)
         {
             CargarFormatosTiempo();
+            CargarGrupos();
             if (idActividad != 0)
             {
                 act = db.ActividadesTaller.Where(x => x.IdAct == idActividad).FirstOrDefault();
